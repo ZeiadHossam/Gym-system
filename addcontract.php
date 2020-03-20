@@ -22,31 +22,47 @@
 				<div class="row">
 				 <div class="col-md-6">
                   <div class="form-group">
-                    <label >contract name </label>
+                    <label >*contract type </label>
 				 
                                             <select class="form-control">
                                                
                                                 <option>15 session</option>
                                                 <option>30 session</option>
                                                 <option>45 session</option>
+												
                                             </select>
                   </div>
 				  <div class="form-group">
-                    <label for="fname">member Name</label>
+                    <label >*package type </label>
+				 
+                                            <select class="form-control">
+                                               
+                                                <option></option>
+                                                <option></option>
+                                                <option></option>
+												
+                                            </select>
+                  </div>
+				  <div class="form-group">
+                    <label for="fname">*member Name</label>
                     <input type="text" class="form-control"  placeholder="member Name" required>
                   </div>
 				  <div class="form-group">
-                    <label for="fname">start date</label>
+                    <label for="fname">today date</label>
+                    <input type="date" class="form-control"  required>
+                  </div>
+				  <div class="form-group">
+                    <label for="fname">*start date</label>
                     <input type="date" class="form-control"  required>
                   </div>
                   <div class="form-group">
-                    <label >end date</label>
+                    <label >*end date</label>
                     <input type="date" class="form-control"  required>
                   </div>
                  
 				  
 				<div class="form-group">
-                    <label >issue date</label>
+                    <label >*issue date</label>
                     <input type="date" class="form-control"  required>
                   </div>
 				  
@@ -67,10 +83,10 @@
 										
 				   <div class="form-group">
                     <label for="exampleInputEmail1">Sale</label>
-                    <input type="text" class="form-control" maxlength="8"  placeholder="sale " required>
+                    <input type="text" class="form-control"   placeholder="sale " required>
                   </div>
 				   <div class="form-group">
-				      <label >payment method </label>
+				      <label >*payment method </label>
 				 
                                             <select class="form-control">
                                                 <option class="hidden"  selected disabled>cash</option>
@@ -79,7 +95,30 @@
                                                 <option></option>
                                             </select>
                                         </div>
-				
+										<div class="form-group">
+                    <label >*amount paid</label>
+                    <input type="text" class="form-control"  required>
+                  </div>
+				  		<div class="form-group">
+                    <label >*amount due</label>
+                    <input type="text" class="form-control"  required>
+                  </div>
+				  		<div class="form-group">
+                    <label >*amount due date</label>
+                    <input type="date" class="form-control"  required>
+                  </div>
+				<div class="form-group">
+				      <label >*Discount </label>
+				 
+                                            <select class="form-control">
+                                                <option class="hidden"  selected disabled>0%</option>
+                                                <option>10%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                               
+                                                <option></option>
+                                            </select>
+                                        </div>
 				 
 				
                   
@@ -99,7 +138,6 @@
               <button type="button" class="btn btn-primary">Add Member</button>
             </div>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
+
       </div>
