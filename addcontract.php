@@ -89,7 +89,7 @@
 				      <label >*payment method </label>
 				 
                                             <select class="form-control">
-                                                <option class="hidden"  selected disabled>cash</option>
+                                                <option class="hidden"  selected >cash</option>
                                                 <option>visa</option>
                                                
                                                 <option></option>
@@ -111,7 +111,7 @@
 				      <label >*Discount </label>
 				 
                                             <select class="form-control">
-                                                <option class="hidden"  selected disabled>0%</option>
+                                                <option class="hidden"  selected >0%</option>
                                                 <option>10%</option>
                                                 <option>25%</option>
                                                 <option>50%</option>
@@ -135,7 +135,7 @@
 			 </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Add Member</button>
+              <button type="button" class="btn btn-primary">Add contract</button>
             </div>
           </div>
         </div>

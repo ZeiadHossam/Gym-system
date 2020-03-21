@@ -26,7 +26,7 @@
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
                                                     <input type="email" class="form-control" id="exampleInputEmail1"
-                                                           value=<?php echo "@hotmail.com" ?> >
+                                                           value=<?php echo "@hotmail.com" ?>>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*First Name</label>
@@ -70,7 +70,7 @@
                                                 <br>
                                                 <div class="form-group">
 
-					<textarea rows="6" cols="30" ><?php echo "@hotmail.com" ?>
+					<textarea rows="6" cols="30"><?php echo "@hotmail.com" ?>
 					</textarea>
                                                 </div>
                                                 <div class="form-group">
@@ -85,9 +85,9 @@
                                                 <div class="form-group">
 
                                                     <select class="form-control">
-                                                        <option class="hidden" selected >gender</option>
-                                                        <option >male</option>
-                                                        <option >female</option>
+                                                        <option class="hidden" selected>gender</option>
+                                                        <option>male</option>
+                                                        <option>female</option>
                                                         <option></option>
                                                     </select>
                                                 </div>
@@ -99,8 +99,8 @@
 
                                                     <select class="form-control">
                                                         <option class="hidden">single</option>
-                                                        <option >married</option>
-                                                        <option >divorsed</option>
+                                                        <option>married</option>
+                                                        <option>divorsed</option>
                                                         <option></option>
                                                     </select>
                                                 </div>
@@ -125,10 +125,9 @@
                         </div>
                     </div>
                 </div>
+                <button type="button" class="btn btn-primary">edit Member</button>
             </div>
 
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
