@@ -22,7 +22,9 @@
 <script src="public/plugins/datatables/jquery.dataTables.js"></script>
 <script src="public/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script src="public/js/pages/main.js"></script>
+
 <script>
+
 	
 </script>
 	

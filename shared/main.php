@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="public/css/pages/members.css">
     <link rel="stylesheet" href="public/css/pages/tables.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

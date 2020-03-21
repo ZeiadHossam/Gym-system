@@ -33,7 +33,7 @@
 						<td>
 							<div class="btn-group tablebuttons">
                                 <a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
-								<button type="button" class="btn btn-info btn-sm ">Edit</button>
+                                <a href="editemployee.php" class="btn btn-info btn-sm" >Edit</a>
 								<button type="button" class="btn btn-danger btn-sm ">Delete</button>
 							</div>
 						</td>
@@ -47,7 +47,7 @@
 						<td>
 							<div class="btn-group tablebuttons">
 								<a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
-								<button type="button" class="btn btn-info btn-sm ">Edit</button>
+                                <a href="editemployee.php" class="btn btn-info btn-sm" >Edit</a>
 								<button type="button" class="btn btn-danger btn-sm ">Delete</button>
 							</div>
 						</td>
