@@ -81,8 +81,8 @@
 				 
                                             <select class="form-control">
                                                 <option class="hidden"  selected disabled>gender </option>
-                                                <option>male</option>
-                                                <option>female</option>
+                                                <option disabled>male</option>
+                                                <option disabled>female</option>
                                                 <option></option>
                                             </select>
                                         </div>
@@ -94,9 +94,9 @@
 				 
                                             <select class="form-control" >
                                                 <option class="hidden" >single </option>
-                                                <option>married</option>
-                                                <option>divorsed</option>
-                                                <option></option>
+                                                <option disabled>married</option>
+                                                <option disabled>divorsed</option>
+                                                <option disabled></option>
                                             </select>
                                         </div>
 										
