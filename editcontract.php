@@ -1,15 +1,5 @@
-<?php
-?>
-<div class="modal fade" id="editcontract">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit contract</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+<?php include("shared/main.php") ?>
+
                 <div class="container-fluid">
                     <div class="row">
 
@@ -127,17 +117,12 @@
                                         </div>
                                     </div>
 
+					<button type="submit" class="btn btn-primary Addmemberbutton ">Edit contract</button>
                                 </form>
+			                <a href="contracts.php" class="btn btn-default">Close</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Edit contract</button>
-            </div>
-        </div>
-    </div>
-
-</div>
+        
+<?php include("shared/footer.php") ?>

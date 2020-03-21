@@ -1,7 +1,5 @@
 <?php include("shared/main.php") ?>
 <?php include("addmember.php") ?>
-<?php include("viewmember.php") ?>
-<?php include("editmember.php") ?>
     <section class="content">
         <div class="container-fluid">
             <br>
@@ -35,10 +33,8 @@
                         <td>ahmed@email.com</td>
                         <td>
                             <div class="btn-group tablebuttons">
-                                <button class="btn btn-info" data-backdrop="static" data-keyboard="false"
-                                        data-toggle="modal" data-target="#modal-xllll">View
-                                </button>
-                                <button class="btn btn-info" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#editmember">edit</button>
+                                <a href="viewmember.php" class="btn btn-secondary btn-sm" >View</a>
+                                <a href="editmember.php" class="btn btn-info btn-sm" >edit</a>
                                 <button type="button" class="btn btn-danger btn-sm ">Delete</button>
                             </div>
                         </td>
@@ -51,8 +47,8 @@
                         <td>mohamed@email.com</td>
                         <td>
                             <div class="btn-group tablebuttons">
-                                <button type="button" class="btn btn-secondary btn-sm ">View</button>
-                                <button type="button" class="btn btn-info btn-sm ">Edit</button>
+								<a href="viewmember.php" class="btn btn-secondary btn-sm" >View</a>
+								<a href="editmember.php" class="btn btn-info btn-sm" >edit</a>
                                 <button type="button" class="btn btn-danger btn-sm ">Delete</button>
                             </div>
                         </td>

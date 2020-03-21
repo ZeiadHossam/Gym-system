@@ -1,7 +1,5 @@
 <?php include("shared/main.php") ?>
 <?php include("addcontract.php") ?>
-<?php include("viewcontract.php") ?>
-<?php include("editcontract.php") ?>
     <section class="content">
         <div class="container-fluid">
             <br>
@@ -41,11 +39,8 @@
                         <td>200</td>
                         <td>
                             <div class="btn-group tablebuttons">
-                                <button class="btn btn-info" data-backdrop="static" data-keyboard="false"
-                                        data-toggle="modal" data-target="#viewcontract">View
-                                </button>
-                                <button class="btn btn-info" data-backdrop="static" data-keyboard="false"
-                                        data-toggle="modal" data-target="#editcontract">Edit</button>
+								<a href="viewcontract.php" class="btn btn-secondary btn-sm" >View</a>
+								<a href="editcontract.php" class="btn btn-info btn-sm">Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm ">Delete</button>
                             </div>
                         </td>

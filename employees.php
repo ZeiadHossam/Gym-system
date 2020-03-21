@@ -1,6 +1,5 @@
 <?php include("shared/main.php")?>
 <?php include("addemployee.php")?>
-<?php include("viewemployee.php")?>
  <section class="content">
 	<div class="container-fluid">
 		<br>
@@ -33,9 +32,7 @@
 						<td>01111111111</td>
 						<td>
 							<div class="btn-group tablebuttons">
-                                <button class="btn btn-info" data-backdrop="static" data-keyboard="false"
-                                        data-toggle="modal" data-target="#viewemployee">View
-                                </button>
+                                <a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
 								<button type="button" class="btn btn-info btn-sm ">Edit</button>
 								<button type="button" class="btn btn-danger btn-sm ">Delete</button>
 							</div>
@@ -49,7 +46,7 @@
 						<td>01222222222</td>
 						<td>
 							<div class="btn-group tablebuttons">
-								<button type="button" class="btn btn-secondary btn-sm ">View</button>
+								<a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
 								<button type="button" class="btn btn-info btn-sm ">Edit</button>
 								<button type="button" class="btn btn-danger btn-sm ">Delete</button>
 							</div>

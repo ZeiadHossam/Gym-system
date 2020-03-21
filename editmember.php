@@ -1,15 +1,4 @@
-<?php
-?>
-<div class="modal fade" id="editmember">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Member</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+<?php include("shared/main.php") ?>
                 <div class="container-fluid">
                     <div class="row">
 
@@ -120,14 +109,12 @@
                                         </div>
                                     </div>
 
+					<button type="button" class="btn btn-primary Addmemberbutton ">Edit Member</button>
                                 </form>
+                				<a href="members.php" class="btn btn-default">Cancel</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary">edit Member</button>
-            </div>
 
-        </div>
-    </div>
-</div>
+<?php include("shared/footer.php") ?>

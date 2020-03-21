@@ -1,13 +1,4 @@
-<div class="modal fade" id="modal-xllll">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">view Member</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
+<?php include("shared/main.php") ?>
 			<div class="container-fluid">
 				<div class="row">
 				
@@ -118,16 +109,11 @@
                 </div>
                 </div>
                 </div>
-
               </form>
+					<button class="btn btn-sm btn-info">View Member Contracts</button>
+					<a href="members.php" class="btn btn-sm btn-default">Back</a>
             </div>
 		</div>
 		</div>
 	</div>
-			 </div>
-            
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
+			<?php include("shared/footer.php") ?>
