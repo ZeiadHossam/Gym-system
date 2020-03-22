@@ -110,7 +110,7 @@
                 </div>
                 </div>
               </form>
-					<button class="btn btn-sm btn-info">View Member Contracts</button>
+					<a href="membercontract.php" class="btn btn-sm btn-info">View Member Contracts</a>
 				<a href="javascript:history.go(-1)" class="btn btn-sm btn-default">Close</a>
             </div>
 		</div>
