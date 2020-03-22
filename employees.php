@@ -1,5 +1,6 @@
 <?php include("shared/main.php")?>
 <?php include("addemployee.php")?>
+<?php include("delete.php") ?>
  <section class="content">
 	<div class="container-fluid">
 		<br>
@@ -34,7 +35,9 @@
 							<div class="btn-group tablebuttons">
                                 <a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
                                 <a href="editemployee.php" class="btn btn-info btn-sm" >Edit</a>
-								<button type="button" class="btn btn-danger btn-sm ">Delete</button>
+								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+									Delete
+								</button>
 							</div>
 						</td>
 					</tr>
@@ -48,7 +51,9 @@
 							<div class="btn-group tablebuttons">
 								<a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
                                 <a href="editemployee.php" class="btn btn-info btn-sm" >Edit</a>
-								<button type="button" class="btn btn-danger btn-sm ">Delete</button>
+								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+									Delete
+								</button>
 							</div>
 						</td>
 					</tr>

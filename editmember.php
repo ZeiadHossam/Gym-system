@@ -111,7 +111,7 @@
 
 					<button type="button" class="btn btn-primary Addmemberbutton ">Edit Member</button>
                                 </form>
-                				<a href="members.php" class="btn btn-default">Cancel</a>
+				<a href="javascript:history.go(-1)" class="btn btn-default">Cancel</a>
                             </div>
                         </div>
                     </div>

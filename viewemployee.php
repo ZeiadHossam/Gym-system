@@ -95,7 +95,7 @@
                                     </div>
 
                                 </form>
- 							<a href="employees.php" class="btn btn-sm btn-default">Back</a>
+				<a href="javascript:history.go(-1)" class="btn btn-sm btn-default">Close</a>
                             </div>
                         </div>
                     </div>

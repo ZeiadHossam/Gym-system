@@ -118,7 +118,8 @@
                                     </div>
 
                                 </form>
-			                <a href="contracts.php" class="btn btn-default" >Close</a>
+				<a href="viewmember.php" class="btn btn-info">View Member</a>
+				<a href="javascript:history.go(-1)" class="btn btn-default" >Close</a>
                             </div>
                         </div>
                     </div>

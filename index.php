@@ -104,7 +104,7 @@
                                     <td>16/3/2020</td>
                                     <td>01111111111</td>
                                     <td>
-                                        <button type="button" class="btn btn-block btn-secondary btn-sm">View</button>
+											<a href="viewcontract.php" class="btn btn-block btn-secondary btn-sm ">View</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -115,7 +115,7 @@
                                     <td>17/3/2020</td>
                                     <td>01222222222</td>
                                     <td>
-                                        <button type="button" class="btn btn-block btn-secondary btn-sm">View</button>
+											<a href="viewcontract.php" class="btn btn-block btn-secondary btn-sm ">View</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -145,7 +145,7 @@
                                     <td>16/3/2020</td>
                                     <td>01111111111</td>
                                     <td>
-                                        <button type="button" class="btn btn-block btn-secondary btn-sm">View</button>
+											<a href="viewcontract.php" class="btn btn-block btn-secondary btn-sm ">View</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -156,7 +156,7 @@
                                     <td>18/3/2020</td>
                                     <td>01111112222</td>
                                     <td>
-                                        <button type="button" class="btn btn-block btn-secondary btn-sm">View</button>
+											<a href="viewcontract.php" class="btn btn-block btn-secondary btn-sm ">View</a>
                                     </td>
                                 </tr>
                                 </tbody>

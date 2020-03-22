@@ -1,12 +1,10 @@
 <?php include("shared/main.php") ?>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
+
         <section class="content">
             <div class="container-fluid">
+ 				<br>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-10 offset-md-1">
 
                         <!-- Profile Image -->
                         <div class="card card-primary card-outline">
@@ -48,4 +46,8 @@
 
                             </div>
                         </div>
+                        </div>
+                        </div>
+                        </div>
+                        </section>
 <?php include("shared/footer.php") ?>

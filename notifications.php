@@ -9,7 +9,6 @@
 			<table id="custTable" class="addmembertable table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>Id</th>
 						<th>title</th>
 						<th>message</th>
 						<th>Actions</th>
@@ -17,7 +16,6 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>10000</td>
 						<td>Birthday</td>
 						<td>mahmoud's birthDay</td>
 						<td>
@@ -25,7 +23,6 @@
 						</td>
 					</tr>
 					<tr>
-						<td>20000</td>
 						<td>member expiry</td>
 						<td>mahmoud's Contract is about to expire</td>
 						<td>

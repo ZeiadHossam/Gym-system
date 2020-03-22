@@ -109,9 +109,9 @@
                             </div>
                         </div>
                     </div>
-
+					<button type="submit" class="btn btn-primary Addmemberbutton ">Edit Employes</button>
                 </form>
-                <a href="contracts.php" class="btn btn-default">Close</a>
+				<a href="javascript:history.go(-1)" class="btn btn-default">Cancel</a>
             </div>
         </div>
     </div>
