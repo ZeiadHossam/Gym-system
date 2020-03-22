@@ -59,39 +59,27 @@
                     <label >*end date</label>
                     <input type="date" class="form-control"  required>
                   </div>
-                 
-				  
 				<div class="form-group">
                     <label >*issue date</label>
                     <input type="date" class="form-control"  required>
                   </div>
-				  
-				  
-				 
 				  </div>
-				  
 				 <div class="col-md-6">
 				  <b> notes </b>
-				  <br>
 				  <div class="form-group">
-                    
 					<textarea  rows="6" cols="60">
 					</textarea>
                   </div>
-				
-				
-										
 				   <div class="form-group">
                     <label for="exampleInputEmail1">Sale</label>
                     <input type="text" class="form-control"   placeholder="sale " required>
                   </div>
+
 				   <div class="form-group">
 				      <label >*payment method </label>
-				 
                                             <select class="form-control">
                                                 <option class="hidden"  selected >cash</option>
                                                 <option>visa</option>
-                                               
                                                 <option></option>
                                             </select>
                                         </div>
@@ -109,24 +97,17 @@
                   </div>
 				<div class="form-group">
 				      <label >*Discount </label>
-				 
                                             <select class="form-control">
                                                 <option class="hidden"  selected >0%</option>
                                                 <option>10%</option>
                                                 <option>25%</option>
                                                 <option>50%</option>
-                                               
                                                 <option></option>
                                             </select>
                                         </div>
-				 
-				
-                  
-				  
                 </div>
                 </div>
                 </div>
-
               </form>
             </div>
 		</div>

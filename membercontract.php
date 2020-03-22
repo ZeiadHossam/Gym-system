@@ -1,4 +1,6 @@
 <?php include("shared/main.php") ?>
+<?php include("delete.php")?>
+
 
 <div class="row">
     <table id="custTable" class="addmembertable table table-bordered table-striped">
@@ -28,7 +30,9 @@
 
                     </button>
 
-                    <button type="button" class="btn btn-danger btn-sm ">Delete</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+                        Delete
+                    </button>
                 </div>
             </td>
         </tr>
@@ -42,6 +46,5 @@
 
 
 </div>
-</section>
 <?php include("shared/footer.php") ?>
 
