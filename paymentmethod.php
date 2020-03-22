@@ -15,7 +15,7 @@
 				  
 				  <div class="btn-group tablebuttons">
                                 <button type="submit" class="btn btn-success btn-flat ">Confirm</button>
-                                <button type="button" class="btn btn-danger btn-flat ">Clear Fields</button>
+					<button type="reset" class="btn btn-danger btn-flat ">Clear Fields</button>
 				  
 				    </div>
 				  
@@ -28,8 +28,8 @@
 				  
 		
  </div>			
- </div>		
 </form> 
+ </div>		
 <br>
 		<div class="row">
 			<table id="custTable" class="addmembertable table table-bordered table-striped">
