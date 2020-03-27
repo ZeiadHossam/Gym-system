@@ -16,4 +16,5 @@ class Users
         $user->userType="Admin";
         return $user;
     }
+    
 }
