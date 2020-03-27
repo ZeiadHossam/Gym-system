@@ -19,9 +19,12 @@
 					<tr>
 						<td>Birthday</td>
 						<td>mahmoud's birthDay</td>
+						<td>
+							
 						<button type="button" class="btn btn-block btn-secondary btn-sm" data-backdrop="static" data-toggle="modal" data-target="#viewnotification">
 							View
 						</button>
+						</td>
 					</tr>
 					<tr>
 						<td>member expiry</td>
