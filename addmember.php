@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-xl">
+<div class="modal fade" id="modal-members">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">

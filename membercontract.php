@@ -1,6 +1,4 @@
 <?php include("shared/main.php") ?>
-<?php include("delete.php")?>
-
 
 <div class="row">
     <table id="custTable" class="addmembertable table table-bordered table-striped">
@@ -12,6 +10,7 @@
             <th>Enddate</th>
             <th>Issuedate</th>
             <th>MemberId</th>
+			<th>Status</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -22,17 +21,11 @@
             <td>12/3/2020</td>
             <td>3/3/2020</td>
             <td>18354</td>
-
+			<td>Active</td>
 
             <td>
                 <div class="btn-group tablebuttons">
-                    <button type="button" class="btn btn-info">Edit
-
-                    </button>
-
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
-                        Delete
-                    </button>
+                    <a href="viewcontract.php" type="button" class="btn btn-info">View</a>
                 </div>
             </td>
         </tr>
@@ -42,9 +35,7 @@
     </table>
 
 </div>
-</div>
+<a href="javascript:history.go(-1)" class="btn btn-block btn-sm btn-default">Close</a>
 
-
-</div>
 <?php include("shared/footer.php") ?>
 

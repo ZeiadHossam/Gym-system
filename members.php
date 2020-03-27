@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <button type="button" class="btn btn-info Addmemberbutton" data-backdrop="static" data-keyboard="false"
-                        data-toggle="modal" data-target="#modal-xl">
+                        data-toggle="modal" data-target="#modal-members">
                     Add Member
                 </button>
             </div>

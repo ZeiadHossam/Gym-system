@@ -1,4 +1,5 @@
 <?php include ("shared/main.php") ?>
+<?php include ("viewnotification.php") ?>
  <section class="content">
 	<div class="container-fluid">
 		<br>
@@ -9,8 +10,8 @@
 			<table id="custTable" class="addmembertable table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>title</th>
-						<th>message</th>
+						<th>Title</th>
+						<th>Message</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -18,15 +19,17 @@
 					<tr>
 						<td>Birthday</td>
 						<td>mahmoud's birthDay</td>
-						<td>
-							<button type="button" class="btn btn-block btn-secondary btn-sm">View</button>
-						</td>
+						<button type="button" class="btn btn-block btn-secondary btn-sm" data-backdrop="static" data-toggle="modal" data-target="#viewnotification">
+							View
+						</button>
 					</tr>
 					<tr>
 						<td>member expiry</td>
 						<td>mahmoud's Contract is about to expire</td>
 						<td>
-							<button type="button" class="btn btn-block btn-secondary btn-sm">View</button>
+							<button type="button" class="btn btn-block btn-secondary btn-sm" data-backdrop="static" data-toggle="modal" data-target="#viewnotification">
+								View
+							</button>
 						</td>
 					</tr>
 				</tbody>

@@ -7,7 +7,7 @@
             <div class="row contractimage">
             </div>
             <div class="row">
-                <button type="button" class="btn btn-info Addmemberbutton" data-toggle="modal" data-target="#modal-xll"
+                <button type="button" class="btn btn-info Addmemberbutton" data-toggle="modal" data-target="#contractModal"
                         data-backdrop="static" data-keyboard="false">
                     Add Contract
                 </button>
@@ -25,6 +25,7 @@
                         <th>Package</th>
                         <th>Type</th>
                         <th>Due</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -38,6 +39,7 @@
                         <td>MemberShip</td>
                         <td>30 Days</td>
                         <td>200</td>
+                        <td>Active</td>
                         <td>
                             <div class="btn-group tablebuttons">
 								<a href="viewcontract.php" class="btn btn-secondary btn-sm" >View</a>
@@ -57,11 +59,11 @@
                         <td>Trainer</td>
                         <td>15 Session</td>
                         <td>150</td>
+                        <td>Expired</td>
                         <td>
                             <div class="btn-group tablebuttons">
 								<a href="viewcontract.php" class="btn btn-secondary btn-sm" >View</a>
-								<a href="editcontract.php" class="btn btn-info btn-sm">Edit</a>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
 									Delete
 								</button>
                             </div>
