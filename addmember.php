@@ -14,26 +14,28 @@
                         <!-- left column -->
                         <div class="col-md-12">
                             <!-- general form elements -->
-                            <div class="card card-primary">
 
 
-                                <form role="form" action="addmember.php" enctype="multipart/form-data" method="post">
+
+                            <form role="form" action="backend/controllingmember.php" enctype="multipart/form-data" method="get">
+                                <div class="card card-primary">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                                    <input type="email" name="email" class="form-control"
+                                                           id="exampleInputEmail1"
                                                            placeholder="Enter email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*First Name</label>
-                                                    <input type="text" class="form-control" maxlength="15"
+                                                    <input type="text" name="fname" class="form-control" maxlength="15"
                                                            placeholder="First Name" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*Last Name</label>
-                                                    <input type="text" class="form-control" maxlength="15"
+                                                    <input type="text" name="lname" class="form-control" maxlength="15"
                                                            placeholder="Last Name" required>
                                                 </div>
 
@@ -43,7 +45,7 @@
                                                         <div class="custom-file">
                                                             <input name="img" class="form-control-file" type="file"
                                                                    id="img" accept="image/gif, image/jpeg, image/png"/
-                                                            required>
+                                                            >
                                                         </div>
 
                                                     </div>
@@ -52,24 +54,27 @@
                                                 <b> *Personal Address</b>
                                                 <br>
                                                 <div class="form-group">
-                    
-					<textarea rows="6" cols="60">
+
+					<textarea rows="6" cols="60" name="personaddress">
 					</textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>work phone</label>
-                                                    <input type="text" class="form-control" maxlength="8"
+                                                    <input type="text" name="workphone" class="form-control"
+                                                           maxlength="8"
                                                            placeholder="work phone">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">fax number</label>
-                                                    <input type="text" class="form-control" maxlength="10"
+                                                    <input type="text" name="faxnumber" class="form-control"
+                                                           maxlength="10"
                                                            placeholder="Fax number">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*phone number</label>
-                                                    <input type="text" class="form-control" maxlength="10"
+                                                    <input type="text" name="phonenumbers" class="form-control"
+                                                           maxlength="10"
                                                            placeholder="phone number" required>
                                                 </div>
 
@@ -80,23 +85,30 @@
                                                 <b> Company Address</b>
 
                                                 <div class="form-group">
-                    
-					<textarea rows="6" cols="60">
+
+					<textarea rows="6" cols="60" name="companyaddress">
 					</textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*Birthday </label>
-                                                    <input type="date" class="form-control" required>
+                                                    <input type="date" name="birthday" class="form-control" required>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label >companyName </label>
+                                                    <input type="text" name="companyname" class="form-control" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label >AddedBy </label>
+                                                    <input type="text" name="addedby" class="form-control" >
+                                                </div>
 
                                                 <b>*Gender</b>
 
 
                                                 <div class="form-group">
 
-                                                    <select class="form-control">
-                                                        <option class="hidden" selected disabled>gender</option>
+                                                    <select class="form-control" name="gender">
+                                                        <option class="hidden" selected >gender</option>
                                                         <option>male</option>
                                                         <option>female</option>
                                                         <option></option>
@@ -104,7 +116,7 @@
                                                     <b>Marriedstatus</b>
                                                     <div class="form-group">
 
-                                                        <select class="form-control">
+                                                        <select class="form-control" name="marriedstaus">
                                                             <option class="hidden">single</option>
                                                             <option>married</option>
                                                             <option>divorsed</option>
@@ -114,30 +126,30 @@
 
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">HOME phone</label>
-                                                        <input type="text" class="form-control" maxlength="8"
-                                                               placeholder="home phone" required>
+                                                        <input type="text" name="homephone" class="form-control" maxlength="8"
+                                                               placeholder="home phone" >
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">emergency number</label>
-                                                        <input type="text" class="form-control" maxlength="10"
-                                                               placeholder="emergency number" required>
+                                                        <input type="text" name="emergency" class="form-control" maxlength="10"
+                                                               placeholder="emergency number" >
                                                     </div>
+
                                                 </div>
-
-
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <button type="submit" name='addmember' class="btn btn-block btn-primary">Add Member</button>
+                            </form>
 
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add Member</button>
+                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+
             </div>
         </div>
         <!-- /.modal-content -->

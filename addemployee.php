@@ -17,8 +17,9 @@
                             <div class="card card-primary">
 
 
-                                <form role="form" action="addmember.php" enctype="multipart/form-data" method="post">
                                     <div class="card-body">
+                                        <form role="form" action="addmember.php" enctype="multipart/form-data" method="post">
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -113,16 +114,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="submit" name='addemployee' class="btn btn-block btn-primary">Add employee</button>
+                            </div>
 
                                 </form>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add Member</button>
+                <button type="button" class="btn btn-block btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
         <!-- /.modal-content -->

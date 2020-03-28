@@ -22,7 +22,6 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-    <?php include('backend/user.php')?>
     <?php include('header.php') ?>
     <?php include('sidebar.php') ?>
     <!-- Content Wrapper. Contains page content -->

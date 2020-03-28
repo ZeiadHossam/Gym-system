@@ -108,6 +108,8 @@
                 </div>
                 </div>
                 </div>
+                  <button type="submit" class="btn btn-block btn-primary">Add contract</button>
+
               </form>
             </div>
 		</div>
@@ -115,8 +117,7 @@
 	</div>
 			 </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Add contract</button>
+              <button type="button" class="btn btn-block btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
