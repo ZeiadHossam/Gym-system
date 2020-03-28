@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+		
+		<?php session_start(); include("backend/loginauth.php") ; ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GYM | ADMIN</title>

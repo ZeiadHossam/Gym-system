@@ -35,6 +35,7 @@ return true;
 			$this->mysqli->close();
             return true;
         } else {
+			$this->mysqli->close();
             return false;
         }
     }
@@ -52,4 +53,22 @@ return true;
 			return true;
 		}
     }
+    public function select($query)
+	{
+        $this->connection();
+		$result = mysqli_query($this->mysqli,$query);
+		if (!$result) {
+			printf("Error: %s\n", $this->mysqli->error);
+			exit();
+		}
+		$row=mysqli_fetch_array($result);
+		if (!empty($row)) {
+
+			return $row;
+
+		} else {
+
+			return NULL;
+		}
+	}
 }

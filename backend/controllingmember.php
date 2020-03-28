@@ -30,5 +30,5 @@ if (isset($_GET['addmember'])) {
         echo "<script> alert('Cannot add member');</script>";
     }
 
-
+	unset($member);
 }

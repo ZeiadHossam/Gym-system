@@ -23,7 +23,7 @@
                     My Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="backend/logout.php" class="dropdown-item">
                     Logout
                 </a>
 

@@ -22,4 +22,18 @@ class employee extends person
 						return false;
 					}
     }
+    public static function login($query)
+	{
+		$db = new database();
+		$row=$db->select($query);
+
+		if ($row!=NULL) {
+
+			$_SESSION['id']=$row['id'];
+			return true;
+		} else {	
+			return FALSE;
+
+		}	
+	}
 }
