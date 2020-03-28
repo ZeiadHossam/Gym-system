@@ -19,20 +19,22 @@ class database {
 
     public function connection()
     {
-        $this->mysqli = new mysqli('localhost','root','1234', 'gym');
+		$this->mysqli = new mysqli($this->host,$this->username,$this->password,$this->name);
         if ($this->mysqli->connect_error) {
             echo $this->mysqli->connect_error;
             return false;
         }
 return true;
     }
+    
     public function insert( $sql)
     {
         $this->connection();
-        if (mysqli_query($this->mysqli, $sql)) {
+		if (!$this->mysqli->query( $sql)) {
+			echo $this->mysqli->error;
+			$this->mysqli->close();
             return true;
         } else {
-            echo 'alo';
             return false;
         }
     }
@@ -40,10 +42,14 @@ return true;
     public function multiinsert( $sql)
     {
         $this->connection();
-        if (mysqli_multi_query($this->mysqli, $sql)) {
-            return true;
-        } else {
-            return false;
-        }
+		if (!$this->mysqli->multi_query($sql)) {
+			echo $this->mysqli->error;
+			$this->mysqli->close();
+			return false;
+		} 
+		else {
+			$this->mysqli->close();
+			return true;
+		}
     }
 }

@@ -22,14 +22,13 @@ if (isset($_GET['addmember'])) {
     $member->image = isset($_GET['img']) ? $_GET['img'] : '';
     $member->addedBy = $_GET['addedby'] ? $_GET['addedby'] : '';
 
-    if (employee::addmember($member)) {
-         echo "<script> alert('tarok');</script>";
+	if (employee::addmember($member)) {
+		echo "<script> window.location.href='javascript:history.go(-1)';</script>";
     }
     else
     {
-        echo "<script> alert('k');</script>";
+        echo "<script> alert('Cannot add member');</script>";
     }
 
-    //  echo "<script> window.location.href='../index.php';</script>";
 
 }

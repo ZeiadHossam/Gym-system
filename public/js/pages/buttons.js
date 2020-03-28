@@ -11,4 +11,5 @@ $('.toastrDefaultSuccess').click(function() {
 $('.toastrDefaultError').click(function() {
 	toastr.error('Deleted successfully')
 });
+
 });
