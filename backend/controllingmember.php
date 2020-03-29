@@ -20,7 +20,7 @@ if (isset($_GET['addmember'])) {
     $member->homePhone = isset($_GET['homephone']) ? $_GET['homephone'] : '';
     $member->emergencyNumber = isset($_GET['emergency']) ? $_GET['emergency'] : '';
     $member->image = isset($_GET['img']) ? $_GET['img'] : '';
-    $member->addedBy = $_GET['addedby'] ? $_GET['addedby'] : '';
+    $member->addedBy = $_GET['addedby'];
 
 	if (employee::addmember($member)) {
 		echo "<script> window.location.href='javascript:history.go(-1)';</script>";

@@ -63,6 +63,15 @@
                     <label >*issue date</label>
                     <input type="date" class="form-control"  required>
                   </div>
+					<div class="form-group">
+						<label >*Discount </label>
+						<select class="form-control">
+							<option class="hidden"  selected >0%</option>
+							<option>10%</option>
+							<option>25%</option>
+							<option>50%</option>
+						</select>
+					</div>
 				  </div>
 				 <div class="col-md-6">
 				  <b> notes </b>
@@ -80,31 +89,21 @@
                                             <select class="form-control">
                                                 <option class="hidden"  selected >cash</option>
                                                 <option>visa</option>
-                                                <option></option>
-                                            </select>
+                                             </select>
                                         </div>
 										<div class="form-group">
                     <label >*amount paid</label>
-                    <input type="text" class="form-control"  required>
+					<input type="number" class="form-control numbers"  required>
                   </div>
 				  		<div class="form-group">
                     <label >*amount due</label>
-                    <input type="text" class="form-control"  required>
+					<input type="number" class="form-control numbers"  required>
                   </div>
 				  		<div class="form-group">
                     <label >*amount due date</label>
                     <input type="date" class="form-control"  required>
                   </div>
-				<div class="form-group">
-				      <label >*Discount </label>
-                                            <select class="form-control">
-                                                <option class="hidden"  selected >0%</option>
-                                                <option>10%</option>
-                                                <option>25%</option>
-                                                <option>50%</option>
-                                                <option></option>
-                                            </select>
-                                        </div>
+				
                 </div>
                 </div>
                 </div>

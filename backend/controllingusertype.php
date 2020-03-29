@@ -6,7 +6,7 @@ if (isset($_GET['addtype'])) {
     $type=new usertype();
     $type->set_name($_GET['departmentname']);
 
-
+	//
     if (isset($_GET['reception'])) {
         $p1 = new pages();
 		$p1->set_name('Reciption');
@@ -21,6 +21,7 @@ if (isset($_GET['addtype'])) {
 		$type->set_pages($p1);
 		unset($p1);
 	}
+	//
 	if (isset($_GET['notification'])) {
         $p2 = new pages();
 		$p2->set_name('Notifications');
@@ -120,11 +121,11 @@ if (isset($_GET['addtype'])) {
 	}
     if(employee::addtype($type))
     {
-        //echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
     }
     else
     {
-        echo "<script> alert('Cannot add member');</script>";
+        echo "<script> alert('Cannot add User Type');</script>";
     }
 unset($type);
 }

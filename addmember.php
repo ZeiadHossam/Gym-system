@@ -30,7 +30,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*First Name</label>
-                                                    <input type="text" name="fname" class="form-control" maxlength="15"
+													<input type="text" name="fname" class="form-control" maxlength="15"
                                                            placeholder="First Name" required>
                                                 </div>
                                                 <div class="form-group">
@@ -60,21 +60,21 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>work phone</label>
-                                                    <input type="text" name="workphone" class="form-control"
-                                                           maxlength="8"
+													<input type="number" name="workphone" class="form-control numbers"
+                                                           minlength="8" maxlength="8"
                                                            placeholder="work phone">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">fax number</label>
-                                                    <input type="text" name="faxnumber" class="form-control"
-                                                           maxlength="10"
+													<input type="number" name="faxnumber" class="form-control numbers"
+													maxlength="10" minlength="10"
                                                            placeholder="Fax number">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*phone number</label>
-                                                    <input type="text" name="phonenumbers" class="form-control"
-                                                           maxlength="10"
+												<input type="number" name="phonenumbers" class="form-control numbers"
+													maxlength="11" minlength="11"
                                                            placeholder="phone number" required>
                                                 </div>
 
@@ -91,7 +91,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*Birthday </label>
-                                                    <input type="date" name="birthday" class="form-control" required>
+													<input type="date" min="1900-01-01" max="2020-03-29" name="birthday" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label >companyName </label>
@@ -99,39 +99,41 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label >AddedBy </label>
-                                                    <input type="text" name="addedby" class="form-control" >
+                                                    <select class="form-control" name="addedby">
+                                                        <option class="hidden" selected >Emp 1</option>
+														<option>Emp 2</option>
+														<option>Emp 3</option>
+                                                    </select>
                                                 </div>
 
                                                 <b>*Gender</b>
-
-
                                                 <div class="form-group">
 
                                                     <select class="form-control" name="gender">
                                                         <option class="hidden" selected >gender</option>
                                                         <option>male</option>
                                                         <option>female</option>
-                                                        <option></option>
                                                     </select>
-                                                    <b>Marriedstatus</b>
+                                                    </div>
+												<b>Marriedstatus</b>
                                                     <div class="form-group">
 
                                                         <select class="form-control" name="marriedstaus">
-                                                            <option class="hidden">single</option>
+															<option class="hidden">Marriedstatus</option>
+															<option>single</option>
                                                             <option>married</option>
                                                             <option>divorsed</option>
-                                                            <option></option>
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">HOME phone</label>
-                                                        <input type="text" name="homephone" class="form-control" maxlength="8"
+                                                        <input type="number" name="homephone" class="form-control numbers" minlength="8" maxlength="8"
                                                                placeholder="home phone" >
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">emergency number</label>
-                                                        <input type="text" name="emergency" class="form-control" maxlength="10"
+														<input type="number" name="emergency" class="form-control numbers" maxlength="10"
                                                                placeholder="emergency number" >
                                                     </div>
 
@@ -155,4 +157,3 @@
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-</div>

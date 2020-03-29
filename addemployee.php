@@ -90,28 +90,25 @@
 
                                                         <option>male</option>
                                                         <option>female</option>
-                                                        <option></option>
-                                                    </select>
+                                                        </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">HOME phone</label>
-                                                    <input type="text" class="form-control" maxlength="8"
+													<input type="number" class="form-control numbers" maxlength="8"
                                                            placeholder="home phone" required>
                                                 </div>
 
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*phone number</label>
-                                                    <input type="text" class="form-control" maxlength="10"
+													<input type="number" class="form-control numbers" maxlength="10"
                                                            placeholder="phone number" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*birthday </label>
-                                                    <input type="date" class="form-control" required>
+													<input type="date" min="1900-01-01" max="2020-03-29" class="form-control" required>
                                                 </div>
-
-
-                                            </div>
+										   </div>
                                         </div>
                                     </div>
                                     <button type="submit" name='addemployee' class="btn btn-block btn-primary">Add employee</button>
