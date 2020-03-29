@@ -11,6 +11,7 @@
  <removed value=";"/>
  <added value=""/>
  <lastopfiles>
+  <file name="C:\xampp\xamp\htdocs\GYM\GYM.clpprj"/>
   <file name="C:\xampp\xamp\htdocs\GYM\backend\controllingusertype.php"/>
   <file name="C:\xampp\xamp\htdocs\GYM\backend\usertype.php"/>
   <file name="C:\xampp\xamp\htdocs\GYM\addmember.php"/>
@@ -22,6 +23,10 @@
   <file name="C:\xampp\xamp\htdocs\GYM\backend\controllingmember.php"/>
   <file name="C:\xampp\xamp\htdocs\GYM\backend\database.php"/>
   <file name="C:\xampp\xamp\htdocs\GYM\backend\employee.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\branch.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\member.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\loginauth.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\controllingbranch.php"/>
   <lastactivefile name=""/>
  </lastopfiles>
  <errors version="1.3"/>
@@ -33,399 +38,399 @@
  <yiidata/>
  <todoblock>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\js\adminlte.js">
-   <todo pos="11;1000" name="TodoList.js"/>
+   <todo name="TodoList.js" pos="11;1000"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js">
-   <todo pos="7;3849" name="TODO: fix moving outside the picker makes the guides to keep moving. The event needs to be bound to"/>
-   <todo pos="7;4262" name="TODO: fix having to click twice outside when losing focus and last 2 clicks where inside the colorp"/>
+   <todo name="TODO: fix moving outside the picker makes the guides to keep moving. The event needs to be bound to" pos="7;3849"/>
+   <todo name="TODO: fix having to click twice outside when losing focus and last 2 clicks where inside the colorp" pos="7;4262"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\bootstrap\js\bootstrap.bundle.js">
-   <todo pos="5;179" name="TODO: Remove in v5"/>
-   <todo pos="5;5011" name="todo (fat): these should probably be refactored out of modal.js"/>
-   <todo pos="13;6317" name="TODO (fat): remove sketch reliance on jQuery position/offset"/>
+   <todo name="TODO: Remove in v5" pos="5;179"/>
+   <todo name="todo (fat): these should probably be refactored out of modal.js" pos="5;5011"/>
+   <todo name="TODO (fat): remove sketch reliance on jQuery position/offset" pos="13;6317"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\bootstrap\js\bootstrap.js">
-   <todo pos="5;180" name="TODO: Remove in v5"/>
-   <todo pos="5;2433" name="todo (fat): these should probably be refactored out of modal.js"/>
-   <todo pos="13;3739" name="TODO (fat): remove sketch reliance on jQuery position/offset"/>
+   <todo name="TODO: Remove in v5" pos="5;180"/>
+   <todo name="todo (fat): these should probably be refactored out of modal.js" pos="5;2433"/>
+   <todo name="TODO (fat): remove sketch reliance on jQuery position/offset" pos="13;3739"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\chart.js\Chart.bundle.js">
-   <todo pos="1;2979" name="TODO(v3): remove 'global' from namespace.  all default are global and"/>
-   <todo pos="2;7865" name="TODO Make possible to select another platform at build time."/>
-   <todo pos="1;7865" name="@TODO Make possible to select another platform at build time."/>
-   <todo pos="4;9529" name="TODO(SB): I think we should be able to remove this custom case (options.scale)"/>
-   <todo pos="3;11571" name="TODO(v3): remove minSize as a public property and return value from all layout boxes. It is unused"/>
-   <todo pos="1;13126" name="TODO(v3): change this to positiveOrDefault"/>
-   <todo pos="9;15045" name="TODO: Remove &quot;ordinalParse&quot; fallback in next major release."/>
-   <todo pos="9;15688" name="TODO: add sorting"/>
-   <todo pos="17;15728" name="TODO: Another silent failure?"/>
-   <todo pos="9;16533" name="TODO: Find a better way to register and load all the locales in Node"/>
-   <todo pos="13;16813" name="TODO: We need to take the current isoWeekYear, but that depends on"/>
-   <todo pos="13;16988" name="TODO: Replace the vanilla JS Date object with an indepentent day-of-week check."/>
-   <todo pos="9;17092" name="TODO: Move this to another part of the creation flow to prevent circular deps"/>
-   <todo pos="5;17387" name="TODO: Use [].sort instead?"/>
-   <todo pos="5;17818" name="TODO: remove 'name' arg after deprecation is removed"/>
-   <todo pos="9;18446" name="TODO: Remove &quot;ordinalParse&quot; fallback in next major release."/>
-   <todo pos="5;18978" name="TODO: Use this.as('ms')?"/>
-   <todo pos="2;19399" name="todo if (fill[0] === '#')"/>
-   <todo pos="1;19399" name="@todo if (fill[0] === '#')"/>
-   <todo pos="2;20608" name="todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!"/>
-   <todo pos="1;20608" name="@todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!"/>
+   <todo name="TODO(v3): remove 'global' from namespace.  all default are global and" pos="1;2979"/>
+   <todo name="TODO Make possible to select another platform at build time." pos="2;7865"/>
+   <todo name="@TODO Make possible to select another platform at build time." pos="1;7865"/>
+   <todo name="TODO(SB): I think we should be able to remove this custom case (options.scale)" pos="4;9529"/>
+   <todo name="TODO(v3): remove minSize as a public property and return value from all layout boxes. It is unused" pos="3;11571"/>
+   <todo name="TODO(v3): change this to positiveOrDefault" pos="1;13126"/>
+   <todo name="TODO: Remove &quot;ordinalParse&quot; fallback in next major release." pos="9;15045"/>
+   <todo name="TODO: add sorting" pos="9;15688"/>
+   <todo name="TODO: Another silent failure?" pos="17;15728"/>
+   <todo name="TODO: Find a better way to register and load all the locales in Node" pos="9;16533"/>
+   <todo name="TODO: We need to take the current isoWeekYear, but that depends on" pos="13;16813"/>
+   <todo name="TODO: Replace the vanilla JS Date object with an indepentent day-of-week check." pos="13;16988"/>
+   <todo name="TODO: Move this to another part of the creation flow to prevent circular deps" pos="9;17092"/>
+   <todo name="TODO: Use [].sort instead?" pos="5;17387"/>
+   <todo name="TODO: remove 'name' arg after deprecation is removed" pos="5;17818"/>
+   <todo name="TODO: Remove &quot;ordinalParse&quot; fallback in next major release." pos="9;18446"/>
+   <todo name="TODO: Use this.as('ms')?" pos="5;18978"/>
+   <todo name="todo if (fill[0] === '#')" pos="2;19399"/>
+   <todo name="@todo if (fill[0] === '#')" pos="1;19399"/>
+   <todo name="todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!" pos="2;20608"/>
+   <todo name="@todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!" pos="1;20608"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\chart.js\Chart.js">
-   <todo pos="1;2975" name="TODO(v3): remove 'global' from namespace.  all default are global and"/>
-   <todo pos="2;7861" name="TODO Make possible to select another platform at build time."/>
-   <todo pos="1;7861" name="@TODO Make possible to select another platform at build time."/>
-   <todo pos="4;9525" name="TODO(SB): I think we should be able to remove this custom case (options.scale)"/>
-   <todo pos="3;11567" name="TODO(v3): remove minSize as a public property and return value from all layout boxes. It is unused"/>
-   <todo pos="1;13122" name="TODO(v3): change this to positiveOrDefault"/>
-   <todo pos="2;14795" name="todo if (fill[0] === '#')"/>
-   <todo pos="1;14795" name="@todo if (fill[0] === '#')"/>
-   <todo pos="2;16004" name="todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!"/>
-   <todo pos="1;16004" name="@todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!"/>
+   <todo name="TODO(v3): remove 'global' from namespace.  all default are global and" pos="1;2975"/>
+   <todo name="TODO Make possible to select another platform at build time." pos="2;7861"/>
+   <todo name="@TODO Make possible to select another platform at build time." pos="1;7861"/>
+   <todo name="TODO(SB): I think we should be able to remove this custom case (options.scale)" pos="4;9525"/>
+   <todo name="TODO(v3): remove minSize as a public property and return value from all layout boxes. It is unused" pos="3;11567"/>
+   <todo name="TODO(v3): change this to positiveOrDefault" pos="1;13122"/>
+   <todo name="todo if (fill[0] === '#')" pos="2;14795"/>
+   <todo name="@todo if (fill[0] === '#')" pos="1;14795"/>
+   <todo name="todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!" pos="2;16004"/>
+   <todo name="@todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!" pos="1;16004"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\datatables-buttons\js\buttons.flash.js">
-   <todo pos="6;1243" name="TODO Need to provide the ability for the specials to say"/>
+   <todo name="TODO Need to provide the ability for the specials to say" pos="6;1243"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\datatables-scroller\js\dataTables.scroller.js">
-   <todo pos="3;229" name="todo The defaults should extend a `c` property and the internal settings"/>
-   <todo pos="2;229" name="@todo The defaults should extend a `c` property and the internal settings"/>
+   <todo name="todo The defaults should extend a `c` property and the internal settings" pos="3;229"/>
+   <todo name="@todo The defaults should extend a `c` property and the internal settings" pos="2;229"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\datatables\jquery.dataTables.js">
-   <todo pos="36;3603" name="todo depreciated"/>
-   <todo pos="35;3603" name="@todo depreciated"/>
-   <todo pos="5;3642" name="todo Move options into their own plugins?"/>
-   <todo pos="4;3642" name="@todo Move options into their own plugins?"/>
-   <todo pos="4;4279" name="todo As per sort - can this be moved into an event handler?"/>
-   <todo pos="3;4279" name="@todo As per sort - can this be moved into an event handler?"/>
-   <todo pos="4;5935" name="todo Can this be moved into a 'data-ready' handler which is called when"/>
-   <todo pos="3;5935" name="@todo Can this be moved into a 'data-ready' handler which is called when"/>
-   <todo pos="27;6368" name="todo - for 1.11 this needs to be done by"/>
-   <todo pos="3;7221" name="todo - Is there need for an augment function?"/>
-   <todo pos="2;7221" name="@todo - Is there need for an augment function?"/>
+   <todo name="todo depreciated" pos="36;3603"/>
+   <todo name="@todo depreciated" pos="35;3603"/>
+   <todo name="todo Move options into their own plugins?" pos="5;3642"/>
+   <todo name="@todo Move options into their own plugins?" pos="4;3642"/>
+   <todo name="todo As per sort - can this be moved into an event handler?" pos="4;4279"/>
+   <todo name="@todo As per sort - can this be moved into an event handler?" pos="3;4279"/>
+   <todo name="todo Can this be moved into a 'data-ready' handler which is called when" pos="4;5935"/>
+   <todo name="@todo Can this be moved into a 'data-ready' handler which is called when" pos="3;5935"/>
+   <todo name="todo - for 1.11 this needs to be done by" pos="27;6368"/>
+   <todo name="todo - Is there need for an augment function?" pos="3;7221"/>
+   <todo name="@todo - Is there need for an augment function?" pos="2;7221"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\flot-old\excanvas.js">
-   <todo pos="11;158" name="TODO: use runtimeStyle and coordsize"/>
-   <todo pos="11;165" name="TODO: use runtimeStyle and coordsize"/>
-   <todo pos="5;618" name="TODO: Branch current matrix so that save/restore has no effect"/>
-   <todo pos="9;943" name="TODO: Following is broken for curves due to"/>
-   <todo pos="7;1007" name="TODO: Gradients transformed with the transformation matrix."/>
-   <todo pos="22;1090" name="TODO: Figure out the correct size to fit the scale."/>
-   <todo pos="7;1282" name="TODO: Fix the min and max params."/>
-   <todo pos="5;1330" name="TODO: Implement"/>
-   <todo pos="5;1334" name="TODO: Implement"/>
+   <todo name="TODO: use runtimeStyle and coordsize" pos="11;158"/>
+   <todo name="TODO: use runtimeStyle and coordsize" pos="11;165"/>
+   <todo name="TODO: Branch current matrix so that save/restore has no effect" pos="5;618"/>
+   <todo name="TODO: Following is broken for curves due to" pos="9;943"/>
+   <todo name="TODO: Gradients transformed with the transformation matrix." pos="7;1007"/>
+   <todo name="TODO: Figure out the correct size to fit the scale." pos="22;1090"/>
+   <todo name="TODO: Fix the min and max params." pos="7;1282"/>
+   <todo name="TODO: Implement" pos="5;1330"/>
+   <todo name="TODO: Implement" pos="5;1334"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\flot-old\jquery.flot.pie.js">
-   <todo pos="5;556" name="TODO: add extra shadow inside hole (with a mask) if the pie is tilted."/>
-   <todo pos="7;620" name="TODO: perhaps do some mathmatical trickery here with the Y-coordinate to compensate for pie tilt?"/>
+   <todo name="TODO: add extra shadow inside hole (with a mask) if the pie is tilted." pos="5;556"/>
+   <todo name="TODO: perhaps do some mathmatical trickery here with the Y-coordinate to compensate for pie tilt?" pos="7;620"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\fullcalendar-daygrid\main.esm.js">
-   <todo pos="5;192" name="TODO: better code reuse for this. Repeat code"/>
-   <todo pos="23;269" name="TODO: somehow consider the originating DayGrid's column count"/>
-   <todo pos="88;615" name="TODO: cache"/>
-   <todo pos="75;698" name="TODO: called too frequently. cache somehow."/>
-   <todo pos="90;875" name="TODO: called too frequently. cache somehow."/>
-   <todo pos="9;1416" name="TODO: separate setting height from scroller VS dayGrid."/>
+   <todo name="TODO: better code reuse for this. Repeat code" pos="5;192"/>
+   <todo name="TODO: somehow consider the originating DayGrid's column count" pos="23;269"/>
+   <todo name="TODO: cache" pos="88;615"/>
+   <todo name="TODO: called too frequently. cache somehow." pos="75;698"/>
+   <todo name="TODO: called too frequently. cache somehow." pos="90;875"/>
+   <todo name="TODO: separate setting height from scroller VS dayGrid." pos="9;1416"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\fullcalendar-daygrid\main.js">
-   <todo pos="9;196" name="TODO: better code reuse for this. Repeat code"/>
-   <todo pos="27;273" name="TODO: somehow consider the originating DayGrid's column count"/>
-   <todo pos="97;619" name="TODO: cache"/>
-   <todo pos="84;702" name="TODO: called too frequently. cache somehow."/>
-   <todo pos="99;879" name="TODO: called too frequently. cache somehow."/>
-   <todo pos="13;1420" name="TODO: separate setting height from scroller VS dayGrid."/>
+   <todo name="TODO: better code reuse for this. Repeat code" pos="9;196"/>
+   <todo name="TODO: somehow consider the originating DayGrid's column count" pos="27;273"/>
+   <todo name="TODO: cache" pos="97;619"/>
+   <todo name="TODO: called too frequently. cache somehow." pos="84;702"/>
+   <todo name="TODO: called too frequently. cache somehow." pos="99;879"/>
+   <todo name="TODO: separate setting height from scroller VS dayGrid." pos="13;1420"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\fullcalendar-interaction\main.esm.js">
-   <todo pos="9;239" name="TODO: repeat code"/>
-   <todo pos="9;274" name="TODO: repeat code"/>
-   <todo pos="59;983" name="TODO: fire this before computing processFirstCoord, so listeners can cancel. this gets fired by alm"/>
-   <todo pos="25;1088" name="TODO: better way to re-orient rectangle"/>
-   <todo pos="62;1366" name="TODO: write test for this"/>
-   <todo pos="17;1372" name="TODO: wish we could somehow wait for dispatch to guarantee render"/>
-   <todo pos="62;1533" name="TODO: test this in IE11"/>
-   <todo pos="35;1580" name="TODO: rename to resizingSeg? subjectSeg?"/>
-   <todo pos="13;1847" name="TODO: wish we could somehow wait for dispatch to guarantee render"/>
-   <todo pos="30;1993" name="TODO: eventually read eventLongPressDelay instead vvv"/>
-   <todo pos="61;2011" name="TODO: write tests"/>
+   <todo name="TODO: repeat code" pos="9;239"/>
+   <todo name="TODO: repeat code" pos="9;274"/>
+   <todo name="TODO: fire this before computing processFirstCoord, so listeners can cancel. this gets fired by alm" pos="59;983"/>
+   <todo name="TODO: better way to re-orient rectangle" pos="25;1088"/>
+   <todo name="TODO: write test for this" pos="62;1366"/>
+   <todo name="TODO: wish we could somehow wait for dispatch to guarantee render" pos="17;1372"/>
+   <todo name="TODO: test this in IE11" pos="62;1533"/>
+   <todo name="TODO: rename to resizingSeg? subjectSeg?" pos="35;1580"/>
+   <todo name="TODO: wish we could somehow wait for dispatch to guarantee render" pos="13;1847"/>
+   <todo name="TODO: eventually read eventLongPressDelay instead vvv" pos="30;1993"/>
+   <todo name="TODO: write tests" pos="61;2011"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\fullcalendar-interaction\main.js">
-   <todo pos="13;243" name="TODO: repeat code"/>
-   <todo pos="13;278" name="TODO: repeat code"/>
-   <todo pos="63;987" name="TODO: fire this before computing processFirstCoord, so listeners can cancel. this gets fired by alm"/>
-   <todo pos="29;1092" name="TODO: better way to re-orient rectangle"/>
-   <todo pos="66;1370" name="TODO: write test for this"/>
-   <todo pos="21;1376" name="TODO: wish we could somehow wait for dispatch to guarantee render"/>
-   <todo pos="66;1537" name="TODO: test this in IE11"/>
-   <todo pos="39;1584" name="TODO: rename to resizingSeg? subjectSeg?"/>
-   <todo pos="17;1851" name="TODO: wish we could somehow wait for dispatch to guarantee render"/>
-   <todo pos="34;1997" name="TODO: eventually read eventLongPressDelay instead vvv"/>
-   <todo pos="65;2015" name="TODO: write tests"/>
+   <todo name="TODO: repeat code" pos="13;243"/>
+   <todo name="TODO: repeat code" pos="13;278"/>
+   <todo name="TODO: fire this before computing processFirstCoord, so listeners can cancel. this gets fired by alm" pos="63;987"/>
+   <todo name="TODO: better way to re-orient rectangle" pos="29;1092"/>
+   <todo name="TODO: write test for this" pos="66;1370"/>
+   <todo name="TODO: wish we could somehow wait for dispatch to guarantee render" pos="21;1376"/>
+   <todo name="TODO: test this in IE11" pos="66;1537"/>
+   <todo name="TODO: rename to resizingSeg? subjectSeg?" pos="39;1584"/>
+   <todo name="TODO: wish we could somehow wait for dispatch to guarantee render" pos="17;1851"/>
+   <todo name="TODO: eventually read eventLongPressDelay instead vvv" pos="34;1997"/>
+   <todo name="TODO: write tests" pos="65;2015"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\fullcalendar-timegrid\main.esm.js">
-   <todo pos="9;70" name="TODO: have groupSegsByCol do this?"/>
-   <todo pos="81;139" name="TODO: give the timezones"/>
-   <todo pos="14;173" name="TODO: write CSS for this"/>
-   <todo pos="51;264" name="TODO: &quot;condensed&quot; is a better name"/>
-   <todo pos="9;416" name="TODO: more efficient lookup"/>
-   <todo pos="13;494" name="TODO: say warning?"/>
-   <todo pos="9;1102" name="TODO: separate setting height from scroller VS timeGrid."/>
+   <todo name="TODO: have groupSegsByCol do this?" pos="9;70"/>
+   <todo name="TODO: give the timezones" pos="81;139"/>
+   <todo name="TODO: write CSS for this" pos="14;173"/>
+   <todo name="TODO: &quot;condensed&quot; is a better name" pos="51;264"/>
+   <todo name="TODO: more efficient lookup" pos="9;416"/>
+   <todo name="TODO: say warning?" pos="13;494"/>
+   <todo name="TODO: separate setting height from scroller VS timeGrid." pos="9;1102"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\fullcalendar-timegrid\main.js">
-   <todo pos="13;73" name="TODO: have groupSegsByCol do this?"/>
-   <todo pos="85;142" name="TODO: give the timezones"/>
-   <todo pos="18;176" name="TODO: write CSS for this"/>
-   <todo pos="55;267" name="TODO: &quot;condensed&quot; is a better name"/>
-   <todo pos="13;419" name="TODO: more efficient lookup"/>
-   <todo pos="17;497" name="TODO: say warning?"/>
-   <todo pos="13;1105" name="TODO: separate setting height from scroller VS timeGrid."/>
+   <todo name="TODO: have groupSegsByCol do this?" pos="13;73"/>
+   <todo name="TODO: give the timezones" pos="85;142"/>
+   <todo name="TODO: write CSS for this" pos="18;176"/>
+   <todo name="TODO: &quot;condensed&quot; is a better name" pos="55;267"/>
+   <todo name="TODO: more efficient lookup" pos="13;419"/>
+   <todo name="TODO: say warning?" pos="17;497"/>
+   <todo name="TODO: separate setting height from scroller VS timeGrid." pos="13;1105"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\fullcalendar\main.d.ts">
-   <todo pos="135;2458" name="TODO: kill"/>
-   <todo pos="58;2461" name="TODO: kill"/>
+   <todo name="TODO: kill" pos="135;2458"/>
+   <todo name="TODO: kill" pos="58;2461"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\fullcalendar\main.esm.js">
-   <todo pos="1;1030" name="TODO: write more comments"/>
-   <todo pos="1;1085" name="TODO: give nextDayThreshold a default arg"/>
-   <todo pos="9;1361" name="TODO: wish we could use eventTupleToStore or something like it"/>
-   <todo pos="33;1782" name="TODO: use control characters instead?"/>
-   <todo pos="40;2046" name="TODO: warning if parsed bad"/>
-   <todo pos="25;2064" name="TODO: warning if parsed bad"/>
-   <todo pos="21;2084" name="TODO: warning if parsed bad"/>
-   <todo pos="25;2088" name="TODO: warning if parsed bad"/>
-   <todo pos="22;2117" name="TODO: warning if parsed bad"/>
-   <todo pos="22;2123" name="TODO: warning if parsed bad"/>
-   <todo pos="22;2129" name="TODO: warning if parsed bad"/>
-   <todo pos="9;2213" name="TODO: find a TypeScript-compatible way to do this at scale"/>
-   <todo pos="21;2397" name="TODO: include seg.range once all components consistently generate it"/>
-   <todo pos="38;2464" name="TODO: is this mutation okay?"/>
-   <todo pos="22;2536" name="TODO: how do we track all actions that affect dateProfile :("/>
-   <todo pos="47;2575" name="TODO: wish this logic was always in event-sources"/>
-   <todo pos="129;2677" name="TODO: exclude defs too?"/>
-   <todo pos="1;2807" name="TODO: move to event-store file?"/>
-   <todo pos="1;2816" name="TODO: move to geom file?"/>
-   <todo pos="70;3194" name="TODO: keep elsewhere"/>
-   <todo pos="36;3203" name="TODO: typescript protection"/>
-   <todo pos="5;3492" name="todo: add comments"/>
-   <todo pos="5;3934" name="TODO: WHAT ABOUT (sourceSeg &amp;&amp; sourceSeg.component.doesDragMirror)"/>
-   <todo pos="5;3998" name="TODO: move to Calendar"/>
-   <todo pos="18;4463" name="TODO: make these options"/>
-   <todo pos="9;4530" name="TODO: make RTL support the responibility of the theme"/>
-   <todo pos="1;4547" name="TODO: move this stuff to a &quot;plugin&quot;-related file..."/>
-   <todo pos="9;4676" name="TODO: not a very efficient system"/>
-   <todo pos="9;4917" name="TODO: can use greatestWholeUnit"/>
-   <todo pos="5;4990" name="TODO: choke on timeZoneName: long"/>
-   <todo pos="22;5122" name="TODO: how do we track all actions that affect dateProfile :("/>
-   <todo pos="1;5577" name="TODO: find a way to avoid comparing DateProfiles. it's tedious"/>
-   <todo pos="36;6458" name="TODO: better way to make sure not hovering over more+ link or its wrapper"/>
-   <todo pos="97;7195" name="TODO: cache this?"/>
-   <todo pos="5;7221" name="TODO: receive pev?"/>
-   <todo pos="5;7261" name="TODO: rename to computeDefaultEventEnd"/>
-   <todo pos="85;7283" name="TODO: better util for two args?"/>
-   <todo pos="67;7293" name="TODO: use an internal function"/>
-   <todo pos="95;7295" name="TODO: test"/>
-   <todo pos="5;7312" name="TODO: optimize"/>
-   <todo pos="28;7382" name="TODO: error otherwise?"/>
-   <todo pos="5;7632" name="TODO: somehow do this for the current whole day's background too"/>
-   <todo pos="17;7647" name="TODO: maybe always use setTimeout, waiting until start of next unit"/>
-   <todo pos="58;7964" name="TODO: better support for open-range events"/>
-   <todo pos="22;8130" name="TODO: warning?"/>
-   <todo pos="35;8143" name="TODO: warning?"/>
-   <todo pos="1;8152" name="TODO: more DRY and optimized"/>
-   <todo pos="81;8154" name="TODO: don't hardcode 'en' everywhere"/>
-   <todo pos="81;8192" name="TODO: called too frequently. cache somehow."/>
-   <todo pos="12;8433" name="TODO: give interactionSegs?"/>
-   <todo pos="75;8511" name="TODO: kill"/>
-   <todo pos="73;8523" name="TODO: kill"/>
+   <todo name="TODO: write more comments" pos="1;1030"/>
+   <todo name="TODO: give nextDayThreshold a default arg" pos="1;1085"/>
+   <todo name="TODO: wish we could use eventTupleToStore or something like it" pos="9;1361"/>
+   <todo name="TODO: use control characters instead?" pos="33;1782"/>
+   <todo name="TODO: warning if parsed bad" pos="40;2046"/>
+   <todo name="TODO: warning if parsed bad" pos="25;2064"/>
+   <todo name="TODO: warning if parsed bad" pos="21;2084"/>
+   <todo name="TODO: warning if parsed bad" pos="25;2088"/>
+   <todo name="TODO: warning if parsed bad" pos="22;2117"/>
+   <todo name="TODO: warning if parsed bad" pos="22;2123"/>
+   <todo name="TODO: warning if parsed bad" pos="22;2129"/>
+   <todo name="TODO: find a TypeScript-compatible way to do this at scale" pos="9;2213"/>
+   <todo name="TODO: include seg.range once all components consistently generate it" pos="21;2397"/>
+   <todo name="TODO: is this mutation okay?" pos="38;2464"/>
+   <todo name="TODO: how do we track all actions that affect dateProfile :(" pos="22;2536"/>
+   <todo name="TODO: wish this logic was always in event-sources" pos="47;2575"/>
+   <todo name="TODO: exclude defs too?" pos="129;2677"/>
+   <todo name="TODO: move to event-store file?" pos="1;2807"/>
+   <todo name="TODO: move to geom file?" pos="1;2816"/>
+   <todo name="TODO: keep elsewhere" pos="70;3194"/>
+   <todo name="TODO: typescript protection" pos="36;3203"/>
+   <todo name="todo: add comments" pos="5;3492"/>
+   <todo name="TODO: WHAT ABOUT (sourceSeg &amp;&amp; sourceSeg.component.doesDragMirror)" pos="5;3934"/>
+   <todo name="TODO: move to Calendar" pos="5;3998"/>
+   <todo name="TODO: make these options" pos="18;4463"/>
+   <todo name="TODO: make RTL support the responibility of the theme" pos="9;4530"/>
+   <todo name="TODO: move this stuff to a &quot;plugin&quot;-related file..." pos="1;4547"/>
+   <todo name="TODO: not a very efficient system" pos="9;4676"/>
+   <todo name="TODO: can use greatestWholeUnit" pos="9;4917"/>
+   <todo name="TODO: choke on timeZoneName: long" pos="5;4990"/>
+   <todo name="TODO: how do we track all actions that affect dateProfile :(" pos="22;5122"/>
+   <todo name="TODO: find a way to avoid comparing DateProfiles. it's tedious" pos="1;5577"/>
+   <todo name="TODO: better way to make sure not hovering over more+ link or its wrapper" pos="36;6458"/>
+   <todo name="TODO: cache this?" pos="97;7195"/>
+   <todo name="TODO: receive pev?" pos="5;7221"/>
+   <todo name="TODO: rename to computeDefaultEventEnd" pos="5;7261"/>
+   <todo name="TODO: better util for two args?" pos="85;7283"/>
+   <todo name="TODO: use an internal function" pos="67;7293"/>
+   <todo name="TODO: test" pos="95;7295"/>
+   <todo name="TODO: optimize" pos="5;7312"/>
+   <todo name="TODO: error otherwise?" pos="28;7382"/>
+   <todo name="TODO: somehow do this for the current whole day's background too" pos="5;7632"/>
+   <todo name="TODO: maybe always use setTimeout, waiting until start of next unit" pos="17;7647"/>
+   <todo name="TODO: better support for open-range events" pos="58;7964"/>
+   <todo name="TODO: warning?" pos="22;8130"/>
+   <todo name="TODO: warning?" pos="35;8143"/>
+   <todo name="TODO: more DRY and optimized" pos="1;8152"/>
+   <todo name="TODO: don't hardcode 'en' everywhere" pos="81;8154"/>
+   <todo name="TODO: called too frequently. cache somehow." pos="81;8192"/>
+   <todo name="TODO: give interactionSegs?" pos="12;8433"/>
+   <todo name="TODO: kill" pos="75;8511"/>
+   <todo name="TODO: kill" pos="73;8523"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\fullcalendar\main.js">
-   <todo pos="5;1036" name="TODO: write more comments"/>
-   <todo pos="5;1091" name="TODO: give nextDayThreshold a default arg"/>
-   <todo pos="13;1367" name="TODO: wish we could use eventTupleToStore or something like it"/>
-   <todo pos="37;1788" name="TODO: use control characters instead?"/>
-   <todo pos="44;2052" name="TODO: warning if parsed bad"/>
-   <todo pos="29;2070" name="TODO: warning if parsed bad"/>
-   <todo pos="25;2090" name="TODO: warning if parsed bad"/>
-   <todo pos="29;2094" name="TODO: warning if parsed bad"/>
-   <todo pos="26;2123" name="TODO: warning if parsed bad"/>
-   <todo pos="26;2129" name="TODO: warning if parsed bad"/>
-   <todo pos="26;2135" name="TODO: warning if parsed bad"/>
-   <todo pos="13;2219" name="TODO: find a TypeScript-compatible way to do this at scale"/>
-   <todo pos="25;2403" name="TODO: include seg.range once all components consistently generate it"/>
-   <todo pos="42;2470" name="TODO: is this mutation okay?"/>
-   <todo pos="26;2542" name="TODO: how do we track all actions that affect dateProfile :("/>
-   <todo pos="51;2581" name="TODO: wish this logic was always in event-sources"/>
-   <todo pos="133;2683" name="TODO: exclude defs too?"/>
-   <todo pos="5;2813" name="TODO: move to event-store file?"/>
-   <todo pos="5;2822" name="TODO: move to geom file?"/>
-   <todo pos="74;3200" name="TODO: keep elsewhere"/>
-   <todo pos="40;3209" name="TODO: typescript protection"/>
-   <todo pos="9;3498" name="todo: add comments"/>
-   <todo pos="9;3940" name="TODO: WHAT ABOUT (sourceSeg &amp;&amp; sourceSeg.component.doesDragMirror)"/>
-   <todo pos="9;4004" name="TODO: move to Calendar"/>
-   <todo pos="22;4469" name="TODO: make these options"/>
-   <todo pos="13;4536" name="TODO: make RTL support the responibility of the theme"/>
-   <todo pos="5;4553" name="TODO: move this stuff to a &quot;plugin&quot;-related file..."/>
-   <todo pos="13;4682" name="TODO: not a very efficient system"/>
-   <todo pos="13;4923" name="TODO: can use greatestWholeUnit"/>
-   <todo pos="9;4996" name="TODO: choke on timeZoneName: long"/>
-   <todo pos="26;5128" name="TODO: how do we track all actions that affect dateProfile :("/>
-   <todo pos="5;5583" name="TODO: find a way to avoid comparing DateProfiles. it's tedious"/>
-   <todo pos="40;6464" name="TODO: better way to make sure not hovering over more+ link or its wrapper"/>
-   <todo pos="101;7201" name="TODO: cache this?"/>
-   <todo pos="9;7227" name="TODO: receive pev?"/>
-   <todo pos="9;7267" name="TODO: rename to computeDefaultEventEnd"/>
-   <todo pos="89;7289" name="TODO: better util for two args?"/>
-   <todo pos="71;7299" name="TODO: use an internal function"/>
-   <todo pos="99;7301" name="TODO: test"/>
-   <todo pos="9;7318" name="TODO: optimize"/>
-   <todo pos="32;7388" name="TODO: error otherwise?"/>
-   <todo pos="9;7638" name="TODO: somehow do this for the current whole day's background too"/>
-   <todo pos="21;7653" name="TODO: maybe always use setTimeout, waiting until start of next unit"/>
-   <todo pos="62;7970" name="TODO: better support for open-range events"/>
-   <todo pos="26;8136" name="TODO: warning?"/>
-   <todo pos="39;8149" name="TODO: warning?"/>
-   <todo pos="5;8158" name="TODO: more DRY and optimized"/>
-   <todo pos="85;8160" name="TODO: don't hardcode 'en' everywhere"/>
-   <todo pos="85;8198" name="TODO: called too frequently. cache somehow."/>
-   <todo pos="16;8439" name="TODO: give interactionSegs?"/>
-   <todo pos="79;8517" name="TODO: kill"/>
-   <todo pos="77;8529" name="TODO: kill"/>
+   <todo name="TODO: write more comments" pos="5;1036"/>
+   <todo name="TODO: give nextDayThreshold a default arg" pos="5;1091"/>
+   <todo name="TODO: wish we could use eventTupleToStore or something like it" pos="13;1367"/>
+   <todo name="TODO: use control characters instead?" pos="37;1788"/>
+   <todo name="TODO: warning if parsed bad" pos="44;2052"/>
+   <todo name="TODO: warning if parsed bad" pos="29;2070"/>
+   <todo name="TODO: warning if parsed bad" pos="25;2090"/>
+   <todo name="TODO: warning if parsed bad" pos="29;2094"/>
+   <todo name="TODO: warning if parsed bad" pos="26;2123"/>
+   <todo name="TODO: warning if parsed bad" pos="26;2129"/>
+   <todo name="TODO: warning if parsed bad" pos="26;2135"/>
+   <todo name="TODO: find a TypeScript-compatible way to do this at scale" pos="13;2219"/>
+   <todo name="TODO: include seg.range once all components consistently generate it" pos="25;2403"/>
+   <todo name="TODO: is this mutation okay?" pos="42;2470"/>
+   <todo name="TODO: how do we track all actions that affect dateProfile :(" pos="26;2542"/>
+   <todo name="TODO: wish this logic was always in event-sources" pos="51;2581"/>
+   <todo name="TODO: exclude defs too?" pos="133;2683"/>
+   <todo name="TODO: move to event-store file?" pos="5;2813"/>
+   <todo name="TODO: move to geom file?" pos="5;2822"/>
+   <todo name="TODO: keep elsewhere" pos="74;3200"/>
+   <todo name="TODO: typescript protection" pos="40;3209"/>
+   <todo name="todo: add comments" pos="9;3498"/>
+   <todo name="TODO: WHAT ABOUT (sourceSeg &amp;&amp; sourceSeg.component.doesDragMirror)" pos="9;3940"/>
+   <todo name="TODO: move to Calendar" pos="9;4004"/>
+   <todo name="TODO: make these options" pos="22;4469"/>
+   <todo name="TODO: make RTL support the responibility of the theme" pos="13;4536"/>
+   <todo name="TODO: move this stuff to a &quot;plugin&quot;-related file..." pos="5;4553"/>
+   <todo name="TODO: not a very efficient system" pos="13;4682"/>
+   <todo name="TODO: can use greatestWholeUnit" pos="13;4923"/>
+   <todo name="TODO: choke on timeZoneName: long" pos="9;4996"/>
+   <todo name="TODO: how do we track all actions that affect dateProfile :(" pos="26;5128"/>
+   <todo name="TODO: find a way to avoid comparing DateProfiles. it's tedious" pos="5;5583"/>
+   <todo name="TODO: better way to make sure not hovering over more+ link or its wrapper" pos="40;6464"/>
+   <todo name="TODO: cache this?" pos="101;7201"/>
+   <todo name="TODO: receive pev?" pos="9;7227"/>
+   <todo name="TODO: rename to computeDefaultEventEnd" pos="9;7267"/>
+   <todo name="TODO: better util for two args?" pos="89;7289"/>
+   <todo name="TODO: use an internal function" pos="71;7299"/>
+   <todo name="TODO: test" pos="99;7301"/>
+   <todo name="TODO: optimize" pos="9;7318"/>
+   <todo name="TODO: error otherwise?" pos="32;7388"/>
+   <todo name="TODO: somehow do this for the current whole day's background too" pos="9;7638"/>
+   <todo name="TODO: maybe always use setTimeout, waiting until start of next unit" pos="21;7653"/>
+   <todo name="TODO: better support for open-range events" pos="62;7970"/>
+   <todo name="TODO: warning?" pos="26;8136"/>
+   <todo name="TODO: warning?" pos="39;8149"/>
+   <todo name="TODO: more DRY and optimized" pos="5;8158"/>
+   <todo name="TODO: don't hardcode 'en' everywhere" pos="85;8160"/>
+   <todo name="TODO: called too frequently. cache somehow." pos="85;8198"/>
+   <todo name="TODO: give interactionSegs?" pos="16;8439"/>
+   <todo name="TODO: kill" pos="79;8517"/>
+   <todo name="TODO: kill" pos="77;8529"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\ion-rangeslider\js\ion.rangeSlider.js">
-   <todo pos="9;2312" name="TODO: Refactor then have plenty of time"/>
+   <todo name="TODO: Refactor then have plenty of time" pos="9;2312"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\jquery-ui\external\jquery\jquery.js">
-   <todo pos="8;809" name="TODO: identify versions"/>
-   <todo pos="7;823" name="TODO: identify versions"/>
+   <todo name="TODO: identify versions" pos="8;809"/>
+   <todo name="TODO: identify versions" pos="7;823"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\jquery-ui\jquery-ui.js">
-   <todo pos="3;154" name="TODO: remove support for widgetEventPrefix"/>
-   <todo pos="3;3531" name="TODO: is this right? should we include anything with css width specified as well"/>
-   <todo pos="1;18185" name="TODO: Switch return back to widget declaration at top of file when this is removed"/>
-   <todo pos="1;18682" name="TODO: Switch return back to widget declaration at top of file when this is removed"/>
+   <todo name="TODO: remove support for widgetEventPrefix" pos="3;154"/>
+   <todo name="TODO: is this right? should we include anything with css width specified as well" pos="3;3531"/>
+   <todo name="TODO: Switch return back to widget declaration at top of file when this is removed" pos="1;18185"/>
+   <todo name="TODO: Switch return back to widget declaration at top of file when this is removed" pos="1;18682"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\jquery-validation\additional-methods.js">
-   <todo pos="1;1430" name="TODO check if value starts with &lt;, otherwise don't try stripping anything"/>
+   <todo name="TODO check if value starts with &lt;, otherwise don't try stripping anything" pos="1;1430"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\jquery-validation\jquery.validate.js">
-   <todo pos="4;1521" name="TODO find a way to support input types date, datetime, datetime-local, month, time and week"/>
+   <todo name="TODO find a way to support input types date, datetime, datetime-local, month, time and week" pos="4;1521"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\jquery-validation\localization\messages_pt_BR.js">
-   <todo pos="4;36" name="todos Adicionais"/>
+   <todo name="todos Adicionais" pos="4;36"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\jquery\jquery.js">
-   <todo pos="8;766" name="TODO: identify versions"/>
-   <todo pos="7;780" name="TODO: identify versions"/>
-   <todo pos="48;4188" name="TODO: Drop _data, _removeData)"/>
-   <todo pos="2;4256" name="TODO: Now that all calls to _data and _removeData have been replaced"/>
+   <todo name="TODO: identify versions" pos="8;766"/>
+   <todo name="TODO: identify versions" pos="7;780"/>
+   <todo name="TODO: Drop _data, _removeData)" pos="48;4188"/>
+   <todo name="TODO: Now that all calls to _data and _removeData have been replaced" pos="2;4256"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\jquery\jquery.slim.js">
-   <todo pos="8;766" name="TODO: identify versions"/>
-   <todo pos="7;780" name="TODO: identify versions"/>
-   <todo pos="48;4188" name="TODO: Drop _data, _removeData)"/>
-   <todo pos="2;4256" name="TODO: Now that all calls to _data and _removeData have been replaced"/>
+   <todo name="TODO: identify versions" pos="8;766"/>
+   <todo name="TODO: identify versions" pos="7;780"/>
+   <todo name="TODO: Drop _data, _removeData)" pos="48;4188"/>
+   <todo name="TODO: Now that all calls to _data and _removeData have been replaced" pos="2;4256"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\jszip\jszip.js">
-   <todo pos="2;388" name="TODO: lazy-loading this object isn't the best solution but it's the"/>
-   <todo pos="34;653" name="TODO"/>
-   <todo pos="1;1057" name="TODO find a better way to handle this version,"/>
-   <todo pos="41;1520" name="TODO reverse the parameters ? need to be clean AND consistent with the filter search fn..."/>
-   <todo pos="1;2126" name="TODO expose this as a public variable"/>
-   <todo pos="5;3207" name="TODO : we now have workers that split the work. Do we still need that ?"/>
-   <todo pos="3;8278" name="TODO: may be {}"/>
-   <todo pos="11;8810" name="TODO: 2 or 1 bytes?"/>
+   <todo name="TODO: lazy-loading this object isn't the best solution but it's the" pos="2;388"/>
+   <todo name="TODO" pos="34;653"/>
+   <todo name="TODO find a better way to handle this version," pos="1;1057"/>
+   <todo name="TODO reverse the parameters ? need to be clean AND consistent with the filter search fn..." pos="41;1520"/>
+   <todo name="TODO expose this as a public variable" pos="1;2126"/>
+   <todo name="TODO : we now have workers that split the work. Do we still need that ?" pos="5;3207"/>
+   <todo name="TODO: may be {}" pos="3;8278"/>
+   <todo name="TODO: 2 or 1 bytes?" pos="11;8810"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\moment\locale\fr.js">
-   <todo pos="17;53" name="TODO: Return 'e' when day of month > 1. Move this case inside"/>
+   <todo name="TODO: Return 'e' when day of month > 1. Move this case inside" pos="17;53"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\moment\locales.js">
-   <todo pos="17;3346" name="TODO: Return 'e' when day of month > 1. Move this case inside"/>
+   <todo name="TODO: Return 'e' when day of month > 1. Move this case inside" pos="17;3346"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\moment\moment-with-locales.js">
-   <todo pos="9;356" name="TODO: Remove &quot;ordinalParse&quot; fallback in next major release."/>
-   <todo pos="9;999" name="TODO: add sorting"/>
-   <todo pos="17;1039" name="TODO: Another silent failure?"/>
-   <todo pos="9;1844" name="TODO: Find a better way to register and load all the locales in Node"/>
-   <todo pos="13;2124" name="TODO: We need to take the current isoWeekYear, but that depends on"/>
-   <todo pos="13;2299" name="TODO: Replace the vanilla JS Date object with an indepentent day-of-week check."/>
-   <todo pos="9;2403" name="TODO: Move this to another part of the creation flow to prevent circular deps"/>
-   <todo pos="5;2698" name="TODO: Use [].sort instead?"/>
-   <todo pos="5;3129" name="TODO: remove 'name' arg after deprecation is removed"/>
-   <todo pos="9;3757" name="TODO: Remove &quot;ordinalParse&quot; fallback in next major release."/>
-   <todo pos="5;4289" name="TODO: Use this.as('ms')?"/>
-   <todo pos="17;7933" name="TODO: Return 'e' when day of month > 1. Move this case inside"/>
+   <todo name="TODO: Remove &quot;ordinalParse&quot; fallback in next major release." pos="9;356"/>
+   <todo name="TODO: add sorting" pos="9;999"/>
+   <todo name="TODO: Another silent failure?" pos="17;1039"/>
+   <todo name="TODO: Find a better way to register and load all the locales in Node" pos="9;1844"/>
+   <todo name="TODO: We need to take the current isoWeekYear, but that depends on" pos="13;2124"/>
+   <todo name="TODO: Replace the vanilla JS Date object with an indepentent day-of-week check." pos="13;2299"/>
+   <todo name="TODO: Move this to another part of the creation flow to prevent circular deps" pos="9;2403"/>
+   <todo name="TODO: Use [].sort instead?" pos="5;2698"/>
+   <todo name="TODO: remove 'name' arg after deprecation is removed" pos="5;3129"/>
+   <todo name="TODO: Remove &quot;ordinalParse&quot; fallback in next major release." pos="9;3757"/>
+   <todo name="TODO: Use this.as('ms')?" pos="5;4289"/>
+   <todo name="TODO: Return 'e' when day of month > 1. Move this case inside" pos="17;7933"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\pdfmake\pdfmake.js">
-   <todo pos="1;1122" name="TODO: Legacy, not needed anymore. Remove in next major version."/>
-   <todo pos="3;8366" name="TODO: defer error events consistently everywhere, not just the cb"/>
-   <todo pos="2;10805" name="TODO: refactor - extract from measure"/>
-   <todo pos="25;10878" name="TODO: default style"/>
-   <todo pos="7;11637" name="TODO: add validation descriptor w/o calling accessors"/>
-   <todo pos="4;19604" name="TODO: add support for next item types"/>
-   <todo pos="2;19846" name="TODO: line.optimizeInlines();"/>
-   <todo pos="2;19916" name="TODO: pdf optimization (there's no need to write all properties everytime)"/>
-   <todo pos="2;19926" name="TODO: clipping"/>
-   <todo pos="45;22749" name="TODO: save/restore colorspace and styles so not setting it unnessesarily all the time?"/>
-   <todo pos="19;23117" name="todo: remove charWidths since appears to not be used"/>
-   <todo pos="9;23987" name="TODO: break by grapheme clusters, not JS string characters"/>
-   <todo pos="3;31045" name="TODO: may be {}"/>
-   <todo pos="13;31577" name="TODO: 2 or 1 bytes?"/>
-   <todo pos="5;37904" name="TODO: actually blend. For now just consume the deltas"/>
-   <todo pos="5;38303" name="TODO: supplement?"/>
-   <todo pos="1;39328" name="TODO: add this to restructure"/>
-   <todo pos="9;40832" name="TODO: handle ligatures"/>
-   <todo pos="12;40856" name="TODO: RTL support."/>
-   <todo pos="18;40879" name="TODO: RTL support."/>
-   <todo pos="9;44294" name="TODO: clean this up"/>
-   <todo pos="5;44896" name="TODO: turn off kern (Khmer) and liga features."/>
-   <todo pos="5;44914" name="TODO: do this in a more general unicode normalizer"/>
-   <todo pos="5;45832" name="TODO: do this in a more general unicode normalizer"/>
-   <todo pos="33;46209" name="TODO"/>
-   <todo pos="5;46433" name="TODO: device tables"/>
-   <todo pos="5;46707" name="TODO: contour point, device tables"/>
-   <todo pos="5;47529" name="TODO: get this info from GDEF if available"/>
-   <todo pos="5;49836" name="TODO: subset prep, cvt, fpgm?"/>
-   <todo pos="3;60469" name="TODO: paragraph gap"/>
-   <todo pos="3;60776" name="TODO: support for canvas larger than a page"/>
-   <todo pos="3;60777" name="TODO: support for other overflow methods"/>
-   <todo pos="3;61112" name="TODO: refactor + rethink whether this is the proper way to handle margins"/>
-   <todo pos="3;61371" name="TODO: ascender-based calculations"/>
-   <todo pos="3;61386" name="TODO: ascender-based calculations"/>
-   <todo pos="3;61401" name="TODO: ascender-based calculations"/>
-   <todo pos="6;61576" name="TODO: else - nested lists numbering"/>
-   <todo pos="4;63129" name="TODO: vectors can influence height in some situations"/>
-   <todo pos="2;63163" name="TODO: vectors can influence height in some situations"/>
+   <todo name="TODO: Legacy, not needed anymore. Remove in next major version." pos="1;1122"/>
+   <todo name="TODO: defer error events consistently everywhere, not just the cb" pos="3;8366"/>
+   <todo name="TODO: refactor - extract from measure" pos="2;10805"/>
+   <todo name="TODO: default style" pos="25;10878"/>
+   <todo name="TODO: add validation descriptor w/o calling accessors" pos="7;11637"/>
+   <todo name="TODO: add support for next item types" pos="4;19604"/>
+   <todo name="TODO: line.optimizeInlines();" pos="2;19846"/>
+   <todo name="TODO: pdf optimization (there's no need to write all properties everytime)" pos="2;19916"/>
+   <todo name="TODO: clipping" pos="2;19926"/>
+   <todo name="TODO: save/restore colorspace and styles so not setting it unnessesarily all the time?" pos="45;22749"/>
+   <todo name="todo: remove charWidths since appears to not be used" pos="19;23117"/>
+   <todo name="TODO: break by grapheme clusters, not JS string characters" pos="9;23987"/>
+   <todo name="TODO: may be {}" pos="3;31045"/>
+   <todo name="TODO: 2 or 1 bytes?" pos="13;31577"/>
+   <todo name="TODO: actually blend. For now just consume the deltas" pos="5;37904"/>
+   <todo name="TODO: supplement?" pos="5;38303"/>
+   <todo name="TODO: add this to restructure" pos="1;39328"/>
+   <todo name="TODO: handle ligatures" pos="9;40832"/>
+   <todo name="TODO: RTL support." pos="12;40856"/>
+   <todo name="TODO: RTL support." pos="18;40879"/>
+   <todo name="TODO: clean this up" pos="9;44294"/>
+   <todo name="TODO: turn off kern (Khmer) and liga features." pos="5;44896"/>
+   <todo name="TODO: do this in a more general unicode normalizer" pos="5;44914"/>
+   <todo name="TODO: do this in a more general unicode normalizer" pos="5;45832"/>
+   <todo name="TODO" pos="33;46209"/>
+   <todo name="TODO: device tables" pos="5;46433"/>
+   <todo name="TODO: contour point, device tables" pos="5;46707"/>
+   <todo name="TODO: get this info from GDEF if available" pos="5;47529"/>
+   <todo name="TODO: subset prep, cvt, fpgm?" pos="5;49836"/>
+   <todo name="TODO: paragraph gap" pos="3;60469"/>
+   <todo name="TODO: support for canvas larger than a page" pos="3;60776"/>
+   <todo name="TODO: support for other overflow methods" pos="3;60777"/>
+   <todo name="TODO: refactor + rethink whether this is the proper way to handle margins" pos="3;61112"/>
+   <todo name="TODO: ascender-based calculations" pos="3;61371"/>
+   <todo name="TODO: ascender-based calculations" pos="3;61386"/>
+   <todo name="TODO: ascender-based calculations" pos="3;61401"/>
+   <todo name="TODO: else - nested lists numbering" pos="6;61576"/>
+   <todo name="TODO: vectors can influence height in some situations" pos="4;63129"/>
+   <todo name="TODO: vectors can influence height in some situations" pos="2;63163"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\raphael\dev\test\svg\dom.js">
-   <todo pos="1;109" name="TODO..."/>
-   <todo pos="1;197" name="TODO..."/>
+   <todo name="TODO..." pos="1;109"/>
+   <todo name="TODO..." pos="1;197"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\summernote\summernote-bs4.js">
-   <todo pos="11;2334" name="TODO compare points and sort"/>
-   <todo pos="28;5698" name="TODO: do we have to record recent custom colors within cookies?"/>
+   <todo name="TODO compare points and sort" pos="11;2334"/>
+   <todo name="TODO: do we have to record recent custom colors within cookies?" pos="28;5698"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\summernote\summernote-lite.js">
-   <todo pos="11;2882" name="TODO compare points and sort"/>
-   <todo pos="28;6246" name="TODO: do we have to record recent custom colors within cookies?"/>
+   <todo name="TODO compare points and sort" pos="11;2882"/>
+   <todo name="TODO: do we have to record recent custom colors within cookies?" pos="28;6246"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\summernote\summernote.js">
-   <todo pos="11;2333" name="TODO compare points and sort"/>
-   <todo pos="28;5697" name="TODO: do we have to record recent custom colors within cookies?"/>
+   <todo name="TODO compare points and sort" pos="11;2333"/>
+   <todo name="TODO: do we have to record recent custom colors within cookies?" pos="28;5697"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\sweetalert2\sweetalert2.all.js">
-   <todo pos="20;2450" name="TODO: make showLoading an *instance* method"/>
+   <todo name="TODO: make showLoading an *instance* method" pos="20;2450"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\sweetalert2\sweetalert2.js">
-   <todo pos="20;2450" name="TODO: make showLoading an *instance* method"/>
+   <todo name="TODO: make showLoading an *instance* method" pos="20;2450"/>
   </todofile>
   <todofile name="C:\xampp\xamp\htdocs\GYM\public\plugins\tempusdominus-bootstrap-4\js\tempusdominus-bootstrap-4.js">
-   <todo pos="90;552" name="todo data api key"/>
-   <todo pos="96;750" name="todo taking the first date should be ok"/>
-   <todo pos="42;792" name="TODO should this use format? and locale?"/>
-   <todo pos="35;1319" name="todo"/>
-   <todo pos="13;2583" name="todo doc off?"/>
-   <todo pos="52;2594" name="todo disable this/comp if input is null"/>
-   <todo pos="53;2603" name="todo enable comp/this if input is null"/>
+   <todo name="todo data api key" pos="90;552"/>
+   <todo name="todo taking the first date should be ok" pos="96;750"/>
+   <todo name="TODO should this use format? and locale?" pos="42;792"/>
+   <todo name="todo" pos="35;1319"/>
+   <todo name="todo doc off?" pos="13;2583"/>
+   <todo name="todo disable this/comp if input is null" pos="52;2594"/>
+   <todo name="todo enable comp/this if input is null" pos="53;2603"/>
   </todofile>
  </todoblock>
  <dbgurls/>
@@ -1596,18 +1601,20 @@
   <file crc="1583324967000" name="C:\xampp\xamp\htdocs\GYM\public\css\adminlte.min.css"/>
   <file crc="1583324967000" name="C:\xampp\xamp\htdocs\GYM\public\css\adminlte.css"/>
   <file crc="1584746906408" name="C:\xampp\xamp\htdocs\GYM\public\css\addemployee.css"/>
-  <file crc="1585448752937" name="C:\xampp\xamp\htdocs\GYM\backend\usertype.php"/>
+  <file crc="1585512671161" name="C:\xampp\xamp\htdocs\GYM\backend\usertype.php"/>
   <file crc="1585428483404" name="C:\xampp\xamp\htdocs\GYM\backend\person.php"/>
   <file crc="1585449991829" name="C:\xampp\xamp\htdocs\GYM\backend\pages.php"/>
-  <file crc="1585428483404" name="C:\xampp\xamp\htdocs\GYM\backend\member.php"/>
+  <file crc="1585513130411" name="C:\xampp\xamp\htdocs\GYM\backend\member.php"/>
   <file crc="1585438758094" name="C:\xampp\xamp\htdocs\GYM\backend\logout.php"/>
   <file crc="1585448514695" name="C:\xampp\xamp\htdocs\GYM\backend\loginauth.php"/>
-  <file crc="1585454399760" name="C:\xampp\xamp\htdocs\GYM\backend\employee.php"/>
-  <file crc="1585453891632" name="C:\xampp\xamp\htdocs\GYM\backend\database.php"/>
-  <file crc="1585483962746" name="C:\xampp\xamp\htdocs\GYM\backend\controllingusertype.php"/>
-  <file crc="1585487967985" name="C:\xampp\xamp\htdocs\GYM\backend\controllingmember.php"/>
+  <file crc="1585511044036" name="C:\xampp\xamp\htdocs\GYM\backend\employee.php"/>
+  <file crc="1585510630829" name="C:\xampp\xamp\htdocs\GYM\backend\database.php"/>
+  <file crc="1585512564597" name="C:\xampp\xamp\htdocs\GYM\backend\controllingusertype.php"/>
+  <file crc="1585513308973" name="C:\xampp\xamp\htdocs\GYM\backend\controllingmember.php"/>
+  <file crc="1585512369974" name="C:\xampp\xamp\htdocs\GYM\backend\controllingbranch.php"/>
+  <file crc="1585512491859" name="C:\xampp\xamp\htdocs\GYM\backend\branch.php"/>
   <file crc="1585428483389" name="C:\xampp\xamp\htdocs\GYM\.idea\dictionaries\Dell.xml"/>
-  <file crc="1585448514469" name="C:\xampp\xamp\htdocs\GYM\.idea\workspace.xml"/>
+  <file crc="1585509166621" name="C:\xampp\xamp\htdocs\GYM\.idea\workspace.xml"/>
   <file crc="1584746906385" name="C:\xampp\xamp\htdocs\GYM\.idea\vcs.xml"/>
   <file crc="1584206379107" name="C:\xampp\xamp\htdocs\GYM\.idea\modules.xml"/>
   <file crc="1584206379045" name="C:\xampp\xamp\htdocs\GYM\.idea\misc.xml"/>
@@ -1637,7 +1644,7 @@
   <file crc="1585448514697" name="C:\xampp\xamp\htdocs\GYM\departments.php"/>
   <file crc="1584860701531" name="C:\xampp\xamp\htdocs\GYM\delete.php"/>
   <file crc="1585333015467" name="C:\xampp\xamp\htdocs\GYM\contracts.php"/>
-  <file crc="1584863252878" name="C:\xampp\xamp\htdocs\GYM\branch.php"/>
+  <file crc="1585509144627" name="C:\xampp\xamp\htdocs\GYM\branch.php"/>
   <file crc="1585487853398" name="C:\xampp\xamp\htdocs\GYM\addmember.php"/>
   <file crc="1585485510609" name="C:\xampp\xamp\htdocs\GYM\addemployee.php"/>
   <file crc="1585485721152" name="C:\xampp\xamp\htdocs\GYM\addcontract.php"/>

@@ -5,9 +5,7 @@ if (isset($_GET['login']))
 	session_start();
 	$username=$_GET['username'];
 	$password=$_GET['password'];
-	$query="SELECT id FROM employee WHERE userName='".$username."' AND password= '".$password."';";
-	echo $query;
-	if(employee::login($query))
+	if (employee::login($username,$password))
 	{
 		
 		header("Location:../index.php");

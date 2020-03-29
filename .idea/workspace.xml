@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/branch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/controllingbranch.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GYM.clpprj" beforeDir="false" afterPath="$PROJECT_DIR$/GYM.clpprj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GYM_clcs.csprj" beforeDir="false" afterPath="$PROJECT_DIR$/GYM_clcs.csprj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/branch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllingbranch.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllingbranch.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllingmember.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllingmember.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllingusertype.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllingusertype.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/employee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/member.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/branch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/person.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/person.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/usertype.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/usertype.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,6 +101,7 @@
       <workItem from="1584743807647" duration="6000" />
       <workItem from="1584743885674" duration="4009000" />
       <workItem from="1585507446053" duration="1715000" />
+      <workItem from="1585513340804" duration="134000" />
     </task>
     <task id="LOCAL-00001" summary="add member,employee,contractand view member">
       <created>1584738014258</created>
@@ -181,7 +184,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

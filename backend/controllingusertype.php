@@ -1,6 +1,5 @@
 <?php
 include_once 'usertype.php';
-include_once 'employee.php';
 include_once 'pages.php';
 if (isset($_GET['addtype'])) {
     $type=new usertype();
@@ -119,7 +118,7 @@ if (isset($_GET['addtype'])) {
 		$type->set_pages($p7);
 		unset($p7);
 	}
-    if(employee::addtype($type))
+    if($type->addtype())
     {
         echo "<script> window.location.href='javascript:history.go(-1)';</script>";
     }

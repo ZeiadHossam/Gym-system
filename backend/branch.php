@@ -36,18 +36,14 @@ class branch
     {
         $this->address = $address;
     }
-    public static function addbranch($branch)
+    public function addbranch()
     {
 		session_start();
         $db = new database();
         $pid="SELECT personId FROM employee WHERE id=".$_SESSION['id'];
 		$gymId="SELECT gymId FROM person INNER JOIN branch ON person.branchId = branch.id WHERE person.id=($pid)";
 		$rows=$db->select($gymId);
-		foreach ($rows as $row) 
-		{
-			$gid=$row;	
-		}
-		$sql="INSERT INTO branch(branchName,address,gymId)VALUES ('".$branch->getName()."','".$branch->getAddress()."','$gid');";
+		$sql="INSERT INTO branch(branchName,address,gymId)VALUES ('".$this->name."','".$this->address."','".$rows['gymId']."');";
 		
 		if ($db->insert($sql)) {
             return true;

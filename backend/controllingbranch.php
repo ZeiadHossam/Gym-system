@@ -5,7 +5,7 @@ if (isset($_GET['addbranch']))
 $branch =new branch();
 $branch->setName($_GET['branchName']);
 $branch->setAddress($_GET['branchAddress']);
-    if (branch::addbranch($branch)) {
+    if ($branch->addbranch()) {
         echo "<script> window.location.href='javascript:history.go(-1)';</script>";
     }
     else

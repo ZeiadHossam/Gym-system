@@ -1,8 +1,6 @@
 <?php
 include_once 'database.php';
 include_once 'person.php';
-include_once 'usertype.php';
-include_once 'pages.php';
 
 class employee extends person
 {
@@ -20,8 +18,9 @@ class employee extends person
 
 
 
-	public static function login($query)
+	public static function login($username,$password)
 	{
+		$query="SELECT id FROM employee WHERE userName='".$username."' AND password= '".$password."';";
 		$db = new database();
 		$row = $db->select($query);
 
@@ -35,25 +34,5 @@ class employee extends person
 		}
 	}
 
-	public static function addtype($type)
-	{
-		$db = new database();
-		$sql = "INSERT INTO type(name,gymId) VALUES('".$type->get_name()."','1');";
-		$sql2="";
-		$typeid = "SELECT id FROM type WHERE name='".$type->get_name()."'";
-		foreach ($type->get_pages() as $page) {
-		$pid = "SELECT id FROM pages WHERE pageName='".$page->get_name()."'";
-		$sql2 .= "INSERT INTO privilege(typeId,pageId,hasAccess) VALUES(($typeid),($pid),'".$page->get_access()."');";
-		
-		}
-		if ($db->insert($sql)) {
-			if ($db->multiinsert($sql2)) {
-				return true;
-			}
-			   } 
-			   else {
-
-            return false;
-		}
-    }
+	
 }
