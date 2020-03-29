@@ -14,7 +14,7 @@ if (isset($_GET['login']))
 	}
 	else 
 	{
-		echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+		echo "<script> window.location.href='../login.php';</script>";
 		echo "<script>alert('Invalid UserName or Password')</script>";
 
 	}

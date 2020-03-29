@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2020 at 08:23 PM
+-- Generation Time: Mar 28, 2020 at 11:43 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -33,6 +33,13 @@ CREATE TABLE `branch` (
   `branchName` varchar(255) NOT NULL,
   `gymId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `branch`
+--
+
+INSERT INTO `branch` (`id`, `branchName`, `gymId`) VALUES
+(1, 'NasrCity', 1);
 
 -- --------------------------------------------------------
 
@@ -67,6 +74,13 @@ CREATE TABLE `employee` (
   `password` varchar(255) NOT NULL,
   `dateAdded` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`id`, `personId`, `typeId`, `userName`, `password`, `dateAdded`) VALUES
+(1, 3, 1, 'admin', 'admin', '2020-03-28');
 
 -- --------------------------------------------------------
 
@@ -116,6 +130,13 @@ CREATE TABLE `gym` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `gym`
+--
+
+INSERT INTO `gym` (`id`, `name`) VALUES
+(1, 'VIBE\r\n');
+
 -- --------------------------------------------------------
 
 --
@@ -125,7 +146,6 @@ CREATE TABLE `gym` (
 CREATE TABLE `member` (
   `id` int(11) NOT NULL,
   `personId` int(11) NOT NULL,
-  `contractID` int(11) NOT NULL,
   `address` text NOT NULL,
   `marriedStatus` varchar(255) NOT NULL,
   `emergencyNumber` varchar(255) NOT NULL,
@@ -135,6 +155,13 @@ CREATE TABLE `member` (
   `companyAddress` text NOT NULL,
   `addedBy` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`id`, `personId`, `address`, `marriedStatus`, `emergencyNumber`, `company`, `workPhone`, `faxNumber`, `companyAddress`, `addedBy`) VALUES
+(22, 23, 'alo					', 'single', '', '', '', '', '					', 1);
 
 -- --------------------------------------------------------
 
@@ -218,6 +245,14 @@ CREATE TABLE `person` (
   `lastName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `person`
+--
+
+INSERT INTO `person` (`id`, `firstName`, `birthDay`, `image`, `branchId`, `mobilePhone`, `homePhone`, `gender`, `email`, `lastName`) VALUES
+(3, 'tarek', '1998-03-03', '', 1, '01111111111', '222222222', 'male', 'admin@admin.com', 'halaby'),
+(23, 'tarek', '1111-10-10', '', 1, '010000000', '', 'male', 'admin@admin.com', 'medhat');
+
 -- --------------------------------------------------------
 
 --
@@ -241,6 +276,13 @@ CREATE TABLE `type` (
   `name` varchar(255) NOT NULL,
   `gymId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `type`
+--
+
+INSERT INTO `type` (`id`, `name`, `gymId`) VALUES
+(1, 'admin', 1);
 
 --
 -- Indexes for dumped tables
@@ -303,8 +345,7 @@ ALTER TABLE `gym`
 ALTER TABLE `member`
   ADD PRIMARY KEY (`id`),
   ADD KEY `addedBy` (`addedBy`),
-  ADD KEY `personId` (`personId`),
-  ADD KEY `contractID` (`contractID`);
+  ADD KEY `personId` (`personId`);
 
 --
 -- Indexes for table `memberattendance`
@@ -368,7 +409,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `contract`
@@ -380,7 +421,7 @@ ALTER TABLE `contract`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `feature`
@@ -404,13 +445,13 @@ ALTER TABLE `freezecontract`
 -- AUTO_INCREMENT for table `gym`
 --
 ALTER TABLE `gym`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `memberattendance`
@@ -446,7 +487,7 @@ ALTER TABLE `paymentmethod`
 -- AUTO_INCREMENT for table `person`
 --
 ALTER TABLE `person`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `privilege`
@@ -458,7 +499,7 @@ ALTER TABLE `privilege`
 -- AUTO_INCREMENT for table `type`
 --
 ALTER TABLE `type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -502,8 +543,7 @@ ALTER TABLE `freezecontract`
 --
 ALTER TABLE `member`
   ADD CONSTRAINT `member_ibfk_1` FOREIGN KEY (`addedBy`) REFERENCES `employee` (`id`),
-  ADD CONSTRAINT `member_ibfk_2` FOREIGN KEY (`personId`) REFERENCES `person` (`id`),
-  ADD CONSTRAINT `member_ibfk_3` FOREIGN KEY (`contractID`) REFERENCES `contract` (`id`);
+  ADD CONSTRAINT `member_ibfk_2` FOREIGN KEY (`personId`) REFERENCES `person` (`id`);
 
 --
 -- Constraints for table `memberattendance`

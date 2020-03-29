@@ -4,37 +4,37 @@
         <div class="container-fluid">
             <br> 
 			
-						<form  role="form"  action="#" method="post">
+						<form  role="form"  action="backend/controllingusertype.php" method="get">
                 <div class="card-body">
 				<div class="form-group row">
                     <label for="Department Name" class="col-sm-2 col-form-label">Department Name:</label>
                     <div class="col-sm-10">
-                      <input type="Text" class="form-control" required>
+                      <input type="Text" name="departmentname" class="form-control" required>
                     </div>
                   </div>
 				  <div class="form-group row">
                     <label for="Privileges" class="col-sm-2 col-form-label">Privileges:</label>
 					<div class="col-sm-2 offset-sm-1">
-				  <input class="form-check-input" type="checkbox">Reciption
+				  <input class="form-check-input" name="reception" type="checkbox">Reciption
 				  <br>
-				  <input class="form-check-input" type="checkbox">Notifications
+				  <input class="form-check-input" name="notification" type="checkbox">Notifications
 				  <br>
-				  <input class="form-check-input" type="checkbox">Members
+				  <input class="form-check-input" name="members" type="checkbox">Members
 				  <br>
-				  <input class="form-check-input" type="checkbox">Emloyees
+				  <input class="form-check-input" name="employees" type="checkbox">Emloyees
 				  
 				  </div>
 				  <div class="col-sm-2">
-				  <input class="form-check-input" type="checkbox">Contracts
+				  <input class="form-check-input" name="contracts" type="checkbox">Contracts
 				  <br>
-				  <input class="form-check-input" type="checkbox">Administration
+				  <input class="form-check-input" name="admin" type="checkbox">Administration
 				  <br>
-				  <input class="form-check-input" type="checkbox">Reports 
+				  <input class="form-check-input"  name="reports" type="checkbox">Reports
 				  </div>
 				  </div>
 				  </div>
 				   <div class="btn-group tablebuttons">
-                                <button type="submit" class="btn btn-success btn-flat ">Confirm</button>
+                                <button type="submit" name="addtype" class="btn btn-success btn-flat ">Confirm</button>
                                 <button type="reset" class="btn btn-danger btn-flat ">Clear Fields</button>
 				  
 				    </div>
