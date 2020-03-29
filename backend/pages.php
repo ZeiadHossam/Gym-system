@@ -13,7 +13,7 @@ class pages
         return $this->name;
     }
     function set_access($hasaccess) {
-        $this->hasaccess = $hasaccess;
+        $this->hasAccess = $hasaccess;
     }
     function get_access() {
         return $this->hasAccess;

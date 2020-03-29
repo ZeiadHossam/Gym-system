@@ -30,13 +30,14 @@ return true;
     public function insert( $sql)
     {
         $this->connection();
-		if (!$this->mysqli->query( $sql)) {
+		if (!$this->mysqli->query($sql)) {
+		
 			echo $this->mysqli->error;
 			$this->mysqli->close();
-            return true;
+            return false;
         } else {
 			$this->mysqli->close();
-            return false;
+            return true;
         }
     }
 

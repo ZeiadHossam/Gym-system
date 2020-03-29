@@ -7,7 +7,7 @@ class usertype
     private $name;
     private $pages;
     function __construct() {
-        $this->pages[] = new pages();
+        $this->pages = array();
     }
     function set_name($name) {
         $this->name = $name;
@@ -16,7 +16,7 @@ class usertype
         return $this->name;
     }
     function set_pages($page) {
-    $this->pages = $page;
+    $this->pages[] = $page;
 }
     function get_pages() {
         return $this->pages;

@@ -13,7 +13,6 @@
  <lastopfiles>
   <file name="C:\xampp\xamp\htdocs\GYM\GYM.clpprj"/>
   <file name="C:\xampp\xamp\htdocs\GYM\viewcontract.php"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\backend\user.php"/>
   <file name="C:\xampp\xamp\htdocs\GYM\shared\header.php"/>
   <file name="C:\xampp\xamp\htdocs\GYM\employees.php"/>
   <file name="C:\xampp\xamp\htdocs\GYM\shared\main.php"/>
@@ -26,9 +25,23 @@
   <file name="C:\xampp\xamp\htdocs\GYM\addcontract.php"/>
   <file name="C:\xampp\xamp\htdocs\GYM\addmember.php"/>
   <file name="C:\xampp\xamp\htdocs\GYM\backend\database.php"/>
-  <lastactivefile name="C:\xampp\xamp\htdocs\GYM\backend\user.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\employee.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\controllingmember.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\editmember.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\public\js\pages\buttons.js"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\shared\footer.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\delete.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\loginauth.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\login.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\index.php"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\logout.php"/>
+  <lastactivefile name="C:\xampp\xamp\htdocs\GYM\backend\loginauth.php"/>
  </lastopfiles>
- <errors version="1.3"/>
+ <errors version="1.3">
+  <errfile name="C:\xampp\xamp\htdocs\GYM\public\css\login.css">
+   <error val="49;1;57;1;2502;1;"/>
+  </errfile>
+ </errors>
  <cakedata/>
  <dplmenupath/>
  <laravael/>
@@ -434,10 +447,10 @@
  </todoblock>
  <dbgurls/>
  <filescache>
-  <file name="C:\xampp\xamp\htdocs\GYM\SQL\gym.sql" crc="1584213782965"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\SQL\gym.sql" crc="1585448514693"/>
   <file name="C:\xampp\xamp\htdocs\GYM\shared\sidebar.php" crc="1584863409655"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\shared\main.php" crc="1585428483404"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\shared\header.php" crc="1585428483404"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\shared\main.php" crc="1585438989784"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\shared\header.php" crc="1585438667935"/>
   <file name="C:\xampp\xamp\htdocs\GYM\shared\footer.php" crc="1584859278603"/>
   <file name="C:\xampp\xamp\htdocs\GYM\public\plugins\toastr\toastr.min.js" crc="1583324967000"/>
   <file name="C:\xampp\xamp\htdocs\GYM\public\plugins\toastr\toastr.min.css" crc="1583324967000"/>
@@ -1579,7 +1592,7 @@
   <file name="C:\xampp\xamp\htdocs\GYM\public\plugins\bootstrap\js\bootstrap.bundle.min.js" crc="1583324967000"/>
   <file name="C:\xampp\xamp\htdocs\GYM\public\plugins\bootstrap\js\bootstrap.bundle.js" crc="1583324967000"/>
   <file name="C:\xampp\xamp\htdocs\GYM\public\js\pages\main.js" crc="1584671813725"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\public\js\pages\buttons.js" crc="1584860741043"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\public\js\pages\buttons.js" crc="1585434733072"/>
   <file name="C:\xampp\xamp\htdocs\GYM\public\js\demo.js" crc="1583324967000"/>
   <file name="C:\xampp\xamp\htdocs\GYM\public\js\adminlte.min.js" crc="1583324967000"/>
   <file name="C:\xampp\xamp\htdocs\GYM\public\js\adminlte.js" crc="1583324967000"/>
@@ -1599,10 +1612,15 @@
   <file name="C:\xampp\xamp\htdocs\GYM\public\css\adminlte.min.css" crc="1583324967000"/>
   <file name="C:\xampp\xamp\htdocs\GYM\public\css\adminlte.css" crc="1583324967000"/>
   <file name="C:\xampp\xamp\htdocs\GYM\public\css\addemployee.css" crc="1584746906408"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\backend\Users.php" crc="28800000"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\backend\user.php" crc="28800000"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\backend\database.php" crc="1585428483404"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\.idea\workspace.xml" crc="1585428483389"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\person.php" crc="1585428483404"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\member.php" crc="1585428483404"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\logout.php" crc="1585438758094"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\loginauth.php" crc="1585448514695"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\employee.php" crc="1585448514694"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\database.php" crc="1585437799971"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\backend\controllingmember.php" crc="1585436972273"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\.idea\dictionaries\Dell.xml" crc="1585428483389"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\.idea\workspace.xml" crc="1585448514469"/>
   <file name="C:\xampp\xamp\htdocs\GYM\.idea\vcs.xml" crc="1584746906385"/>
   <file name="C:\xampp\xamp\htdocs\GYM\.idea\modules.xml" crc="1584206379107"/>
   <file name="C:\xampp\xamp\htdocs\GYM\.idea\misc.xml" crc="1584206379045"/>
@@ -1621,15 +1639,15 @@
   <file name="C:\xampp\xamp\htdocs\GYM\myprofile.php" crc="1584860160250"/>
   <file name="C:\xampp\xamp\htdocs\GYM\members.php" crc="1585333169574"/>
   <file name="C:\xampp\xamp\htdocs\GYM\membercontract.php" crc="1585332084278"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\login.php" crc="1583877629394"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\index.php" crc="1584859682661"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\login.php" crc="1585436833772"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\index.php" crc="1585438786283"/>
   <file name="C:\xampp\xamp\htdocs\GYM\expiredcontracts.php" crc="1584864316416"/>
   <file name="C:\xampp\xamp\htdocs\GYM\expiredcontractreports.php" crc="1584864340790"/>
   <file name="C:\xampp\xamp\htdocs\GYM\employees.php" crc="1584860825657"/>
   <file name="C:\xampp\xamp\htdocs\GYM\editmember.php" crc="1584859874824"/>
   <file name="C:\xampp\xamp\htdocs\GYM\editemployee.php" crc="1584859920406"/>
   <file name="C:\xampp\xamp\htdocs\GYM\editcontract.php" crc="1584859901530"/>
-  <file name="C:\xampp\xamp\htdocs\GYM\departments.php" crc="1584863232402"/>
+  <file name="C:\xampp\xamp\htdocs\GYM\departments.php" crc="1585448514697"/>
   <file name="C:\xampp\xamp\htdocs\GYM\delete.php" crc="1584860701531"/>
   <file name="C:\xampp\xamp\htdocs\GYM\contracts.php" crc="1585333015467"/>
   <file name="C:\xampp\xamp\htdocs\GYM\branch.php" crc="1584863252878"/>

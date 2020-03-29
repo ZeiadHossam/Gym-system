@@ -9,108 +9,115 @@ if (isset($_GET['addtype'])) {
 
     if (isset($_GET['reception'])) {
         $p1 = new pages();
-        $p1->set_name('Reciption');
-
-        if ($_GET['reception'] == 'Yes') {
-            $p1->set_access('1');
-
-        } else {
-            $p1->set_access('0');
-
-        }
-        $type->get_pages()->append($p1);
+		$p1->set_name('Reciption');
+		$p1->set_access('1');
+        $type->set_pages($p1);
         unset($p1);
     }
-     if (isset($_GET['notification'])) {
-        $p1 = new pages();
-        $p1->set_name('Notification');
-
-        if ($_GET['notification'] == 'Yes') {
-            $p1->set_access('1');
-
-        } else {
-            $p1->set_access('0');
-
-        }
-        array_push($type->get_pages(),$p1);
-        unset($p1);
+	else {
+		$p1 = new pages();
+		$p1->set_name('Reciption');
+		$p1->set_access('0');
+		$type->set_pages($p1);
+		unset($p1);
+	}
+	if (isset($_GET['notification'])) {
+        $p2 = new pages();
+		$p2->set_name('Notifications');
+		$p2->set_access('1');
+		$type->set_pages($p2);
+        unset($p2);
 
     }
+	else {
+		$p2 = new pages();
+		$p2->set_name('Notifications');
+		$p2->set_access('0');
+		$type->set_pages($p2);
+		unset($p2);
+	}
     if (isset($_GET['members'])) {
-        $p1 = new pages();
-        $p1->set_name('Members');
-
-        if ($_GET['members'] == 'Yes') {
-            $p1->set_access('1');
-
-        } else {
-            $p1->set_access('0');
-
-        }
-        $type->set_pages($p1);
-        unset($p1);
+        $p3 = new pages();
+        $p3->set_name('Members');
+		$p3->set_access('1');
+        $type->set_pages($p3);
+        unset($p3);
 
     }
+	else {
+		$p3 = new pages();
+		$p3->set_name('Members');
+		$p3->set_access('0');
+		$type->set_pages($p3);
+		unset($p3);
+	}
     if (isset($_GET['employees'])) {
-        $p1 = new pages();
-        $p1->set_name('Employees');
-
-        if ($_GET['employees'] == 'Yes') {
-            $p1->set_access('1');
-
-        } else {
-            $p1->set_access('0');
-
-        }
-        $type->set_pages($p1);
-        unset($p1);
+        $p4 = new pages();
+        $p4->set_name('Employees');
+		$p4->set_access('1');
+        $type->set_pages($p4);
+        unset($p4);
 
     }
+	else {
+		$p4 = new pages();
+		$p4->set_name('Employees');
+		$p4->set_access('0');
+		$type->set_pages($p4);
+		unset($p4);
+	}
     if (isset($_GET['contracts'])) {
-        $p1 = new pages();
-        $p1->set_name('Contracts');
+        $p5 = new pages();
+        $p5->set_name('Contracts');
+            $p5->set_access('1');
 
-        if ($_GET['contracts'] == 'Yes') {
-            $p1->set_access('1');
-
-        } else {
-            $p1->set_access('0');
-
-        }
-        $type->set_pages($p1);
-        unset($p1);
+        $type->set_pages($p5);
+        unset($p5);
 
     }
+	else {
+		$p5 = new pages();
+		$p5->set_name('Contracts');
+		$p5->set_access('0');
+		$type->set_pages($p5);
+		unset($p5);
+	}
     if (isset($_GET['admin'])) {
-        $p1 = new pages();
-        $p1->set_name('Administration');
+        $p6 = new pages();
+        $p6->set_name('Administration');
 
-        if ($_GET['admin'] == 'Yes') {
-            $p1->set_access('1');
+            $p6->set_access('1');
 
-        } else {
-            $p1->set_access('0');
-
-        }
-        $type->set_pages($p1);
-        unset($p1);
+        
+        $type->set_pages($p6);
+        unset($p6);
 
     }
+	else {
+		$p6 = new pages();
+		$p6->set_name('Administration');
+		$p6->set_access('0');
+		$type->set_pages($p6);
+		unset($p6);
+	}
     if (isset($_GET['reports'])) {
-        $p1 = new pages();
-        $p1->set_name('Reports');
+        $p7 = new pages();
+        $p7->set_name('Reports');
 
-        if ($_GET['reports'] == 'Yes') {
-            $p1->set_access('1');
+        $p7->set_access('1');
 
-        } else {
-            $p1->set_access('0');
-
-        }
-        $type->set_pages($p1);
-        unset($p1);
+        $type->set_pages($p7);
+        unset($p7);
 
     }
+	else 
+	{
+		$p7 = new pages();
+		$p7->set_name('Reports');
+		$p7->set_access('0');
+		$type->set_pages($p7);
+		unset($p7);
+	}
     if(employee::addtype($type))
     {
         //echo "<script> window.location.href='javascript:history.go(-1)';</script>";
