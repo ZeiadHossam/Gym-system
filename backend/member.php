@@ -196,10 +196,10 @@ class member extends person
 		session_start();
         $db = new database();
 		$pid="SELECT personId FROM employee WHERE id=".$_SESSION['id'];
-		$gymId="SELECT gymId FROM person INNER JOIN branch ON person.branchId = branch.id WHERE person.id=($pid)";
+		$gymId="SELECT branchId FROM person WHERE person.id=($pid)";
 		$rows=$db->select($gymId);
         $sql = "INSERT INTO person (firstName,lastName,birthDay,image,mobilePhone,homePhone,gender,email,branchId)
-		VALUES ('".$this->getFirstName()."','".$this->getLastName()."','".$this->getBirthDay()."','".$this->getImage()."','".$this->getMobilePhone()."','".$this->getHomePhone()."','".$this->getGender()."','".$this->getEmail()."','".$rows['gymId']."');";
+		VALUES ('".$this->getFirstName()."','".$this->getLastName()."','".$this->getBirthDay()."','".$this->getImage()."','".$this->getMobilePhone()."','".$this->getHomePhone()."','".$this->getGender()."','".$this->getEmail()."','".$rows['branchId']."');";
 
 
 		$personID = "SELECT id FROM person WHERE firstName='".$this->getFirstName()."' AND lastName='".$this->getLastName()."' AND mobilePhone='".$this->getMobilePhone()."'";

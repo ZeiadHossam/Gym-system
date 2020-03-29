@@ -20,7 +20,7 @@ if (isset($_GET['addmember'])) {
 	$member->setImage(isset($_GET['img']) ? $_GET['img'] : '');
     $member->setAddedBy($_GET['addedby']);
 	if ($member->addmember()) {
-		//echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+		echo "<script> window.location.href='javascript:history.go(-1)';</script>";
     }
     else
     {
