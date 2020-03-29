@@ -18,38 +18,38 @@
 
 
                                     <div class="card-body">
-                                        <form role="form" action="addmember.php" enctype="multipart/form-data" method="post">
+                                        <form role="form" action="backend/controllingemployee.php" enctype="multipart/form-data" method="get">
 
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                                    <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                                                            placeholder="Enter email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*First Name</label>
-                                                    <input type="text" class="form-control" maxlength="15"
+                                                    <input type="text"  name="fname" class="form-control" maxlength="15"
                                                            placeholder="First Name" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*Last Name</label>
-                                                    <input type="text" class="form-control" maxlength="15"
+                                                    <input type="text" name="lname" class="form-control" maxlength="15"
                                                            placeholder="Last Name" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">user Name</label>
-                                                    <input type="text" class="form-control" placeholder="user name"
+                                                    <input type="text" name="username" class="form-control" placeholder="user name"
                                                            required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Password</label>
-                                                    <input type="password" class="form-control"
+                                                    <input type="password" name="password" class="form-control"
                                                            id="exampleInputPassword1" placeholder="Password" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">date added </label>
-                                                    <input type="date" class="form-control" required>
+                                                    <input type="date" name="dateadded" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputFile">PersonalImage</label>
@@ -72,21 +72,18 @@
                                                 <div class="form-group">
                                                     <label>*department </label>
 
-                                                    <select class="form-control">
+                                                    <select name="usertype" class="form-control">
 
-                                                        <option>trainer</option>
-                                                        <option>sales</option>
                                                         <option>admin</option>
+                                                        <option>Reception</option>
                                                     </select>
 
-
                                                 </div>
-
 
                                                 <div class="form-group">
                                                     <label>*gender </label>
 
-                                                    <select class="form-control">
+                                                    <select name="gender" class="form-control">
 
                                                         <option>male</option>
                                                         <option>female</option>
@@ -94,19 +91,19 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">HOME phone</label>
-													<input type="number" class="form-control numbers" maxlength="8"
-                                                           placeholder="home phone" required>
+													<input type="number" name="homephone" class="form-control numbers" maxlength="8"
+                                                           placeholder="home phone" >
                                                 </div>
 
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*phone number</label>
-													<input type="number" class="form-control numbers" maxlength="10"
+													<input type="number" name="phonenumber" class="form-control numbers" maxlength="10"
                                                            placeholder="phone number" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*birthday </label>
-													<input type="date" min="1900-01-01" max="2020-03-29" class="form-control" required>
+													<input type="date" name="birthday" min="1900-01-01" max="2020-03-29" class="form-control" required>
                                                 </div>
 										   </div>
                                         </div>
