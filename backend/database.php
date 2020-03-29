@@ -62,7 +62,7 @@ return true;
 			printf("Error: %s\n", $this->mysqli->error);
 			exit();
 		}
-		$row=mysqli_fetch_array($result);
+		$row=mysqli_fetch_assoc($result);
 		if (!empty($row)) {
 
 			return $row;

@@ -1,6 +1,5 @@
 <?php
 include 'member.php';
-include 'employee.php';
 
 if (isset($_GET['addmember'])) {
     $member = new member();
@@ -22,7 +21,7 @@ if (isset($_GET['addmember'])) {
     $member->image = isset($_GET['img']) ? $_GET['img'] : '';
     $member->addedBy = $_GET['addedby'];
 
-	if (employee::addmember($member)) {
+	if (member::addmember($member)) {
 		echo "<script> window.location.href='javascript:history.go(-1)';</script>";
     }
     else
