@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <br> 
 			
-						<form  role="form"  action="backend/controllingbranch.php" method="get">
+						<form role="form" action="Controller/controllingbranch.php" method="get">
                 <div class="card-body">
 				<div class="form-group row">
                     <label for="Bransh Name" class="col-sm-2 col-form-label">Branch Name:</label>

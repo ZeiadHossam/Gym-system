@@ -7,7 +7,7 @@
 <body>
 <div class="login">
 	<h1>Login</h1>
-    <form method="get" action="backend/loginauth.php">
+    <form method="get" action="Controller/loginauth.php">
     	<input type="text" name="username" placeholder="UserName" required="required" />
         <input type="password" name="password" placeholder="Password" required="required" />
         <button type="submit" name="login" class="btn btn-dark btn-block btn-large">Login</button>

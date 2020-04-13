@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <br> 
 			
-						<form  role="form"  action="backend/controllingusertype.php" method="get">
+						<form role="form" action="Controller/controllingusertype.php" method="get">
                 <div class="card-body">
 				<div class="form-group row">
                     <label for="Department Name" class="col-sm-2 col-form-label">Department Name:</label>

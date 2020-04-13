@@ -4,7 +4,7 @@
 
     <div class="container-fluid">
         <br>
-        <form role="form" action="backend/controllingpayment.php" method="get">
+        <form role="form" action="Controller/controllingpayment.php" method="get">
             <div class="card-body">
                 <div class="form-group row">
                     <label for="Method" class="col-sm-2 col-form-label">Method:</label>
