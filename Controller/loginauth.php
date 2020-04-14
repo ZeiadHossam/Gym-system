@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET['login'])) 
 {
-	include 'employee.php';
+	include '../Model/employee.php';
 	session_start();
 	$username=$_GET['username'];
 	$password=$_GET['password'];

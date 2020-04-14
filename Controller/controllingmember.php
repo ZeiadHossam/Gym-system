@@ -1,5 +1,5 @@
 <?php
-include 'member.php';
+include '../Model/member.php';
 
 if (isset($_GET['addmember'])) {
     $member = new member();

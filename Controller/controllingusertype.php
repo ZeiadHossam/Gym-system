@@ -1,6 +1,6 @@
 <?php
-include_once 'usertype.php';
-include_once 'pages.php';
+include_once '../Model/usertype.php';
+include_once '../Model/pages.php';
 if (isset($_GET['addtype'])) {
     $type=new usertype();
     $type->set_name($_GET['departmentname']);

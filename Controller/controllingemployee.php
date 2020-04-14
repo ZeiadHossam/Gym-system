@@ -1,5 +1,5 @@
 <?php
-include 'employee.php';
+include '../Model/employee.php';
 if (isset($_GET['addemployee'])) {
     $employee=new employee();
     $employee->setFirstName($_GET['fname']);

@@ -1,5 +1,5 @@
 <?php
-include_once 'branch.php';
+include_once '../Model/branch.php';
 if (isset($_GET['addbranch']))
 {
 $branch =new branch();

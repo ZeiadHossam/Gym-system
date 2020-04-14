@@ -1,5 +1,5 @@
 <?php
-include 'paymentmethod.php';
+include '../Model/paymentmethod.php';
 
 if (isset($_GET['add'])) {
 
@@ -8,6 +8,7 @@ if (isset($_GET['add'])) {
     $payment->setname($_GET['payname']);
 
     if ($payment->addpaymentmethod()) {
+        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
 
     }
 
