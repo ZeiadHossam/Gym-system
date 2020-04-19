@@ -2,7 +2,8 @@
 <html>
 <head>
 		
-		<!--<?php session_start(); include("Controller/loginauth.php"); ?>-->
+		<?php session_start(); include("../Controller/loginauth.php");
+        $gym=unserialize($_SESSION['Gym']);?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GYM | ADMIN</title>

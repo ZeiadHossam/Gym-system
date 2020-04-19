@@ -1,5 +1,7 @@
 <!-- Content Header (Page header) -->
-<?php include("../shared/main.php") ?>
+<?php include("../shared/main.php");
+include_once ("../model/gym.php");
+?>
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">

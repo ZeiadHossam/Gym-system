@@ -78,6 +78,29 @@ return true;
 
 			return NULL;
 		}
+	}public function selectArray($query)
+	{
+
+		$result = mysqli_query($this->mysqli,$query);
+		if (!$result) {
+			printf("Error: %s\n", $this->mysqli->error);
+            echo $query;
+			exit();
+		}
+		return $result;
+	}
+	public function selectId($object,$tablename)
+	{
+        $query="SELECT id FROM ".$tablename." ORDER BY id DESC LIMIT 1";
+        if($row=$this->select($query))
+        {
+            $object->setId($row['id']);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 	}
 	public function closeconn()
     {

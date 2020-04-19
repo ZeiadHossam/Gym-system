@@ -76,4 +76,4 @@
         </div>
     </section>
 
-<?php include("shared/footer.php") ?>
+<?php include("../shared/footer.php") ?>

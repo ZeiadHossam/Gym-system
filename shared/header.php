@@ -5,7 +5,12 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item"><em class="nav-link">Branch Name</em></li>
+        <li class="nav-item"><em class="nav-link"><?php
+            if($_SESSION['branch']!=NULL)
+            {
+                echo $gym->getBranchs()[$_SESSION['branch']]->getCity();
+            }
+            ?></em></li>
 
     </ul>
 

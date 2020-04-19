@@ -43,9 +43,9 @@ class gym
         return $this->branches;
     }
 
-    public function setBranchs($branchs)
+    public function setBranchs($BID,$branchs)
     {
-        $this->branches[] = $branchs;
+        $this->branches[$BID] = $branchs;
     }
 
     public function getUserTypes()
@@ -88,7 +88,7 @@ class gym
         if($db->insert($sql)) {
 
 
-            if($branch->getIdFromDB())
+            if($db->selectId($branch,"branch"))
             {
 
 
@@ -103,6 +103,20 @@ class gym
         }
         else {
             return false;
+        }
+    }
+    public function getallbranches()
+    {
+        $db = new database();
+        $branchesdataSql = "SELECT * FROM branch WHERE gymId=".$this->id;
+        $branchesdata=$db->selectArray($branchesdataSql);
+        while($row = mysqli_fetch_assoc($branchesdata))
+        {
+            $branch=new branch();
+            $branch->setId($row['id']);
+            $branch->setCity($row['city']);
+            $branch->setAddress($row['address']);
+            $this->setBranchs($branch->getId(),$branch);
         }
     }
 

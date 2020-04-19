@@ -27,21 +27,23 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Ahmed</td>
-                        <td>khaled</td>
-                        <td>01111111111</td>
-                        <td>ahmed@email.com</td>
-                        <td>
-                            <div class="btn-group tablebuttons">
-                                <a href="viewmember.php" class="btn btn-secondary btn-sm" >View</a>
-                                <a href="editmember.php" class="btn btn-info btn-sm" >edit</a>
-								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
-									Delete
-								</button>
-                            </div>
-                        </td>
-                    </tr>
+                            <td>1</td>
+                            <td>Ahmed</td>
+                            <td>khaled</td>
+                            <td>01111111111</td>
+                            <td>ahmed@email.com</td>
+                            <td>
+                                <div class="btn-group tablebuttons">
+                                    <a href="viewmember.php" class="btn btn-secondary btn-sm">View</a>
+                                    <a href="editmember.php" class="btn btn-info btn-sm">edit</a>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                            data-target="#modal-delete">
+                                        Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
                     <tr>
                         <td>2</td>
                         <td>Mohamed</td>

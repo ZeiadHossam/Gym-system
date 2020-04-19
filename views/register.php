@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <?php
+    session_start();
+    if(!isset($_SESSION['id'])||$_SESSION['id']!=-1)
+    {
+        echo "<script> window.location.href='login.php';</script>";
+    }
+    ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>new owner</title>
@@ -63,7 +70,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <input name="image" class="form-control-file" type="file"
-                                                  id="image" accept="image/gif, image/jpeg, image/png"  required/>
+                                                  id="image" accept="image/gif, image/jpeg, image/png"  />
 
                             </div>
                             <div class="input-group mb-3">

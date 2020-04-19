@@ -22,21 +22,11 @@ class system
         $this->gyms[] = $gyms;
     }
 
-    public static function addGym($employee, $gymName, $branchCity, $branchAddress)
+    public static function addGym($employee, $gymName, $branch)
     {
         $db = new database();
-
-        $ValidateSql="select id  from gym where name='".$gymName."';";
-        $gymnames=$db->select($ValidateSql);
-        if($gymnames!=NULL)
-        {
-            return false;
-        }
-        $gym = new gym();
-        $branch = new branch();
-        $branch->setCity($branchCity);
-        $branch->setAddress($branchAddress);
         $gymName = $db->getMysqli()->real_escape_string($gymName);
+        $gym = new gym();
         $sql = "INSERT INTO gym (name) VALUE ('$gymName');";
         if ($db->insert($sql)) {
             $sql2 = "SELECT id FROM gym WHERE name = '" . $gymName . "';";
@@ -66,13 +56,46 @@ class system
         }
     }
 
+    public function checkGymAvailability($gymname)
+    {
+        $db = new database();
+        $ValidateSql = "select id  from gym where name='" . $gymname . "';";
+        $gymnames = $db->select($ValidateSql);
+        if ($gymnames != NULL) {
+            return false;
+        }
+        return true;
+
+    }
+
     public function deleteGym($id)
     {
 
     }
 
-    public function getGymsInfo()
+    public static function getGymdata($data)
     {
+        $bId=$data['branchId'];
+        $empId=$data['id'];
+        $db = new database();
+        $gym=new gym();
+         if($bId==NULL)
+        {
+            $gymdataSql = "SELECT * FROM gym WHERE ownerId=".$empId;
+            $gymdata=$db->select($gymdataSql);
+            $gym->setId($gymdata['id']);
+            $gym->setGymName($gymdata['name']);
+        }
+        else {
+            $gymIdSql = "SELECT gymId FROM branch WHERE id=".$bId;
+            $gymId=$db->select($gymIdSql);
+            $gym->setId($gymId['gymId']);
+            $gymdataSql = "SELECT name FROM gym WHERE id=".$gym->getId();
+            $gymdata=$db->select($gymdataSql);
+            $gym->setGymName($gymdata['name']);
+        }
+            $gym->getallbranches();
 
+        return $gym;
     }
 }
