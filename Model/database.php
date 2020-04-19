@@ -8,12 +8,18 @@ class database {
     private $name ;
     private $mysqli;
 
+
+    public function getMysqli()
+    {
+        return $this->mysqli;
+    }
+
     function __construct() {
         $this->name ='gym';
         $this->password ='1234';
         $this->username ='root';
         $this->host ='localhost';
-
+        $this->connection();
 
     }
 
@@ -29,37 +35,38 @@ return true;
     
     public function insert( $sql)
     {
-        $this->connection();
+
 		if (!$this->mysqli->query($sql)) {
 		
 			echo $this->mysqli->error;
-			$this->mysqli->close();
+
             return false;
         } else {
-			$this->mysqli->close();
+
             return true;
         }
     }
 
     public function multiinsert( $sql)
     {
-        $this->connection();
+
 		if (!$this->mysqli->multi_query($sql)) {
 			echo $this->mysqli->error;
-			$this->mysqli->close();
+
 			return false;
 		} 
 		else {
-			$this->mysqli->close();
+
 			return true;
 		}
     }
     public function select($query)
 	{
-        $this->connection();
+
 		$result = mysqli_query($this->mysqli,$query);
 		if (!$result) {
 			printf("Error: %s\n", $this->mysqli->error);
+            echo $query;
 			exit();
 		}
 		$row=mysqli_fetch_assoc($result);
@@ -72,4 +79,8 @@ return true;
 			return NULL;
 		}
 	}
+	public function closeconn()
+    {
+        $this->mysqli->close();
+    }
 }

@@ -1,110 +1,84 @@
 <?php
-include_once 'database.php';
 include_once 'person.php';
-include_once 'usertype.php';
+include_once 'userType.php';
 
 class employee extends person
 {
-	private $usertype;
-	private $username;
-	private $password;
-	private $dateadded;
-	private $privateid;
+    private $id;
+    private $userName;
+    private $password;
+    private $dateAdded;
+    private $usertype;
 
-	function __construct()
-	{
-
-		$this->usertype = new usertype();
-	}
-    public function setusertype($usertype)
+    function __construct()
     {
-        $this->usertype = $usertype;
+        $this->usertype = new userType();
+    }
+    public function getId()
+    {
+        return $this->id;
     }
 
 
-    public function getusertype()
+    public function setId($id)
     {
-        return $this->usertype;
-    }
-    public function setusername($username)
-    {
-        $this->username = $username;
+        $this->id = $id;
     }
 
 
-    public function getusername()
+    public function getUserName()
     {
-        return $this->username;
+        return $this->userName;
     }
-    public function setpassword($password)
+
+
+    public function setUserName($userName)
+    {
+        $this->userName = $userName;
+    }
+
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+
+    public function setPassword($password)
     {
         $this->password = $password;
     }
 
-
-    public function getpassword()
+    public function getDateAdded()
     {
-        return $this->password;
-    }
-    public function setdateadded($dateadded)
-    {
-        $this->dateadded = $dateadded;
+        return $this->dateAdded;
     }
 
-
-    public function getdateadded()
+    public function setDateAdded($dateAdded)
     {
-        return $this->dateadded;
-    }
-    public function setprivateid($privateid)
-    {
-        $this->privateid = $privateid;
+        $this->dateAdded = $dateAdded;
     }
 
-
-    public function getprivateid()
+    public function getUsertype()
     {
-        return $this->privateid;
+        return $this->usertype;
     }
-
-    public function addemployee()
+    public function setUsertype($usertype)
     {
-        session_start();
+        $this->usertype = $usertype;
+    }
+    public function getIdFromDB()
+    {
         $db = new database();
-        $pid = "SELECT personId FROM employee WHERE id=" . $_SESSION['id'];
-        $gymId = "SELECT branchId FROM person WHERE person.id=($pid)";
-        $rows = $db->select($gymId);
-        $sql = "INSERT INTO person (firstName,lastName,birthDay,image,mobilePhone,homePhone,gender,email,branchId)
-		VALUES ('".$this->getFirstName()."','".$this->getLastName()."','".$this->getBirthDay()."','".$this->getImage()."','".$this->getMobilePhone()."','".$this->getHomePhone()."','".$this->getGender()."','".$this->getEmail()."','".$rows['branchId']."');";
-        $personID = "SELECT id FROM person WHERE firstName='".$this->getFirstName()."' AND lastName='".$this->getLastName()."' AND mobilePhone='".$this->getMobilePhone()."'";
-        $typeid   = "SELECT id FROM type WHERE name='".$this->getusertype()."'";
-        $sql .="INSERT INTO employee(personId,typeId,userName,password,dateAdded)VALUES(($personID),($typeid),'".$this->getusername()."','".$this->getpassword()."','".$this->getdateadded()."');";
-        if ($db->multiinsert($sql)) {
-
+        $sql2 = "SELECT id FROM employee WHERE userName='".$this->userName."' AND password='".$this->password."';";
+        if($eid=$db->select($sql2)) {
+            $this->setId($eid['id']);
+            $db->closeconn();
             return true;
-        } else {
-
+        }
+        else
+        {
             return false;
         }
     }
-
-   
-
-	public static function login($username,$password)
-	{
-		$query="SELECT id FROM employee WHERE userName='".$username."' AND password= '".$password."';";
-		$db = new database();
-		$row = $db->select($query);
-
-		if ($row != NULL) {
-
-			$_SESSION['id'] = $row['id'];
-			return true;
-		} else {
-			return FALSE;
-
-		}
-	}
-
-	
 }

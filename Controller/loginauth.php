@@ -8,11 +8,11 @@ if (isset($_GET['login']))
 	if (employee::login($username,$password))
 	{
 		
-		header("Location:../index.php");
+		header("Location:../views/index.php");
 	}
 	else 
 	{
-		echo "<script> window.location.href='../login.php';</script>";
+		echo "<script> window.location.href='../views/login.php';</script>";
 		echo "<script>alert('Invalid UserName or Password')</script>";
 
 	}
@@ -20,7 +20,7 @@ if (isset($_GET['login']))
 }
 if(!isset($_SESSION['id']))
 {
-	echo "<script> window.location.href='login.php';</script>";
+	echo "<script> window.location.href='views/login.php';</script>";
 }
 
 ?>
