@@ -7,7 +7,8 @@ class system
 {
     private $gyms;
 
-    function __construct() {
+    function __construct()
+    {
         $this->gyms = array();
     }
 
@@ -21,55 +22,55 @@ class system
         $this->gyms[] = $gyms;
     }
 
-    public static function addGym($employee,$gymName,$branchCity,$branchAddress)
+    public static function addGym($employee, $gymName, $branchCity, $branchAddress)
     {
+        $db = new database();
+
+        $ValidateSql="select id  from gym where name='".$gymName."';";
+        $gymnames=$db->select($ValidateSql);
+        if($gymnames!=NULL)
+        {
+            return false;
+        }
         $gym = new gym();
         $branch = new branch();
-        $db = new database();
-        $branch->setCity($db->getMysqli()->real_escape_string($branchCity));
-        $branch->setAddress($db->getMysqli()->real_escape_string($branchAddress));
+        $branch->setCity($branchCity);
+        $branch->setAddress($branchAddress);
         $gymName = $db->getMysqli()->real_escape_string($gymName);
         $sql = "INSERT INTO gym (name) VALUE ('$gymName');";
         if ($db->insert($sql)) {
-            $sql2 = "SELECT id FROM gym WHERE name = '".$gymName."';";
+            $sql2 = "SELECT id FROM gym WHERE name = '" . $gymName . "';";
             $gid = $db->select($sql2);
-            if($gid!=NULL) {
+            if ($gid != NULL) {
                 $gym->setId($gid['id']);
-                if($gym->addBranch($branch))
-                {
-                    if($branch->addemployee($employee,'-1'))
-                    {
-                        $sql3="UPDATE gym SET ownerId='".$employee->getId()."' WHERE id='".$gym->getId()."';";
-                        if($db->insert($sql3)) {
+                if ($gym->addBranch($branch)) {
+                    if ($branch->addemployee($employee, '-1')) {
+                        $sql3 = "UPDATE gym SET ownerId='" . $employee->getId() . "' WHERE id='" . $gym->getId() . "';";
+                        if ($db->insert($sql3)) {
                             $db->closeconn();
                             return true;
-                        }
-                        else
-                        {
+                        } else {
                             return false;
                         }
-                    }
-                    else
-                    {
+                    } else {
                         return false;
                     }
-                }
-                else {
+                } else {
                     return false;
                 }
-            }
-            else {
+            } else {
                 return false;
             }
-        }
-        else {
+        } else {
             return false;
         }
     }
+
     public function deleteGym($id)
     {
 
     }
+
     public function getGymsInfo()
     {
 

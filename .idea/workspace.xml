@@ -2,98 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Model/page.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/activecontractreports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/activecontracts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/addcontract.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/addemployee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/addmember.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/branch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/contracts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/delete.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/departments.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/editcontract.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/editemployee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/editmember.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/employees.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/expiredcontractreports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/expiredcontracts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/membercontract.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/members.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/myprofile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/package.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/paymentmethod.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/reception.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/register.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/sales.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/salesreports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/trainerreports.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/trainers.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/viewcontract.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/viewemployee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/viewmember.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/viewnotification.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/messi5.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/controllingbranch.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/controllingemployee.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/controllingmember.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/controllingowner.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/system_controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/controllingpayment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/controllingusertype.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/loginauth.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/loginauth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GYM.clpprj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GYM_clcs.csprj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gym-system" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/system_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/system_controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/employee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/gym.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/gym.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/member.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/pages.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/paymentmethod.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/person.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/person.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/system.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/system.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/usertype.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/usertype.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/activecontractreports.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/activecontracts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addcontract.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addemployee.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/addmember.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/branch.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/delete.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/departments.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editcontract.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editemployee.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editmember.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/employees.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/expiredcontractreports.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/expiredcontracts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/membercontract.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/members.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myprofile.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notifications.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paymentmethod.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reception.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sales.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesreports.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trainerreports.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trainers.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewcontract.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewemployee.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewmember.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewnotification.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

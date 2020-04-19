@@ -82,6 +82,8 @@ class gym
     {
 
         $db = new database();
+        $branch->setCity($db->getMysqli()->real_escape_string($branch->getCity()));
+        $branch->setAddress($db->getMysqli()->real_escape_string($branch->getAddress()));
         $sql="INSERT INTO branch (city,address,gymId) VALUES ('".$branch->getCity()."','".$branch->getAddress()."','".$this->id."')";
         if($db->insert($sql)) {
 

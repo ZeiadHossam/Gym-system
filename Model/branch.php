@@ -76,6 +76,18 @@ class branch
     public function addemployee($employee, $Bid)
     {
         $db = new database();
+        $usernamesql="select id  from employee where userName='".$employee->getUserName()."';";
+        $usernames=$db->select($usernamesql);
+        if($usernames!=NULL)
+        {
+            return false;
+        }
+        $emailandphonesql="select id  from person where email='".$employee->getEmail()."' AND  mobilePhone='".$employee->getMobilePhone()."';";
+        $employeedata=$db->select($emailandphonesql);
+        if($employeedata!=NULL)
+        {
+            return false;
+        }
         $employee->setUserName($db->getMysqli()->real_escape_string($employee->getUserName()));
         $employee->setPassword($db->getMysqli()->real_escape_string($employee->getPassword()));
         $employee->setEmail($db->getMysqli()->real_escape_string($employee->getEmail()));

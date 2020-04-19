@@ -20,7 +20,7 @@
         <div class="card-body ">
             <p class="login-box-msg">Register a new owner</p>
 
-            <form action="../Controller/system_controller.php" method="get">
+            <form action="../Controller/system_controller.php" enctype="multipart/form-data"  method="POST">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
@@ -62,9 +62,8 @@
 
                             </div>
                             <div class="input-group mb-3">
-                                <input  type="text" name="dateadded" placeholder="  dateAdded"
-                                        onfocus="(this.type='date')"
-                                        onblur="(this.type='text')">
+                                <input name="image" class="form-control-file" type="file"
+                                                  id="image" accept="image/gif, image/jpeg, image/png"  required/>
 
                             </div>
                             <div class="input-group mb-3">
