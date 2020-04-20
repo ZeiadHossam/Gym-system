@@ -95,6 +95,9 @@ class system
             $gym->setGymName($gymdata['name']);
         }
             $gym->getallbranches();
+            $gym->getallpaymentmethod();
+            $gym->getalldepartments();
+            $gym->getallpackage();
 
         return $gym;
     }

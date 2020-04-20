@@ -36,9 +36,9 @@ class userType
         return $this->pages;
     }
 
-    public function setPages($pages)
+    public function setPages($Pid,$pages)
     {
-        $this->pages[] = $pages;
+        $this->pages[$Pid] = $pages;
     }
 
 }

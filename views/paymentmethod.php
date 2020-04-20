@@ -1,4 +1,4 @@
-<?php include("../shared/main.php") ?>
+<?php include("../shared/main.php"); ?>
 
 <section class="content">
 
@@ -27,14 +27,19 @@
         <table id="custTable" class="addmembertable table table-bordered table-striped">
             <thead>
             <tr>
+                <th>Id</th>
                 <th>Method</th>
-
                 <th>Actions</th>
+
             </tr>
             </thead>
             <tbody>
+            <?php
+            foreach ($gym->getPaymentMethods() as $paymentMethod) {
+            ?>
             <tr>
-                <td>Visa</td>
+                <td><?php echo $paymentMethod->getId();?></td>
+                <td><?php echo $paymentMethod->getName();?></td>
 
                 <td>
                     <div class="btn-group tablebuttons">
@@ -46,19 +51,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td>Cash</td>
-
-                <td>
-                    <div class="btn-group tablebuttons">
-                        <button type="button" class="btn btn-info">Edit
-
-                        </button>
-
-                        <button type="button" class="btn btn-danger btn-sm ">Delete</button>
-                    </div>
-                </td>
-            </tr>
+<?php }?>
             </tbody>
         </table>
 

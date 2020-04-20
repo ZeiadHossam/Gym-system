@@ -1,4 +1,4 @@
-<?php include ("../shared/main.php")?>
+<?php include ("../shared/main.php");?>
 <section class="content">
  
         <div class="container-fluid">
@@ -44,14 +44,17 @@
 			<table id="custTable" class="addmembertable table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th>Package</th>
+						<th>Type</th>
 						
 					    <th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
+                <?php
+                foreach ($gym->getUserTypes() as $department) {
+                ?>
 					<tr>
-						<td>Department1</td>
+						<td><?php echo $department->getName();?></td>
 						
 						<td>
 							 <div class="btn-group tablebuttons">
@@ -63,19 +66,7 @@
                             </div>
 						</td>
 					</tr>
-					<tr>
-						<td>Department2</td>
-						
-						<td>
-							 <div class="btn-group tablebuttons">
-                                <button type="button" class="btn btn-info">Edit
-                                
-                                </button>
-                                
-                                <button type="button" class="btn btn-danger btn-sm ">Delete</button>
-                            </div>
-						</td>
-					</tr>
+     <?php }?>
 				</tbody>
 			</table>
 
@@ -85,4 +76,4 @@
 				  
  </div>			
 </section>
-<?php include ("../shared/footer.php")?>
+<?php include ("../shared/footer.php");?>
