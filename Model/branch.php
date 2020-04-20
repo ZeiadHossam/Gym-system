@@ -116,10 +116,13 @@ class branch
     public function checkEmpDataAvailability($employee)
     {
         $db = new database();
+        $employee->setUserName($db->getMysqli()->real_escape_string($employee->getUserName()));
         $usernamesql="select id  from employee where userName='".$employee->getUserName()."';";
         $usernames=$db->select($usernamesql);
+        $employee->setEmail($db->getMysqli()->real_escape_string($employee->getEmail()));
         $emailsql="select id  from person where email='".$employee->getEmail()."';";
         $emails=$db->select($emailsql);
+        $employee->setMobilePhone($db->getMysqli()->real_escape_string($employee->getMobilePhone()));
         $phonesql="select id  from person where mobilePhone='".$employee->getMobilePhone()."';";
         $phones=$db->select($phonesql);
         if($usernames!=NULL)

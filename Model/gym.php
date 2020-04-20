@@ -96,7 +96,7 @@ class gym
             if ($db->selectId($branch, "branch")) {
 
 
-                $this->setBranchs($branch);
+                $this->setBranchs(0,$branch);
                 $db->closeconn();
                 return true;
             } else {

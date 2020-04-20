@@ -59,6 +59,7 @@ class system
     public function checkGymAvailability($gymname)
     {
         $db = new database();
+        $gymname = $db->getMysqli()->real_escape_string($gymname);
         $ValidateSql = "select id  from gym where name='" . $gymname . "';";
         $gymnames = $db->select($ValidateSql);
         if ($gymnames != NULL) {

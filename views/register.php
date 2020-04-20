@@ -3,8 +3,7 @@
 <head>
     <?php
     session_start();
-    if(!isset($_SESSION['id'])||$_SESSION['id']!=-1)
-    {
+    if (!isset($_SESSION['id']) || $_SESSION['id'] != -1) {
         echo "<script> window.location.href='login.php';</script>";
     }
     ?>
@@ -12,104 +11,142 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>new owner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../public/css/pages/Forms.css">
     <link rel="stylesheet" href="../public/css/all.min.css">
     <link rel="stylesheet" href="../public/css/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/adminlte.min.css">
+    <link rel="stylesheet" href="../public/css/pages/Forms.css">
 </head>
 <body class="hold-transition register-page">
-<div class="">
+<div class="registerForm">
     <div class="register-logo">
-        <b>New</b>Owner
+        <b>New</b> GYM
     </div>
 
     <div class="card">
         <div class="card-body ">
-            <p class="login-box-msg">Register a new owner</p>
+            <p class="login-box-msg">Register a new Gym-System</p>
 
-            <form action="../Controller/system_controller.php" enctype="multipart/form-data"  method="POST">
+            <form action="../Controller/system_controller.php"
+                  enctype="multipart/form-data" method="POST" onsubmit="return submitRegister()">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
 
-
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="fname" placeholder="First Name" required>
-
-                </div>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
-
-                </div>
-                <div class="input-group mb-3">
-                    <input type="number" MAXLENGTH="11" class="form-control" name="mobilephone" placeholder="mobile phone" required>
-
-                </div>
-                <div class="input-group mb-3">
-                    <input type="number" MAXLENGTH="8" class="form-control" name="homephone" placeholder="home phone" required>
-
-                </div>
-                <div class="input-group mb-3">
-                    <input type="email" class="form-control" name="email" placeholder="Email" required>
-
-                </div>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="username" placeholder="userName" required>
-
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="password" class="form-control" name="password" placeholder="password" required>
-
+                                <input type="text" onfocusout="validate_firstname()" class="form-control"
+                                       id="firstName" name="fname" placeholder="*First Name">
                             </div>
 
+                            <span class="message" id="firstName_message"></span>
+
                             <div class="input-group mb-3">
-                                <input  type="text"  name="birthday" placeholder="  BirthDay"
-                                        onfocus="(this.type='date')"
-                                        onblur="(this.type='text')">
+                                <input type="text" onfocusout="validate_lastname()" class="form-control"
+                                       id="lastName" name="lname" placeholder="*Last Name">
+                            </div>
+
+                            <span class="message" id="lastName_message"></span>
+
+                            <div class="input-group mb-3">
+                                <input type="text" onkeypress="return onlyNumberKey(event)"
+                                       onfocusout="validate_mobilePhone()" id="mobilePhone"
+                                       MAXLENGTH="11" class="form-control" name="mobilephone"
+                                       placeholder="*mobile phone">
 
                             </div>
+                            <span class="message" id="mobilePhone_message"></span>
+
                             <div class="input-group mb-3">
-                                <input name="image" class="form-control-file" type="file"
-                                                  id="image" accept="image/gif, image/jpeg, image/png"  />
+                                <input type="text" onkeypress="return onlyNumberKey(event)"
+                                       onfocusout="validate_homePhone()" id="homePhone" MAXLENGTH="8" class="form-control"
+                                       name="homephone"
+                                       placeholder="home phone">
 
                             </div>
+                            <span class="message" id="homePhone_message"></span>
                             <div class="input-group mb-3">
-                                <input type="radio" name="gender" value="male" required> Male
-                                <input type="radio" name="gender" value="female"> Female
+                                <input type="email" class="form-control" onkeyup="validate_email_input()"
+                                       onfocusout="validate_email()" id="email" name="email" placeholder="*Email">
+
+                            </div>
+                            <span class="message" id="email_message"></span>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" onfocusout="validate_userName()" id="userName"
+                                       name="username" placeholder="*Username">
+
+                            </div>
+                            <span class="message" id="userName_message"></span>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" onfocusout="validate_password()" id="password"
+                                       name="password" placeholder="*Password">
+
+                            </div>
+                            <span class="message" id="password_message"></span>
+
+                            <div class="input-group mb-3">
+                                <input type="text" id="birthDate" name="birthday" placeholder="  *BirthDay"
+                                       onfocus="(this.type='date')"
+                                       onblur="(this.type='text');validate_date()">
+
+                            </div>
+                            <span class="message" id="birthDate_message"></span>
+
+                            <div class="mb-3">
+                                <label>*Gender:</label>
+
+                                <input type="radio" class="gender" name="gender" value="male"> <label >Male</label>
+
+                                <input type="radio" class="gender" name="gender" value="female"> <label >Female</label>
 
 
                             </div>
+                            <span class="message" id="gender_message"></span>
+
                         </div>
 
                         <div class="col-md-6">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="gymname" placeholder="GymName" required>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" onfocusout="validate_gymName()" id="gymName"
+                                       name="gymname" placeholder="*Gym name">
 
-                </div>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="branchcity" placeholder="branchCity" required>
+                            </div>
+                            <span class="message" id="gymName_message"></span>
 
-                </div>
-                <div class="input-group mb-3">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" onfocusout="validate_branchCity()" id="branchCity"
+                                       name="branchcity" placeholder="*Branch city">
 
-                    <input type="text" class="form-control" name="branchaddress" placeholder="branchaddress" required>
+                            </div>
+                            <span class="message" id="branchCity_message"></span>
 
-                </div>
+                            <div class="input-group mb-3">
 
+                                <input type="text" class="form-control" onfocusout="validate_branchAddress()"
+                                       id="branchAddress" name="branchaddress"
+                                       placeholder="*Branch address">
+
+                            </div>
+                            <span class="message" id="branchAddress_message"></span>
+
+                            <div class="input-group mb-3">
+                                <label>Personal Image:</label>
+                                <input name="image" class="form-control-file" type="file" onchange="showImage(this);"
+                                       id="image" accept="image/gif, image/jpeg, image/png"/>
+                                <img id="personalImage" src="http://placehold.it/180"  />
+                            </div>
+                        </div>
                     </div>
-                    </div>
 
 
-                <div class="row">
-                    <div class="col-8">
+                    <div class="row">
+                        <div class="col-8">
 
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" name="addowner" class="btn btn-primary btn-block">Register</button>
+                        </div>
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" name="addowner" class="btn btn-primary btn-block">Register</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
 
                 </div>
             </form>
@@ -118,6 +155,11 @@
     </div><!-- /.card -->
 </div>
 <!-- /.register-box -->
+<script src="../public/plugins/jquery/jquery.min.js"></script>
+
+<script src="../public/js/pages/employeeform.js"></script>
+<script src="../public/js/pages/systemform.js"></script>
+<script> maximumDate();</script>
 
 
 </body>
