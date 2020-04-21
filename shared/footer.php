@@ -24,8 +24,10 @@
 <script src="../public/js/pages/main.js"></script>
 <script src="../public/plugins/sweetalert2/sweetalert2.min.js"> </script>
 <script src="../public/plugins/toastr/toastr.min.js"> </script>
-<script src="../public/js/pages/buttons.js"></script>
+<script src="../public/js/pages/toasters.js"></script>
 <script src="../public/js/pages/branch.js"></script>
+<script src="../public/js/pages/branchform.js"></script>
+<script src="../public/js/pages/departmentForm.js"></script>
 <script src="../public/js/pages/department.js"></script>
 
 </body>

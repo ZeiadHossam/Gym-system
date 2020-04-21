@@ -1,7 +1,7 @@
 <?php
+include_once ("ICheckAvailability.php");
 
-
-class userType
+class userType implements ICheckAvailability
 {
     private $id;
     private $name;
@@ -40,5 +40,19 @@ class userType
     {
         $this->pages[$Pid] = $pages;
     }
+    public function checkifavailable()
+    {
+        $db = new database();
+        $this->setName($db->getMysqli()->real_escape_string($this->getName()));
+        $depSql="select id  from type where name='".$this->getName()."';";
+        $departments=$db->select($depSql);
+        if($departments!=NULL)
+        {
+            $db->closeconn();
+            return '1';
+        }
+        $db->closeconn();
+        return '0';
 
+    }
 }

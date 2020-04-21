@@ -2,8 +2,9 @@
 include_once 'person.php';
 include_once 'database.php';
 include_once 'userType.php';
+include_once 'ICheckAvailability.php';
 
-class employee extends person
+class employee extends person implements ICheckAvailability
 {
     private $id;
     private $userName;
@@ -79,6 +80,7 @@ class employee extends person
         }
         else
         {
+            $db->closeconn();
             return false;
         }
     }
@@ -89,13 +91,47 @@ class employee extends person
         $row = $db->select($query);
 
         if ($row != NULL) {
-
+            $db->closeconn();
             return $row;
          } else {
+            $db->closeconn();
             return NULL;
 
         }
     }
 
+    public function checkifavailable()
+    {
+        $db = new database();
+        $this->setUserName($db->getMysqli()->real_escape_string($this->getUserName()));
+        $usernamesql="select id  from employee where userName='".$this->getUserName()."';";
+        $usernames=$db->select($usernamesql);
+        if($usernames!=NULL)
+        {
+            $db->closeconn();
+            return '1';
+        }
+        $this->setEmail($db->getMysqli()->real_escape_string($this->getEmail()));
+        $emailsql="select id  from person where email='".$this->getEmail()."';";
+        $emails=$db->select($emailsql);
+        if($emails!=NULL)
+        {
+            $db->closeconn();
+            return '2';
+        }
+        $this->setMobilePhone($db->getMysqli()->real_escape_string($this->getMobilePhone()));
+        $phonesql="select id  from person where mobilePhone='".$this->getMobilePhone()."';";
+        $phones=$db->select($phonesql);
+        if($phones!=NULL)
+        {
+            $db->closeconn();
+            return '3';
+        }
+        $db->closeconn();
+            return '0';
+
+
+
+    }
 
 }

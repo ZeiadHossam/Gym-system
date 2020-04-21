@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="../public/css/pages/tables.css">
     <link rel="stylesheet" href="../public/css/pages/Forms.css">
 	<link rel="stylesheet" href="../public/plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="../public/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

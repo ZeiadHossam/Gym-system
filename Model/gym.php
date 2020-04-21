@@ -100,9 +100,11 @@ class gym
                 $db->closeconn();
                 return true;
             } else {
+                $db->closeconn();
                 return false;
             }
         } else {
+            $db->closeconn();
             return false;
         }
     }
@@ -118,16 +120,12 @@ class gym
             $db->closeconn();
             return true;
         } else {
+            $db->closeconn();
             return false;
         }
 
     }
 
-    public function deleteBranch($id)
-    {
-        //delete all branch details
-
-    }
 
     public function getallbranches()
     {
@@ -185,6 +183,7 @@ class gym
                 }
             }
         }
+        $db->closeconn();
         return false;
 
     }

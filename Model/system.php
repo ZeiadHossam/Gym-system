@@ -39,21 +39,14 @@ class system
                         if ($db->insert($sql3)) {
                             $db->closeconn();
                             return true;
-                        } else {
-                            return false;
                         }
-                    } else {
-                        return false;
                     }
-                } else {
-                    return false;
                 }
-            } else {
-                return false;
             }
-        } else {
-            return false;
         }
+        //delete gym
+        $db->closeconn();
+        return false;
     }
 
     public function checkGymAvailability($gymname)
@@ -63,8 +56,10 @@ class system
         $ValidateSql = "select id  from gym where name='" . $gymname . "';";
         $gymnames = $db->select($ValidateSql);
         if ($gymnames != NULL) {
+            $db->closeconn();
             return false;
         }
+        $db->closeconn();
         return true;
 
     }

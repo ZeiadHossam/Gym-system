@@ -1,7 +1,8 @@
 <?php
 include_once 'employee.php';
+include_once 'ICheckAvailability.php';
 
-class branch
+class branch implements ICheckAvailability
 {
     private $id;
     private $city;
@@ -106,41 +107,28 @@ class branch
                 }
                 else
                 {
+                    $db->closeconn();
                     return false;
                 }
             } else {
+                $db->closeconn();
                 return false;
             }
         }
     }
-    public function checkEmpDataAvailability($employee)
+    public function checkifavailable()
     {
         $db = new database();
-        $employee->setUserName($db->getMysqli()->real_escape_string($employee->getUserName()));
-        $usernamesql="select id  from employee where userName='".$employee->getUserName()."';";
-        $usernames=$db->select($usernamesql);
-        $employee->setEmail($db->getMysqli()->real_escape_string($employee->getEmail()));
-        $emailsql="select id  from person where email='".$employee->getEmail()."';";
-        $emails=$db->select($emailsql);
-        $employee->setMobilePhone($db->getMysqli()->real_escape_string($employee->getMobilePhone()));
-        $phonesql="select id  from person where mobilePhone='".$employee->getMobilePhone()."';";
-        $phones=$db->select($phonesql);
-        if($usernames!=NULL)
+        $this->setCity($db->getMysqli()->real_escape_string($this->getCity()));
+        $this->setAddress($db->getMysqli()->real_escape_string($this->getAddress()));
+        $branchsql="select id  from branch where address='".$this->getAddress()."' AND city='".$this->getCity()."';";
+        $branches=$db->select($branchsql);
+        if($branches!=NULL)
         {
+            $db->closeconn();
             return '1';
         }
-
-        elseif($emails!=NULL)
-        {
-            return '2';
-        }
-        elseif($phones!=NULL)
-        {
-            return '3';
-        }
-        else
-        {
-            return '0';
-        }
+        $db->closeconn();
+        return '0';
     }
 }

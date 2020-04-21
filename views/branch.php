@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <br>
 
-        <form role="form" action="../Controller/branch_controller.php" method="get">
+        <form role="form" action="../Controller/branch_controller.php" method="get" onsubmit="return validate_branchData()">
 
             <div class="card-body">
                 <div class="form-group row">
@@ -14,12 +14,13 @@
                             ?>
                             <input type="text" name="branchEditId"
                                    value="<?php echo $gym->getBranchs()[$_GET['branchEditId']]->getId() ?>" hidden>
-                            <input type="Text" name="branchCity" class="form-control"
-                                   value="<?php echo $gym->getBranchs()[$_GET['branchEditId']]->getCity() ?>" required>
+                            <input type="Text" id="branchCity" name="branchCity" onfocusout="validate_branchCity()" class="form-control"
+                                   value="<?php echo $gym->getBranchs()[$_GET['branchEditId']]->getCity() ?>" >
                         <?php } else {
                             ?>
-                            <input type="Text" name="branchCity" class="form-control" required>
+                            <input type="Text" id="branchCity" name="branchCity" class="form-control" onfocusout="validate_branchCity()" >
                         <?php } ?>
+                        <span class="message" id="branchCity_message"></span>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -27,13 +28,14 @@
                     <div class="col-sm-10">
                         <?php if (isset($_GET['branchEditId'])) {
                             ?>
-                            <input type="Text" name="branchAddress" class="form-control"
+                            <input type="Text" name="branchAddress" onfocusout="validate_branchAddress()" class="form-control" id="branchAddress"
                                    value="<?php echo $gym->getBranchs()[$_GET['branchEditId']]->getAddress(); ?>"
-                                   required>
+                                   >
                         <?php } else {
                             ?>
-                            <input type="Text" name="branchAddress" class="form-control" required>
+                            <input type="Text" id="branchAddress"  onfocusout="validate_branchAddress()" name="branchAddress" class="form-control" >
                         <?php } ?>
+                        <span class="message" id="branchAddress_message"></span>
 
                     </div>
                 </div>

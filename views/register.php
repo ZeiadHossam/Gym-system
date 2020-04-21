@@ -6,6 +6,7 @@
     if (!isset($_SESSION['id']) || $_SESSION['id'] != -1) {
         echo "<script> window.location.href='login.php';</script>";
     }
+
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="../public/css/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/adminlte.min.css">
     <link rel="stylesheet" href="../public/css/pages/Forms.css">
+    <link rel="stylesheet" href="../public/plugins/toastr/toastr.min.css">
 </head>
 <body class="hold-transition register-page">
 <div class="registerForm">
@@ -57,7 +59,8 @@
 
                             <div class="input-group mb-3">
                                 <input type="text" onkeypress="return onlyNumberKey(event)"
-                                       onfocusout="validate_homePhone()" id="homePhone" MAXLENGTH="8" class="form-control"
+                                       onfocusout="validate_homePhone()" id="homePhone" MAXLENGTH="8"
+                                       class="form-control"
                                        name="homephone"
                                        placeholder="home phone">
 
@@ -76,7 +79,8 @@
                             </div>
                             <span class="message" id="userName_message"></span>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" onfocusout="validate_password()" id="password"
+                                <input type="password" class="form-control" onfocusout="validate_password()"
+                                       id="password"
                                        name="password" placeholder="*Password">
 
                             </div>
@@ -93,9 +97,9 @@
                             <div class="mb-3">
                                 <label>*Gender:</label>
 
-                                <input type="radio" class="gender" name="gender" value="male"> <label >Male</label>
+                                <input type="radio" class="gender" name="gender" value="male"> <label>Male</label>
 
-                                <input type="radio" class="gender" name="gender" value="female"> <label >Female</label>
+                                <input type="radio" class="gender" name="gender" value="female"> <label>Female</label>
 
 
                             </div>
@@ -112,7 +116,8 @@
                             <span class="message" id="gymName_message"></span>
 
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" onfocusout="validate_branchCity()" id="branchCity"
+                                <input type="text" class="form-control" onfocusout="validate_branchCity()"
+                                       id="branchCity"
                                        name="branchcity" placeholder="*Branch city">
 
                             </div>
@@ -128,10 +133,28 @@
                             <span class="message" id="branchAddress_message"></span>
 
                             <div class="input-group mb-3">
-                                <label>Personal Image:</label>
-                                <input name="image" class="form-control-file" type="file" onchange="showImage(this);"
-                                       id="image" accept="image/gif, image/jpeg, image/png"/>
-                                <img id="personalImage" src="http://placehold.it/180"  />
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label>Personal Image:</label>
+                                            <input name="image" class="form-control-file" type="file"
+                                                   onchange="showImage(this);"
+                                                   id="image" accept="image/gif, image/jpeg, image/png"/>
+                                            <br>
+                                            <img id="personalImage" src="http://placehold.it/180"/>
+
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Gym logo:</label>
+                                            <input name="gymLogo" class="form-control-file" type="file"
+                                                   onchange="showImage(this);"
+                                                   id="gymLogo" accept="image/gif, image/jpeg, image/png"/>
+                                            <br>
+                                            <img id="gymImage" src="http://placehold.it/100"/>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -156,11 +179,22 @@
 </div>
 <!-- /.register-box -->
 <script src="../public/plugins/jquery/jquery.min.js"></script>
-
+<script src="../public/plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="../public/plugins/toastr/toastr.min.js"></script>
 <script src="../public/js/pages/employeeform.js"></script>
 <script src="../public/js/pages/systemform.js"></script>
+<script src="../public/js/pages/branchform.js"></script>
+<script src="../public/js/pages/toasters.js"></script>
 <script> maximumDate();</script>
-
+<?php
+if (isset($_SESSION['messege'])) {
+    echo "<script> showToasting('" . $_SESSION['messege'] . "',2);</script>";
+    unset($_SESSION['messege']);
+} elseif (isset($_SESSION['errormessege'])) {
+    echo "<script> showToasting('" . $_SESSION['errormessege'] . "',1);</script>";
+    unset($_SESSION['errormessege']);
+}
+?>
 
 </body>
 </html>

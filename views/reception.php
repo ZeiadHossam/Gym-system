@@ -31,9 +31,9 @@
 						<td>30 Days</td>
 						<td>200</td>
 						<td>
-							<div class="btn-group tablebuttons">
-								<button type="button" class="btn btn-success btn-sm toastrDefaultSuccess">Sign-in</button>
-								<a href="viewcontract.php" class="btn btn-secondary btn-sm ">View</a>
+                            <div class="btn-group tablebuttons">
+                                <button type="button" onclick="showToasting('Signed-In Successfully',0)" class="btn btn-success btn-sm ">Sign-in</button>
+                                <a href="viewcontract.php" class="btn btn-secondary btn-sm ">View</a>
 							</div>
 						</td>
 					</tr>
@@ -48,7 +48,7 @@
 						<td>150</td>
 						<td>
 							<div class="btn-group tablebuttons">
-								<button type="button" class="btn btn-success btn-sm toastrDefaultSuccess">Sign-in</button>
+								<button type="button" onclick="showToasting('Already Signed-In today',2)" class="btn btn-success btn-sm ">Sign-in</button>
 								<a href="viewcontract.php" class="btn btn-secondary btn-sm ">View</a>
 							</div>
 						</td>

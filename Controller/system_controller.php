@@ -2,7 +2,7 @@
 include_once '../Model/system.php';
 include_once '../Model/employee.php';
 if (isset($_POST['addowner'])) {
-
+    session_start();
     $system = new system();
     $gymName = htmlentities($_POST['gymname']);
     $branch = new branch();
@@ -13,16 +13,19 @@ if (isset($_POST['addowner'])) {
     $employee->setusername(htmlentities($_POST['username']));
     $employee->setMobilePhone(htmlentities($_POST['mobilephone']));
     if (!$system->checkGymAvailability($gymName)) {
-        echo "<script> alert('Gym name already exist');</script>";
+        $_SESSION['messege']="Gym name already exist";
         echo "<script> window.location.href='javascript:history.go(-1)';</script>";
-    } elseif ($branch->checkEmpDataAvailability($employee) == '1') {
-        echo "<script> alert('Username already exist');</script>";
+    } elseif ($employee->checkifavailable() == '1') {
+        $_SESSION['messege']="Username already exist";
         echo "<script> window.location.href='javascript:history.go(-1)';</script>";
-    }elseif ($branch->checkEmpDataAvailability($employee) == '2') {
-        echo "<script> alert('Email already exist');</script>";
+    }elseif ($employee->checkifavailable() == '2') {
+        $_SESSION['messege']="Email already exist";
         echo "<script> window.location.href='javascript:history.go(-1)';</script>";
-    }elseif ($branch->checkEmpDataAvailability($employee) == '3') {
-        echo "<script> alert('Mobile Phone already exist');</script>";
+    }elseif ($employee->checkifavailable() == '3') {
+        $_SESSION['messege']="Mobile Phone already exist";
+        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+    }elseif ($branch->checkifavailable() == '1') {
+        $_SESSION['messege']="This branch already exist";
         echo "<script> window.location.href='javascript:history.go(-1)';</script>";
     } else {
         $employee->setFirstName(htmlentities($_POST['fname']));
@@ -42,7 +45,8 @@ if (isset($_POST['addowner'])) {
         if ($system->addgym($employee, $gymName, $branch)) {
             echo "<script> window.location.href='../views/login.php';</script>";
         } else {
-            echo "<script> alert('Cannot add member');</script>";
+            $_SESSION['errormessege']="There was a problem while Adding your system";
+            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
         }
     }
 }

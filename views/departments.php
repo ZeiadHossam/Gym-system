@@ -3,7 +3,7 @@
 
         <div class="container-fluid">
             <br>
-						<form role="form" action="../Controller/usertype_controller.php" method="get">
+						<form role="form" action="../Controller/usertype_controller.php" onsubmit="return validate_depData()" method="get">
                 <div class="card-body">
 				<div class="form-group row">
                     <label for="Department Name" class="col-sm-2 col-form-label">Department Name:</label>
@@ -13,10 +13,12 @@
                             ?>
                              <input type="text" name="depEditId"
                                    value="<?php echo $gym->getUserTypes()[$_GET['depEditId']]->getId()  ?>" hidden>
-                        <input type="Text" name="depName" class="form-control" value="<?php echo $gym->getUserTypes()[$_GET['depEditId']]->getName() ?>" required>
+                        <input type="Text" id="depName" name="depName" class="form-control" value="<?php echo $gym->getUserTypes()[$_GET['depEditId']]->getName() ?>" >
                         <?php } else{?>
-                            <input type="Text" name="depName" class="form-control" required>
+                            <input type="Text" id="depName" name="depName" class="form-control" >
                         <?php } ?>
+                        <span class="message" id="depName_message"></span>
+
                     </div>
                   </div>
 				  <div class="form-group row">
@@ -40,7 +42,9 @@
 				  <br>
 				  <input class="form-check-input"  name="reportsCheck"  <?php if (isset($_GET['depEditId'])&& $gympages[7]->get_access()==1){ ?> checked <?php }?> type="checkbox">Reports
 				  </div>
-				  </div>
+                      <span class="message" id="depboxes_message"></span>
+
+                  </div>
 				  </div>
 				   <div class="btn-group tablebuttons">
                                 <button type="submit" name="addDepartment" class="btn btn-success btn-flat ">Confirm</button>
