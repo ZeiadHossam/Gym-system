@@ -7,6 +7,17 @@ $gym=unserialize($_SESSION['Gym']);
 
 if(isset($_GET['depEditId'])&&isset($_GET['addDepartment']))
 {
+    $gym->getUserTypes()[$_GET['depEditId']]->setName(htmlentities($_GET['depName']));
+    $gym->getUserTypes()[$_GET['depEditId']]->getPages()[1]->set_access(isset($_GET['receptionCheck']) ? 1 : 0);
+    $gym->getUserTypes()[$_GET['depEditId']]->getPages()[2]->set_access(isset($_GET['notificationCheck']) ? 1 : 0);
+    $gym->getUserTypes()[$_GET['depEditId']]->getPages()[3]->set_access(isset($_GET['membersCheck']) ? 1 : 0);
+    $gym->getUserTypes()[$_GET['depEditId']]->getPages()[4]->set_access(isset($_GET['employeesCheck']) ? 1 : 0);
+    $gym->getUserTypes()[$_GET['depEditId']]->getPages()[5]->set_access(isset($_GET['contractsCheck']) ? 1 : 0);
+    $gym->getUserTypes()[$_GET['depEditId']]->getPages()[6]->set_access(isset($_GET['adminCheck']) ? 1 : 0);
+    $gym->getUserTypes()[$_GET['depEditId']]->getPages()[7]->set_access(isset($_GET['reportsCheck']) ? 1 : 0);
+    $gym->editDepartment($_GET['depEditId']);
+    echo "<script> window.location.href='../views/departments.php';</script>";
+
 }
 elseif (isset($_GET['depDeleteId']))
 {

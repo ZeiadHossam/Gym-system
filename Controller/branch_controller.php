@@ -4,11 +4,10 @@ include_once ('../model/gym.php');
 session_start();
 if(isset($_GET['branchEditId'])&&isset($_GET['addbranch']))
 {
-    $branch=new branch();
-    $branch->setCity(htmlentities($_GET['branchCity']));
-    $branch->setAddress(htmlentities($_GET['branchAddress']));
     $gym=unserialize($_SESSION['Gym']);
-    $gym->editBranch($_GET['branchEditId'],$branch);
+    $gym->getBranchs()[$_GET['branchEditId']]->setCity(htmlentities($_GET['branchCity']));
+    $gym->getBranchs()[$_GET['branchEditId']]->setAddress(htmlentities($_GET['branchAddress']));
+    $gym->editBranch($_GET['branchEditId']);
     echo "<script> window.location.href='../views/branch.php';</script>";
 }
 elseif (isset($_GET['branchDeleteId']))

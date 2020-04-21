@@ -39,7 +39,7 @@
                 </div>
                 <div class="btn-group tablebuttons">
                     <button type="submit" name="addbranch" class="btn btn-success btn-flat ">Confirm</button>
-                    <button type="reset" <?php if (isset($_GET['branchEditId'])) { ?>  onclick="cancelling()"  <?php } ?>
+                    <button type="reset" <?php if (isset($_GET['branchEditId'])) { ?>  onclick="cancellingBranch()"  <?php } ?>
                             class="btn btn-danger btn-flat ">Clear Fields
                     </button>
 
@@ -69,11 +69,11 @@
 
                         <td>
                             <div class="btn-group tablebuttons">
-                                <button type="button" onclick="editing(<?php echo $branch->getId(); ?>)"
+                                <button type="button" onclick="editingBranch(<?php echo $branch->getId(); ?>)"
                                         class="btn btn-info">Edit
                                 </button>
 
-                                <button type="button" onclick="deleting(<?php echo $branch->getId(); ?>)"
+                                <button type="button" onclick="deletingBranch(<?php echo $branch->getId(); ?>)"
                                         class="btn btn-danger btn-sm ">Delete
                                 </button>
                             </div>

@@ -26,11 +26,7 @@
 <script src="../public/plugins/toastr/toastr.min.js"> </script>
 <script src="../public/js/pages/buttons.js"></script>
 <script src="../public/js/pages/branch.js"></script>
-<script>
-
-	
-</script>
-	
+<script src="../public/js/pages/department.js"></script>
 
 </body>
 </html>

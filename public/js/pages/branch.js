@@ -1,13 +1,13 @@
-function editing(id)
+function editingBranch(id)
 {
     window.location.href='branch.php?branchEditId='+id;
 }
 
-function cancelling() {
+function cancellingBranch() {
     window.location.href='branch.php';
 }
 
-function deleting(id) {
+function deletingBranch(id) {
     window.location.href='../controller/branch_controller.php?branchDeleteId='+id;
 
 }

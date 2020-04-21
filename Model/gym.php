@@ -107,11 +107,11 @@ class gym
         }
     }
 
-    public function editBranch($id, $branch)
+    public function editBranch($id)
     {
         $db = new database();
-        $this->getBranchs()[$id]->setCity($db->getMysqli()->real_escape_string($branch->getCity()));
-        $this->getBranchs()[$id]->setAddress($db->getMysqli()->real_escape_string($branch->getAddress()));
+        $this->getBranchs()[$id]->setCity($db->getMysqli()->real_escape_string($this->getBranchs()[$id]->getCity()));
+        $this->getBranchs()[$id]->setAddress($db->getMysqli()->real_escape_string($this->getBranchs()[$id]->getAddress()));
         $sql = "UPDATE branch SET city='" . $this->getBranchs()[$id]->getCity() . "' , address='" . $this->getBranchs()[$id]->getAddress() . "' WHERE id=" . $this->getBranchs()[$id]->getId();
         if ($db->insert($sql)) {
             $_SESSION['Gym'] = serialize($this);
@@ -175,19 +175,40 @@ class gym
 
                     $sql2 .= "(" . $department->getId() . "," . $page->get_id() . "," . $page->get_access() . "),";
                 }
-                $sql2=trim($sql2,",");
-                $sql2.=";";
+                $sql2 = trim($sql2, ",");
+                $sql2 .= ";";
                 if ($db->insert($sql2)) {
-                        $this->setUserTypes($department->getId(), $department);
-                        $_SESSION['Gym'] = serialize($this);
-                        $db->closeconn();
-                        return true;
+                    $this->setUserTypes($department->getId(), $department);
+                    $_SESSION['Gym'] = serialize($this);
+                    $db->closeconn();
+                    return true;
                 }
             }
         }
         return false;
 
     }
+
+    public function editDepartment($depid)
+    {
+        $db = new database();
+        $this->getUserTypes()[$depid]->setName($db->getMysqli()->real_escape_string($this->getUserTypes()[$depid]->getName()));
+        $sql = "UPDATE type SET name='" . $this->getUserTypes()[$depid]->getName() . "' WHERE id=" . $this->getUserTypes()[$depid]->getId();
+        if ($db->insert($sql)) {
+            $sql2 = "";
+            foreach ($this->getUserTypes()[$depid]->getPages() as $page) {
+                $sql2 .= "UPDATE privilege SET hasAccess=" . $page->get_access() . " WHERE  typeId=" . $depid . " AND pageId=" . $page->get_id() . ";";
+            }
+            if ($db->multiinsert($sql2)) {
+                $_SESSION['Gym'] = serialize($this);
+                $db->closeconn();
+                return true;
+            }
+        }
+
+return false;
+    }
+
 
     public function getalldepartments()
     {
@@ -203,11 +224,10 @@ class gym
             $pagedata = $db->selectArray($pagesql);
             while ($row2 = mysqli_fetch_assoc($pagedata)) {
                 $page = new page();
-                $page->set_id($row2['id']);
+                $page->set_id($row2['pageId']);
                 $page->set_name($row2['name']);
                 $page->set_access($row2['hasAccess']);
-                $department->setPages($row2['id'], $page);
-
+                $department->setPages($row2['pageId'], $page);
             }
             $this->setUserTypes($row['id'], $department);
         }
