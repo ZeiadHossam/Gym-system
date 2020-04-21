@@ -58,7 +58,7 @@ class gym
         return $this->userTypes;
     }
 
-    public function setUserTypes($uid,$userTypes)
+    public function setUserTypes($uid, $userTypes)
     {
         $this->userTypes[$uid] = $userTypes;
     }
@@ -78,7 +78,7 @@ class gym
         return $this->packages;
     }
 
-    public function setPackages($packageid,$packages)
+    public function setPackages($packageid, $packages)
     {
         $this->packages[$packageid] = $packages;
     }
@@ -95,8 +95,8 @@ class gym
 
             if ($db->selectId($branch, "branch")) {
 
-
-                $this->setBranchs(0,$branch);
+                $this->setBranchs($branch->getId(), $branch);
+                $_SESSION['Gym'] = serialize($this);
                 $db->closeconn();
                 return true;
             } else {
@@ -105,6 +105,28 @@ class gym
         } else {
             return false;
         }
+    }
+
+    public function editBranch($id, $branch)
+    {
+        $db = new database();
+        $this->getBranchs()[$id]->setCity($db->getMysqli()->real_escape_string($branch->getCity()));
+        $this->getBranchs()[$id]->setAddress($db->getMysqli()->real_escape_string($branch->getAddress()));
+        $sql = "UPDATE branch SET city='" . $this->getBranchs()[$id]->getCity() . "' , address='" . $this->getBranchs()[$id]->getAddress() . "' WHERE id=" . $this->getBranchs()[$id]->getId();
+        if ($db->insert($sql)) {
+            $_SESSION['Gym'] = serialize($this);
+            $db->closeconn();
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function deleteBranch($id)
+    {
+        //delete all branch details
+
     }
 
     public function getallbranches()
@@ -119,6 +141,8 @@ class gym
             $branch->setAddress($row['address']);
             $this->setBranchs($branch->getId(), $branch);
         }
+        $db->closeconn();
+
     }
 
     public function getallpaymentmethod()
@@ -131,7 +155,38 @@ class gym
             $payment->setId($row['id']);
             $payment->setName($row['name']);
             $this->setPaymentMethods($payment->getId(), $payment);
+
         }
+        $db->closeconn();
+
+    }
+
+    public function addDepartment($department)
+    {
+        $db = new database();
+        $department->setName($db->getMysqli()->real_escape_string($department->getName()));
+
+        $sql = "INSERT INTO type(name,gymId) VALUES('" . $department->getName() . "','" . $this->getId() . "');";
+        $sql2 = "INSERT INTO privilege(typeId,pageId,hasAccess) VALUES";
+        if ($db->insert($sql)) {
+            if ($db->selectId($department, "type")) {
+                foreach ($department->getPages() as $page) {
+                    $page->set_name($db->getMysqli()->real_escape_string($page->get_name()));
+
+                    $sql2 .= "(" . $department->getId() . "," . $page->get_id() . "," . $page->get_access() . "),";
+                }
+                $sql2=trim($sql2,",");
+                $sql2.=";";
+                if ($db->insert($sql2)) {
+                        $this->setUserTypes($department->getId(), $department);
+                        $_SESSION['Gym'] = serialize($this);
+                        $db->closeconn();
+                        return true;
+                }
+            }
+        }
+        return false;
+
     }
 
     public function getalldepartments()
@@ -147,30 +202,34 @@ class gym
             $pagesql = "SELECT * FROM pages INNER JOIN privilege ON privilege.pageId=pages.id WHERE typeId=" . $row['id'];
             $pagedata = $db->selectArray($pagesql);
             while ($row2 = mysqli_fetch_assoc($pagedata)) {
-                $page= new page();
+                $page = new page();
                 $page->set_id($row2['id']);
                 $page->set_name($row2['name']);
                 $page->set_access($row2['hasAccess']);
-                $department->setPages($row2['id'],$page);
+                $department->setPages($row2['id'], $page);
 
             }
-            $this->setUserTypes($row['id'],$department);
+            $this->setUserTypes($row['id'], $department);
         }
+        $db->closeconn();
+
     }
-    public function getallpackage(){
+
+    public function getallpackage()
+    {
         $db = new database();
-        $packagesql="SELECT * FROM featuretype WHERE gymId=" . $this->id;
-        $packagedata=$db->selectArray($packagesql);
+        $packagesql = "SELECT * FROM featuretype WHERE gymId=" . $this->id;
+        $packagedata = $db->selectArray($packagesql);
         while ($row = mysqli_fetch_assoc($packagedata)) {
-            $package=new featuretype();
+            $package = new featuretype();
             $package->setId($row['id']);
             $package->setName($row['name']);
             $package->setPeriod($row['period']);
             $package->setPeriodType($row['type']);
-            $this->setPackages($row['id'],$package);
+            $this->setPackages($row['id'], $package);
         }
 
-
+        $db->closeconn();
 
     }
 }

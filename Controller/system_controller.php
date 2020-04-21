@@ -4,14 +4,14 @@ include_once '../Model/employee.php';
 if (isset($_POST['addowner'])) {
 
     $system = new system();
-    $gymName = $_POST['gymname'];
+    $gymName = htmlentities($_POST['gymname']);
     $branch = new branch();
-    $branch->setCity($_POST['branchcity']);
-    $branch->setAddress($_POST['branchaddress']);
+    $branch->setCity(htmlentities($_POST['branchcity']));
+    $branch->setAddress(htmlentities($_POST['branchaddress']));
     $employee = new employee();
-    $employee->setEmail($_POST['email']);
-    $employee->setusername($_POST['username']);
-    $employee->setMobilePhone($_POST['mobilephone']);
+    $employee->setEmail(htmlentities($_POST['email']));
+    $employee->setusername(htmlentities($_POST['username']));
+    $employee->setMobilePhone(htmlentities($_POST['mobilephone']));
     if (!$system->checkGymAvailability($gymName)) {
         echo "<script> alert('Gym name already exist');</script>";
         echo "<script> window.location.href='javascript:history.go(-1)';</script>";
@@ -25,12 +25,12 @@ if (isset($_POST['addowner'])) {
         echo "<script> alert('Mobile Phone already exist');</script>";
         echo "<script> window.location.href='javascript:history.go(-1)';</script>";
     } else {
-        $employee->setFirstName($_POST['fname']);
-        $employee->setLastName($_POST['lname']);
+        $employee->setFirstName(htmlentities($_POST['fname']));
+        $employee->setLastName(htmlentities($_POST['lname']));
 
-        $employee->setHomePhone($_POST['homephone']);
+        $employee->setHomePhone(htmlentities($_POST['homephone']));
 
-        $employee->setpassword($_POST['password']);
+        $employee->setpassword(htmlentities($_POST['password']));
         $employee->setBirthDay($_POST['birthday']);
         $employee->setdateadded(date("Y-m-d"));
         $employee->setGender($_POST['gender']);

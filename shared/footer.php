@@ -25,6 +25,7 @@
 <script src="../public/plugins/sweetalert2/sweetalert2.min.js"> </script>
 <script src="../public/plugins/toastr/toastr.min.js"> </script>
 <script src="../public/js/pages/buttons.js"></script>
+<script src="../public/js/pages/branch.js"></script>
 <script>
 
 	
