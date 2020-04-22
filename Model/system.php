@@ -22,12 +22,13 @@ class system
         $this->gyms[] = $gyms;
     }
 
-    public static function addGym($employee, $gymName, $branch)
+    public static function addGym($employee, $gymName, $branch,$gymimage)
     {
         $db = new database();
         $gymName = $db->getMysqli()->real_escape_string($gymName);
+        $gymimage = $db->getMysqli()->real_escape_string($gymimage);
         $gym = new gym();
-        $sql = "INSERT INTO gym (name) VALUE ('$gymName');";
+        $sql = "INSERT INTO gym (name,image) VALUE ('$gymName','$gymimage');";
         if ($db->insert($sql)) {
             $sql2 = "SELECT id FROM gym WHERE name = '" . $gymName . "';";
             $gid = $db->select($sql2);

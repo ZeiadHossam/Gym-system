@@ -29,6 +29,7 @@
 <script src="../public/js/pages/branchform.js"></script>
 <script src="../public/js/pages/departmentForm.js"></script>
 <script src="../public/js/pages/department.js"></script>
+<script src="../public/js/pages/payment.js"></script>
 
 </body>
 </html>

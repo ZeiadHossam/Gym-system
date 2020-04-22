@@ -183,12 +183,12 @@ function validate_gender()
     document.getElementById('gender_message').innerHTML = '*Gender is required';
     return false;
 }
-function showImage(input) {
+function showImage(input,id) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#personalImage')
+            $('#'+id)
                 .attr('src', e.target.result);
         };
 

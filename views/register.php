@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../public/css/adminlte.min.css">
     <link rel="stylesheet" href="../public/css/pages/Forms.css">
     <link rel="stylesheet" href="../public/plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="../public/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
 </head>
 <body class="hold-transition register-page">
 <div class="registerForm">
@@ -138,7 +140,7 @@
                                         <div class="col-6">
                                             <label>Personal Image:</label>
                                             <input name="image" class="form-control-file" type="file"
-                                                   onchange="showImage(this);"
+                                                   onchange="showImage(this,'personalImage');"
                                                    id="image" accept="image/gif, image/jpeg, image/png"/>
                                             <br>
                                             <img id="personalImage" src="http://placehold.it/180"/>
@@ -146,11 +148,11 @@
                                         </div>
                                         <div class="col-6">
                                             <label>Gym logo:</label>
-                                            <input name="gymLogo" class="form-control-file" type="file"
-                                                   onchange="showImage(this);"
+                                            <input name="gymimage" class="form-control-file" type="file"
+                                                   onchange="showImage(this,'gymImage');"
                                                    id="gymLogo" accept="image/gif, image/jpeg, image/png"/>
                                             <br>
-                                            <img id="gymImage" src="http://placehold.it/100"/>
+                                            <img id="gymImage" name="image" src="http://placehold.it/100"/>
 
                                         </div>
                                     </div>

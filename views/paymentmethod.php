@@ -4,17 +4,18 @@
 
     <div class="container-fluid">
         <br>
-        <form role="form" action="Controller/controllingpayment.php" method="get">
+        <form role="form" action="../Controller/payment_controller.php"" method="get">
             <div class="card-body">
                 <div class="form-group row">
                     <label for="Method" class="col-sm-2 col-form-label">Method:</label>
                     <div class="col-sm-10">
+
                         <input type="text" name="payname" class="form-control">
                     </div>
                 </div>
 
                 <div class="btn-group tablebuttons">
-                    <button type="submit" name="add" class="btn btn-success btn-flat ">Confirm</button>
+                    <button type="submit" name="addpayment" class="btn btn-success btn-flat ">Confirm</button>
                     <button type="reset" class="btn btn-danger btn-flat ">Clear Fields</button>
 
                 </div>
@@ -43,7 +44,7 @@
 
                 <td>
                     <div class="btn-group tablebuttons">
-                        <button type="button" class="btn btn-info">Edit
+                        <button type="button"  onclick="editingPayment(<?php echo $paymentMethod->getId(); ?>)"class="btn btn-info">Edit
 
                         </button>
 
@@ -60,3 +61,19 @@
     </div>
 </section>
 <?php include("../shared/footer.php") ?>
+if (isset($_SESSION['messege'])) {
+echo "<script> showToasting('" . $_SESSION['messege'] . "',2);</script>";
+unset($_SESSION['messege']);
+} elseif (isset($_SESSION['errormessege'])) {
+echo "<script> showToasting('" . $_SESSION['errormessege'] . "',1);</script>";
+unset($_SESSION['errormessege']);
+}
+?><?php
+if (isset($_SESSION['messege'])) {
+    echo "<script> showToasting('" . $_SESSION['messege'] . "',2);</script>";
+    unset($_SESSION['messege']);
+} elseif (isset($_SESSION['errormessege'])) {
+    echo "<script> showToasting('" . $_SESSION['errormessege'] . "',1);</script>";
+    unset($_SESSION['errormessege']);
+}
+?>

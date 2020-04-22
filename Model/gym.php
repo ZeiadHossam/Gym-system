@@ -7,8 +7,21 @@ include_once 'featuretype.php';
 
 class gym
 {
+
+    public function getGymImage()
+    {
+        return $this->gymImage;
+    }
+
+
+    public function setGymImage($gymImage)
+    {
+        $this->gymImage = $gymImage;
+    }
+
     private $id;
     private $gymName;
+    private $gymImage;
     private $branches;
     private $userTypes;
     private $paymentMethods;
@@ -205,7 +218,7 @@ class gym
             }
         }
 
-return false;
+        return false;
     }
 
 
@@ -251,4 +264,20 @@ return false;
         $db->closeconn();
 
     }
+
+    public function addpayment($payment)
+    {
+        $db = new database();
+        $payment->setName($db->getMysqli()->real_escape_string($payment->getName()));
+
+        $sql = "INSERT INTO paymentmethod(name,gymId) VALUES('" . $payment->getName() . "','" . $this->id . "');";
+        if ($db->insert($sql)) {
+
+            return true;
+            $db->closeconn();
+        }
+        return false;
+
+    }
 }
+
