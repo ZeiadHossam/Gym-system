@@ -4,6 +4,7 @@
     <section class="content">
         <div class="container-fluid">
             <br>
+            <legend>Contracts</legend>
             <div class="row contractimage">
             </div>
             <div class="row">

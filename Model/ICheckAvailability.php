@@ -3,5 +3,5 @@
 
 interface ICheckAvailability
 {
- public function checkifavailable();
+ public function checkifavailable($gymId);
 }

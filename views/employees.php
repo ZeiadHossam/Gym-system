@@ -4,7 +4,9 @@
  <section class="content">
 	<div class="container-fluid">
 		<br>
-		<div class="row empimage">
+        <legend>Employees</legend>
+
+        <div class="row empimage">
 		</div>	
 		<div class="row">
 			<button type="button" class="btn btn-info Addmemberbutton" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#modal-employee">

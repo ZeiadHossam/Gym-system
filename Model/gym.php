@@ -4,6 +4,7 @@ include_once 'paymentmethod.php';
 include_once 'usertype.php';
 include_once 'page.php';
 include_once 'featuretype.php';
+include_once 'employee.php';
 
 class gym
 {
@@ -26,6 +27,7 @@ class gym
     private $userTypes;
     private $paymentMethods;
     private $packages;
+    private $owner;
 
     function __construct()
     {
@@ -33,6 +35,19 @@ class gym
         $this->userTypes = array();
         $this->packages = array();
         $this->paymentMethods = array();
+        $this->owner=new employee();
+    }
+
+    
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
     }
 
     public function getId()
@@ -64,6 +79,10 @@ class gym
     public function setBranchs($BID, $branchs)
     {
         $this->branches[$BID] = $branchs;
+    }
+    public function setAllBranchs($branchs)
+    {
+        $this->branches = $branchs;
     }
 
     public function getUserTypes()
@@ -102,7 +121,8 @@ class gym
         $db = new database();
         $branch->setCity($db->getMysqli()->real_escape_string($branch->getCity()));
         $branch->setAddress($db->getMysqli()->real_escape_string($branch->getAddress()));
-        $sql = "INSERT INTO branch (city,address,gymId) VALUES ('" . $branch->getCity() . "','" . $branch->getAddress() . "','" . $this->id . "')";
+        $createdAt=date("Y/m/d H:i:s");
+        $sql = "INSERT INTO branch (city,address,gymId,createdAt) VALUES ('" . $branch->getCity() . "','" . $branch->getAddress() . "','" . $this->id . "','$createdAt')";
         if ($db->insert($sql)) {
 
 
@@ -125,9 +145,10 @@ class gym
     public function editBranch($id)
     {
         $db = new database();
+        $updatedAt=date("Y/m/d H:i:s");
         $this->getBranchs()[$id]->setCity($db->getMysqli()->real_escape_string($this->getBranchs()[$id]->getCity()));
         $this->getBranchs()[$id]->setAddress($db->getMysqli()->real_escape_string($this->getBranchs()[$id]->getAddress()));
-        $sql = "UPDATE branch SET city='" . $this->getBranchs()[$id]->getCity() . "' , address='" . $this->getBranchs()[$id]->getAddress() . "' WHERE id=" . $this->getBranchs()[$id]->getId();
+        $sql = "UPDATE branch SET updatedAt='$updatedAt' , city='" . $this->getBranchs()[$id]->getCity() . "' , address='" . $this->getBranchs()[$id]->getAddress() . "' WHERE id=" . $this->getBranchs()[$id]->getId();
         if ($db->insert($sql)) {
             $_SESSION['Gym'] = serialize($this);
             $db->closeconn();
@@ -138,12 +159,23 @@ class gym
         }
 
     }
+    public function deleteBranch($id)
+    {
+        $db = new database();
+        $sql="UPDATE branch SET isDeleted=1 WHERE id=".$id;
+        if ($db->insert($sql))
+        {
 
+            $db->closeconn();
+            return true;
+        }
+        return false;
+    }
 
     public function getallbranches()
     {
         $db = new database();
-        $branchesdataSql = "SELECT * FROM branch WHERE gymId=" . $this->id;
+        $branchesdataSql = "SELECT * FROM branch WHERE isDeleted=0 AND gymId=" . $this->id;
         $branchesdata = $db->selectArray($branchesdataSql);
         while ($row = mysqli_fetch_assoc($branchesdata)) {
             $branch = new branch();

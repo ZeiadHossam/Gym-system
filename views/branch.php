@@ -3,7 +3,7 @@
 
     <div class="container-fluid">
         <br>
-
+        <legend>Branches</legend>
         <form role="form" action="../Controller/branch_controller.php" method="get" onsubmit="return validate_branchData()">
 
             <div class="card-body">
@@ -100,13 +100,9 @@ if (isset($_SESSION['messege'])) {
 } elseif (isset($_SESSION['errormessege'])) {
     echo "<script> showToasting('" . $_SESSION['errormessege'] . "',1);</script>";
     unset($_SESSION['errormessege']);
-}
-?><?php
-if (isset($_SESSION['messege'])) {
-    echo "<script> showToasting('" . $_SESSION['messege'] . "',2);</script>";
-    unset($_SESSION['messege']);
-} elseif (isset($_SESSION['errormessege'])) {
-    echo "<script> showToasting('" . $_SESSION['errormessege'] . "',1);</script>";
-    unset($_SESSION['errormessege']);
+} elseif(isset($_SESSION['successMessege']))
+{
+    echo "<script> showToasting('" . $_SESSION['successMessege'] . "',0);</script>";
+    unset($_SESSION['successMessege']);
 }
 ?>

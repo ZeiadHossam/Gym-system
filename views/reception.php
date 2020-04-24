@@ -2,7 +2,9 @@
  <section class="content">
 	<div class="container-fluid">
 		<br>
-		<div class="row receptionimage">
+        <legend>Reception</legend>
+
+        <div class="row receptionimage">
 		</div>
 		<br>
 		<div class="row">

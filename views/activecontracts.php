@@ -1,11 +1,11 @@
-<?php include ("shared/main.php") ?>
+<?php include ("../shared/main.php") ?>
 <section class="content">
 
 	<div class="container-fluid">
 		<br>
 		<form  role="form" action="activecontractreports.php" target="_blank" method="post">
 			<fieldset>
-				<legend>Search Report</legend>
+				<legend>Search Active Contracts Report</legend>
 				<div class="row">
 				<div class="col-md-6">
 				<div class="form-group">
@@ -103,4 +103,4 @@
 		</form>
 	</div>
 </section>
-<?php include ("shared/footer.php") ?>
+<?php include ("../shared/footer.php") ?>

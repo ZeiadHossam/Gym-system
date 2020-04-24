@@ -10,6 +10,9 @@
             {
                 echo $gym->getBranchs()[$_SESSION['branch']]->getCity();
             }
+            else{
+                echo 'Main Branch';
+            }
             ?></em></li>
 
     </ul>

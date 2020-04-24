@@ -3,6 +3,7 @@
 
     <div class="container-fluid">
         <br>
+        <legend>Packages</legend>
 
         <form role="form" action="#" method="post">
             <div class="card-body">

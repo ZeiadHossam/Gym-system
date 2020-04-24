@@ -18,14 +18,25 @@ if (isset($_GET['login']))
         session_start();
         $loggedInInfo = employee::login($username, md5($password));
         if ($loggedInInfo != NULL) {
+            if(system::checkGymActivity($loggedInInfo['branchId'],$loggedInInfo['id']))
+            {
+
             $gym=system::getGymdata($loggedInInfo);
             $_SESSION['id'] = $loggedInInfo['id'];
             $_SESSION['branch'] = $loggedInInfo['branchId'];
             $_SESSION['Gym'] = serialize($gym);
             header("Location:../views/index.php");
+            }
+            else
+            {
+
+                $_SESSION['messege']="Gym is not Active";
+                echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+
+            }
         } else {
-            echo "<script>alert('Invalid UserName or Password')</script>";
-            echo "<script> window.location.href='../views/login.php';</script>";
+            $_SESSION['messege']="Invalid UserName or Password";
+            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
 
         }
     }

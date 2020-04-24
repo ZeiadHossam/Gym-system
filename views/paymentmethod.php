@@ -4,6 +4,8 @@
 
     <div class="container-fluid">
         <br>
+        <legend>Payment Method</legend>
+
         <form role="form" action="../Controller/payment_controller.php"" method="get">
             <div class="card-body">
                 <div class="form-group row">

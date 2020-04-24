@@ -4,17 +4,16 @@ include_once 'database.php';
 include_once 'userType.php';
 include_once 'ICheckAvailability.php';
 
-class employee extends person implements ICheckAvailability
+class employee extends person
 {
     private $id;
     private $userName;
     private $password;
-    private $dateAdded;
     private $usertype;
 
     function __construct()
     {
-        $this->usertype = new userType();
+        $this->usertype = new usertype();
     }
     public function getId()
     {
@@ -100,7 +99,7 @@ class employee extends person implements ICheckAvailability
         }
     }
 
-    public function checkifavailable()
+    public function checkusernameifavailable()
     {
         $db = new database();
         $this->setUserName($db->getMysqli()->real_escape_string($this->getUserName()));
@@ -109,26 +108,11 @@ class employee extends person implements ICheckAvailability
         if($usernames!=NULL)
         {
             $db->closeconn();
-            return '1';
+            return False;
         }
-        $this->setEmail($db->getMysqli()->real_escape_string($this->getEmail()));
-        $emailsql="select id  from person where email='".$this->getEmail()."';";
-        $emails=$db->select($emailsql);
-        if($emails!=NULL)
-        {
-            $db->closeconn();
-            return '2';
-        }
-        $this->setMobilePhone($db->getMysqli()->real_escape_string($this->getMobilePhone()));
-        $phonesql="select id  from person where mobilePhone='".$this->getMobilePhone()."';";
-        $phones=$db->select($phonesql);
-        if($phones!=NULL)
-        {
-            $db->closeconn();
-            return '3';
-        }
+
         $db->closeconn();
-            return '0';
+            return TRUE;
 
 
 

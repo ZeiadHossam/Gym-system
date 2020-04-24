@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-info elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <img src="../public/img/logo.png" alt="GYM Logo" class="brand-image img-circle elevation-3"
+        <img src="../public/img/<?php echo $gym->getGymImage()?>" alt="GYM Logo" class="brand-image img-circle elevation-3"
              style="opacity: .8">
         <span class="brand-text font-weight-light"><?php echo $gym->getGymName()?></span>
     </a>

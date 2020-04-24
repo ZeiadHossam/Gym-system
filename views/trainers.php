@@ -5,7 +5,7 @@
 		<br>
 		<form  role="form" action="trainerreports.php" target="_blank" method="post">
 			<fieldset>
-				<legend>Search Report</legend>
+				<legend>Search Trainers Report</legend>
 
 				<div class="form-group row">
 					<label class="col-sm-2 col-form-label">Employee ID:</label>

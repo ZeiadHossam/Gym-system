@@ -4,6 +4,8 @@
     <section class="content">
         <div class="container-fluid">
             <br>
+            <legend>Members</legend>
+
             <div class="row memberimage">
             </div>
             <div class="row">

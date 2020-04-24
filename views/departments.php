@@ -3,7 +3,9 @@
 
         <div class="container-fluid">
             <br>
-						<form role="form" action="../Controller/usertype_controller.php" onsubmit="return validate_depData()" method="get">
+            <legend>Departments</legend>
+
+            <form role="form" action="../Controller/usertype_controller.php" onsubmit="return validate_depData()" method="get">
                 <div class="card-body">
 				<div class="form-group row">
                     <label for="Department Name" class="col-sm-2 col-form-label">Department Name:</label>

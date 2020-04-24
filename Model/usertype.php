@@ -40,7 +40,11 @@ class userType implements ICheckAvailability
     {
         $this->pages[$Pid] = $pages;
     }
-    public function checkifavailable()
+    public function setAllpages($pages)
+    {
+        $this->pages = $pages;
+    }
+    public function checkifavailable($gymId)
     {
         $db = new database();
         $this->setName($db->getMysqli()->real_escape_string($this->getName()));

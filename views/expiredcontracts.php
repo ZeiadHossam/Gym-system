@@ -3,9 +3,10 @@
 
 	<div class="container-fluid">
 		<br>
+
 		<form  role="form" action="expiredcontractreports.php" target="_blank" method="post">
 			<fieldset>
-				<legend>Search Report</legend>
+				<legend>Search Expired Contracts Report</legend>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">

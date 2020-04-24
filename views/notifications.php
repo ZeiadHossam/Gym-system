@@ -3,7 +3,9 @@
  <section class="content">
 	<div class="container-fluid">
 		<br>
-		<div class="row notificationimage">
+        <legend>Notifications</legend>
+
+        <div class="row notificationimage">
 		</div>
 		<br>
 		<div class="row">
