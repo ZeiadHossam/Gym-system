@@ -1,9 +1,10 @@
 <?php
 include_once 'branch.php';
 include_once 'paymentmethod.php';
+include_once 'package.php';
+include_once 'packagePeriod.php';
 include_once 'usertype.php';
 include_once 'page.php';
-include_once 'featuretype.php';
 include_once 'employee.php';
 
 class gym
@@ -120,6 +121,10 @@ class gym
     public function setPackages($packageid, $packages)
     {
         $this->packages[$packageid] = $packages;
+    }
+    public function setAllPackages($packages)
+    {
+        $this->packages = $packages;
     }
 
     public function addBranch($branch)
@@ -290,18 +295,90 @@ class gym
         $db->closeconn();
 
     }
+    public function addPackage($package)
+    {
+        $db = new database();
+        $newPackage=new package('array');
+        $newPackage->setName($db->getMysqli()->real_escape_string($package->getName()));
+        $newPackage->setPeriodType($package->getPeriodType());
+        $createdAt=date("Y/m/d H:i:s");
+        $sql = "INSERT INTO packagetype(name,type,gymId,createdAt) VALUES('" . $newPackage->getName() . "','".$newPackage->getPeriodType()."','" . $this->getId() . "','$createdAt');";
+        if ($db->insert($sql)) {
+            if ($db->selectId($package, "packagetype")) {
+                $newPackage->setId($package->getId());
 
+                foreach ($package->getPeriod() as $period) {
+                    $period->setPeriod($db->getMysqli()->real_escape_string($period->getPeriod()));
+                    $sql2 = "INSERT INTO packageperiod(packageTypeId,period) VALUES (" . $package->getId() . ",'" . $period->getPeriod() . "')";
+                    $newperiod=new packagePeriod();
+                    $newperiod->setPeriod($period->getPeriod());
+                    if ($db->insert($sql2)&&$db->selectId($newperiod,'packageperiod')) {
+                        $newPackage->setPeriodArray($newperiod->getId(),$newperiod);
+                    }
+                    else
+                    {
+                        $db->closeconn();
+                        return false;
+                    }
+                }
+                $this->setPackages($newPackage->getId(), $newPackage);
+                $_SESSION['Gym'] = serialize($this);
+                $db->closeconn();
+                return true;
+            }
+        }
+        $db->closeconn();
+        return false;
+    }
+    public function editPackage($packageId)
+    {
+        $db = new database();
+        $updatedate=date("Y/m/d H:i:s");
+
+        $this->getPackages()[$packageId]->setName($db->getMysqli()->real_escape_string($this->getPackages()[$packageId]->getName()));
+        $sql = "UPDATE packageType SET updatedAt='$updatedate', name='" . $this->getPackages()[$packageId]->getName() . "' WHERE id=" . $this->getPackages()[$packageId]->getId();
+        if ($db->insert($sql)) {
+                $_SESSION['Gym'] = serialize($this);
+                $db->closeconn();
+                return true;
+        }
+
+        return false;
+    }
+    public function deletePackage($packageId)
+    {
+        $db = new database();
+        $updatedate=date("Y/m/d H:i:s");
+
+        $deletePackage="UPDATE packagetype set isDeleted=1 , updatedAt='$updatedate' where id='$packageId'";
+        if ($db->insert($deletePackage))
+        {
+            $db->closeconn();
+            return true;
+
+
+
+        }
+        return false;
+    }
     public function getallpackage()
     {
         $db = new database();
-        $packagesql = "SELECT * FROM featuretype WHERE gymId=" . $this->id;
+        $packagesql = "SELECT * FROM packagetype WHERE isDeleted=0 AND gymId=" . $this->id;
         $packagedata = $db->selectArray($packagesql);
         while ($row = mysqli_fetch_assoc($packagedata)) {
-            $package = new featuretype();
+            $package = new package('array');
             $package->setId($row['id']);
             $package->setName($row['name']);
-            $package->setPeriod($row['period']);
             $package->setPeriodType($row['type']);
+            $periodsql="SELECT * FROM packageperiod WHERE packageTypeId=".$package->getId();
+            $perioddata = $db->selectArray($periodsql);
+            while ($row2 = mysqli_fetch_assoc($perioddata)) {
+                $period=new packagePeriod();
+                $period->setId($row2['id']);
+                $period->setPeriod($row2['period']);
+                $package->setPeriodArray($row2['id'],$period);
+            }
             $this->setPackages($row['id'], $package);
         }
 

@@ -1,5 +1,6 @@
 <?php
 include_once ("ICheckAvailability.php");
+include_once ("packagePeriod.php");
 
 
 class package implements ICheckAvailability
@@ -12,6 +13,8 @@ class package implements ICheckAvailability
     function __construct($periodDataType) {
         if($periodDataType=='array')
         {$this->period = array();}
+        if($periodDataType=='period')
+        {$this->period = new packagePeriod();}
 
 
     }
@@ -55,6 +58,10 @@ class package implements ICheckAvailability
     {
         return $this->period;
     }
+    public function setPeriodArray($periodid,$period)
+    {
+        $this->period[$periodid]=$period;
+    }
 
     public function setPeriod($period)
     {
@@ -65,12 +72,11 @@ class package implements ICheckAvailability
     {
         $db = new database();
         $this->setName($db->getMysqli()->real_escape_string($this->getName()));
-        $this->setPeriod($db->getMysqli()->real_escape_string($this->getPeriod()));
         $this->setPeriodType($db->getMysqli()->real_escape_string($this->getPeriodType()));
         if ($this->getId() != NULL) {
-            $packagesql = "select id  from featuretype where NOT id=" . $this->getId() . " AND isDeleted=0 AND gymId=$gymId AND name='" . $this->getName() . "' AND type='" . $this->getPeriodType() . "' AND period='".$this->getPeriod()."';";
+            $packagesql = "select id  from packagetype where NOT id=" . $this->getId() . " AND isDeleted=0 AND gymId=$gymId AND name='" . $this->getName() . "' AND type='" . $this->getPeriodType() . "' ;";
         } else {
-            $packagesql = "select id  from branch where  isDeleted=0 AND gymId=$gymId AND name='". $this->getName() ."' AND type='". $this->getPeriodType() ."' AND period='".$this->getPeriod()."';";
+            $packagesql = "select id  from packagetype where  isDeleted=0 AND gymId=$gymId AND name='". $this->getName() ."' AND type='". $this->getPeriodType() ."' ;";
 
         }
         $packages = $db->select($packagesql);
@@ -80,5 +86,36 @@ class package implements ICheckAvailability
         }
         $db->closeconn();
         return '0';
+    }
+    public function deleteAllPeriods()
+    {
+        $db = new database();
+        $sql="DELETE FROM  packageperiod WHERE packageTypeId=".$this->getId();
+        if ($db->insert($sql))
+        {
+            unset($this->period);
+            $this->period=array();
+            $db->closeconn();
+            return true;
+        }
+        return false;
+    }
+    public function addPeriods()
+    {
+        $db = new database();
+        foreach ($this->getPeriod() as $period) {
+            $period->setPeriod($db->getMysqli()->real_escape_string($period->getPeriod()));
+            $sql2 = "INSERT INTO packageperiod(packageTypeId,period) VALUES (" . $this->getId() . ",'" . $period->getPeriod() . "')";
+            if ($db->insert($sql2)) {
+                $db->selectId($period,'packageperiod');
+            }
+            else
+            {
+                $db->closeconn();
+                return false;
+            }
+        }
+        $db->closeconn();
+        return true;
     }
 }
