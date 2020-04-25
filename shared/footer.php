@@ -30,6 +30,19 @@
 <script src="../public/js/pages/departmentForm.js"></script>
 <script src="../public/js/pages/department.js"></script>
 <script src="../public/js/pages/payment.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script src="../public/js/pages/package.js"></script>
+<?php
+if (isset($_SESSION['messege'])) {
+    echo "<script> showToasting('" . $_SESSION['messege'] . "',2);</script>";
+    unset($_SESSION['messege']);
+} elseif (isset($_SESSION['errormessege'])) {
+    echo "<script> showToasting('" . $_SESSION['errormessege'] . "',1);</script>";
+    unset($_SESSION['errormessege']);
+} elseif(isset($_SESSION['successMessege']))
+{
+    echo "<script> showToasting('" . $_SESSION['successMessege'] . "',0);</script>";
+    unset($_SESSION['successMessege']);
+}?>
 </body>
 </html>

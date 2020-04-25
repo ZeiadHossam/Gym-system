@@ -5,36 +5,35 @@
         <br>
         <legend>Packages</legend>
 
-        <form role="form" action="#" method="post">
+        <form role="form" action="../controller/package_controller.php" method="get">
             <div class="card-body">
                 <div class="form-group row">
-                    <label for="Package Name" class="col-sm-2 col-form-label">Package Name:</label>
+                    <label for="Package Name"  class="col-sm-2 col-form-label">Package Name:</label>
                     <div class="col-sm-10">
-                        <input type="Text" class="form-control">
+                        <input type="Text" name="packageName" class="form-control">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="Type" class="col-sm-2 col-form-label">Type:</label>
+                    <label for="Type"  class="col-sm-2 col-form-label">Type:</label>
                     <div class="col-sm-10">
-                        <select class="form-control">
+                        <select name="periodType" class="form-control">
                             <option class="hidden" selected disabled>Select Type</option>
-                            <option>session</option>
-                            <option>duration</option>
+                            <option>Sessions</option>
+                            <option>Duration</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="Contract Types" class="col-sm-2 col-form-label">Contract Types:</label>
                     <div class="col-sm-10">
-                        <input type="Text" class="form-control" multiple>
-                        <!--lesa m5lstsh-->
+                        <select class="js-example-basic-multiple form-control" name="contractTypes[]" multiple="multiple">
 
-
+                        </select>
                     </div>
                 </div>
                 <div class="btn-group tablebuttons">
-                    <button type="submit" class="btn btn-success btn-flat ">Confirm</button>
+                    <button type="submit" name="addPackage" class="btn btn-success btn-flat ">Confirm</button>
                     <button type="reset" class="btn btn-danger btn-flat ">Clear Fields</button>
 
                 </div>

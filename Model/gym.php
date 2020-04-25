@@ -107,6 +107,10 @@ class gym
     {
         $this->paymentMethods[$PmID] = $paymentMethods;
     }
+    public function setAllPaymentMethods($paymentMethods)
+    {
+        $this->paymentMethods = $paymentMethods;
+    }
 
     public function getPackages()
     {
@@ -201,13 +205,13 @@ class gym
         $createdAt=date("Y/m/d H:i:s");
 
         $sql = "INSERT INTO type(name,gymId,createdAt) VALUES('" . $department->getName() . "','" . $this->getId() . "','$createdAt');";
-        $sql2 = "INSERT INTO privilege(typeId,pageId,hasAccess,createdAt) VALUES";
+        $sql2 = "INSERT INTO privilege(typeId,pageId,hasAccess) VALUES";
         if ($db->insert($sql)) {
             if ($db->selectId($department, "type")) {
                 foreach ($department->getPages() as $page) {
                     $page->set_name($db->getMysqli()->real_escape_string($page->get_name()));
 
-                    $sql2 .= "(" . $department->getId() . "," . $page->get_id() . "," . $page->get_access() . ",'$createdAt'),";
+                    $sql2 .= "(" . $department->getId() . "," . $page->get_id() . "," . $page->get_access() . "),";
                 }
                 $sql2 = trim($sql2, ",");
                 $sql2 .= ";";
@@ -234,7 +238,7 @@ class gym
         if ($db->insert($sql)) {
             $sql2 = "";
             foreach ($this->getUserTypes()[$depid]->getPages() as $page) {
-                $sql2 .= "UPDATE privilege SET updatedAt='$updatedate' ,hasAccess=" . $page->get_access() . " WHERE  typeId=" . $depid . " AND pageId=" . $page->get_id() . ";";
+                $sql2 .= "UPDATE privilege SET hasAccess=" . $page->get_access() . " WHERE  typeId=" . $depid . " AND pageId=" . $page->get_id() . ";";
             }
             if ($db->multiinsert($sql2)) {
                 $_SESSION['Gym'] = serialize($this);
@@ -253,11 +257,8 @@ class gym
         $deletetype="UPDATE type set isDeleted=1 , updatedAt='$updatedate' where id='$typeid'";
         if ($db->insert($deletetype))
         {
-            $deleteprivilege="UPDATE privilege set isDeleted=1,  updatedAt='$updatedate' where typeId='$typeid'";
-            if ($db->insert($deleteprivilege)){
                 $db->closeconn();
                 return true;
-            }
 
 
 
@@ -275,7 +276,7 @@ class gym
             $department = new userType();
             $department->setName($row['name']);
             $department->setId($row['id']);
-            $pagesql = "SELECT * FROM pages INNER JOIN privilege ON privilege.pageId=pages.id  WHERE isDeleted=0  AND typeId=" . $row['id'];
+            $pagesql = "SELECT * FROM pages INNER JOIN privilege ON privilege.pageId=pages.id  WHERE  typeId=" . $row['id'];
             $pagedata = $db->selectArray($pagesql);
             while ($row2 = mysqli_fetch_assoc($pagedata)) {
                 $page = new page();
@@ -317,14 +318,45 @@ class gym
 
         $sql = "INSERT INTO paymentmethod(name,gymId,createdAt) VALUES('" . $payment->getName() . "','" . $this->id . "','$created');";
         if ($db->insert($sql)) {
-
-            return true;
-            $db->closeconn();
+            if ($db->selectId($payment,'paymentmethod')) {
+                $this->setPaymentMethods($payment->getId(), $payment);
+                $_SESSION['Gym'] = serialize($this);
+                $db->closeconn();
+                return true;
+            }
         }
         return false;
 
     }
+    public function editPaymentMedthod($paymedId)
+    {
+        $db = new database();
+        $updatedate=date("Y/m/d H:i:s");
+        $this->getPaymentMethods()[$paymedId]->setName($db->getMysqli()->real_escape_string($this->getPaymentMethods()[$paymedId]->getName()));
+        $sql = "UPDATE paymentmethod SET updatedAt='$updatedate', name='" . $this->getPaymentMethods()[$paymedId]->getName() . "' WHERE id=" . $this->getPaymentMethods()[$paymedId]->getId();
+        if ($db->insert($sql)) {
+            $_SESSION['Gym'] = serialize($this);
+            $db->closeconn();
+            return true;
+        } else {
+            $db->closeconn();
+            return false;
+        }
 
+    }
+    public function deletePaymentMethod($id)
+    {
+        $db = new database();
+        $updatedAt=date("Y/m/d H:i:s");
+        $sql="UPDATE paymentmethod SET isDeleted=1, updatedAt='$updatedAt' WHERE id=".$id;
+        if ($db->insert($sql))
+        {
+
+            $db->closeconn();
+            return true;
+        }
+        return false;
+    }
     public function getallpaymentmethod()
     {
         $db = new database();

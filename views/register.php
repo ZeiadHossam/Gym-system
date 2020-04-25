@@ -120,7 +120,7 @@
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" onfocusout="validate_branchCity()"
                                        id="branchCity"
-                                       name="branchcity" placeholder="*Branch city">
+                                       name="branchcity" placeholder="*Branch Name(Area)">
 
                             </div>
                             <span class="message" id="branchCity_message"></span>

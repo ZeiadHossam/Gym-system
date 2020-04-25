@@ -33,7 +33,15 @@ class paymentmethod implements ICheckAvailability
     {
         $db = new database();
         $this->setName($db->getMysqli()->real_escape_string($this->getName()));
-        $branchsql="select id  from paymentmethod where isDeleted=0  AND gymId=$gymId AND id='".$this->getId()."';";
+        if ($this->getId()!=NULL) {
+
+            $branchsql = "select id  from paymentmethod where isDeleted=0  AND gymId=$gymId AND NOT id=" . $this->getId() . " AND name='".$this->getName()."';";
+        }
+        else
+        {
+            $branchsql = "select id  from paymentmethod where isDeleted=0  AND gymId=$gymId AND name='".$this->getName()."';";
+
+        }
         $branches=$db->select($branchsql);
         if($branches!=NULL)
         {

@@ -21,7 +21,7 @@ if (isset($_GET['depEditId']) && isset($_GET['addDepartment'])) {
         if ($gym->editDepartment($_GET['depEditId'])) {
             $_SESSION['successMessege'] = "Edited Successfully";
 
-            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+            echo "<script> window.location.href='../views/departments.php';</script>";
 
         } else {
             $_SESSION['errormessege'] = "can't' Edit this department right now";
@@ -38,7 +38,7 @@ if (isset($_GET['depEditId']) && isset($_GET['addDepartment'])) {
         $gym->setAlldepartments($departments);
         $_SESSION['Gym'] = serialize($gym);
         $_SESSION['successMessege'] = "Deleted Successfully";
-        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+        echo "<script> window.location.href='../views/departments.php';</script>";
     }
     else
     {
@@ -107,7 +107,7 @@ if (isset($_GET['depEditId']) && isset($_GET['addDepartment'])) {
         if ($gym->addDepartment($department)) {
             $_SESSION['successMessege'] = "Added successfully";
 
-            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+            echo "<script> window.location.href='../views/departments.php';</script>";
 
         } else {
             $_SESSION['errormessege'] = "can't' add this department right now";

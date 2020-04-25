@@ -87,27 +87,22 @@ class branch implements ICheckAvailability
         $employee->setImage($db->getMysqli()->real_escape_string($employee->getImage()));
         $employee->setHomePhone($db->getMysqli()->real_escape_string($employee->getHomePhone()));
         $employee->setMobilePhone($db->getMysqli()->real_escape_string($employee->getMobilePhone()));
-        $createdAt=date("Y/m/d H:i:s");
+        $createdAt = date("Y/m/d H:i:s");
 
-        if($Bid=='-1') {
-            $sql = "INSERT INTO person (firstName,lastName,birthDay,image,mobilePhone,homePhone,gender,email,createdAt) VALUES ('".$employee->getFirstName()."','".$employee->getLastName()."','".$employee->getBirthDay()."','".$employee->getImage()."','".$employee->getMobilePhone()."','".$employee->getHomePhone()."','".$employee->getGender()."','".$employee->getEmail()."','$createdAt');";
+        if ($Bid == '-1') {
+            $sql = "INSERT INTO person (firstName,lastName,birthDay,image,mobilePhone,homePhone,gender,email,createdAt) VALUES ('" . $employee->getFirstName() . "','" . $employee->getLastName() . "','" . $employee->getBirthDay() . "','" . $employee->getImage() . "','" . $employee->getMobilePhone() . "','" . $employee->getHomePhone() . "','" . $employee->getGender() . "','" . $employee->getEmail() . "','$createdAt');";
+        } else {
+            $sql = "INSERT INTO person (firstName,lastName,birthDay,image,mobilePhone,homePhone,gender,email,branchId) VALUES ('" . $employee->getFirstName() . "','" . $employee->getLastName() . "','" . $employee->getBirthDay() . "','" . $employee->getImage() . "','" . $employee->getMobilePhone() . "','" . $employee->getHomePhone() . "','" . $employee->getGender() . "','" . $employee->getEmail() . "','" . $this->getId() . "');";
         }
-        else
-        {
-            $sql = "INSERT INTO person (firstName,lastName,birthDay,image,mobilePhone,homePhone,gender,email,branchId) VALUES ('".$employee->getFirstName()."','".$employee->getLastName()."','".$employee->getBirthDay()."','".$employee->getImage()."','".$employee->getMobilePhone()."','".$employee->getHomePhone()."','".$employee->getGender()."','".$employee->getEmail()."','".$this->getId()."');";
-        }
-        if($db->insert($sql))
-        {
-            $personID = "SELECT id FROM person WHERE firstName='".$employee->getFirstName()."' AND lastName='".$employee->getLastName()."' AND mobilePhone='".$employee->getMobilePhone()."'";
-            $sql2="INSERT INTO employee(personId,typeId,userName,password)VALUES(($personID),'".$employee->getUsertype()->getId()."','".$employee->getusername()."','".md5($employee->getpassword())."');";
+        if ($db->insert($sql)) {
+            $personID = "SELECT id FROM person WHERE firstName='" . $employee->getFirstName() . "' AND lastName='" . $employee->getLastName() . "' AND mobilePhone='" . $employee->getMobilePhone() . "'";
+            $sql2 = "INSERT INTO employee(personId,typeId,userName,password)VALUES(($personID),'" . $employee->getUsertype()->getId() . "','" . $employee->getusername() . "','" . md5($employee->getpassword()) . "');";
             if ($db->insert($sql2)) {
-                if($db->selectId($employee,"employee")) {
+                if ($db->selectId($employee, "employee")) {
                     $this->setEmployees($employee);
                     $db->closeconn();
                     return true;
-                }
-                else
-                {
+                } else {
                     $db->closeconn();
                     return false;
                 }
@@ -117,15 +112,20 @@ class branch implements ICheckAvailability
             }
         }
     }
+
     public function checkifavailable($gymId)
     {
         $db = new database();
         $this->setCity($db->getMysqli()->real_escape_string($this->getCity()));
         $this->setAddress($db->getMysqli()->real_escape_string($this->getAddress()));
-        $branchsql="select id  from branch where isDeleted=0 AND gymId=$gymId AND address='".$this->getAddress()."' AND city='".$this->getCity()."';";
-        $branches=$db->select($branchsql);
-        if($branches!=NULL)
-        {
+        if ($this->getId() != NULL) {
+            $branchsql = "select id  from branch where NOT id=" . $this->getId() . " AND isDeleted=0 AND gymId=$gymId AND address='" . $this->getAddress() . "' AND city='" . $this->getCity() . "';";
+        } else {
+            $branchsql = "select id  from branch where  isDeleted=0 AND gymId=$gymId AND address='" . $this->getAddress() . "' AND city='" . $this->getCity() . "';";
+
+        }
+        $branches = $db->select($branchsql);
+        if ($branches != NULL) {
             $db->closeconn();
             return '1';
         }

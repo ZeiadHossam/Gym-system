@@ -1,6 +1,6 @@
 function editingPayment(id)
 {
-    window.location.href='paymentmethod.php?depEditId='+id;
+    window.location.href='paymentmethod.php?paymentEditId='+id;
 }
 
 function cancellingPayment() {
@@ -8,6 +8,6 @@ function cancellingPayment() {
 }
 
 function deletingPayment(id) {
-    window.location.href='../controller/payment_controller.php?depDeleteId='+id;
+    window.location.href='../controller/payment_controller.php?paymentDeleteId='+id;
 
 }

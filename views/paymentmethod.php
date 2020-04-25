@@ -11,14 +11,22 @@
                 <div class="form-group row">
                     <label for="Method" class="col-sm-2 col-form-label">Method:</label>
                     <div class="col-sm-10">
+                        <?php if(isset($_GET['paymentEditId'])){?>
+                            <input type="text" name="paymentEditId"
+                                   value="<?php echo $gym->getPaymentMethods()[$_GET['paymentEditId']]->getId()  ?>" hidden>
+                        <input type="text" name="payname" value="<?php echo $gym->getPaymentMethods()[$_GET['paymentEditId']]->getName()  ?>" class="form-control">
+                        <?php }
+                        else
+                            {?>
+                                <input type="text" name="payname" class="form-control">
 
-                        <input type="text" name="payname" class="form-control">
+                            <?php }?>
                     </div>
                 </div>
 
                 <div class="btn-group tablebuttons">
                     <button type="submit" name="addpayment" class="btn btn-success btn-flat ">Confirm</button>
-                    <button type="reset" class="btn btn-danger btn-flat ">Clear Fields</button>
+                    <button type="reset" <?php if (isset($_GET['paymentEditId'])) { ?>  onclick="cancellingDepartment()"  <?php } ?> class="btn btn-danger btn-flat ">Clear Fields</button>
 
                 </div>
 
@@ -50,7 +58,7 @@
 
                         </button>
 
-                        <button type="button" class="btn btn-danger btn-sm ">Delete</button>
+                        <button type="button" onclick="deletingPayment(<?php echo $paymentMethod->getId(); ?>)" class="btn btn-danger btn-sm ">Delete</button>
                     </div>
                 </td>
             </tr>
@@ -63,12 +71,3 @@
     </div>
 </section>
 <?php include("../shared/footer.php") ?>
-<?php
-if (isset($_SESSION['messege'])) {
-echo "<script> showToasting('" . $_SESSION['messege'] . "',2);</script>";
-unset($_SESSION['messege']);
-} elseif (isset($_SESSION['errormessege'])) {
-echo "<script> showToasting('" . $_SESSION['errormessege'] . "',1);</script>";
-unset($_SESSION['errormessege']);
-}
-?>
