@@ -1,7 +1,8 @@
 <?php
+include_once 'ICheckAvailability.php';
 
 
-class paymentmethod
+class paymentmethod implements ICheckAvailability
 {
  private $id;
  private $name;
@@ -28,11 +29,11 @@ class paymentmethod
     {
         $this->name = $name;
     }
-    public function checkifavailable()
+    public function checkifavailable($gymId)
     {
         $db = new database();
         $this->setName($db->getMysqli()->real_escape_string($this->getName()));
-        $branchsql="select id  from paymentmethod where id='".$this->getId()."';";
+        $branchsql="select id  from paymentmethod where isDeleted=0  AND gymId=$gymId AND id='".$this->getId()."';";
         $branches=$db->select($branchsql);
         if($branches!=NULL)
         {

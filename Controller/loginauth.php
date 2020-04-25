@@ -31,12 +31,12 @@ if (isset($_GET['login']))
             {
 
                 $_SESSION['messege']="Gym is not Active";
-                echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+               echo "<script> window.location.href='javascript:history.go(-1)';</script>";
 
             }
         } else {
             $_SESSION['messege']="Invalid UserName or Password";
-            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+           echo "<script> window.location.href='javascript:history.go(-1)';</script>";
 
         }
     }

@@ -2,32 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/DefaultGymLogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/DefaultPersonImage.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/branch_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/branch_controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/loginauth.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/loginauth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/system_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/system_controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/payment_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/payment_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/usertype_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/usertype_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/gym.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/gym.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/paymentmethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/paymentmethod.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/system.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/system.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/usertype.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/usertype.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/branch_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/branch_controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/activecontracts.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/activecontracts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/contracts.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/contracts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/departments.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/departments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/employees.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/expiredcontracts.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/expiredcontracts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/members.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/members.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/notifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/notifications.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/package.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/package.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/paymentmethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/paymentmethod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/reception.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/reception.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/sales.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/sales.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/trainers.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/trainers.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +122,7 @@
       <workItem from="1587307625942" duration="21614000" />
       <workItem from="1587419832364" duration="10116000" />
       <workItem from="1587456242339" duration="11375000" />
+      <workItem from="1587766724180" duration="2525000" />
     </task>
     <task id="LOCAL-00001" summary="add member,employee,contractand view member">
       <created>1584738014258</created>
@@ -425,10 +411,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587009903984" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1587551650004">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1587766727027">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587551650004" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587766727027" />
     <state x="581" y="298" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587456243865" />
     <state x="723" y="414" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587761863833">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -444,10 +430,10 @@
     </state>
     <state x="478" y="203" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1585520759642" />
     <state x="598" y="256" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587348713536" />
-    <state x="425" y="189" key="run.anything.popup" timestamp="1587484588847">
+    <state x="425" y="189" key="run.anything.popup" timestamp="1587763578227">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1587484588847" />
+    <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1587763578227" />
     <state x="531" y="239" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587456417804" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587431264994">
       <screen x="0" y="0" width="1536" height="824" />

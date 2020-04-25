@@ -13,9 +13,9 @@ if (isset($_GET['branchEditId']) && isset($_GET['addbranch'])) {
         if ($gym->editBranch($_GET['branchEditId'])) {
             $_SESSION['successMessege'] = "Edited Successfully";
 
-            echo "<script> window.location.href='../views/branch.php';</script>";
+            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
         } else {
-             $_SESSION['errormessege']="There was a problem while Adding your system";
+             $_SESSION['errormessege']="There was a problem while Editing branch";
          echo "<script> window.location.href='javascript:history.go(-1)';</script>";
         }
     }
@@ -32,7 +32,7 @@ if (isset($_GET['branchEditId']) && isset($_GET['addbranch'])) {
     }
     else
     {
-        $_SESSION['messege'] = "can't' delete this branch right now";
+        $_SESSION['errormessege'] = "can't' delete this branch right now";
         echo "<script> window.location.href='javascript:history.go(-1)';</script>";
 
     }
@@ -47,9 +47,9 @@ if (isset($_GET['branchEditId']) && isset($_GET['addbranch'])) {
     } else {
         if ($gym->addBranch($branch)) {
             $_SESSION['successMessege'] = "Added Successfully";
-            echo "<script> window.location.href='../views/branch.php';</script>";
-        } else {
-            $_SESSION['errormessege']="There was a problem while Adding your branch";
+            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+          } else {
+            $_SESSION['errormessege']="There was a problem while Adding  branch";
             echo "<script> window.location.href='javascript:history.go(-1)';</script>";
         }
     }

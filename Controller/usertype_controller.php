@@ -7,11 +7,10 @@ $gym = unserialize($_SESSION['Gym']);
 
 if (isset($_GET['depEditId']) && isset($_GET['addDepartment'])) {
     $gym->getUserTypes()[$_GET['depEditId']]->setName(htmlentities($_GET['depName']));
-    if ($gym->getUserTypes()[$_GET['depEditId']]->checkifavailable() == '1') {
-        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
-        //$_SESSION['messege'] = "This branch already exist";
+    if ($gym->getUserTypes()[$_GET['depEditId']]->checkifavailable($gym->getId()) == '1') {
+        $_SESSION['messege'] = "This branch already exist";
 
-    } else {
+     } else {
         $gym->getUserTypes()[$_GET['depEditId']]->getPages()[1]->set_access(isset($_GET['receptionCheck']) ? 1 : 0);
         $gym->getUserTypes()[$_GET['depEditId']]->getPages()[2]->set_access(isset($_GET['notificationCheck']) ? 1 : 0);
         $gym->getUserTypes()[$_GET['depEditId']]->getPages()[3]->set_access(isset($_GET['membersCheck']) ? 1 : 0);
@@ -19,23 +18,43 @@ if (isset($_GET['depEditId']) && isset($_GET['addDepartment'])) {
         $gym->getUserTypes()[$_GET['depEditId']]->getPages()[5]->set_access(isset($_GET['contractsCheck']) ? 1 : 0);
         $gym->getUserTypes()[$_GET['depEditId']]->getPages()[6]->set_access(isset($_GET['adminCheck']) ? 1 : 0);
         $gym->getUserTypes()[$_GET['depEditId']]->getPages()[7]->set_access(isset($_GET['reportsCheck']) ? 1 : 0);
-        $gym->editDepartment($_GET['depEditId']);
-        echo "<script> window.location.href='../views/departments.php';</script>";
+        if ($gym->editDepartment($_GET['depEditId'])) {
+            $_SESSION['successMessege'] = "Edited Successfully";
+
+            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+
+        } else {
+            $_SESSION['errormessege'] = "can't' Edit this department right now";
+
+            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+        }
     }
 } elseif (isset($_GET['depDeleteId'])) {
 
+    if ($gym->deleteDepartment($_GET['depDeleteId']))
+    {
+        $departments=$gym->getUserTypes();
+        unset($departments[$_GET['depDeleteId']]);
+        $gym->setAlldepartments($departments);
+        $_SESSION['Gym'] = serialize($gym);
+        $_SESSION['successMessege'] = "Deleted Successfully";
+        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+    }
+    else
+    {
+        $_SESSION['errormessege'] = "can't' delete this department right now";
+        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
 
-
-    //delete department
-    echo "<script> window.location.href='javascript:history.go(-1)';</script>";
-
+    }
 
 } elseif (isset($_GET['addDepartment']) && !isset($_GET['depEditId'])) {
     $department = new userType();
     $department->setName(htmlentities($_GET['depName']));
-    if ($department->checkifavailable() == '1') {
+    if ($department->checkifavailable($gym->getId())=='1') {
+        $_SESSION['messege'] = "This branch already exist";
         echo "<script> window.location.href='javascript:history.go(-1)';</script>";
-        //$_SESSION['messege'] = "This branch already exist";
+
+
     } else {
         //reception
         $receptionPage = new page();
@@ -85,8 +104,15 @@ if (isset($_GET['depEditId']) && isset($_GET['addDepartment'])) {
         $ReportsPage->set_name("Reports");
         $ReportsPage->set_access(isset($_GET['reportsCheck']) ? 1 : 0);
         $department->setPages($ReportsPage->get_id(), $ReportsPage);
+        if ($gym->addDepartment($department)) {
+            $_SESSION['successMessege'] = "Added successfully";
 
-        $gym->addDepartment($department);
-        echo "<script> window.location.href='../views/departments.php';</script>";
+            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+
+        } else {
+            $_SESSION['errormessege'] = "can't' add this department right now";
+
+            echo "<script> window.location.href='javascript:history.go(-1)';</script>";
+        }
     }
 }

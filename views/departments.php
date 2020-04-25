@@ -77,7 +77,7 @@
 
                                 </button>
 
-                                <button type="button" class="btn btn-danger btn-sm ">Delete</button>
+                                <button type="button" onclick="deletingDepartment(<?php echo $department->getId()?>)" class="btn btn-danger btn-sm ">Delete</button>
                             </div>
 						</td>
 					</tr>
@@ -92,3 +92,17 @@
  </div>
 </section>
 <?php include ("../shared/footer.php");?>
+<?php
+if (isset($_SESSION['messege'])) {
+    echo "<script> showToasting('" . $_SESSION['messege'] . "',2);</script>";
+    unset($_SESSION['messege']);
+} elseif (isset($_SESSION['errormessege'])) {
+    echo "<script> showToasting('" . $_SESSION['errormessege'] . "',1);</script>";
+    unset($_SESSION['errormessege']);
+} elseif(isset($_SESSION['successMessege']))
+{
+    echo "<script> showToasting('" . $_SESSION['successMessege'] . "',0);</script>";
+    unset($_SESSION['successMessege']);
+}
+?>
+

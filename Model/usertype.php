@@ -48,13 +48,20 @@ class userType implements ICheckAvailability
     {
         $db = new database();
         $this->setName($db->getMysqli()->real_escape_string($this->getName()));
-        $depSql="select id  from type where name='".$this->getName()."';";
-        $departments=$db->select($depSql);
-        if($departments!=NULL)
-        {
-            $db->closeconn();
-            return '1';
+        if ($this->getId()!=NULL) {
+            $depSql = "select id  from type where not id='".$this->getId()."' AND gymId='$gymId' AND name='" . $this->getName() . "';";
         }
+        else{
+            $depSql = "select id  from type where  gymId='$gymId' AND name='" . $this->getName() . "';";
+
+        }
+
+            $departments = $db->select($depSql);
+            if ($departments != NULL) {
+                $db->closeconn();
+                return '1';
+            }
+
         $db->closeconn();
         return '0';
 

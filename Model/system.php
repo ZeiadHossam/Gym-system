@@ -3,7 +3,8 @@ include_once 'gym.php';
 include_once 'database.php';
 include_once 'branch.php';
 
-class system
+class
+system
 {
     private $gyms;
 
@@ -67,7 +68,7 @@ class system
         else {
             $branchDeletionSql = "SELECT isDeleted FROM branch WHERE id=" . $branchId;
             $branchDeletion = $db->select($branchDeletionSql);
-            if ($branchDeletion['isDeleted'=='0']) {
+            if ($branchDeletion['isDeleted']=='0') {
                 $gymIdSql = "SELECT gymId FROM branch WHERE id=" . $branchId;
                 $gymId = $db->select($gymIdSql);
                 $Activesql = "SELECT isActive FROM gym WHERE id=" . $gymId['gymId'];

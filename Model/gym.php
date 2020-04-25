@@ -83,9 +83,12 @@ class gym
     public function setAllBranchs($branchs)
     {
         $this->branches = $branchs;
+    } public function setAlldepartments($departments)
+    {
+        $this->userTypes = $departments;
     }
 
-    public function getUserTypes()
+        public function getUserTypes()
     {
         return $this->userTypes;
     }
@@ -162,7 +165,8 @@ class gym
     public function deleteBranch($id)
     {
         $db = new database();
-        $sql="UPDATE branch SET isDeleted=1 WHERE id=".$id;
+        $updatedAt=date("Y/m/d H:i:s");
+        $sql="UPDATE branch SET isDeleted=1, updatedAt='$updatedAt' WHERE id=".$id;
         if ($db->insert($sql))
         {
 
@@ -188,35 +192,22 @@ class gym
 
     }
 
-    public function getallpaymentmethod()
-    {
-        $db = new database();
-        $paymentdataSql = "SELECT * FROM paymentmethod WHERE gymId=" . $this->id;
-        $paymentdata = $db->selectArray($paymentdataSql);
-        while ($row = mysqli_fetch_assoc($paymentdata)) {
-            $payment = new paymentmethod();
-            $payment->setId($row['id']);
-            $payment->setName($row['name']);
-            $this->setPaymentMethods($payment->getId(), $payment);
 
-        }
-        $db->closeconn();
-
-    }
 
     public function addDepartment($department)
     {
         $db = new database();
         $department->setName($db->getMysqli()->real_escape_string($department->getName()));
+        $createdAt=date("Y/m/d H:i:s");
 
-        $sql = "INSERT INTO type(name,gymId) VALUES('" . $department->getName() . "','" . $this->getId() . "');";
-        $sql2 = "INSERT INTO privilege(typeId,pageId,hasAccess) VALUES";
+        $sql = "INSERT INTO type(name,gymId,createdAt) VALUES('" . $department->getName() . "','" . $this->getId() . "','$createdAt');";
+        $sql2 = "INSERT INTO privilege(typeId,pageId,hasAccess,createdAt) VALUES";
         if ($db->insert($sql)) {
             if ($db->selectId($department, "type")) {
                 foreach ($department->getPages() as $page) {
                     $page->set_name($db->getMysqli()->real_escape_string($page->get_name()));
 
-                    $sql2 .= "(" . $department->getId() . "," . $page->get_id() . "," . $page->get_access() . "),";
+                    $sql2 .= "(" . $department->getId() . "," . $page->get_id() . "," . $page->get_access() . ",'$createdAt'),";
                 }
                 $sql2 = trim($sql2, ",");
                 $sql2 .= ";";
@@ -236,12 +227,14 @@ class gym
     public function editDepartment($depid)
     {
         $db = new database();
+        $updatedate=date("Y/m/d H:i:s");
+
         $this->getUserTypes()[$depid]->setName($db->getMysqli()->real_escape_string($this->getUserTypes()[$depid]->getName()));
-        $sql = "UPDATE type SET name='" . $this->getUserTypes()[$depid]->getName() . "' WHERE id=" . $this->getUserTypes()[$depid]->getId();
+        $sql = "UPDATE type SET updatedAt='$updatedate', name='" . $this->getUserTypes()[$depid]->getName() . "' WHERE id=" . $this->getUserTypes()[$depid]->getId();
         if ($db->insert($sql)) {
             $sql2 = "";
             foreach ($this->getUserTypes()[$depid]->getPages() as $page) {
-                $sql2 .= "UPDATE privilege SET hasAccess=" . $page->get_access() . " WHERE  typeId=" . $depid . " AND pageId=" . $page->get_id() . ";";
+                $sql2 .= "UPDATE privilege SET updatedAt='$updatedate' ,hasAccess=" . $page->get_access() . " WHERE  typeId=" . $depid . " AND pageId=" . $page->get_id() . ";";
             }
             if ($db->multiinsert($sql2)) {
                 $_SESSION['Gym'] = serialize($this);
@@ -253,23 +246,41 @@ class gym
         return false;
     }
 
+    public function deleteDepartment($typeid){
+        $db = new database();
+        $updatedate=date("Y/m/d H:i:s");
+
+        $deletetype="UPDATE type set isDeleted=1 , updatedAt='$updatedate' where id='$typeid'";
+        if ($db->insert($deletetype))
+        {
+            $deleteprivilege="UPDATE privilege set isDeleted=1,  updatedAt='$updatedate' where typeId='$typeid'";
+            if ($db->insert($deleteprivilege)){
+                $db->closeconn();
+                return true;
+            }
+
+
+
+        }
+        return false;
+    }
 
     public function getalldepartments()
     {
         $db = new database();
-        $departmentdataSql = "SELECT * FROM type WHERE gymId=" . $this->id;
+        $departmentdataSql = "SELECT * FROM type WHERE isDeleted=0 AND gymId=" . $this->id ;
 
         $departmentdata = $db->selectArray($departmentdataSql);
         while ($row = mysqli_fetch_assoc($departmentdata)) {
             $department = new userType();
             $department->setName($row['name']);
             $department->setId($row['id']);
-            $pagesql = "SELECT * FROM pages INNER JOIN privilege ON privilege.pageId=pages.id WHERE typeId=" . $row['id'];
+            $pagesql = "SELECT * FROM pages INNER JOIN privilege ON privilege.pageId=pages.id  WHERE isDeleted=0  AND typeId=" . $row['id'];
             $pagedata = $db->selectArray($pagesql);
             while ($row2 = mysqli_fetch_assoc($pagedata)) {
                 $page = new page();
                 $page->set_id($row2['pageId']);
-                $page->set_name($row2['name']);
+                $page->set_name($row2['pageName']);
                 $page->set_access($row2['hasAccess']);
                 $department->setPages($row2['pageId'], $page);
             }
@@ -300,15 +311,33 @@ class gym
     public function addpayment($payment)
     {
         $db = new database();
+        $created=date("Y/m/d H:i:s");
+
         $payment->setName($db->getMysqli()->real_escape_string($payment->getName()));
 
-        $sql = "INSERT INTO paymentmethod(name,gymId) VALUES('" . $payment->getName() . "','" . $this->id . "');";
+        $sql = "INSERT INTO paymentmethod(name,gymId,createdAt) VALUES('" . $payment->getName() . "','" . $this->id . "','$created');";
         if ($db->insert($sql)) {
 
             return true;
             $db->closeconn();
         }
         return false;
+
+    }
+
+    public function getallpaymentmethod()
+    {
+        $db = new database();
+        $paymentdataSql = "SELECT * FROM paymentmethod WHERE isDeleted=0 AND gymId=" . $this->id;
+        $paymentdata = $db->selectArray($paymentdataSql);
+        while ($row = mysqli_fetch_assoc($paymentdata)) {
+            $payment = new paymentmethod();
+            $payment->setId($row['id']);
+            $payment->setName($row['name']);
+            $this->setPaymentMethods($payment->getId(), $payment);
+
+        }
+        $db->closeconn();
 
     }
 }

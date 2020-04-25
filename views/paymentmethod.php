@@ -63,19 +63,12 @@
     </div>
 </section>
 <?php include("../shared/footer.php") ?>
+<?php
 if (isset($_SESSION['messege'])) {
 echo "<script> showToasting('" . $_SESSION['messege'] . "',2);</script>";
 unset($_SESSION['messege']);
 } elseif (isset($_SESSION['errormessege'])) {
 echo "<script> showToasting('" . $_SESSION['errormessege'] . "',1);</script>";
 unset($_SESSION['errormessege']);
-}
-?><?php
-if (isset($_SESSION['messege'])) {
-    echo "<script> showToasting('" . $_SESSION['messege'] . "',2);</script>";
-    unset($_SESSION['messege']);
-} elseif (isset($_SESSION['errormessege'])) {
-    echo "<script> showToasting('" . $_SESSION['errormessege'] . "',1);</script>";
-    unset($_SESSION['errormessege']);
 }
 ?>
