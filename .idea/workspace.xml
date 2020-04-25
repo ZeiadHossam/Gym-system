@@ -2,25 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Controller/package_controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/Package.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/pages/package.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/branch_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/branch_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/package_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/package_controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/payment_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/payment_controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/usertype_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/usertype_controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/gym.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/gym.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/paymentmethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/paymentmethod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/usertype.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/usertype.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/pages/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/payment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/departments.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/departments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/package.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/package.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/paymentmethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/paymentmethod.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Package.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/package.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/fullcalendar/main.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/plugins/fullcalendar/main.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/fullcalendar/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/plugins/fullcalendar/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/fullcalendar/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/plugins/fullcalendar/main.min.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -319,10 +307,10 @@
     </state>
     <state x="605" y="242" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587481268188" />
     <state x="756" y="305" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587785699105" />
-    <state x="389" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587341354638">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587786660756">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="389" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1587341354638" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1587786660756" />
     <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585404076404">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -331,10 +319,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="496" y="99" key="#database.php/0.0.1536.824@0.0.1536.824" timestamp="1585347199632" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1587339838128">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1587788224139">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587339838128" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587788224139" />
     <state x="100" y="100" width="1336" height="624" key="DiffContextDialog" timestamp="1584883864131">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

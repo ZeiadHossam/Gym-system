@@ -1,8 +1,8 @@
 <?php
 include_once("../model/paymentmethod.php");
 include_once("../model/gym.php");
-session_start();
-$gym = unserialize($_SESSION['Gym']);
+    session_start();
+    $gym = unserialize($_SESSION['Gym']);
 
 if (isset($_GET['paymentEditId']) && isset($_GET['addpayment'])) {
     $gym->getPaymentMethods()[$_GET['paymentEditId']]->setName(htmlentities($_GET['payname']));

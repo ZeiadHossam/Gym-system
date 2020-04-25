@@ -2,13 +2,19 @@
 include_once ("ICheckAvailability.php");
 
 
-class Package implements ICheckAvailability
+class package implements ICheckAvailability
 {
     private $id;
     private $name;
     private $periodType;
     private $period;
 
+    function __construct($periodDataType) {
+        if($periodDataType=='array')
+        {$this->period = array();}
+
+
+    }
 
     public function getId ()
     {
