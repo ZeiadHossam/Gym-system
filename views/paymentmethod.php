@@ -1,4 +1,5 @@
 <?php include("../shared/main.php"); ?>
+<?php include("delete.php") ?>
 
 <section class="content">
 
@@ -6,7 +7,7 @@
         <br>
         <legend>Payment Method</legend>
 
-        <form role="form" action="../Controller/payment_controller.php"" method="get">
+        <form role="form" action="../Controller/payment_controller.php" method="get" onsubmit="return validate_paymentMethod()">
             <div class="card-body">
                 <div class="form-group row">
                     <label for="Method" class="col-sm-2 col-form-label">Method:</label>
@@ -14,14 +15,16 @@
                         <?php if(isset($_GET['paymentEditId'])){?>
                             <input type="text" name="paymentEditId"
                                    value="<?php echo $gym->getPaymentMethods()[$_GET['paymentEditId']]->getId()  ?>" hidden>
-                        <input type="text" name="payname" value="<?php echo $gym->getPaymentMethods()[$_GET['paymentEditId']]->getName()  ?>" class="form-control">
+                        <input onfocusout="validate_paymentMethod()" id="paymentMethod" type="text" name="payname" value="<?php echo $gym->getPaymentMethods()[$_GET['paymentEditId']]->getName()  ?>" class="form-control">
                         <?php }
                         else
                             {?>
-                                <input type="text" name="payname" class="form-control">
+                                <input type="text" name="payname" id="paymentMethod" onfocusout="validate_paymentMethod()" class="form-control">
 
                             <?php }?>
+                        <span class="message" id="paymentMethod_message"></span>
                     </div>
+
                 </div>
 
                 <div class="btn-group tablebuttons">

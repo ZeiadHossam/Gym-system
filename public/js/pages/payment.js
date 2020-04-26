@@ -8,6 +8,20 @@ function cancellingPayment() {
 }
 
 function deletingPayment(id) {
-    window.location.href='../controller/payment_controller.php?paymentDeleteId='+id;
+    $('#modal-delete').modal('show');
+    $('#delete-btn').on('click',function () {
+        window.location.href='../controller/payment_controller.php?paymentDeleteId='+id;
+    });
 
+}
+function validate_paymentMethod() {
+    var paymentMethod = document.getElementById('paymentMethod').value;
+    var message = document.getElementById('paymentMethod_message');
+    if (paymentMethod=="") {
+        message.innerHTML = "*Payment Method is required";
+        return false;
+    } else {
+        message.innerHTML = "";
+        return true;
+    }
 }

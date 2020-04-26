@@ -1,6 +1,9 @@
 
 function deletingEmployee(personId,branchId,empId) {
-    window.location.href='../controller/employee_controller.php?personDeleteId='+personId+"&empBranchId="+branchId+"&empDeleteId="+empId;
+    $('#modal-delete').modal('show');
+    $('#delete-btn').on('click',function () {
+        window.location.href='../controller/employee_controller.php?personDeleteId='+personId+"&empBranchId="+branchId+"&empDeleteId="+empId;
+    });
 
 }
 

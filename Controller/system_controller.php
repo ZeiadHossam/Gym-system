@@ -31,7 +31,7 @@ if (isset($_POST['addowner'])) {
         $employee->setGender($_POST['gender']);
         $employee->getUsertype()->setName("Owner");
         $employee->getUsertype()->setAllpages(addOwnerType());
-        if (isset($_FILES['gymimage'])) {
+        if (file_exists($_FILES['gymimage']['tmp_name']) || is_uploaded_file($_FILES['gymimage']['tmp_name'])) {
             $gymimg = $_FILES["gymimage"]["name"];
             move_uploaded_file($_FILES["gymimage"]["tmp_name"], "../public/img/" . $gymimg);
         }
@@ -39,7 +39,7 @@ if (isset($_POST['addowner'])) {
         {
             $gymimg="DefaultGymLogo.png";
         }
-        if (isset($_FILES['image'])) {
+        if (file_exists($_FILES['image']['tmp_name']) || is_uploaded_file($_FILES['image']['tmp_name'])) {
             $img = $_FILES["image"]["name"];
             move_uploaded_file($_FILES["image"]["tmp_name"], "../public/img/" . $img);
         }

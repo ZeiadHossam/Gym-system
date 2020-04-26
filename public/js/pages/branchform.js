@@ -37,6 +37,9 @@ function cancellingBranch() {
 }
 
 function deletingBranch(id) {
-    window.location.href='../controller/branch_controller.php?branchDeleteId='+id;
+    $('#modal-delete').modal('show');
+    $('#delete-btn').on('click',function () {
+        window.location.href='../controller/branch_controller.php?branchDeleteId='+id;
+    });
 
 }

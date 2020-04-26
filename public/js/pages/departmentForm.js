@@ -36,6 +36,9 @@ function cancellingDepartment() {
 }
 
 function deletingDepartment(id) {
-    window.location.href='../controller/usertype_controller.php?depDeleteId='+id;
+    $('#modal-delete').modal('show');
+    $('#delete-btn').on('click',function () {
+        window.location.href='../controller/usertype_controller.php?depDeleteId='+id;
+    });
 
 }

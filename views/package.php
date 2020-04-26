@@ -1,11 +1,13 @@
 <?php include("../shared/main.php"); ?>
+<?php include("delete.php") ?>
+
 <section class="content">
 
     <div class="container-fluid">
         <br>
         <legend>Packages</legend>
 
-        <form role="form" action="../controller/package_controller.php" method="get">
+        <form role="form" action="../controller/package_controller.php" onsubmit="return validate_allPackage()" method="get">
             <div class="card-body">
                 <div class="form-group row">
                     <label for="Package Name"  class="col-sm-2 col-form-label">Package Name:</label>
@@ -15,32 +17,38 @@
                         ?>
                         <input type="text" name="packageEditId"
                                value="<?php echo $gym->getPackages()[$_GET['packageEditId']]->getId()  ?>" hidden>
-                        <input type="Text" name="packageName" value="<?php echo $gym->getPackages()[$_GET['packageEditId']]->getName() ?>" class="form-control">
+                        <input type="Text" onfocusout="validate_packageName()" id="packageName" name="packageName" value="<?php echo $gym->getPackages()[$_GET['packageEditId']]->getName() ?>" class="form-control">
                         <?php } else {?>
-                            <input type="Text" name="packageName" class="form-control">
+                            <input type="Text" onfocusout="validate_packageName()" id="packageName" name="packageName" class="form-control">
                         <?php }?>
+                        <span class="message" id="packageName_message"></span>
+
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="Type"  class="col-sm-2 col-form-label">Type:</label>
                     <div class="col-sm-10">
-                        <select name="periodType" class="form-control">
+                        <select name="periodType" id="packageType" class="form-control" onfocusout="validate_packageType()">
                             <option class="hidden" selected disabled>Select Type</option>
                             <option <?php if (isset($_GET['packageEditId'])&& $gym->getPackages()[$_GET['packageEditId']]->getPeriodType()=="Sessions"){ ?> selected <?php }?>>Sessions</option>
                             <option <?php if (isset($_GET['packageEditId'])&& $gym->getPackages()[$_GET['packageEditId']]->getPeriodType()=="Days"){ ?> selected <?php }?>>Days</option>
                             <option <?php if (isset($_GET['packageEditId'])&& $gym->getPackages()[$_GET['packageEditId']]->getPeriodType()=="Months"){ ?> selected <?php }?>>Months</option>
                         </select>
+                        <span class="message" id="packageType_message"></span>
+
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="Contract Types" class="col-sm-2 col-form-label">Contract Types:</label>
+                    <label for="Contract Types"  class="col-sm-2 col-form-label">Contract Types:</label>
                     <div class="col-sm-10">
-                        <select class="js-example-basic-multiple form-control" name="contractTypes[]" multiple="multiple">
+                        <select class="js-example-basic-multiple form-control" id="packagePeriod"  name="contractTypes[]" multiple="multiple">
                             <?php foreach ($packageperiods as $period){?>
                             <option selected><?php echo $period->getPeriod()?></option>
                             <?php }?>
                         </select>
+                        <span class="message" id="packagePeriod_message"></span>
+
                     </div>
                 </div>
                 <div class="btn-group tablebuttons">

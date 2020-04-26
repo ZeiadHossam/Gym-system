@@ -99,8 +99,9 @@ class branch implements ICheckAvailability
         }
         if ($db->insert($sql)) {
 
-            if ($db->selectId($employee, "person")) {
-
+                $query="SELECT id FROM person ORDER BY id DESC LIMIT 1";
+                if($row=$db->select($query)) {
+                    $employee->setPid($row['id']);
                 $sql2 = "INSERT INTO employee(personId,typeId,userName,password)VALUES('".$employee->getPid()."','" . $employee->getUsertype()->getId() . "','" . $employee->getusername() . "','" . md5($employee->getpassword()) . "');";
                 if ($db->insert($sql2)) {
                     if ($db->selectId($employee, "employee")) {

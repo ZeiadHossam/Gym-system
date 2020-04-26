@@ -41,16 +41,6 @@ $employee=$gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']];
                                     <input type="text" class="form-control" value="<?php echo $employee->getLastName(); ?>" maxlength="15"
                                            placeholder="Last Name" required>
                                 </div>
-                                <div class="form-group">
-                                    <label for="uname">*Username</label>
-                                    <input type="text" class="form-control" placeholder="*Username" value="<?php echo $employee->getUsername(); ?>"
-                                           required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">*Password</label>
-                                    <input type="password" class="form-control"
-                                           id="exampleInputPassword1" placeholder="*Password" value="<?php echo $employee->getPassword(); ?>" required>
-                                </div>
 
                                 <div class="form-group">
                                     <label>*Department </label>
@@ -66,26 +56,6 @@ $employee=$gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']];
 
 
                                 </div>
-
-                            </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputFile">PersonalImage</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input name="img" class="form-control-file" type="file"
-                                               id="img" accept="image/gif, image/jpeg, image/png"/
-                                        required>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-
-
                                 <div class="form-group">
                                     <label>*Gender </label>
 
@@ -96,6 +66,28 @@ $employee=$gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']];
 
                                     </select>
                                 </div>
+                            </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputFile">PersonalImage</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input name="img" class="form-control-file" type="file" onchange="showImage(this,'personalImage');"
+                                               id="img" accept="image/gif, image/jpeg, image/png"/
+                                        required>
+                                    </div>
+                                    <br>
+                                    <img id="personalImage" src="../public/img/<?php echo $employee->getImage(); ?>"/>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">HOME Phone</label>

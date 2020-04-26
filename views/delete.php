@@ -12,7 +12,7 @@
 			</div>
 			<div class="modal-footer justify-content-between">
 				<button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>
-				<button type="button" class="btn btn-outline-light toastrDefaultError" data-dismiss="modal">
+				<button type="button" class="btn btn-outline-light toastrDefaultError" id="delete-btn">
 					Yes,Delete this
 				</button>
 			</div>

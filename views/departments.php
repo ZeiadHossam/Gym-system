@@ -1,4 +1,6 @@
 <?php include("../shared/main.php"); ?>
+<?php include("delete.php") ?>
+
 <section class="content">
 
     <div class="container-fluid">
