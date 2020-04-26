@@ -1,3 +1,9 @@
+
+function deletingEmployee(personId,branchId,empId) {
+    window.location.href='../controller/employee_controller.php?personDeleteId='+personId+"&empBranchId="+branchId+"&empDeleteId="+empId;
+
+}
+
 function sumbittingempform() {
 if (validate_firstname()&&validate_lastname()&&validate_mobilePhone()&&validate_homePhone()&&validate_email()&&validate_email_input()&&validate_userName()&&validate_password()&&validate_date()&&validate_gender())
 {

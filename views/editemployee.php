@@ -1,118 +1,124 @@
-<?php include("../shared/main.php") ?>
+<?php include("../shared/main.php");
+$employee=$gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']];
+
+?>
 
 
 <div class="container-fluid">
     <div class="row">
 
         <!-- left column -->
-        <div class="col-md-12">
+        <div class="col-md-10 offset-md-1">
             <!-- general form elements -->
-            <div class="card card-primary">
 
 
                 <form role="form" action="editemployee.php" enctype="multipart/form-data" method="post">
-                    <div class="card-body">
-                        <div class="row">
+                    <div class="row view_emp">
+                        <div class="col-md-1">
+                            <a href="javascript:history.go(-1)" class="btn btn-md btn-default"><span class="fa fa-angle-left"></span></a>
+
+                        </div>
+                        <div class="col-md-4 offset-3">
+
+                            <legend class="viewHeader">Edit <?php echo $employee->getFirstName(); ?></legend>
+                        </div>
+                    </div>
+
+                    <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
+                                    <label for="exampleInputEmail1">*Email address</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1"
-                                           placeholder="Enter email" required>
+                                           placeholder="Enter email" value="<?php echo $employee->getEmail(); ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="fname">*First Name</label>
                                     <input type="text" class="form-control" maxlength="15"
-                                           placeholder="First Name" required>
+                                           placeholder="First Name" value="<?php echo $employee->getFirstName(); ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="fname">*Last Name</label>
-                                    <input type="text" class="form-control" maxlength="15"
+                                    <label for="lname">*Last Name</label>
+                                    <input type="text" class="form-control" value="<?php echo $employee->getLastName(); ?>" maxlength="15"
                                            placeholder="Last Name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="fname">user Name</label>
-                                    <input type="text" class="form-control" placeholder="user name"
+                                    <label for="uname">*Username</label>
+                                    <input type="text" class="form-control" placeholder="*Username" value="<?php echo $employee->getUsername(); ?>"
                                            required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
+                                    <label for="exampleInputPassword1">*Password</label>
                                     <input type="password" class="form-control"
-                                           id="exampleInputPassword1" placeholder="Password" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">date added </label>
-                                    <input type="date" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">PersonalImage</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input name="img" class="form-control-file" type="file"
-                                                   id="img" accept="image/gif, image/jpeg, image/png"/
-                                            required>
-                                        </div>
-
-                                    </div>
+                                           id="exampleInputPassword1" placeholder="*Password" value="<?php echo $employee->getPassword(); ?>" required>
                                 </div>
 
+                                <div class="form-group">
+                                    <label>*Department </label>
+
+                                    <select class="form-control">
+
+                                        <?php foreach ($gym->getUsertypes() as $dep){
+                                            if($dep->getName()!="Owner") {
+                                                echo "<option value='" . $dep->getId() . "'" ?><?php if($dep->getId()==$employee->getUsertype()->getId()){ ?> selected <?php    } echo " >" . $dep->getName() . "</option>";
+                                            } } ?>
+
+                                    </select>
+
+
+                                </div>
 
                             </div>
 
-                            <div class="col-md-6">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputFile">PersonalImage</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input name="img" class="form-control-file" type="file"
+                                               id="img" accept="image/gif, image/jpeg, image/png"/
+                                        required>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
 
 
                                 <div class="form-group">
-                                    <label>*department </label>
+                                    <label>*Gender </label>
 
                                     <select class="form-control">
 
-                                        <option>trainer</option>
-                                        <option>sales</option>
-                                        <option>admin</option>
-                                    </select>
+                                        <option <?php if($employee->getGender()=='Male'||$employee->getGender()=='male'){ ?>selected <?php } ?> >Male</option>
+                                        <option <?php if($employee->getGender()=='Female'||$employee->getGender()=='female'){ ?>selected <?php } ?> >female</option>
 
-
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label>*gender </label>
-
-                                    <select class="form-control">
-
-                                        <option>male</option>
-                                        <option>female</option>
-                                        <option></option>
                                     </select>
                                 </div>
-                                <br>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">HOME phone</label>
+                                    <label for="exampleInputEmail1">HOME Phone</label>
                                     <input type="text" class="form-control" maxlength="8"
-                                           placeholder="home phone" required>
+                                           placeholder="Home Phone" value="<?php echo $employee->getHomePhone(); ?>" required>
                                 </div>
-                                <br>
 
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">*phone number</label>
+                                    <label for="exampleInputEmail1">*Mobile Phone</label>
                                     <input type="text" class="form-control" maxlength="10"
-                                           placeholder="phone number" required>
+                                           placeholder="Mobile Phone" value="<?php echo $employee->getMobilePhone(); ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">*birthday </label>
-                                    <input type="date" class="form-control" required>
+                                    <label for="exampleInputEmail1">*Birthday </label>
+                                    <input type="date" class="form-control" value="<?php echo $employee->getBirthDay(); ?>" required>
                                 </div>
 
 
                             </div>
                         </div>
-                    </div>
-					<button type="submit" class="btn btn-primary Addmemberbutton ">Edit Employes</button>
+					<button type="submit" class="btn btn-primary Addmemberbutton ">Submit</button>
                 </form>
-				<a href="javascript:history.go(-1)" class="btn btn-default">Cancel</a>
-            </div>
         </div>
     </div>
 </div>
