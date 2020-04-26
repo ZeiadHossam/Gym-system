@@ -134,7 +134,16 @@ system
         $gym->getallpaymentmethod();
         $gym->getalldepartments();
         $gym->getallpackage();
+        if ($bId == NULL) {
+            foreach ($gym->getBranchs() as $branch){
+                $branch->getAllEmployees();
+            }
 
+        }
+        else{
+            $gym->getBranchs()[$data['branchId']]->getAllEmployees();
+
+        }
         return $gym;
     }
 }

@@ -28,6 +28,8 @@
 <script src="../public/js/pages/branch.js"></script>
 <script src="../public/js/pages/branchform.js"></script>
 <script src="../public/js/pages/departmentForm.js"></script>
+<script src="../public/js/pages/employeeform.js "></script>
+<script src="../public/js/pages/employeeaction.js "></script>
 <script src="../public/js/pages/department.js"></script>
 <script src="../public/js/pages/payment.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>

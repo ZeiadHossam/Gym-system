@@ -1,6 +1,6 @@
-<?php include("../shared/main.php")?>
-<?php include("addemployee.php")?>
-<?php include("delete.php") ?>
+<?php include("../shared/main.php");?>
+<?php include("addemployee.php");?>
+<?php include("delete.php") ;?>
  <section class="content">
 	<div class="container-fluid">
 		<br>
@@ -22,43 +22,66 @@
 						<th>First Name</th>
 						<th>Last Name</th>
 						<th>Department</th>
+                        <?php
+                            if ($_SESSION['branch']==NULL){
+                                ?>
+						<th>Branch Name(area)</th>
+                               <?php } ?>
 						<th>Mobile Phone</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
+                <?php
+                if ($_SESSION['branch']==NULL){
+                    foreach ($gym->getBranchs() as $branch){
+                    foreach ($branch->getEmployees() as $employee){
+                        ?>
 					<tr>
-						<td>100</td>
-						<td>mahmoud</td>
-						<td>omar</td>
-						<td>Sales</td>
-						<td>01111111111</td>
+						<td><?php echo $employee->getId() ; ?></td>
+						<td><?php echo $employee->getFirstName() ; ?></td>
+						<td><?php echo $employee->getLastName() ; ?></td>
+						<td><?php echo $employee->getUsertype()->getName() ; ?></td>
+						<td><?php echo $branch->getCity(); ?></td>
+
+
+                        <td><?php echo $employee->getMobilePhone() ; ?></td>
 						<td>
 							<div class="btn-group tablebuttons">
                                 <a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
                                 <a href="editemployee.php" class="btn btn-info btn-sm" >Edit</a>
-								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
-									Delete
+                                <button type="button" onclick="deletingEmployee(<?php echo $employee->getId();?>)" class="btn btn-danger btn-sm">
+                                    Delete
+                                </button>
 								</button>
 							</div>
 						</td>
 					</tr>
-					<tr>
-						<td>200</td>
-						<td>amr</td>
-						<td>khaled</td>
-						<td>Reception</td>
-						<td>01222222222</td>
-						<td>
-							<div class="btn-group tablebuttons">
-								<a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
+                        <?php }}}  else{
+                    foreach ($gym->getBranchs()[$_SESSION['branch']]->getEmployees() as $employee){
+                    ?>
+
+                    <tr>
+                        <td><?php echo $employee->getId() ; ?></td>
+                        <td><?php echo $employee->getFirstName() ; ?></td>
+                        <td><?php echo $employee->getLastName() ; ?></td>
+                        <td><?php echo $employee->getUsertype()->getName() ; ?></td>
+                        <td><?php echo $employee->getMobilePhone() ; ?></td>
+                        <td>
+                            <div class="btn-group tablebuttons">
+                                <a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
                                 <a href="editemployee.php" class="btn btn-info btn-sm" >Edit</a>
-								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
-									Delete
-								</button>
-							</div>
-						</td>
-					</tr>
+
+                                <button type="button" onclick="deletingEmployee(<?php echo $employee->getId();?>)" class="btn btn-danger btn-sm">
+                                    Delete
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                <?php } } ?>
+
 				</tbody>
 			</table>
 
@@ -66,4 +89,4 @@
 	</div>
 </section>
 
-<?php include("../shared/footer.php")?>
+<?php include("../shared/footer.php");?>

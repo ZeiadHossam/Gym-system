@@ -58,9 +58,9 @@ class branch implements ICheckAvailability
     }
 
 
-    public function setEmployees($employees)
+    public function setEmployees($empId,$employee)
     {
-        $this->employees[] = $employees;
+        $this->employees[$empId] = $employee;
     }
 
 
@@ -77,8 +77,6 @@ class branch implements ICheckAvailability
     public function addemployee($employee, $Bid)
     {
         $db = new database();
-
-
         $employee->setUserName($db->getMysqli()->real_escape_string($employee->getUserName()));
         $employee->setPassword($db->getMysqli()->real_escape_string($employee->getPassword()));
         $employee->setEmail($db->getMysqli()->real_escape_string($employee->getEmail()));
@@ -92,14 +90,16 @@ class branch implements ICheckAvailability
         if ($Bid == '-1') {
             $sql = "INSERT INTO person (firstName,lastName,birthDay,image,mobilePhone,homePhone,gender,email,createdAt) VALUES ('" . $employee->getFirstName() . "','" . $employee->getLastName() . "','" . $employee->getBirthDay() . "','" . $employee->getImage() . "','" . $employee->getMobilePhone() . "','" . $employee->getHomePhone() . "','" . $employee->getGender() . "','" . $employee->getEmail() . "','$createdAt');";
         } else {
-            $sql = "INSERT INTO person (firstName,lastName,birthDay,image,mobilePhone,homePhone,gender,email,branchId) VALUES ('" . $employee->getFirstName() . "','" . $employee->getLastName() . "','" . $employee->getBirthDay() . "','" . $employee->getImage() . "','" . $employee->getMobilePhone() . "','" . $employee->getHomePhone() . "','" . $employee->getGender() . "','" . $employee->getEmail() . "','" . $this->getId() . "');";
+            $sql = "INSERT INTO person (firstName,lastName,birthDay,image,mobilePhone,homePhone,gender,email,createdAt,branchId) VALUES ('" . $employee->getFirstName() . "','" . $employee->getLastName() . "','" . $employee->getBirthDay() . "','" . $employee->getImage() . "','" . $employee->getMobilePhone() . "','" . $employee->getHomePhone() . "','" . $employee->getGender() . "','" . $employee->getEmail() . "','$createdAt','" . $this->getId() . "');";
         }
         if ($db->insert($sql)) {
-            $personID = "SELECT id FROM person WHERE firstName='" . $employee->getFirstName() . "' AND lastName='" . $employee->getLastName() . "' AND mobilePhone='" . $employee->getMobilePhone() . "'";
+
+            $personID="SELECT id FROM person ORDER BY id DESC LIMIT 1";
             $sql2 = "INSERT INTO employee(personId,typeId,userName,password)VALUES(($personID),'" . $employee->getUsertype()->getId() . "','" . $employee->getusername() . "','" . md5($employee->getpassword()) . "');";
             if ($db->insert($sql2)) {
                 if ($db->selectId($employee, "employee")) {
-                    $this->setEmployees($employee);
+                    $this->setEmployees($employee->getId(),$employee);
+
                     $db->closeconn();
                     return true;
                 } else {
@@ -111,6 +111,49 @@ class branch implements ICheckAvailability
                 return false;
             }
         }
+    }
+    public function deleteEmployee($id)
+    {
+        $db = new database();
+        $updatedAt=date("Y/m/d H:i:s");
+        $sql="UPDATE person SET isDeleted=1, updatedAt='$updatedAt' WHERE id=".$id;
+        if ($db->insert($sql))
+        {
+
+            $db->closeconn();
+            return true;
+        }
+        return false;
+    }
+    public function getAllEmployees(){
+        $db = new database();
+        $employeeSql= "SELECT * , employee.id as emp_id  FROM employee INNER JOIN person ON employee.personId=person.id INNER JOIN type ON employee.typeId=type.id where person.isDeleted=0 AND type.isDeleted=0 AND person.branchId=".$this->getId();
+        $employeedata = $db->selectArray($employeeSql);
+        while ($row = mysqli_fetch_assoc($employeedata)) {
+           $employee=new employee();
+           $employee->setId($row['emp_id']);
+           $employee->setFirstName($row['firstName']);
+           $employee->setLastName($row['lastName']);
+           $employee->setImage($row['image']);
+           $employee->setHomePhone($row['homePhone']);
+           $employee->setMobilePhone($row['mobilePhone']);
+           $employee->setEmail($row['email']);
+           $employee->setBirthday($row['birthDay']);
+           $employee->setGender($row['gender']);
+           $employee->getUsertype()->setId($row['typeId']);
+           $employee->getUsertype()->setName($row['name']);
+           $pagesSql="SELECT * , pages.id as page_id FROM  privilege INNER JOIN pages ON privilege.pageId=pages.id WHERE privilege.typeId=".$row['typeId'];
+           $employeeprivilege = $db->selectArray($pagesSql);
+            while ($row3 = mysqli_fetch_assoc($employeeprivilege)) {
+                $page = new page();
+                $page->set_id($row3['page_id']);
+                $page->set_name($row3['pageName']);
+                $page->set_access($row3['hasAccess']);
+                $employee->getUsertype()->setPages($page->get_id(),$page);
+            }
+                $this->setEmployees($employee->getId(),$employee);
+        }
+
     }
 
     public function checkifavailable($gymId)
@@ -132,4 +175,5 @@ class branch implements ICheckAvailability
         $db->closeconn();
         return '0';
     }
+
 }

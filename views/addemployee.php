@@ -18,16 +18,16 @@
 
 
                                 <div class="card-body">
-                                    <form role="form" action="Controller/controllingemployee.php"
+                                    <form role="form" action="../Controller/employee_controller.php"
                                           enctype="multipart/form-data" method="get">
 
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <label for="exampleInputEmail1">*Email Address</label>
                                                     <input type="email" name="email" class="form-control"
                                                            id="exampleInputEmail1"
-                                                           placeholder="Enter email" required>
+                                                           placeholder="Enter Email" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*First Name</label>
@@ -40,49 +40,55 @@
                                                            placeholder="Last Name" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="fname">user Name</label>
+                                                    <label for="fname">*UserName</label>
                                                     <input type="text" name="username" class="form-control"
-                                                           placeholder="user name"
+                                                           placeholder="UserName"
                                                            required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputPassword1">Password</label>
+                                                    <label for="exampleInputPassword1">*Password</label>
                                                     <input type="password" name="password" class="form-control"
                                                            id="exampleInputPassword1" placeholder="Password" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">date added </label>
-                                                    <input type="date" name="dateadded" class="form-control" required>
+                                                    <label>*department </label>
+
+                                                    <select name="usertype" class="form-control">
+                                                        <?php foreach ($gym->getUsertypes() as $dep){
+                                                        echo "<option value='".$dep->getId()."'>".$dep->getName()."</option>";
+                                                         } ?>
+                                                    </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputFile">PersonalImage</label>
-                                                    <div class="input-group">
-                                                        <div class="custom-file">
-                                                            <input name="img" class="form-control-file" type="file"
-                                                                   id="img" accept="image/gif, image/jpeg, image/png"/
-                                                            required>
-                                                        </div>
+                                                <?php if ($_SESSION['branch']==NULL) { ?>
+                                                    <div class="form-group">
+                                                        <label>*Branch </label>
+
+                                                        <select name="branch" class="form-control">
+                                                            <?php foreach ($gym->getBranchs() as $branch){
+                                                                echo "<option value='".$branch->getId()."'>".$branch->getCity()."</option>";
+                                                            } ?>
+                                                        </select>
 
                                                     </div>
-                                                </div>
+                                                <?php } ?>
 
 
                                             </div>
 
                                             <div class="col-md-6">
-
-
                                                 <div class="form-group">
-                                                    <label>*department </label>
+                                                    <label for="exampleInputFile">PersonalImage</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input name="Pimage" class="form-control-file" type="file"
+                                                                   onchange="showImage(this,'personalImage');"
+                                                                   id="img" accept="image/gif, image/jpeg, image/png"/>
+                                                        </div>
+                                                        <br>
+                                                        <img id="personalImage" src="http://placehold.it/100"/>
 
-                                                    <select name="usertype" class="form-control">
-
-                                                        <option>admin</option>
-                                                        <option>Reception</option>
-                                                    </select>
-
+                                                    </div>
                                                 </div>
-
                                                 <div class="form-group">
                                                     <label>*gender </label>
 
@@ -108,7 +114,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*birthday </label>
-                                                    <input type="date" name="birthday" min="1900-01-01" max="2020-03-29"
+                                                    <input type="date" name="birthday" min="1900-01-01" max="2005-3-29"
                                                            class="form-control" required>
                                                 </div>
                                             </div>

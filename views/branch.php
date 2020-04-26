@@ -76,7 +76,7 @@
                                 </button>
 
                                 <button type="button" onclick="deletingBranch(<?php echo $branch->getId(); ?>)"
-                                        class="btn btn-danger btn-sm ">Delete
+                                            class="btn btn-danger btn-sm ">Delete
                                 </button>
                             </div>
                         </td>
