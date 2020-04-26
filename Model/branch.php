@@ -58,9 +58,14 @@ class branch implements ICheckAvailability
     }
 
 
-    public function setEmployees($empId,$employee)
+    public function setEmployees($empId, $employee)
     {
         $this->employees[$empId] = $employee;
+    }
+
+    public function setAllEmployees($employees)
+    {
+        $this->employees = $employees;
     }
 
 
@@ -94,64 +99,70 @@ class branch implements ICheckAvailability
         }
         if ($db->insert($sql)) {
 
-            $personID="SELECT id FROM person ORDER BY id DESC LIMIT 1";
-            $sql2 = "INSERT INTO employee(personId,typeId,userName,password)VALUES(($personID),'" . $employee->getUsertype()->getId() . "','" . $employee->getusername() . "','" . md5($employee->getpassword()) . "');";
-            if ($db->insert($sql2)) {
-                if ($db->selectId($employee, "employee")) {
-                    $this->setEmployees($employee->getId(),$employee);
+            if ($db->selectId($employee, "person")) {
 
-                    $db->closeconn();
-                    return true;
+                $sql2 = "INSERT INTO employee(personId,typeId,userName,password)VALUES('".$employee->getPid()."','" . $employee->getUsertype()->getId() . "','" . $employee->getusername() . "','" . md5($employee->getpassword()) . "');";
+                if ($db->insert($sql2)) {
+                    if ($db->selectId($employee, "employee")) {
+                        $this->setEmployees($employee->getId(), $employee);
+
+                        $db->closeconn();
+                        return true;
+                    } else {
+                        $db->closeconn();
+                        return false;
+                    }
                 } else {
                     $db->closeconn();
                     return false;
                 }
-            } else {
-                $db->closeconn();
-                return false;
             }
+
         }
     }
+
     public function deleteEmployee($id)
     {
         $db = new database();
-        $updatedAt=date("Y/m/d H:i:s");
-        $sql="UPDATE person SET isDeleted=1, updatedAt='$updatedAt' WHERE id=".$id;
-        if ($db->insert($sql))
-        {
+        $updatedAt = date("Y/m/d H:i:s");
+        $sql = "UPDATE person SET isDeleted=1, updatedAt='$updatedAt' WHERE id=" . $id;
+        if ($db->insert($sql)) {
 
             $db->closeconn();
             return true;
         }
         return false;
     }
-    public function getAllEmployees(){
+
+    public function getAllEmployees()
+    {
         $db = new database();
-        $employeeSql= "SELECT * , employee.id as emp_id  FROM employee INNER JOIN person ON employee.personId=person.id INNER JOIN type ON employee.typeId=type.id where person.isDeleted=0 AND type.isDeleted=0 AND person.branchId=".$this->getId();
+        $employeeSql = "SELECT * , employee.id as emp_id,person.id as personId  FROM employee INNER JOIN person ON employee.personId=person.id INNER JOIN type ON employee.typeId=type.id where person.isDeleted=0 AND type.isDeleted=0 AND person.branchId=" . $this->getId();
         $employeedata = $db->selectArray($employeeSql);
         while ($row = mysqli_fetch_assoc($employeedata)) {
-           $employee=new employee();
-           $employee->setId($row['emp_id']);
-           $employee->setFirstName($row['firstName']);
-           $employee->setLastName($row['lastName']);
-           $employee->setImage($row['image']);
-           $employee->setHomePhone($row['homePhone']);
-           $employee->setMobilePhone($row['mobilePhone']);
-           $employee->setEmail($row['email']);
-           $employee->setBirthday($row['birthDay']);
-           $employee->setGender($row['gender']);
-           $employee->getUsertype()->setId($row['typeId']);
-           $employee->getUsertype()->setName($row['name']);
-           $pagesSql="SELECT * , pages.id as page_id FROM  privilege INNER JOIN pages ON privilege.pageId=pages.id WHERE privilege.typeId=".$row['typeId'];
-           $employeeprivilege = $db->selectArray($pagesSql);
+            $employee = new employee();
+            $employee->setPid($row['personId']);
+            $employee->setId($row['emp_id']);
+            $employee->setFirstName($row['firstName']);
+            $employee->setLastName($row['lastName']);
+            $employee->setImage($row['image']);
+            $employee->setHomePhone($row['homePhone']);
+            $employee->setMobilePhone($row['mobilePhone']);
+            $employee->setEmail($row['email']);
+            $employee->setBirthday($row['birthDay']);
+            $employee->setGender($row['gender']);
+            $employee->getUsertype()->setId($row['typeId']);
+            $employee->getUsertype()->setName($row['name']);
+            $pagesSql = "SELECT * , pages.id as page_id FROM  privilege INNER JOIN pages ON privilege.pageId=pages.id WHERE privilege.typeId=" . $row['typeId'];
+            $employeeprivilege = $db->selectArray($pagesSql);
             while ($row3 = mysqli_fetch_assoc($employeeprivilege)) {
                 $page = new page();
                 $page->set_id($row3['page_id']);
                 $page->set_name($row3['pageName']);
                 $page->set_access($row3['hasAccess']);
-                $employee->getUsertype()->setPages($page->get_id(),$page);
+                $employee->getUsertype()->setPages($page->get_id(), $page);
             }
-                $this->setEmployees($employee->getId(),$employee);
+            $this->setEmployees($employee->getId(), $employee);
         }
 
     }

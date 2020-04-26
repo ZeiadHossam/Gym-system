@@ -33,12 +33,39 @@ if (isset($_GET['depEditId']) && isset($_GET['addDepartment'])) {
 
     if ($gym->deleteDepartment($_GET['depDeleteId']))
     {
-        $departments=$gym->getUserTypes();
-        unset($departments[$_GET['depDeleteId']]);
-        $gym->setAlldepartments($departments);
-        $_SESSION['Gym'] = serialize($gym);
-        $_SESSION['successMessege'] = "Deleted Successfully";
-        echo "<script> window.location.href='../views/departments.php';</script>";
+
+
+
+        if($_SESSION['branch']!=NULL && $gym->getBranchs()[$_SESSION['branch']]->getEmployees()[$_SESSION['id']]->getUsertype()->getId()==$_GET['depDeleteId'])
+        {
+            session_destroy();
+            echo "<script> window.location.href='../views/login.php';</script>";
+        }
+        else
+        {
+            $branches=$gym->getBranchs();
+            foreach ($branches as $branch)
+            {
+                $employees=$branch->getEmployees();
+                foreach ($employees as $employee)
+                {
+                    if ($employee->getUsertype()->getId()==$_GET['depDeleteId'])
+                    {
+                        unset($employees[$employee->getId()]);
+                    }
+                }
+                $branch->setAllEmployees($employees);
+            }
+            $gym->setAllBranchs($branches);
+            $departments=$gym->getUserTypes();
+            unset($departments[$_GET['depDeleteId']]);
+            $gym->setAlldepartments($departments);
+            $_SESSION['Gym'] = serialize($gym);
+            $_SESSION['successMessege'] = "Deleted Successfully";
+            echo "<script> window.location.href='../views/departments.php';</script>";
+        }
+
+
     }
     else
     {

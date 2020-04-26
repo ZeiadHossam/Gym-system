@@ -3,7 +3,7 @@
 
 class person
 {
-    private $id;
+    private $Pid;
     private $firstName;
     private $lastName;
     private $birthday;
@@ -14,14 +14,14 @@ class person
     private $email;
 
 
-    public function getId()
+    public function getPid()
     {
-        return $this->id;
+        return $this->Pid;
     }
 
-    public function setId($id)
+    public function setPid($id)
     {
-        $this->id = $id;
+        $this->Pid = $id;
     }
 
     public function getFirstName()

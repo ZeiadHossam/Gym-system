@@ -1,102 +1,92 @@
-<?php include("../shared/main.php") ?>
-                <div class="container-fluid">
+<?php include("../shared/main.php");
+$employee=$gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']];
+?>
+
+                <div class="container-fluid ">
                     <div class="row">
 
                         <!-- left column -->
-                        <div class="col-md-12">
+                        <div class="col-md-10 offset-md-1">
                             <!-- general form elements -->
-                            <div class="card card-primary">
-
 
                                 <form role="form" action="viewemployee.php" enctype="multipart/form-data" method="post">
-                                    <div class="card-body">
+                                    <div class="row view_emp">
+                                        <div class="col-md-1">
+                                            <a href="javascript:history.go(-1)" class="btn btn-md btn-default"><span class="fa fa-angle-left"></span></a>
+
+                                        </div>
+                                        <div class="col-md-4 offset-3">
+
+                                        <legend class="viewHeader"><?php echo $employee->getFirstName(); ?> Information</legend>
+                                        </div>
+                                    </div>
+
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
                                                     <input type="email" class="form-control" id="exampleInputEmail1"
-                                                           placeholder="Enter email" readonly>
+                                                           value="<?php echo $employee->getEmail(); ?>" readonly>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*First Name</label>
                                                     <input type="text" class="form-control" maxlength="15"
-                                                           placeholder="First Name" readonly>
+                                                           value="<?php echo $employee->getFirstName(); ?>" readonly>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="fname">*Last Name</label>
-                                                    <input type="text" class="form-control" readonly>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="fname">user Name</label>
-                                                    <input type="text" class="form-control" readonly>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputPassword1">Password</label>
-                                                    <input type="password" class="form-control"
-                                                           id="exampleInputPassword1" readonly>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">date added </label>
-                                                    <input type="date" class="form-control" readonly>
+                                                    <label for="lname">*Last Name</label>
+                                                    <input type="text" value="<?php echo $employee->getLastName(); ?>" class="form-control" readonly>
                                                 </div>
 
 
+
+                                                <div class="form-group">
+                                                    <label>*Department </label>
+
+                                                    <select class="form-control" disabled>
+
+                                                        <option selected ><?php echo $employee->getUsertype()->getName();?></option>
+
+                                                    </select>
+
+
+                                                </div>
 
                                             </div>
 
                                             <div class="col-md-6">
 
-
                                                 <div class="form-group">
-                                                    <label>*department </label>
+                                                    <label>*Gender </label>
 
-                                                    <select class="form-control">
+                                                    <select class="form-control" disabled>
 
-                                                        <option selected disabled>trainer</option>
-                                                        <option disabled>sales</option>
-                                                        <option disabled>admin</option>
-                                                    </select>
+                                                        <option selected ><?php echo $employee->getGender();?></option>
 
-
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label>*gender </label>
-
-                                                    <select class="form-control">
-
-                                                        <option disabled>male</option>
-                                                        <option disabled>female</option>
-                                                        <option disabled></option>
                                                     </select>
                                                 </div>
-                                                <br>
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">HOME phone</label>
-                                                    <input type="text" class="form-control" readonly>
+                                                    <input type="text" value="<?php echo $employee->getHomePhone(); ?>" class="form-control" readonly>
                                                 </div>
-                                                <br>
 
 
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">*phone number</label>
-                                                    <input type="text" class="form-control" readonly>
+                                                    <label for="exampleInputEmail1">*Mobile Phone</label>
+                                                    <input type="text" value="<?php echo $employee->getMobilePhone(); ?>" class="form-control" readonly>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*birthday </label>
-                                                    <input type="date" class="form-control" readonly>
+                                                    <input type="date" value="<?php echo $employee->getBirthDay(); ?>" class="form-control" readonly>
                                                 </div>
 
 
                                             </div>
                                         </div>
-                                    </div>
 
                                 </form>
-				<a href="javascript:history.go(-1)" class="btn btn-sm btn-default">Close</a>
-                            </div>
                         </div>
                     </div>
                 </div>

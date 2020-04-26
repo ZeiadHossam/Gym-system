@@ -34,3 +34,11 @@ input[type=number] {
 {
 	max-width: 100px;
 }
+.viewHeader
+{
+	text-align: center;
+}
+.view_emp
+{
+	margin-top: 2rem;
+}

@@ -9,8 +9,22 @@ $gym = unserialize($_SESSION['Gym']);
 if (isset($_GET['employeeEditId']) && isset($_GET['addemployee'])) {
 
 }
-elseif (isset($_GET['employeeDeleteId'])) {
+elseif (isset($_GET['personDeleteId'])&&isset($_GET['empBranchId'])&&isset($_GET['empDeleteId'])) {
+    if ($gym->getBranchs()[$_GET['empBranchId']]->deleteEmployee($_GET['personDeleteId']))
+    {
+        $Employees=$gym->getBranchs()[$_GET['empBranchId']]->getEmployees();
+        unset($Employees[$_GET['empDeleteId']]);
+        $gym->getBranchs()[$_GET['empBranchId']]->setAllEmployees($Employees);
+        $_SESSION['Gym'] = serialize($gym);
+        $_SESSION['successMessege'] = "Deleted Successfully";
+        echo "<script> window.location.href='../views/employees.php';</script>";
+    }
+    else
+    {
+        $_SESSION['errormessege'] = "can't' delete this Employee right now";
+        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
 
+    }
 
 }
 elseif (isset($_GET['addemployee']) && !isset($_GET['employeeEditId'])) {
@@ -54,7 +68,7 @@ elseif (isset($_GET['addemployee']) && !isset($_GET['employeeEditId'])) {
             $_SESSION['Gym'] = serialize($gym);
             $_SESSION['successMessege'] = "Added Successfully";
 
-            echo "<script> window.location.href='../views/employee.php';</script>";
+            echo "<script> window.location.href='../views/employees.php';</script>";
 
         } else {
             $_SESSION['errormessege']="There was a problem while Adding Employee";

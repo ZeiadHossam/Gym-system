@@ -1,4 +1,15 @@
 <!-- Main Sidebar Container -->
+<?php
+if ($_SESSION['branch']==NULL)
+{
+    $employee=$gym->getOwner();
+}
+else
+{
+    $employee=$gym->getBranchs()[$_SESSION['branch']]->getEmployees()[$_SESSION['id']];
+}
+?>
+
 <aside class="main-sidebar sidebar-dark-info elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
@@ -12,11 +23,11 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="../public/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="../public/img/<?php echo $employee->getImage(); ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a class="d-block">User_Name</a>
-                <em class="text-lightblue">User_Type</em>
+                <a class="d-block"><?php echo $employee->getFirstName()." ".$employee->getLastName() ;?></a>
+                <em class="text-lightblue"><?php echo $employee->getUsertype()->getName() ?></em>
             </div>
         </div>
 
@@ -34,6 +45,9 @@
                         </p>
                     </a>
                 </li>
+                <?php
+                $pages=$employee->getUsertype()->getPages();
+                if ($pages[1]->get_access()=='1'){ ?>
                 <li class="nav-item">
                     <a href="reception.php" class="nav-link">
                         <i class="nav-icon fas fa-box"></i>
@@ -42,6 +56,7 @@
                         </p>
                     </a>
                 </li>
+                <?php } if ($pages[2]->get_access()=='1'){ ?>
                 <li class="nav-item">
                     <a href="notifications.php" class="nav-link">
                         <i class="nav-icon fas fa-bell"></i>
@@ -50,6 +65,7 @@
                         </p>
                     </a>
                 </li>
+                <?php } if ($pages[3]->get_access()=='1'){ ?>
                 <li class="nav-item">
                     <a href="members.php" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
@@ -58,6 +74,8 @@
                         </p>
                     </a>
                 </li>
+                <?php } if ($pages[4]->get_access()=='1'){ ?>
+
                 <li class="nav-item">
                     <a href="employees.php" class="nav-link">
                         <i class="nav-icon fas fa-users-cog"></i>
@@ -66,6 +84,8 @@
                         </p>
                     </a>
                 </li>
+                <?php } if ($pages[5]->get_access()=='1'){ ?>
+
                 <li class="nav-item">
                     <a href="contracts.php" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
@@ -74,8 +94,10 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                <?php } if ($pages[6]->get_access()=='1'){ ?>
+
+                <li class="nav-item has-treeview" >
+                    <a href="#" class="nav-link" >
                         <i class="nav-icon fas fa-lock"></i>
                         <p>
                             Administration
@@ -109,6 +131,8 @@
                         </li>
                     </ul>
                 </li>
+                <?php } if ($pages[7]->get_access()=='1'){ ?>
+
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
@@ -142,6 +166,7 @@
                                 <p>Trainer</p>
                             </a>
                         </li>
+                        <?php } ?>
                     </ul>
                 </li>
             </ul>

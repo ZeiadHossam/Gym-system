@@ -27,8 +27,17 @@ if (isset($_GET['branchEditId']) && isset($_GET['addbranch'])) {
         unset($branches[$_GET['branchDeleteId']]);
         $gym->setAllBranchs($branches);
         $_SESSION['Gym'] = serialize($gym);
-        $_SESSION['successMessege'] = "Deleted Successfully";
-        echo "<script> window.location.href='../views/branch.php';</script>";
+        if($_SESSION['branch']==$_GET['branchDeleteId'])
+        {
+            session_destroy();
+            echo "<script> window.location.href='../views/login.php';</script>";
+
+        }
+        else
+        {
+            $_SESSION['successMessege'] = "Deleted Successfully";
+            echo "<script> window.location.href='../views/branch.php';</script>";
+        }
     }
     else
     {

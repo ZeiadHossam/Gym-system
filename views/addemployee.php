@@ -55,8 +55,9 @@
 
                                                     <select name="usertype" class="form-control">
                                                         <?php foreach ($gym->getUsertypes() as $dep){
-                                                        echo "<option value='".$dep->getId()."'>".$dep->getName()."</option>";
-                                                         } ?>
+                                                       if($dep->getName()!="Owner") {
+                                                           echo "<option value='" . $dep->getId() . "'>" . $dep->getName() . "</option>";
+                                                       } } ?>
                                                     </select>
                                                 </div>
                                                 <?php if ($_SESSION['branch']==NULL) { ?>
@@ -90,12 +91,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>*gender </label>
+                                                    <label>*Gender </label>
 
                                                     <select name="gender" class="form-control">
 
-                                                        <option>male</option>
-                                                        <option>female</option>
+                                                        <option>Male</option>
+                                                        <option>Female</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
@@ -107,13 +108,13 @@
 
 
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">*phone number</label>
+                                                    <label for="exampleInputEmail1">*Mobile Phone</label>
                                                     <input type="number" name="phonenumber" class="form-control numbers"
                                                            maxlength="10"
                                                            placeholder="phone number" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">*birthday </label>
+                                                    <label for="exampleInputEmail1">*Birthday </label>
                                                     <input type="date" name="birthday" min="1900-01-01" max="2005-3-29"
                                                            class="form-control" required>
                                                 </div>

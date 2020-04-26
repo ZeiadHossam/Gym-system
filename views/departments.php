@@ -77,7 +77,8 @@
 
                                 </button>
 
-                                <button type="button" onclick="deletingDepartment(<?php echo $department->getId()?>)" class="btn btn-danger btn-sm ">Delete</button>
+
+                                    <button type="button" onclick="deletingDepartment(<?php echo $department->getId()?>)" class="btn btn-danger btn-sm ">Delete</button>
                             </div>
 						</td>
 					</tr>

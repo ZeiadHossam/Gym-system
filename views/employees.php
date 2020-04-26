@@ -48,9 +48,9 @@
                         <td><?php echo $employee->getMobilePhone() ; ?></td>
 						<td>
 							<div class="btn-group tablebuttons">
-                                <a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
+                                <a href="viewemployee.php?empId=<?php echo $employee->getId();?>&branchId=<?php echo $branch->getId();?>" class="btn btn-secondary btn-sm" >View</a>
                                 <a href="editemployee.php" class="btn btn-info btn-sm" >Edit</a>
-                                <button type="button" onclick="deletingEmployee(<?php echo $employee->getId();?>)" class="btn btn-danger btn-sm">
+                                <button type="button" onclick="deletingEmployee(<?php echo $employee->getPid().",".$branch->getId().",".$employee->getId();?>)" class="btn btn-danger btn-sm">
                                     Delete
                                 </button>
 								</button>
@@ -69,10 +69,10 @@
                         <td><?php echo $employee->getMobilePhone() ; ?></td>
                         <td>
                             <div class="btn-group tablebuttons">
-                                <a href="viewemployee.php" class="btn btn-secondary btn-sm" >View</a>
+                                <a href="viewemployee.php?empId=<?php echo $employee->getId();?>&branchId=<?php echo $_SESSION['branch'];?>" class="btn btn-secondary btn-sm" >View</a>
                                 <a href="editemployee.php" class="btn btn-info btn-sm" >Edit</a>
 
-                                <button type="button" onclick="deletingEmployee(<?php echo $employee->getId();?>)" class="btn btn-danger btn-sm">
+                                <button type="button" onclick="deletingEmployee(<?php echo $employee->getPid().",".$_SESSION['branch'].",".$employee->getId();?>)" class="btn btn-danger btn-sm">
                                     Delete
                                 </button>
                             </div>

@@ -126,10 +126,13 @@ system
             $gymIdSql = "SELECT gymId FROM branch WHERE id=" . $bId;
             $gymId = $db->select($gymIdSql);
             $gym->setId($gymId['gymId']);
-            $gymdataSql = "SELECT name FROM gym WHERE id=" . $gym->getId();
+            $gymdataSql = "SELECT * FROM gym WHERE id=" . $gym->getId();
             $gymdata = $db->select($gymdataSql);
             $gym->setGymName($gymdata['name']);
+            $gym->setGymImage($gymdata['image']);
+
         }
+        $gym->getOwnerDetails();
         $gym->getallbranches();
         $gym->getallpaymentmethod();
         $gym->getalldepartments();
