@@ -26,7 +26,8 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*Email Address</label>
-                                                    <input type="email" onfocusout="validate_email_input()" name="email"
+                                                    <input type="email" onkeyup="validate_email_input()"
+                                                           onfocusout="validate_email()" name="email"
                                                            class="form-control"
                                                            id="Email1"
                                                            placeholder="Enter Email" >

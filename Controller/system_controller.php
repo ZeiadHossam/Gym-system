@@ -45,7 +45,7 @@ if (isset($_POST['addowner'])) {
         }
         else
         {
-            $img="DefaultPersonimage.png";
+            $img="DefaultPersonImage.png";
         }
 
         $employee->setImage($img);

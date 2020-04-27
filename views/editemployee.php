@@ -30,8 +30,9 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">*Email address</label>
-                            <input type="email" onfocusout="validate_email_input()" name="email"
-                                   id="Email1"class="form-control" id="exampleInputEmail1"
+                            <input type="email"  onkeyup="validate_email_input()"
+                                   onfocusout="validate_email()" name="email"
+                                   id="Email1"class="form-control"
                                    placeholder="Enter email" value="<?php echo $employee->getEmail(); ?>" >
                             <span class="message" id="emailmessage"></span>
 

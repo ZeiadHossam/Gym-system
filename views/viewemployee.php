@@ -17,7 +17,7 @@ $employee=$gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']];
                                         </div>
                                         <div class="col-md-4 offset-3">
 
-                                        <legend class="viewHeader"><?php echo $employee->getFirstName(); ?> Information</legend>
+                                            <legend class="viewHeader"><?php echo $employee->getFirstName(); ?> Information</legend>
                                         </div>
                                     </div>
 

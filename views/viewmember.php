@@ -1,119 +1,135 @@
-<?php include("../shared/main.php") ?>
-			<div class="container-fluid">
-				<div class="row">
-				
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              
-          
-              <form role="form"  action="viewmember.php" enctype="multipart/form-data" method="post">
-                <div class="card-body">
-				<div class="row">
-				 <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" value=<?php echo "@hotmail.com"?> readonly>
-                  </div>
-				  <div class="form-group">
-                    <label for="fname">*First Name</label>
-                    <input type="text" class="form-control" value=<?php echo "ahmed"?> readonly>
-                  </div>
-				  <div class="form-group">
-                    <label for="fname">*Last Name</label>
-                    <input type="text" class="form-control" value=<?php echo "@yasse"?> readonly>
-                  </div>
-                 
-                
-				  
-				 <b> *Personal Address</b>
-				  <br>
-				  <div class="form-group">
-                    
-					<textarea  rows="6" cols="30" readonly > <?php echo "tagmo3elkhames"?>
-					</textarea>
-                  </div>
-				  <div class="form-group">
-                    <label >work phone</label>
-                    <input type="text" class="form-control"  value=<?php echo "01015"?> readonly>
-                  </div>
-				  <div class="form-group">
-                    <label for="exampleInputEmail1">fax number</label>
-                    <input type="text" class="form-control"  value=<?php echo"225855" ?> readonly >
-                  </div>
-				     
-				 <div class="form-group">
-                    <label for="exampleInputEmail1">*phone number</label>
-                    <input type="text" class="form-control"  value=<?php echo "@hotmail.com"?> readonly>
-                  </div>
-				  
-				  <br>
-				  </div>
-				  
-				 <div class="col-md-6">
-				  <b> Company Address</b>
-				  <br>
-				  <div class="form-group">
-                    
-					<textarea  rows="6" cols="30" readonly><?php echo "@hotmail.com"?>
-					</textarea>
-                  </div>
-				  <div class="form-group">
-                    <label for="fname">*Birthday </label>
-                    <input type="date" class="form-control"  readonly>
-                  </div>
-				  
-				
-				  <b>*Gender</b>
-				  
-				  
-				 <div class="form-group">
-				 
-                                            <select class="form-control">
-                                                <option class="hidden"  selected disabled>gender </option>
-                                                <option disabled>male</option>
-                                                <option disabled>female</option>
-                                                <option></option>
-                                            </select>
+<?php include("../shared/main.php");
+$member=$gym->getBranchs()[$_GET['branchId']]->getMembers()[$_GET['memberId']];
+$branchName=$gym->getBranchs()[$_GET['branchId']]->getCity();
+?>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- left column -->
+            <div class="col-md-10 offset-md-1">
+                <!-- general form elements -->
+
+
+                    <form role="form" method="post">
+                        <div class="row view_emp">
+                            <div class="col-md-1">
+                                <a href="javascript:history.go(-1)" class="btn btn-md btn-default"><span class="fa fa-angle-left"></span></a>
+
+                            </div>
+                            <div class="col-md-4 offset-3">
+
+                                <legend class="viewHeader"><?php echo $member->getFirstName(); ?> Information</legend>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                               value="<?php echo $member->getEmail() ; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fname">First Name</label>
+                                        <input type="text" class="form-control" value="<?php echo $member->getFirstName(); ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastname">Last Name</label>
+                                        <input type="text" class="form-control" value="<?php echo $member->getLastName(); ?>" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Work Phone</label>
+                                        <input type="text" class="form-control" value="<?php echo $member->getWorkPhone(); ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="FaxNumber">Fax Number</label>
+                                        <input type="text" class="form-control" value="<?php echo $member->getFaxNumber(); ?>" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="MobilePhone">Mobile Phone</label>
+                                        <input type="text" class="form-control"
+                                               value="<?php echo $member->getMobilePhone(); ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">HOME Phone</label>
+                                        <input type="text" class="form-control" value="<?php echo $member->getHomePhone(); ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Emergency Number</label>
+                                        <input type="text" class="form-control"
+                                               value="<?php echo $member->getEmergencyNumber(); ?>" readonly>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <b>Gender</b>
+                                                <div class="form-group">
+                                                    <select class="form-control" disabled>
+                                                        <option class="hidden" selected><?php echo $member->getGender(); ?></option>
+
+                                                    </select>
+                                                </div>
+                                                <b>Marriedstatus</b>
+                                                <div class="form-group">
+                                                    <select class="form-control" disabled>
+                                                        <option ><?php echo $member->getMarriedStatus(); ?></option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 offset-md-1">
+                                                <img id="personalImage" src="../public/img/<?php echo $member->getImage(); ?>"/>
+
+                                            </div>
                                         </div>
-										<br>
-										 <b>Marriedstatus</b>
-				  
-				  
-				 <div class="form-group">
-				 
-                                            <select class="form-control" >
-                                                <option class="hidden" >single </option>
-                                                <option disabled>married</option>
-                                                <option disabled>divorsed</option>
-                                                <option disabled></option>
-                                            </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleCompanyName">Company Name</label>
+                                        <input type="text" class="form-control" value="<?php echo $member->getCompanyName(); ?>" readonly>
+                                    </div>
+
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <b> Personal Address</b>
+                                                <div class="form-group">
+
+					<textarea rows="5" cols="30" readonly> <?php echo $member->getAddress(); ?>
+					</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <b> Company Address</b>
+                                                <div class="form-group">
+					<textarea rows="5" cols="30" readonly><?php echo $member->getCompanyAddress();?>
+					</textarea>
+                                                </div>
+                                            </div>
                                         </div>
-										
-				   <div class="form-group">
-                    <label for="exampleInputEmail1">HOME phone</label>
-                    <input type="text" class="form-control"value=<?php echo "25888"?> readonly >
-                  </div>
-				  <br>
-				  <div class="form-group">
-                    <label for="exampleInputEmail1">emergency number</label>
-                    <input type="text" class="form-control"   value=<?php echo "0144444444"?> readonly>
-                  </div>
-              
-				 
-				   
-				 
-                  
-				  
-                </div>
-                </div>
-                </div>
-              </form>
-					<a href="membercontract.php" class="btn btn-sm btn-info">View Member Contracts</a>
-				<a href="javascript:history.go(-1)" class="btn btn-sm btn-default">Close</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Birthday">Birthday </label>
+                                        <input type="date" class="form-control" value="<?php echo $member->getBirthday(); ?>"readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="BranchName">Branch Name</label>
+                                        <input type="text" class="form-control" value="<?php echo $branchName ;?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="AddedBy">Added By</label>
+                                        <input type="text" class="form-control"
+                                               value="<?php echo $member->getAddedBy(); ?>" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                    <a href="membercontract.php" class="btn btn-sm btn-info viewmemberContractsbutton ">View Member Contracts</a>
             </div>
-		</div>
-		</div>
-	</div>
-			<?php include("../shared/footer.php") ?>
+        </div>
+    </div>
+<?php include("../shared/footer.php"); ?>

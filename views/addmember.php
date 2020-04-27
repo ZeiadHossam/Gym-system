@@ -16,41 +16,103 @@
                             <!-- general form elements -->
 
 
-
-                            <form role="form" action="Controller/controllingmember.php" enctype="multipart/form-data" method="get">
+                            <form role="form" action="../Controller/member_controller.php" enctype="multipart/form-data"
+                                  method="post">
                                 <div class="card card-primary">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <label for="exampleInputEmail1">*Email Address</label>
                                                     <input type="email" name="email" class="form-control"
-                                                           id="exampleInputEmail1"
-                                                           placeholder="Enter email" required>
+                                                           onkeyup="validate_email_input()"
+                                                           onfocusout="validate_email()" id="Email1"
+                                                           placeholder="Enter Email" required>
+                                                    <span class="message" id="emailmessage"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*First Name</label>
-													<input type="text" name="fname" class="form-control" maxlength="15"
+                                                    <input type="text" name="fname" onfocusout="validate_firstname()"
+                                                           id="fname" class="form-control" maxlength="15"
                                                            placeholder="First Name" required>
+                                                    <span class="message" id="firstName_message"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*Last Name</label>
-                                                    <input type="text" name="lname" class="form-control" maxlength="15"
-                                                           placeholder="Last Name" required>
+                                                    <input type="text" name="lname" id="lname" class="form-control"
+                                                           maxlength="15"
+                                                           placeholder="Last Name" onfocusout="validate_lastname()"
+                                                           required>
+                                                    <span class="message" id="lastName_message"></span>
+
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label>Work Phone</label>
+                                                    <input type="number" name="WorkPhone" class="form-control numbers"
+                                                           placeholder="Work Phone">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="FaxNumber">Fax Number</label>
+                                                    <input type="number" name="faxnumber" class="form-control numbers"
+                                                           placeholder="Fax Number">
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="exampleInputFile">PersonalImage</label>
+                                                    <label for="exampleInputEmail1">*Mobile Phone</label>
+                                                    <input type="number" name="phonenumber"
+                                                           class="form-control numbers"
+                                                           placeholder="Phone Number" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="fname">*Birthday </label>
+                                                    <input type="date" min="1900-01-01" max="2020-03-29" name="birthday"
+                                                           class="form-control" required>
+                                                </div>
+
+                                                <b>*Gender</b>
+                                                <div class="form-group">
+                                                    <select class="form-control" name="gender">
+                                                        <option class="hidden" disabled selected>gender</option>
+                                                        <option>male</option>
+                                                        <option>female</option>
+                                                    </select>
+                                                </div>
+                                                <b>*Married Status</b>
+                                                <div class="form-group">
+
+                                                    <select class="form-control" name="marriedStatus">
+                                                        <option class="hidden" disabled selected>Married Status</option>
+                                                        <option>single</option>
+                                                        <option>married</option>
+                                                        <option>divorsed</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Home Phone</label>
+                                                    <input type="number" name="homephone" class="form-control numbers"
+                                                           placeholder="Home Phone">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="exampleInputFile">Personal Image</label>
                                                     <div class="input-group">
                                                         <div class="custom-file">
-                                                            <input name="img" class="form-control-file" type="file"
-                                                                   id="img" accept="image/gif, image/jpeg, image/png"/
-                                                            >
+                                                            <input name="Pimage" class="form-control-file" type="file"
+                                                                   onchange="showImage(this,'personalImage');"
+                                                                   id="img" accept="image/gif, image/jpeg, image/png"/>
                                                         </div>
+                                                        <br>
+                                                        <img id="personalImage" src="http://placehold.it/100"/>
 
                                                     </div>
                                                 </div>
-
                                                 <b> *Personal Address</b>
                                                 <br>
                                                 <div class="form-group">
@@ -59,29 +121,10 @@
 					</textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>work phone</label>
-													<input type="number" name="workphone" class="form-control numbers"
-                                                           minlength="8" maxlength="8"
-                                                           placeholder="work phone">
+                                                    <label>Company Name </label>
+                                                    <input type="text" PLACEHOLDER="Company Name" name="CompanyName"
+                                                           class="form-control">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">fax number</label>
-													<input type="number" name="faxnumber" class="form-control numbers"
-													maxlength="10" minlength="10"
-                                                           placeholder="Fax number">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">*phone number</label>
-												<input type="number" name="phonenumbers" class="form-control numbers"
-													maxlength="11" minlength="11"
-                                                           placeholder="phone number" required>
-                                                </div>
-
-                                                <br>
-                                            </div>
-
-                                            <div class="col-md-6">
                                                 <b> Company Address</b>
 
                                                 <div class="form-group">
@@ -89,71 +132,29 @@
 					<textarea rows="6" cols="60" name="companyaddress">
 					</textarea>
                                                 </div>
+
+
                                                 <div class="form-group">
-                                                    <label for="fname">*Birthday </label>
-													<input type="date" min="1900-01-01" max="2020-03-29" name="birthday" class="form-control" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label >companyName </label>
-                                                    <input type="text" name="companyname" class="form-control" >
-                                                </div>
-                                                <div class="form-group">
-                                                    <label >AddedBy </label>
-                                                    <select class="form-control" name="addedby">
-                                                        <option class="hidden" selected >Emp 1</option>
-														<option>Emp 2</option>
-														<option>Emp 3</option>
-                                                    </select>
+                                                    <label for="exampleInputEmail1">Emergency Number</label>
+                                                    <input type="number" name="emergency" class="form-control numbers"
+                                                           placeholder="Emergency Number">
                                                 </div>
 
-                                                <b>*Gender</b>
-                                                <div class="form-group">
-
-                                                    <select class="form-control" name="gender">
-                                                        <option class="hidden" selected >gender</option>
-                                                        <option>male</option>
-                                                        <option>female</option>
-                                                    </select>
-                                                    </div>
-												<b>Marriedstatus</b>
-                                                    <div class="form-group">
-
-                                                        <select class="form-control" name="marriedstaus">
-															<option class="hidden">Marriedstatus</option>
-															<option>single</option>
-                                                            <option>married</option>
-                                                            <option>divorsed</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">HOME phone</label>
-                                                        <input type="number" name="homephone" class="form-control numbers" minlength="8" maxlength="8"
-                                                               placeholder="home phone" >
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">emergency number</label>
-														<input type="number" name="emergency" class="form-control numbers" maxlength="10"
-                                                               placeholder="emergency number" >
-                                                    </div>
-
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" name='addmember' class="btn btn-block btn-primary">Add Member</button>
-                            </form>
-
                         </div>
+                        <button type="submit" name='addmember' class="btn btn-block btn-primary">Add Member</button>
+                        </form>
+                        <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+
                     </div>
                 </div>
             </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
-
-            </div>
         </div>
-        <!-- /.modal-content -->
+
     </div>
-    <!-- /.modal-dialog -->
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->

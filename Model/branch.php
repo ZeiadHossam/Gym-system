@@ -77,7 +77,7 @@ class branch implements ICheckAvailability
 
     public function setMembers($memId,$members)
     {
-        $this->members[] = $members;
+        $this->members[$memId] = $members;
     }
 
     public function addemployee($employee, $Bid)
@@ -195,6 +195,49 @@ class branch implements ICheckAvailability
                 $employee->getUsertype()->setPages($page->get_id(), $page);
             }
             $this->setEmployees($employee->getId(), $employee);
+        }
+
+    }
+    public  function  addMember($member){
+        $db = new database();
+        $member->setEmail($db->getMysqli()->real_escape_string($member->getEmail()));
+        $member->setFirstName($db->getMysqli()->real_escape_string($member->getFirstName()));
+        $member->setLastName($db->getMysqli()->real_escape_string($member->getLastName()));
+        $member->setImage($db->getMysqli()->real_escape_string($member->getImage()));
+        $member->setHomePhone($db->getMysqli()->real_escape_string($member->getHomePhone()));
+        $member->setMobilePhone($db->getMysqli()->real_escape_string($member->getMobilePhone()));
+        $member->setWorkPhone($db->getMysqli()->real_escape_string($member->getWorkPhone()));
+        $member->setAddress($db->getMysqli()->real_escape_string($member->getAddress()));
+        $member->setFaxNumber($db->getMysqli()->real_escape_string($member->getFaxNumber()));
+        $member->setCompanyName($db->getMysqli()->real_escape_string($member->getCompanyName()));
+        $member->setCompanyAddress($db->getMysqli()->real_escape_string($member->getCompanyAddress()));
+        $member->setEmergencyNumber($db->getMysqli()->real_escape_string($member->getEmergencyNumber()));
+        $createdAt = date("Y/m/d H:i:s");
+
+        $sql = "INSERT INTO person (firstName,lastName,birthDay,image,mobilePhone,homePhone,gender,email,createdAt,branchId) VALUES ('" . $member->getFirstName() . "','" . $member->getLastName() . "','" . $member->getBirthDay() . "','" . $member->getImage() . "','" . $member->getMobilePhone() . "','" . $member->getHomePhone() . "','" . $member->getGender() . "','" . $member->getEmail() . "','$createdAt','" . $this->getId() . "');";
+
+        if ($db->insert($sql)) {
+
+            $query="SELECT id FROM person ORDER BY id DESC LIMIT 1";
+            if($row=$db->select($query)) {
+                $member->setPid($row['id']);
+                $sql2 = "INSERT INTO member(personId,address,marriedStatus,emergencyNumber,companyName,workPhone,faxNumber,companyAddress,addedBy)VALUES('".$member->getPid()."','" . $member->getAddress() . "','" . $member->getMarriedStatus() . "','" . $member->getEmergencyNumber() . "', ' " .$member->getCompanyName()."', ' " .$member->getWorkPhone()."',' " .$member->getFaxNumber()."',' " .$member->getCompanyAddress()."',' " .$_SESSION['id']."');";
+                if ($db->insert($sql2)) {
+                    if ($db->selectId($member, "member")) {
+                        $this->setMembers($member->getId(), $member);
+
+                        $db->closeconn();
+                        return true;
+                    } else {
+                        $db->closeconn();
+                        return false;
+                    }
+                } else {
+                    $db->closeconn();
+                    return false;
+                }
+            }
+
         }
 
     }

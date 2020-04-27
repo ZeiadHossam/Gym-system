@@ -74,7 +74,7 @@ if (isset($_POST['employeeEditId']) && isset($_POST['editEmployee']) && isset($_
             $img = $_FILES["Pimage"]["name"];
             move_uploaded_file($_FILES["Pimage"]["tmp_name"], "../public/img/" . $img);
         } else {
-            $img = "DefaultPersonimage.png";
+            $img = "DefaultPersonImage.png";
         }
         $employee->setImage($img);
         $employee->getUsertype()->setId(htmlentities($_GET['usertype']));
