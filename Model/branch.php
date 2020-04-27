@@ -1,5 +1,6 @@
 <?php
 include_once 'employee.php';
+include_once 'member.php';
 include_once 'ICheckAvailability.php';
 
 class branch implements ICheckAvailability
@@ -74,7 +75,7 @@ class branch implements ICheckAvailability
         return $this->members;
     }
 
-    public function setMembers($members)
+    public function setMembers($memId,$members)
     {
         $this->members[] = $members;
     }
@@ -197,7 +198,36 @@ class branch implements ICheckAvailability
         }
 
     }
-
+    public function getAllMembers()
+    {
+        $db = new database();
+        $memberSql = "SELECT * , member.id as mem_id,person.id as personId  FROM member INNER JOIN person ON member.personId=person.id where person.isDeleted=0  AND person.branchId=" . $this->getId();
+        $memberdata = $db->selectArray($memberSql);
+        while ($row = mysqli_fetch_assoc($memberdata)) {
+            $member = new member();
+            $member->setPid($row['personId']);
+            $member->setId($row['mem_id']);
+            $member->setFirstName($row['firstName']);
+            $member->setLastName($row['lastName']);
+            $member->setImage($row['image']);
+            $member->setHomePhone($row['homePhone']);
+            $member->setMobilePhone($row['mobilePhone']);
+            $member->setEmail($row['email']);
+            $member->setBirthday($row['birthDay']);
+            $member->setGender($row['gender']);
+            $member->setAddress($row['address']);
+            $member->setMarriedStatus($row['marriedStatus']);
+            $member->setEmergencyNumber($row['emergencyNumber']);
+            $member->setCompanyName($row['companyName']);
+            $member->setWorkPhone($row['workPhone']);
+            $member->setFaxNumber($row['faxNumber']);
+            $member->setCompanyAddress($row['companyAddress']);
+            $addedBySql = "SELECT person.firstName,person.lastName  FROM person INNER JOIN employee ON employee.personId=person.id where employee.id=".$row['addedBy'];
+            $addedByData=$db->select($addedBySql);
+            $member->setAddedBy($row['addedBy']."-".$addedByData['firstName']." ".$addedByData['lastName']);
+            $this->setMembers($member->getId(), $member);
+        }
+    }
     public function checkifavailable($gymId)
     {
         $db = new database();

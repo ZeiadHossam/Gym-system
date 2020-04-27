@@ -2,7 +2,6 @@
 include_once 'person.php';
 include_once 'database.php';
 include_once 'userType.php';
-include_once 'ICheckAvailability.php';
 
 class employee extends person
 {
