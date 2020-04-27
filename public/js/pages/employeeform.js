@@ -18,7 +18,7 @@ else
 }
 }
 function validate_firstname() {
-    var firstName = document.getElementById('firstName').value;
+    var firstName = document.getElementById('fname').value;
     var message = document.getElementById('firstName_message');
     var letters = /^[a-zA-Z]+$/;
     if (firstName == "") {
@@ -34,7 +34,7 @@ function validate_firstname() {
 }
 
 function validate_lastname() {
-    var lastName = document.getElementById('lastName').value;
+    var lastName = document.getElementById('lname').value;
     var message = document.getElementById('lastName_message');
     var letters = /^[a-zA-Z]+$/;
     if (lastName == "") {
@@ -83,7 +83,6 @@ function validate_homePhone() {
     message.innerHTML = "";
     return true;
 
-
 }
 
 function onlyNumberKey(evt) {
@@ -107,8 +106,8 @@ function validate_email() {
 }
 
 function validate_email_input() {
-    var email = document.getElementById('email').value;
-    var message = document.getElementById('email_message');
+    var email = document.getElementById('Email1').value;
+    var message = document.getElementById('emailmessage');
     if (email == "") {
         message.innerHTML = "*Email is required";
         return false;
@@ -118,8 +117,8 @@ function validate_email_input() {
     }
 }
 
-function validate_userName() {
-    var userName = document.getElementById('userName').value;
+    function validate_userName() {
+    var userName = document.getElementById('username').value;
     var message = document.getElementById('userName_message');
     if (userName == "") {
         message.innerHTML = "*Username is required";

@@ -25,48 +25,66 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*Email Address</label>
-                                                    <input type="email" name="email" class="form-control"
-                                                           id="exampleInputEmail1"
+                                                    <input type="email" onfocusout="validate_email_input()" name="email"
+                                                           class="form-control"
+                                                           id="Email1"
                                                            placeholder="Enter Email" required>
+                                                    <span class="message" id="emailmessage"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*First Name</label>
-                                                    <input type="text" name="fname" class="form-control" maxlength="15"
+                                                    <input type="text" id="fname" name="fname"
+                                                           onfocusout="validate_firstname()" class="form-control"
+                                                           maxlength="15"
                                                            placeholder="First Name" required>
+                                                    <span class="message" id="firstName_message"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*Last Name</label>
-                                                    <input type="text" name="lname" class="form-control" maxlength="15"
+                                                    <input type="text" id="lname" onfocusout="validate_lastname() "
+                                                           name="lname" class="form-control" maxlength="15"
                                                            placeholder="Last Name" required>
+                                                    <span class="message" id="lastName_message"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*UserName</label>
-                                                    <input type="text" name="username" class="form-control"
+                                                    <input type="text" id="username" onfocusout="validate_userName()"
+                                                           name="username" class="form-control"
                                                            placeholder="UserName"
                                                            required>
+                                                    <span class="message" id="userName_message"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">*Password</label>
-                                                    <input type="password" name="password" class="form-control"
+                                                    <input type="password" id="password"
+                                                           onfocusout="validate_password()" name="password"
+                                                           class="form-control"
                                                            id="exampleInputPassword1" placeholder="Password" required>
+                                                    <span class="message" id="password_message"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label>*department </label>
 
                                                     <select name="usertype" class="form-control">
-                                                        <?php foreach ($gym->getUsertypes() as $dep){
-                                                       if($dep->getName()!="Owner") {
-                                                           echo "<option value='" . $dep->getId() . "'>" . $dep->getName() . "</option>";
-                                                       } } ?>
+                                                        <?php foreach ($gym->getUsertypes() as $dep) {
+                                                            if ($dep->getName() != "Owner") {
+                                                                echo "<option value='" . $dep->getId() . "'>" . $dep->getName() . "</option>";
+                                                            }
+                                                        } ?>
                                                     </select>
                                                 </div>
-                                                <?php if ($_SESSION['branch']==NULL) { ?>
+                                                <?php if ($_SESSION['branch'] == NULL) { ?>
                                                     <div class="form-group">
                                                         <label>*Branch </label>
 
                                                         <select name="branch" class="form-control">
-                                                            <?php foreach ($gym->getBranchs() as $branch){
-                                                                echo "<option value='".$branch->getId()."'>".$branch->getCity()."</option>";
+                                                            <?php foreach ($gym->getBranchs() as $branch) {
+                                                                echo "<option value='" . $branch->getId() . "'>" . $branch->getCity() . "</option>";
                                                             } ?>
                                                         </select>
 
@@ -101,22 +119,34 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">HOME phone</label>
-                                                    <input type="number" name="homephone" class="form-control numbers"
+                                                    <input type="number"
+                                                           onfocusout="validate_homePhone()"
+                                                           id="homePhone" name="homephone"
+                                                           class="form-control numbers"
                                                            maxlength="8"
                                                            placeholder="home phone">
+                                                    <span class="message" id="homePhone_message"></span>
+
                                                 </div>
 
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*Mobile Phone</label>
-                                                    <input type="number" name="phonenumber" class="form-control numbers"
+                                                    <input type="number" onkeypress="return onlyNumberKey(event)"
+                                                           onfocusout="validate_mobilePhone()" id="mobilePhone"
+                                                           name="phonenumber" class="form-control numbers"
                                                            maxlength="10"
                                                            placeholder="phone number" required>
+                                                    <span class="message" id="mobilePhone_message"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*Birthday </label>
-                                                    <input type="date" name="birthday" min="1900-01-01" max="2005-3-29"
-                                                           class="form-control" required>
+                                                    <input type="date" onfocusout="validate_date()" id="birthDate"
+                                                           name="birthday" min="1900-01-01" max="2005-3-29"
+                                                           class="form-control" onclick=" maximumDate()()"" required>
+                                                    <span class="message" id="birthDate_message"></span>
+
                                                 </div>
                                             </div>
                                         </div>

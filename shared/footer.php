@@ -26,6 +26,7 @@
 <script src="../public/plugins/toastr/toastr.min.js"> </script>
 <script src="../public/js/pages/toasters.js"></script>
 <script src="../public/js/pages/branchform.js"></script>
+<script src="../public/js/pages/employeeform.js"></script>
 <script src="../public/js/pages/departmentForm.js"></script>
 <script src="../public/js/pages/employeeform.js "></script>
 <script src="../public/js/pages/payment.js"></script>

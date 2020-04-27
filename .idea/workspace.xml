@@ -3,17 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/pages/branchform.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/branchform.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/pages/departmentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/departmentForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/employee_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/employee_controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/pages/employeeform.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/employeeform.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/pages/package.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/package.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/pages/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/payment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/departments.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/departments.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/addemployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/addemployee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/editemployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/editemployee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/package.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/package.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/paymentmethod.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/paymentmethod.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -434,10 +428,10 @@
     </state>
     <state x="478" y="203" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1585520759642" />
     <state x="598" y="256" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587348713536" />
-    <state x="531" y="239" key="run.anything.popup" timestamp="1587871877082">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="425" y="189" key="run.anything.popup" timestamp="1587945379770">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1587763578227" />
+    <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1587945379770" />
     <state x="531" y="239" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587871877082" />
     <state x="539" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1587913623199">
       <screen x="0" y="0" width="1920" height="1040" />
