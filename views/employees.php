@@ -70,7 +70,7 @@
                         <td>
                             <div class="btn-group tablebuttons">
                                 <a href="viewemployee.php?empId=<?php echo $employee->getId();?>&branchId=<?php echo $_SESSION['branch'];?>" class="btn btn-secondary btn-sm" >View</a>
-                                <a href="editemployee.php" class="btn btn-info btn-sm" >Edit</a>
+                                <a href="editemployee.php?empId=<?php echo $employee->getId();?>&branchId=<?php echo $_SESSION['branch'];?>" class="btn btn-info btn-sm" >Edit</a>
 
                                 <button type="button" onclick="deletingEmployee(<?php echo $employee->getPid().",".$_SESSION['branch'].",".$employee->getId();?>)" class="btn btn-danger btn-sm">
                                     Delete

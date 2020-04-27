@@ -2,13 +2,11 @@ function submitRegister()
 {
     if (sumbittingempform()&&validate_gymName()&&validate_branchAddress())
     {
-        alert("alo22");
 
         return true;
     }
     else
     {
-        alert("alo");
         return false;
     }
 }

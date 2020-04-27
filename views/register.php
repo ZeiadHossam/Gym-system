@@ -70,10 +70,10 @@
                             <span class="message" id="homePhone_message"></span>
                             <div class="input-group mb-3">
                                 <input type="email" class="form-control" onkeyup="validate_email_input()"
-                                       onfocusout="validate_email()" id="email" name="email" placeholder="*Email">
+                                       onfocusout="validate_email()" id="Email1" name="email" placeholder="*Email">
 
                             </div>
-                            <span class="message" id="email_message"></span>
+                            <span class="message" id="emailmessage"></span>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" onfocusout="validate_userName()" id="username"
                                        name="username" placeholder="*Username">

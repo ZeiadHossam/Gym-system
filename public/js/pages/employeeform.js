@@ -96,8 +96,8 @@ function onlyNumberKey(evt) {
 }
 
 function validate_email() {
-    var email = document.getElementById('email').value;
-    var message = document.getElementById('email_message');
+    var email = document.getElementById('Email1').value;
+    var message = document.getElementById('emailmessage');
     validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!validEmail.test(email) && message.innerText == "") {
         message.innerHTML = "*Please enter a valid email";
