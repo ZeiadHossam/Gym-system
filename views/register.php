@@ -38,14 +38,14 @@
 
                             <div class="input-group mb-3">
                                 <input type="text" onfocusout="validate_firstname()" class="form-control"
-                                       id="firstName" name="fname" placeholder="*First Name">
+                                       id="fname" name="fname" placeholder="*First Name">
                             </div>
 
                             <span class="message" id="firstName_message"></span>
 
                             <div class="input-group mb-3">
                                 <input type="text" onfocusout="validate_lastname()" class="form-control"
-                                       id="lastName" name="lname" placeholder="*Last Name">
+                                       id="lname" name="lname" placeholder="*Last Name">
                             </div>
 
                             <span class="message" id="lastName_message"></span>
@@ -75,7 +75,7 @@
                             </div>
                             <span class="message" id="email_message"></span>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" onfocusout="validate_userName()" id="userName"
+                                <input type="text" class="form-control" onfocusout="validate_userName()" id="username"
                                        name="username" placeholder="*Username">
 
                             </div>
@@ -116,14 +116,6 @@
 
                             </div>
                             <span class="message" id="gymName_message"></span>
-
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" onfocusout="validate_branchCity()"
-                                       id="branchCity"
-                                       name="branchcity" placeholder="*Branch Name(Area)">
-
-                            </div>
-                            <span class="message" id="branchCity_message"></span>
 
                             <div class="input-group mb-3">
 

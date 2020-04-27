@@ -76,6 +76,7 @@ function validate_homePhone() {
         return false;
     } else if (homePhone == "") {
         message.innerHTML = "";
+        return true;
     } else if (homePhone.length != 8) {
         message.innerHTML = "*Home Phone must contain 8 numbers";
         return false;

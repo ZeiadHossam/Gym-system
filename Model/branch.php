@@ -121,7 +121,37 @@ class branch implements ICheckAvailability
 
         }
     }
+    public function editEmployee($id)
+    {
+        $db = new database();
+        $this->employees[$id]->setEmail($db->getMysqli()->real_escape_string($this->employees[$id]->getEmail()));
+        $this->employees[$id]->setFirstName($db->getMysqli()->real_escape_string($this->employees[$id]->getFirstName()));
+        $this->employees[$id]->setLastName($db->getMysqli()->real_escape_string($this->employees[$id]->getLastName()));
+        $this->employees[$id]->setImage($db->getMysqli()->real_escape_string($this->employees[$id]->getImage()));
+        $this->employees[$id]->setHomePhone($db->getMysqli()->real_escape_string($this->employees[$id]->getHomePhone()));
+        $this->employees[$id]->setMobilePhone($db->getMysqli()->real_escape_string($this->employees[$id]->getMobilePhone()));
+        $updatedAt = date("Y/m/d H:i:s");
 
+        $sql="UPDATE person SET firstName='".$this->employees[$id]->getFirstName()."' , lastName='".$this->employees[$id]->getLastName()."',birthDay='".$this->employees[$id]->getBirthday()."', ";
+        $sql.="image='".$this->employees[$id]->getImage()."' , mobilePhone='".$this->employees[$id]->getMobilePhone()."',homePhone='".$this->employees[$id]->getHomePhone()."', ";
+        $sql.="gender='".$this->employees[$id]->getGender()."' , email='".$this->employees[$id]->getEmail()."',updatedAt='".$updatedAt."' WHERE id=".$this->employees[$id]->getPid()."; ";
+
+        if ($db->insert($sql)) {
+                $sql2="UPDATE employee SET typeId=".$this->employees[$id]->getUsertype()->getId()." WHERE id=".$this->employees[$id]->getId().";";
+                if ($db->insert($sql2)) {
+                        $db->closeconn();
+                        return true;
+                } else {
+                    $db->closeconn();
+                    return false;
+                }
+            }
+        else {
+            $db->closeconn();
+            return false;
+        }
+
+    }
     public function deleteEmployee($id)
     {
         $db = new database();

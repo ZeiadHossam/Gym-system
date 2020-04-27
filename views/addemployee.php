@@ -19,7 +19,8 @@
 
                                 <div class="card-body">
                                     <form role="form" action="../Controller/employee_controller.php"
-                                          enctype="multipart/form-data" method="get">
+                                          enctype="multipart/form-data" method="get"
+                                          onsubmit="return sumbittingempform()">
 
                                         <div class="row">
                                             <div class="col-md-6">
@@ -28,7 +29,7 @@
                                                     <input type="email" onfocusout="validate_email_input()" name="email"
                                                            class="form-control"
                                                            id="Email1"
-                                                           placeholder="Enter Email" required>
+                                                           placeholder="Enter Email" >
                                                     <span class="message" id="emailmessage"></span>
 
                                                 </div>
@@ -36,16 +37,15 @@
                                                     <label for="fname">*First Name</label>
                                                     <input type="text" id="fname" name="fname"
                                                            onfocusout="validate_firstname()" class="form-control"
-                                                           maxlength="15"
-                                                           placeholder="First Name" required>
+                                                           placeholder="First Name" >
                                                     <span class="message" id="firstName_message"></span>
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*Last Name</label>
                                                     <input type="text" id="lname" onfocusout="validate_lastname() "
-                                                           name="lname" class="form-control" maxlength="15"
-                                                           placeholder="Last Name" required>
+                                                           name="lname" class="form-control"
+                                                           placeholder="Last Name" >
                                                     <span class="message" id="lastName_message"></span>
 
                                                 </div>
@@ -54,7 +54,7 @@
                                                     <input type="text" id="username" onfocusout="validate_userName()"
                                                            name="username" class="form-control"
                                                            placeholder="UserName"
-                                                           required>
+                                                           >
                                                     <span class="message" id="userName_message"></span>
 
                                                 </div>
@@ -63,7 +63,7 @@
                                                     <input type="password" id="password"
                                                            onfocusout="validate_password()" name="password"
                                                            class="form-control"
-                                                           id="exampleInputPassword1" placeholder="Password" required>
+                                                           id="exampleInputPassword1" placeholder="Password" >
                                                     <span class="message" id="password_message"></span>
 
                                                 </div>
@@ -119,11 +119,9 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">HOME phone</label>
-                                                    <input type="number"
-                                                           onfocusout="validate_homePhone()"
-                                                           id="homePhone" name="homephone"
-                                                           class="form-control numbers"
-                                                           maxlength="8"
+                                                    <input type="text"
+                                                           onfocusout="validate_homePhone()" id="homePhone"
+                                                           name="homephone" class="form-control numbers" maxlength="8"
                                                            placeholder="home phone">
                                                     <span class="message" id="homePhone_message"></span>
 
@@ -132,11 +130,11 @@
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*Mobile Phone</label>
-                                                    <input type="number" onkeypress="return onlyNumberKey(event)"
+                                                    <input type="text" onkeypress="return onlyNumberKey(event)"
                                                            onfocusout="validate_mobilePhone()" id="mobilePhone"
                                                            name="phonenumber" class="form-control numbers"
-                                                           maxlength="10"
-                                                           placeholder="phone number" required>
+                                                           maxlength="11"
+                                                           placeholder="phone number" >
                                                     <span class="message" id="mobilePhone_message"></span>
 
                                                 </div>
@@ -144,7 +142,7 @@
                                                     <label for="exampleInputEmail1">*Birthday </label>
                                                     <input type="date" onfocusout="validate_date()" id="birthDate"
                                                            name="birthday" min="1900-01-01" max="2005-3-29"
-                                                           class="form-control" onclick=" maximumDate()()"" required>
+                                                           class="form-control" onclick=" maximumDate()"">
                                                     <span class="message" id="birthDate_message"></span>
 
                                                 </div>

@@ -12,7 +12,7 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
             <!-- general form elements -->
 
 
-            <form role="form" action="editemployee.php" enctype="multipart/form-data" method="post">
+            <form role="form" action="../Controller/employee_controller.php" onsubmit="return sumbittingempform()" enctype="multipart/form-data" method="post">
                 <div class="row view_emp">
                     <div class="col-md-1">
                         <a href="javascript:history.go(-1)" class="btn btn-md btn-default"><span
@@ -24,38 +24,40 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
                         <legend class="viewHeader">Edit <?php echo $employee->getFirstName(); ?></legend>
                     </div>
                 </div>
-
+                    <input type="text" value="<?php echo $_GET['branchId'] ;?>" name="branchId" hidden>
+                    <input type="text" value="<?php echo $_GET['empId'] ;?>" name="employeeEditId" hidden>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">*Email address</label>
                             <input type="email" onfocusout="validate_email_input()" name="email"
                                    id="Email1"class="form-control" id="exampleInputEmail1"
-                                   placeholder="Enter email" value="<?php echo $employee->getEmail(); ?>" required>
+                                   placeholder="Enter email" value="<?php echo $employee->getEmail(); ?>" >
                             <span class="message" id="emailmessage"></span>
 
                         </div>
                         <div class="form-group">
                             <label for="fname">*First Name</label>
                             <input type="text"
-                                   onfocusout="validate_firstname()" id="fname" class="form-control" maxlength="15"
-                                   placeholder="First Name" value="<?php echo $employee->getFirstName(); ?>" required>
+                                   onfocusout="validate_firstname()" id="fname" name="firstName" class="form-control"
+                                   placeholder="First Name" value="<?php echo $employee->getFirstName(); ?>" >
                             <span class="message" id="firstName_message"></span>
 
                         </div>
                         <div class="form-group">
                             <label for="lname">*Last Name</label>
-                            <input type="text" onfocusout="validate_lastname()" id="lname" class="form-control"
+                            <input type="text" onfocusout="validate_lastname()" id="lname" name="lname"class="form-control"
                                    value="<?php echo $employee->getLastName(); ?>"
                                    maxlength="15"
-                                   placeholder="Last Name" required>
+                                   placeholder="Last Name" >
                             <span class="message" id="lastName_message"></span>
                         </div>
 
                         <div class="form-group">
                             <label>*Department </label>
 
-                            <select class="form-control">
+                            <select class="form-control" name="usertype">
+
 
                                 <?php foreach ($gym->getUsertypes() as $dep) {
                                     if ($dep->getName() != "Owner") {
@@ -71,7 +73,7 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
                         <div class="form-group">
                             <label>*Gender </label>
 
-                            <select class="form-control">
+                            <select class="form-control" name="gender">
 
                                 <option
                                     <?php if ($employee->getGender() == 'Male' || $employee->getGender() == 'male'){ ?>selected <?php } ?> >
@@ -94,7 +96,7 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
                                     <input name="img" class="form-control-file" type="file"
                                            onchange="showImage(this,'personalImage');"
                                            id="img" accept="image/gif, image/jpeg, image/png"/
-                                    required>
+                                    >
                                 </div>
                                 <br>
                                 <img id="personalImage" src="../public/img/<?php echo $employee->getImage(); ?>"/>
@@ -106,7 +108,7 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
                         <div class="form-group">
                             <label for="exampleInputEmail1">HOME Phone</label>
                             <input type="text" onfocusout="validate_homePhone()"
-                                   id="homePhone" class="form-control" maxlength="8"
+                                   id="homePhone" MAXLENGTH="8" name="homePhone" class="form-control"
                                    placeholder="Home Phone" value="<?php echo $employee->getHomePhone(); ?>">
                             <span class="message" id="homePhone_message"></span>
 
@@ -115,18 +117,18 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">*Mobile Phone</label>
-                            <input type="text" onfocusout="validate_mobilePhone()" id="mobilePhone"
-                                   class="form-control" maxlength="10"
+                            <input type="text" name="mobilePhone" onfocusout="validate_mobilePhone()" id="mobilePhone" MAXLENGTH="11"
+                                   class="form-control"
                                    placeholder="Mobile Phone" value="<?php echo $employee->getMobilePhone(); ?>"
-                                   required>
+                                   >
                             <span class="message" id="mobilePhone_message"></span>
 
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">*Birthday </label>
-                            <input type="date" class="form-control" onfocusout="validate_date()" id="birthDate"
+                            <input type="date" class="form-control" name="birthday" onfocusout="validate_date()" id="birthDate"
                                    value="<?php echo $employee->getBirthDay(); ?>"
-                                   required>
+                                   >
                             <span class="message" id="birthDate_message"></span>
 
                         </div>
@@ -134,7 +136,7 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
 
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary Addmemberbutton ">Submit</button>
+                <button type="submit" name="editEmployee" class="btn btn-primary Addmemberbutton ">Submit</button>
             </form>
         </div>
     </div>

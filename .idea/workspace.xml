@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
+    <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="editemployee done">
+      <change afterPath="$PROJECT_DIR$/public/img/multitest.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/originalscaling.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/employee_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/employee_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/system_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/system_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/branch.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/pages/employeeform.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/employeeform.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/shared/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/pages/systemform.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/systemform.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/addemployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/addemployee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/editemployee.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/editemployee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587009895110</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="javascript:&#10;addemployee&#10;editemployee">
+      <created>1587953845320</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1587953845320</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +296,8 @@
     <MESSAGE value="register for owner" />
     <MESSAGE value="add owner view" />
     <MESSAGE value="improve register view&#10;backend-&gt; add in person table only" />
-    <option name="LAST_COMMIT_MESSAGE" value="improve register view&#10;backend-&gt; add in person table only" />
+    <MESSAGE value="javascript:&#10;addemployee&#10;editemployee" />
+    <option name="LAST_COMMIT_MESSAGE" value="javascript:&#10;addemployee&#10;editemployee" />
   </component>
   <component name="WindowStateProjectService">
     <state x="476" y="1" key="#PHP" timestamp="1585415264306">
@@ -321,10 +334,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="496" y="99" key="#database.php/0.0.1536.824@0.0.1536.824" timestamp="1585347199632" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1587860797792">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1587960533047">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587860797792" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587960533047" />
     <state x="100" y="100" width="1336" height="624" key="DiffContextDialog" timestamp="1584883864131">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -405,15 +418,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1587747307717" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1587009903984">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1587953852163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587009903984" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587953852163" />
     <state x="581" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1587933757870">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587766727027" />
     <state x="581" y="298" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587933757870" />
+    <state x="408" y="27" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587955948123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="408" y="27" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1587955948123" />
     <state x="723" y="414" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587761863833">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

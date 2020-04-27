@@ -9,7 +9,7 @@ if (isset($_POST['addowner'])) {
     $gymName = htmlentities($_POST['gymname']);
 
     $branch = new branch();
-    $branch->setCity(htmlentities($_POST['branchcity']));
+    $branch->setCity('Main Branch');
     $branch->setAddress(htmlentities($_POST['branchaddress']));
     $employee = new employee();
     $employee->setEmail(htmlentities($_POST['email']));

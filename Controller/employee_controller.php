@@ -6,9 +6,40 @@ include_once('../model/employee.php');
 include_once('../model/usertype.php');
 session_start();
 $gym = unserialize($_SESSION['Gym']);
-if (isset($_GET['employeeEditId']) && isset($_GET['addemployee'])) {
+if (isset($_POST['employeeEditId']) && isset($_POST['editEmployee']) && isset($_POST['branchId'])) {
 
+    if (file_exists($_FILES['img']['tmp_name']) || is_uploaded_file($_FILES['img']['tmp_name'])) {
+        $img = $_FILES["img"]["name"];
+        move_uploaded_file($_FILES["img"]["tmp_name"], "../public/img/" . $img);
+    } elseif ($gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->getImage() == "DefaultPersonimage.png") {
+        $img = "DefaultPersonimage.png";
+    } else {
+        $img = $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->getImage();
+    }
+    $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->setFirstName(htmlentities($_POST['firstName']));
+    $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->setLastName(htmlentities($_POST['lname']));
+    $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->setEmail(htmlentities($_POST['email']));
+    $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->setGender(htmlentities($_POST['gender']));
+    $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->setMobilePhone(htmlentities($_POST['mobilePhone']));
+    $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->setHomePhone(htmlentities($_POST['homePhone']));
+    $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->setBirthday(htmlentities($_POST['birthday']));
+    $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->setImage($img);
+    $userTypeId=$_POST['usertype'];
+    $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->getUsertype()->setId($_POST['usertype']);
+    $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->getUsertype()->setName($gym->getUserTypes()[$userTypeId]->getName());
+    for($i=1;$i<8;$i++)
+    {
+        $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->getUsertype()->getPages()[$i]->set_access($gym->getUserTypes()[$userTypeId]->getPages()[$i]->get_access());
+    }
+    if ($gym->getBranchs()[$_POST['branchId']]->editEmployee($_POST['employeeEditId'])) {
+        $_SESSION['Gym'] = serialize($gym);
+        $_SESSION['successMessege'] = "Edited Successfully";
+        echo "<script> window.location.href='../views/employees.php';</script>";
+    } else {
+        $_SESSION['errormessege'] = "can't' Edit this Employee right now";
+        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
 
+    }
 } elseif (isset($_GET['personDeleteId']) && isset($_GET['empBranchId']) && isset($_GET['empDeleteId'])) {
     if ($gym->getBranchs()[$_GET['empBranchId']]->deleteEmployee($_GET['personDeleteId'])) {
         $Employees = $gym->getBranchs()[$_GET['empBranchId']]->getEmployees();
