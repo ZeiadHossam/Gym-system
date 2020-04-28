@@ -54,8 +54,7 @@
             <table id="custTable" class="addmembertable table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>id</th>
-                    <th>City</th>
+                    <th>Name(Area)</th>
                     <th>Address</th>
 
                     <th>Actions</th>
@@ -66,7 +65,6 @@
                 foreach ($gym->getBranchs() as $branch) {
                     ?>
                     <tr>
-                        <td><?php echo $branch->getId(); ?></td>
                         <td><?php echo $branch->getCity(); ?></td>
                         <td><?php echo $branch->getAddress(); ?></td>
 

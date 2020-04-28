@@ -139,7 +139,18 @@
                                                     <input type="number" name="emergency" class="form-control numbers"
                                                            placeholder="Emergency Number">
                                                 </div>
+                                                <?php if ($_SESSION['branch'] == NULL) { ?>
+                                                    <div class="form-group">
+                                                        <label>*Branch </label>
 
+                                                        <select name="branch" class="form-control">
+                                                            <?php foreach ($gym->getBranchs() as $branch) {
+                                                                echo "<option value='" . $branch->getId() . "'>" . $branch->getCity() . "</option>";
+                                                            } ?>
+                                                        </select>
+
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>

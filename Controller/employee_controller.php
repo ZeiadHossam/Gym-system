@@ -31,7 +31,23 @@ if (isset($_POST['employeeEditId']) && isset($_POST['editEmployee']) && isset($_
     {
         $gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->getUsertype()->getPages()[$i]->set_access($gym->getUserTypes()[$userTypeId]->getPages()[$i]->get_access());
     }
-    if ($gym->getBranchs()[$_POST['branchId']]->editEmployee($_POST['employeeEditId'])) {
+    if (isset($_POST['branch'])) {
+        $branchId = $_POST['branch'];
+    }
+    else
+    {
+        $branchId = $_POST['branchId'];
+    }
+    if ($gym->getBranchs()[$_POST['branchId']]->editEmployee($_POST['employeeEditId'],$branchId)) {
+        if (isset($_POST['branch']))
+        {
+            $branchId=$_POST['branch'];
+            $employee=$gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']];
+            $allEmployees=$gym->getBranchs()[$_POST['branchId']]->getEmployees();
+            unset($allEmployees[$_POST['employeeEditId']]);
+            $gym->getBranchs()[$_POST['branchId']]->setAllEmployees($allEmployees);
+            $gym->getBranchs()[$branchId]->setEmployees($employee->getId(),$employee);
+        }
         $_SESSION['Gym'] = serialize($gym);
         $_SESSION['successMessege'] = "Edited Successfully";
         echo "<script> window.location.href='../views/employees.php';</script>";

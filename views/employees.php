@@ -59,6 +59,7 @@
 					</tr>
                         <?php }}}  else{
                     foreach ($gym->getBranchs()[$_SESSION['branch']]->getEmployees() as $employee){
+                        if ($employee->getId()!=$_SESSION['id']){
                     ?>
 
                     <tr>
@@ -80,7 +81,7 @@
                     </tr>
 
 
-                <?php } } ?>
+                <?php } }} ?>
 
 				</tbody>
 			</table>

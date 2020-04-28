@@ -41,7 +41,6 @@
         <table id="custTable" class="addmembertable table table-bordered table-striped">
             <thead>
             <tr>
-                <th>Id</th>
                 <th>Method</th>
                 <th>Actions</th>
 
@@ -52,7 +51,6 @@
             foreach ($gym->getPaymentMethods() as $paymentMethod) {
             ?>
             <tr>
-                <td><?php echo $paymentMethod->getId();?></td>
                 <td><?php echo $paymentMethod->getName();?></td>
 
                 <td>

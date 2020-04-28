@@ -63,7 +63,6 @@
             <table id="custTable" class="addmembertable table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Name</th>
                     <th>Period</th>
                     <th>Actions</th>
@@ -72,7 +71,6 @@
                 <tbody>
                 <?php foreach ($gym->getPackages() as $package) {  ?>
                     <tr>
-                        <td><?php echo $package->getId(); ?></td>
                         <td><?php echo $package->getName(); ?></td>
                         <td>
                         <?php foreach ($package->getPeriod() as $period) {  ?>

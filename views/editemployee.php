@@ -25,9 +25,13 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
                     </div>
                 </div>
                     <input type="text" value="<?php echo $_GET['branchId'] ;?>" name="branchId" hidden>
-                    <input type="text" value="<?php echo $_GET['empId'] ;?>" name="employeeEditId" hidden>
                 <div class="row">
                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="id">ID</label>
+                            <input type="text" class="form-control" id="id" name="employeeEditId"
+                                   value="<?php echo $employee->getId(); ?>" readonly>
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">*Email address</label>
                             <input type="email"  onkeyup="validate_email_input()"
@@ -82,16 +86,17 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
                                 </option>
                                 <option
                                     <?php if ($employee->getGender() == 'Female' || $employee->getGender() == 'female'){ ?>selected <?php } ?> >
-                                    female
+                                    Female
                                 </option>
 
                             </select>
                         </div>
+
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputFile">PersonalImage</label>
+                            <label for="Image">PersonalImage</label>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input name="img" class="form-control-file" type="file"
@@ -104,20 +109,32 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
 
                             </div>
                         </div>
+                        <?php if ($_SESSION['branch'] == NULL) { ?>
+                            <div class="form-group">
+                                <label>*Branch </label>
+
+                                <select name="branch" name="branch" class="form-control">
+                                    <?php foreach ($gym->getBranchs() as $branch) {
+                                        if($branch->getId()==$_GET['branchId'])
+                                        {
+                                            echo "<option value='" . $branch->getId() . "' selected>" . $branch->getCity() . "</option>";
+                                        }
+                                        else
+                                        {
+
+                                            echo "<option value='" . $branch->getId() . "'>" . $branch->getCity() . "</option>";
+                                        }
+                                    } ?>
+                                </select>
+
+                            </div>
+                        <?php } ?>
+
+
 
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">HOME Phone</label>
-                            <input type="text" onfocusout="validate_homePhone()"
-                                   id="homePhone" MAXLENGTH="8" name="homePhone" class="form-control"
-                                   placeholder="Home Phone" value="<?php echo $employee->getHomePhone(); ?>">
-                            <span class="message" id="homePhone_message"></span>
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">*Mobile Phone</label>
+                            <label for="mobilePhone">*Mobile Phone</label>
                             <input type="text" name="mobilePhone" onfocusout="validate_mobilePhone()" id="mobilePhone" MAXLENGTH="11"
                                    class="form-control"
                                    placeholder="Mobile Phone" value="<?php echo $employee->getMobilePhone(); ?>"
@@ -126,14 +143,21 @@ $employee = $gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']
 
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">*Birthday </label>
+                            <label for="birthday">*Birthday </label>
                             <input type="date" class="form-control" name="birthday" onfocusout="validate_date()" id="birthDate"
                                    value="<?php echo $employee->getBirthDay(); ?>"
                                    >
                             <span class="message" id="birthDate_message"></span>
 
                         </div>
+                        <div class="form-group">
+                            <label for="HomePhone">HOME Phone</label>
+                            <input type="text" onfocusout="validate_homePhone()"
+                                   id="homePhone" MAXLENGTH="8" name="homePhone" class="form-control"
+                                   placeholder="Home Phone" value="<?php echo $employee->getHomePhone(); ?>">
+                            <span class="message" id="homePhone_message"></span>
 
+                        </div>
 
                     </div>
                 </div>

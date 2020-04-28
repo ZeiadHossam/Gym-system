@@ -466,6 +466,7 @@ class gym
             $this->getOwner()->setId($row['emp_id']);
             $this->getOwner()->setFirstName($row['firstName']);
             $this->getOwner()->setLastName($row['lastName']);
+            $this->getOwner()->setUserName($row['userName']);
             $this->getOwner()->setImage($row['image']);
             $this->getOwner()->setHomePhone($row['homePhone']);
             $this->getOwner()->setMobilePhone($row['mobilePhone']);

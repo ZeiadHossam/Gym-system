@@ -25,24 +25,29 @@ $employee=$gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']];
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
+                                                    <label for="id">ID</label>
+                                                    <input type="text" class="form-control" id="id"
+                                                           value="<?php echo $employee->getId(); ?>" readonly>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
                                                     <input type="email" class="form-control" id="exampleInputEmail1"
                                                            value="<?php echo $employee->getEmail(); ?>" readonly>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="fname">*First Name</label>
+                                                    <label for="fname">First Name</label>
                                                     <input type="text" class="form-control" maxlength="15"
                                                            value="<?php echo $employee->getFirstName(); ?>" readonly>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="lname">*Last Name</label>
+                                                    <label for="lname">Last Name</label>
                                                     <input type="text" value="<?php echo $employee->getLastName(); ?>" class="form-control" readonly>
                                                 </div>
 
 
 
                                                 <div class="form-group">
-                                                    <label>*Department </label>
+                                                    <label>Department </label>
 
                                                     <select class="form-control" disabled>
 
@@ -52,13 +57,33 @@ $employee=$gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']];
 
 
                                                 </div>
+                                                <?php if ($_SESSION['branch'] == NULL) { ?>
+                                                    <div class="form-group">
+                                                        <label>Branch </label>
 
+                                                        <select name="branch" class="form-control" disabled>
+                                                            <option disabled selected><?php echo $gym->getBranchs()[$_GET['branchId']]->getCity(); ?></option>;
+                                                        </select>
+
+                                                    </div>
+                                                <?php } ?>
                                             </div>
 
                                             <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                    <label>Image :</label>
+
+                                                    </div>
+                                                    <div class="col-md-4 offset-md-6">
+
+                                                        <img id="personalImage" src="../public/img/<?php echo $employee->getImage(); ?>"/>
+                                                    </div>
+                                                </div>
+
 
                                                 <div class="form-group">
-                                                    <label>*Gender </label>
+                                                    <label>Gender </label>
 
                                                     <select class="form-control" disabled>
 
@@ -74,11 +99,11 @@ $employee=$gym->getBranchs()[$_GET['branchId']]->getEmployees()[$_GET['empId']];
 
 
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">*Mobile Phone</label>
+                                                    <label for="exampleInputEmail1">Mobile Phone</label>
                                                     <input type="text" value="<?php echo $employee->getMobilePhone(); ?>" class="form-control" readonly>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1">*birthday </label>
+                                                    <label for="exampleInputEmail1">Birthday </label>
                                                     <input type="date" value="<?php echo $employee->getBirthDay(); ?>" class="form-control" readonly>
                                                 </div>
 

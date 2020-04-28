@@ -7,8 +7,19 @@ $gym = unserialize($_SESSION['Gym']);
 if (isset($_POST['employeeEditId']) && isset($_POST['editEmployee']) && isset($_POST['branchId'])) {
 
 }
-elseif (isset($_POST['personDeleteId']) && isset($_POST['empBranchId']) && isset($_POST['empDeleteId'])) {
+elseif (isset($_GET['memberBranchId']) && isset($_GET['memberDeleteId'])) {
+    if ($gym->getBranchs()[$_GET['memberBranchId']]->deleteMember($_GET['memberDeleteId'])) {
+        $Members = $gym->getBranchs()[$_GET['memberBranchId']]->getMembers();
+        unset($Members[$_GET['memberDeleteId']]);
+        $gym->getBranchs()[$_GET['memberBranchId']]->setAllMembers($Members);
+        $_SESSION['Gym'] = serialize($gym);
+        $_SESSION['successMessege'] = "Deleted Successfully";
+        echo "<script> window.location.href='../views/members.php';</script>";
+    } else {
+        $_SESSION['errormessege'] = "can't' delete this Member right now";
+        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
 
+    }
 
 }
 elseif (isset($_POST['addmember']) && !isset($_POST['memberEditId'])) {
@@ -42,7 +53,7 @@ elseif (isset($_POST['addmember']) && !isset($_POST['memberEditId'])) {
     {
        $addedByEmp= $gym->getBranchs()[$_SESSION['branch']]->getEmployees()[$_SESSION['id']];
     }
-    $member->setAddedBy($addedByEmp->getId()."-".$addedByEmp->getFirstName()." ".$addedByEmp->getLastName());
+    $member->setAddedBy($addedByEmp->getFirstName()." ".$addedByEmp->getLastName());
     if (isset($_GET['branch'])) {
         $branch = $_GET['branch'];
     } else {

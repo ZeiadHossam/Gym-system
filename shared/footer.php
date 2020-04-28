@@ -29,6 +29,7 @@
 <script src="../public/js/pages/employeeform.js"></script>
 <script src="../public/js/pages/departmentForm.js"></script>
 <script src="../public/js/pages/employeeform.js "></script>
+<script src="../public/js/pages/memberform.js "></script>
 <script src="../public/js/pages/payment.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 <script src="../public/js/pages/package.js"></script>

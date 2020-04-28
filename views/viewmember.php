@@ -24,6 +24,11 @@ $branchName=$gym->getBranchs()[$_GET['branchId']]->getCity();
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="id">ID</label>
+                                        <input type="text" class="form-control" id="id" name="Id"
+                                               value="<?php echo $member->getId(); ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
                                         <input type="email" class="form-control" id="exampleInputEmail1"
                                                value="<?php echo $member->getEmail() ; ?>" readonly>

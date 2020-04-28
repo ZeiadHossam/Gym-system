@@ -79,6 +79,10 @@ class branch implements ICheckAvailability
     {
         $this->members[$memId] = $members;
     }
+    public function setAllMembers($members)
+    {
+        $this->members = $members;
+    }
 
     public function addemployee($employee, $Bid)
     {
@@ -122,7 +126,7 @@ class branch implements ICheckAvailability
 
         }
     }
-    public function editEmployee($id)
+    public function editEmployee($id,$newBranchID)
     {
         $db = new database();
         $this->employees[$id]->setEmail($db->getMysqli()->real_escape_string($this->employees[$id]->getEmail()));
@@ -135,7 +139,7 @@ class branch implements ICheckAvailability
 
         $sql="UPDATE person SET firstName='".$this->employees[$id]->getFirstName()."' , lastName='".$this->employees[$id]->getLastName()."',birthDay='".$this->employees[$id]->getBirthday()."', ";
         $sql.="image='".$this->employees[$id]->getImage()."' , mobilePhone='".$this->employees[$id]->getMobilePhone()."',homePhone='".$this->employees[$id]->getHomePhone()."', ";
-        $sql.="gender='".$this->employees[$id]->getGender()."' , email='".$this->employees[$id]->getEmail()."',updatedAt='".$updatedAt."' WHERE id=".$this->employees[$id]->getPid()."; ";
+        $sql.="gender='".$this->employees[$id]->getGender()."' , email='".$this->employees[$id]->getEmail()."',updatedAt='".$updatedAt."' ,branchId='".$newBranchID."'WHERE id=".$this->employees[$id]->getPid()."; ";
 
         if ($db->insert($sql)) {
                 $sql2="UPDATE employee SET typeId=".$this->employees[$id]->getUsertype()->getId()." WHERE id=".$this->employees[$id]->getId().";";
@@ -177,6 +181,7 @@ class branch implements ICheckAvailability
             $employee->setId($row['emp_id']);
             $employee->setFirstName($row['firstName']);
             $employee->setLastName($row['lastName']);
+            $employee->setUserName($row['userName']);
             $employee->setImage($row['image']);
             $employee->setHomePhone($row['homePhone']);
             $employee->setMobilePhone($row['mobilePhone']);
@@ -241,6 +246,18 @@ class branch implements ICheckAvailability
         }
 
     }
+    public function deleteMember($id)
+    {
+        $db = new database();
+        $updatedAt = date("Y/m/d H:i:s");
+        $sql = "UPDATE person SET isDeleted=1, updatedAt='$updatedAt' WHERE id=" . $this->members[$id]->getPid();
+        if ($db->insert($sql)) {
+
+            $db->closeconn();
+            return true;
+        }
+        return false;
+    }
     public function getAllMembers()
     {
         $db = new database();
@@ -267,7 +284,7 @@ class branch implements ICheckAvailability
             $member->setCompanyAddress($row['companyAddress']);
             $addedBySql = "SELECT person.firstName,person.lastName  FROM person INNER JOIN employee ON employee.personId=person.id where employee.id=".$row['addedBy'];
             $addedByData=$db->select($addedBySql);
-            $member->setAddedBy($row['addedBy']."-".$addedByData['firstName']." ".$addedByData['lastName']);
+            $member->setAddedBy($addedByData['firstName']." ".$addedByData['lastName']);
             $this->setMembers($member->getId(), $member);
         }
     }
