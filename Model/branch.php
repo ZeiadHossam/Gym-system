@@ -246,6 +246,46 @@ class branch implements ICheckAvailability
         }
 
     }
+    public function editMember($id,$newBranchID)
+    {
+        $db = new database();
+        $this->members[$id]->setEmail($db->getMysqli()->real_escape_string($this->members[$id]->getEmail()));
+        $this->members[$id]->setFirstName($db->getMysqli()->real_escape_string($this->members[$id]->getFirstName()));
+        $this->members[$id]->setLastName($db->getMysqli()->real_escape_string($this->members[$id]->getLastName()));
+        $this->members[$id]->setImage($db->getMysqli()->real_escape_string($this->members[$id]->getImage()));
+        $this->members[$id]->setHomePhone($db->getMysqli()->real_escape_string($this->members[$id]->getHomePhone()));
+        $this->members[$id]->setMobilePhone($db->getMysqli()->real_escape_string($this->members[$id]->getMobilePhone()));
+        $this->members[$id]->setAddress($db->getMysqli()->real_escape_string($this->members[$id]->getAddress()));
+        $this->members[$id]->setMarriedStatus($db->getMysqli()->real_escape_string($this->members[$id]->getMarriedStatus()));
+        $this->members[$id]->setCompanyName($db->getMysqli()->real_escape_string($this->members[$id]->getCompanyName()));
+        $this->members[$id]->setCompanyAddress($db->getMysqli()->real_escape_string($this->members[$id]->getCompanyAddress()));
+        $this->members[$id]->setFaxNumber($db->getMysqli()->real_escape_string($this->members[$id]->getFaxNumber()));
+        $this->members[$id]->setEmergencyNumber($db->getMysqli()->real_escape_string($this->members[$id]->getEmergencyNumber()));
+        $this->members[$id]->setWorkPhone($db->getMysqli()->real_escape_string($this->members[$id]->getWorkPhone()));
+        $this->members[$id]->setAddedBy($db->getMysqli()->real_escape_string($this->members[$id]->getAddedBy()));
+
+        $updatedAt = date("Y/m/d H:i:s");
+
+        $sql="UPDATE person SET firstName='".$this->members[$id]->getFirstName()."' , lastName='".$this->members[$id]->getLastName()."',birthDay='".$this->members[$id]->getBirthday()."', ";
+        $sql.="image='".$this->members[$id]->getImage()."' , mobilePhone='".$this->members[$id]->getMobilePhone()."',homePhone='".$this->members[$id]->getHomePhone()."', ";
+        $sql.="gender='".$this->members[$id]->getGender()."' , email='".$this->members[$id]->getEmail()."',updatedAt='".$updatedAt."' ,branchId='".$newBranchID."'WHERE id=".$this->members[$id]->getPid()."; ";
+
+        if ($db->insert($sql)) {
+            $sql2="UPDATE member SET  address='".$this->members[$id]->getAddress()."' , marriedStatus='".$this->members[$id]->getMarriedStatus()."',  emergencyNumber='".$this->members[$id]->getEmergencyNumber()."',companyName='".$this->members[$id]->getCompanyAddress()."',workPhone='".$this->members[$id]->getWorkPhone()."',faxNumber='".$this->members[$id]->getFaxNumber()."',companyAddress='".$this->members[$id]->getCompanyAddress()."' WHERE personId=".$this->members[$id]->getPid().";";
+            if ($db->insert($sql2)) {
+                $db->closeconn();
+                return true;
+            } else {
+                $db->closeconn();
+                return false;
+            }
+        }
+        else {
+            $db->closeconn();
+            return false;
+        }
+
+    }
     public function deleteMember($id)
     {
         $db = new database();
@@ -285,6 +325,7 @@ class branch implements ICheckAvailability
             $addedBySql = "SELECT person.firstName,person.lastName  FROM person INNER JOIN employee ON employee.personId=person.id where employee.id=".$row['addedBy'];
             $addedByData=$db->select($addedBySql);
             $member->setAddedBy($addedByData['firstName']." ".$addedByData['lastName']);
+            $member->getAllContracts();
             $this->setMembers($member->getId(), $member);
         }
     }

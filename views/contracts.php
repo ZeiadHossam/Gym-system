@@ -27,20 +27,26 @@
                         <th>Type</th>
                         <th>Due</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <th>Fees</th>
+                        <th>Payment Method</th>
                     </tr>
                     </thead>
                     <tbody>
+<?php foreach ($gym->getBranchs() as $branch) {
+    foreach ($branch->getMembers() as $member) {
+    foreach ($member->getContracts() as $contract) {
+        ?>
                     <tr>
-                        <td>1000</td>
-                        <td>1</td>
-                        <td>mahmoud</td>
-                        <td>omar</td>
-                        <td>01111111111</td>
-                        <td>MemberShip</td>
-                        <td>30 Days</td>
-                        <td>200</td>
-                        <td>Active</td>
+                        <td><?php echo $contract->getId();?></td>
+                        <td><?php echo $member->getId();?></td>
+                        <td><?php echo $member->getFirstName();?></td>
+                        <td><?php echo $member->getLastName();?></td>
+                        <td><?php echo $member->getMobilePhone();?></td>
+                        <td><?php echo $contract ->getPackage()->getName();?></td>
+                        <td><?php echo $contract ->getPackage()->getPeriod()->getPeriod()."-".$contract->getPackage()->getPeriodType();?></td>
+                        <td><?php echo $contract ->getIssueDate();?></td>
+                        <td><?php echo $contract ->getPaymentFees();?></td>
+                        <td><?php echo $contract ->getPaymentMethod()->getName();?></td>
                         <td>
                             <div class="btn-group tablebuttons">
 								<a href="viewcontract.php" class="btn btn-secondary btn-sm" >View</a>
@@ -51,25 +57,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2000</td>
-                        <td>2</td>
-                        <td>amr</td>
-                        <td>khaled</td>
-                        <td>01222222222</td>
-                        <td>Trainer</td>
-                        <td>15 Session</td>
-                        <td>150</td>
-                        <td>Expired</td>
-                        <td>
-                            <div class="btn-group tablebuttons">
-								<a href="viewcontract.php" class="btn btn-secondary btn-sm" >View</a>
-								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
-									Delete
-								</button>
-                            </div>
-                        </td>
-                    </tr>
+                   <?php }}} ?>
                     </tbody>
                 </table>
 

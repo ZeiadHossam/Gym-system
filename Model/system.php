@@ -150,6 +150,7 @@ system
         foreach ($gym->getBranchs() as $branch){
             $branch->getAllMembers();
         }
+
         return $gym;
     }
 }

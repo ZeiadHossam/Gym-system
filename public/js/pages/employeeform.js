@@ -95,7 +95,7 @@ function onlyNumberKey(evt) {
     return true;
 }
 
-function validate_email() {
+    function validate_email() {
     var email = document.getElementById('Email1').value;
     var message = document.getElementById('emailmessage');
     validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

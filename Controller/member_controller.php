@@ -4,9 +4,54 @@ include_once('../model/gym.php');
 
 session_start();
 $gym = unserialize($_SESSION['Gym']);
-if (isset($_POST['employeeEditId']) && isset($_POST['editEmployee']) && isset($_POST['branchId'])) {
+if (isset($_POST['memberEditId']) && isset($_POST['editMember']) && isset($_POST['branchId'])) {
+    if (file_exists($_FILES['img']['tmp_name']) || is_uploaded_file($_FILES['img']['tmp_name'])) {
+        $img = $_FILES["img"]["name"];
+        move_uploaded_file($_FILES["img"]["tmp_name"], "../public/img/" . $img);
+    } elseif ($gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->getImage() == "DefaultPersonimage.png") {
+        $img = "DefaultPersonimage.png";
+    } else {
+        $img = $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->getImage();
+    }
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setFirstName(htmlentities($_POST['firstName']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setLastName(htmlentities($_POST['lname']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setEmail(htmlentities($_POST['email']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setGender(htmlentities($_POST['gender']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setMobilePhone(htmlentities($_POST['mobilePhone']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setHomePhone(htmlentities($_POST['homePhone']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setBirthday(htmlentities($_POST['birthday']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setImage($img);
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setWorkPhone(htmlentities($_POST['workPhone']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setEmergencyNumber(htmlentities($_POST['emergency']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setMarriedStatus($_POST['marriedStatus']);
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setCompanyName(htmlentities($_POST['companyName']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setAddress(htmlentities($_POST['personalAddress']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setCompanyAddress(htmlentities($_POST['companyAddress']));
+    $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->setFaxNumber(htmlentities($_POST['faxNumber']));
+    if (isset($_POST['branch'])) {
+        $branchId = $_POST['branch'];
+    } else {
+        $branchId = $_POST['branchId'];
+    }
+    if ($gym->getBranchs()[$_POST['branchId']]->editMember($_POST['memberEditId'], $branchId)) {
+        if (isset($_POST['branch'])) {
+            $branchId = $_POST['branch'];
+            $member = $gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']];
+            $allmembers = $gym->getBranchs()[$_POST['branchId']]->getMembers();
+            unset($allmembers[$_POST['memberEditId']]);
+            $gym->getBranchs()[$_POST['branchId']]->setAllMembers($allmembers);
+            $gym->getBranchs()[$branchId]->setMembers($member->getId(), $member);
+        }
+        $_SESSION['Gym'] = serialize($gym);
+        $_SESSION['successMessege'] = "Edited Successfully";
+       echo "<script> window.location.href='../views/members.php';</script>";
+    } else {
+        $_SESSION['errormessege'] = "can't' Edit this member right now";
+        echo "<script> window.location.href='javascript:history.go(-1)';</script>";
 
+    }
 }
+
 elseif (isset($_GET['memberBranchId']) && isset($_GET['memberDeleteId'])) {
     if ($gym->getBranchs()[$_GET['memberBranchId']]->deleteMember($_GET['memberDeleteId'])) {
         $Members = $gym->getBranchs()[$_GET['memberBranchId']]->getMembers();

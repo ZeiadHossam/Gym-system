@@ -1,7 +1,10 @@
 <?php
 include_once 'employee.php';
 include_once 'person.php';
-
+include_once 'contract.php';
+include_once 'database.php';
+include_once 'package.php';
+include_once 'packagePeriod.php';
 
 class member extends person
 {
@@ -14,11 +17,29 @@ class member extends person
     private $faxNumber;
     private $companyAddress;
     private $addedBy;
+    private $contracts;
+
+    function __construct()
+    {
+        $this->contracts = array();
+    }
 
     public function getId()
     {
         return $this->id;
     }
+
+    public function getContracts()
+    {
+        return $this->contracts;
+    }
+
+
+    public function setContracts($contractId, $contracts)
+    {
+        $this->contracts[$contractId] = $contracts;
+    }
+
 
     public function setId($id)
     {
@@ -112,4 +133,41 @@ class member extends person
         $this->addedBy = $addedBy;
     }
 
+    public function getAllContracts()
+    {
+        $db = new database();
+
+        $contractSql = "SELECT *,contract.id as cid,packageperiod.id as ppid,packagetype.id as ptid ,paymentmethod.id as pmid ,paymentmethod.name as pmname,packagetype.name as ptname FROM contract INNER JOIN payment ON contract.paymentId=payment.id INNER JOIN packageperiod ON contract.packageId=packageperiod.id INNER JOIN packagetype ON packageperiod.packageTypeId=packageType.id INNER JOIN paymentmethod ON payment.paymentMethodId=paymentmethod.id WHERE contract.isDeleted=0 AND contract.memberId=" . $this->id . ";";
+        $contractData = $db->selectArray($contractSql);
+        while ($row = mysqli_fetch_assoc($contractData)) {
+            $contract = new contract();
+            $contract->setId($row['cid']);
+            $contract->setStartdate($row['startDate']);
+            $contract->setRemaningPackagePeriod($row['remaningPackagePeriod']);
+            $contract->setPaymentFees($row['fees']);
+            $contract->setPaymentDiscount($row['discount']);
+            $contract->setNote($row['note']);
+            $contract->setIssueDate($row['issueDate']);
+            $contract->setEnddate($row['endDate']);
+            $contract->setAmountDue($row['amountDue']);
+            $contract->setAmountDateDue($row['amountDueBy']);
+            $contract->setAmountPaid($row['amountPaid']);
+            $package=new package("period");
+            $package->setId($row['ptid']);
+            $package->setName($row['ptname']);
+            $package->setPeriodType($row['type']);
+            $period = new packagePeriod();
+            $period->setId($row['ppid']);
+            $period->setPeriod($row['period']);
+            $package->setPeriod($period);
+            $contract->setPackage($package);
+            $contract->getSales()->setId($row['sales']);
+            $paymentmethod=new paymentmethod();
+            $paymentmethod->setId($row['pmid']);
+            $paymentmethod->setName($row['pmname']);
+            $contract->setPaymentMethod($paymentmethod);
+            $this->setContracts($contract->getId(),$contract);
+        }
+
+    }
 }

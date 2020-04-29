@@ -17,7 +17,8 @@
 
 
                             <form role="form" action="../Controller/member_controller.php" enctype="multipart/form-data"
-                                  method="post">
+
+                                  method="post" onsubmit=" return submitingmember()">
                                 <div class="card card-primary">
                                     <div class="card-body">
                                         <div class="row">
@@ -34,7 +35,7 @@
                                                 <div class="form-group">
                                                     <label for="fname">*First Name</label>
                                                     <input type="text" name="fname" onfocusout="validate_firstname()"
-                                                           id="fname" class="form-control" maxlength="15"
+                                                           id="fname" class="form-control"
                                                            placeholder="First Name" required>
                                                     <span class="message" id="firstName_message"></span>
 
@@ -52,25 +53,40 @@
 
                                                 <div class="form-group">
                                                     <label>Work Phone</label>
-                                                    <input type="number" name="WorkPhone" class="form-control numbers"
-                                                           placeholder="Work Phone">
+                                                    <input type="text" name="WorkPhone"
+                                                           onfocusout="validate_workphone()" id="workPhone"
+                                                           class="form-control numbers" placeholder="Work Phone">
+                                                    <span class="message" id="workPhone_message"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="FaxNumber">Fax Number</label>
-                                                    <input type="number" name="faxnumber" class="form-control numbers"
+                                                    <input type="text" name="faxnumber"
+                                                           onfocusout="validate_faxnumber()" id="faxnumber"
+                                                           class="form-control numbers"
                                                            placeholder="Fax Number">
+                                                    <span class="message" id="faxnumber_message"></span>
+
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">*Mobile Phone</label>
-                                                    <input type="number" name="phonenumber"
-                                                           class="form-control numbers"
-                                                           placeholder="Phone Number" required>
+                                                    <input type="text" name="phonenumber"
+                                                           onkeypress="return onlyNumberKey(event)"
+                                                           onfocusout="validate_mobilePhone()" id="mobilePhone"
+                                                           class="form-control numbers" placeholder="Phone Number"
+                                                           required>
+                                                    <span class="message" id="mobilePhone_message"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="fname">*Birthday </label>
-                                                    <input type="date" min="1900-01-01" max="2020-03-29" name="birthday"
+                                                    <input type="date" name="birthday"
+                                                           onfocusout="validate_date()" id="birthDate"
                                                            class="form-control" required>
+                                                    <span class="message" id="birthDate_message"></span>
+
+
                                                 </div>
 
                                                 <b>*Gender</b>
@@ -94,8 +110,12 @@
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Home Phone</label>
-                                                    <input type="number" name="homephone" class="form-control numbers"
+                                                    <input type="text" name="homephone"
+                                                           onkeypress="return onlyNumberKey(event)"
+                                                           onfocusout="validate_homePhone()" id="homePhone"
+                                                           class="form-control numbers"
                                                            placeholder="Home Phone">
+                                                    <span class="message" id="homePhone_message"></span>
                                                 </div>
                                             </div>
 
@@ -123,7 +143,10 @@
                                                 <div class="form-group">
                                                     <label>Company Name </label>
                                                     <input type="text" PLACEHOLDER="Company Name" name="CompanyName"
+                                                           onfocusout="validate_companyname()" id="companyname"
                                                            class="form-control">
+                                                    <span class="message" id="companyname_message"></span>
+
                                                 </div>
                                                 <b> Company Address</b>
 
@@ -136,8 +159,12 @@
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Emergency Number</label>
-                                                    <input type="number" name="emergency" class="form-control numbers"
+                                                    <input type="text" name="emergency"
+                                                           onfocusout="validate_emergencynumber()" id="emergencynumber"
+                                                           class="form-control numbers"
                                                            placeholder="Emergency Number">
+
+                                                    <span class="message" id="emergencynumber_message"></span>
                                                 </div>
                                                 <?php if ($_SESSION['branch'] == NULL) { ?>
                                                     <div class="form-group">
