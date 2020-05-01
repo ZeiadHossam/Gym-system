@@ -9,17 +9,17 @@ $('#packagePeriod').on('select2:close', function () {
 
 function editingPackage(id)
 {
-    window.location.href='package.php?packageEditId='+id;
+    window.location.href='/GYM/package/viewEditingPackage/'+id;
 }
 
 function cancellingPackage() {
-    window.location.href='package.php';
+    window.location.href='/GYM/package/viewPackages';
 }
 
 function deletingPackage(id) {
     $('#modal-delete').modal('show');
     $('#delete-btn').on('click',function () {
-        window.location.href='../controller/package_controller.php?packageDeleteId='+id;
+        window.location.href='/GYM/package/deletePackage/'+id;
     });
 
 }

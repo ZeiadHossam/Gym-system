@@ -29,17 +29,17 @@ return false;
 }
 function editingBranch(id)
 {
-    window.location.href='branch.php?branchEditId='+id;
+    window.location.href='/GYM/branch/viewEditingBranch/'+id;
 }
 
 function cancellingBranch() {
-    window.location.href='branch.php';
+    window.location.href='/GYM/branch/viewBranches';
 }
 
 function deletingBranch(id) {
     $('#modal-delete').modal('show');
     $('#delete-btn').on('click',function () {
-        window.location.href='../controller/branch_controller.php?branchDeleteId='+id;
+        window.location.href='/GYM/branch/deleteBranch/'+id;
     });
 
 }

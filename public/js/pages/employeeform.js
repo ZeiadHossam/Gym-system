@@ -2,7 +2,7 @@
 function deletingEmployee(personId,branchId,empId) {
     $('#modal-delete').modal('show');
     $('#delete-btn').on('click',function () {
-        window.location.href='../controller/employee_controller.php?personDeleteId='+personId+"&empBranchId="+branchId+"&empDeleteId="+empId;
+        window.location.href='/GYM/employee/deleteEmployee/'+branchId+"/"+empId;
     });
 
 }

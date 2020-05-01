@@ -1,16 +1,16 @@
 function editingPayment(id)
 {
-    window.location.href='paymentmethod.php?paymentEditId='+id;
+    window.location.href='/GYM/paymentMethod/viewEditingPaymentMethod/'+id;
 }
 
 function cancellingPayment() {
-    window.location.href='paymentmethod.php';
+    window.location.href='/GYM/paymentMethod/viewPaymentMethod';
 }
 
 function deletingPayment(id) {
     $('#modal-delete').modal('show');
     $('#delete-btn').on('click',function () {
-        window.location.href='../controller/payment_controller.php?paymentDeleteId='+id;
+        window.location.href='/GYM/paymentMethod/deletePaymentMethod/'+id;
     });
 
 }

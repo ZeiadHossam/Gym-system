@@ -28,17 +28,17 @@ function isCheckboxesChecked() {
 }
 function editingDepartment(id)
 {
-    window.location.href='departments.php?depEditId='+id;
+    window.location.href='/GYM/department/viewEditingDepartment/'+id;
 }
 
 function cancellingDepartment() {
-    window.location.href='departments.php';
+    window.location.href='/GYM/department/viewDepartments';
 }
 
 function deletingDepartment(id) {
     $('#modal-delete').modal('show');
     $('#delete-btn').on('click',function () {
-        window.location.href='../controller/usertype_controller.php?depDeleteId='+id;
+        window.location.href='/GYM/department/deleteDepartment/'+id;
     });
 
 }
