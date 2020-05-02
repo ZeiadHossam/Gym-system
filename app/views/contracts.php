@@ -1,4 +1,3 @@
-<?php include("../shared/main.php") ?>
 <?php include("addcontract.php") ?>
 <?php include("delete.php")?>
     <section class="content">
@@ -65,4 +64,3 @@
         </div>
     </section>
 
-<?php include("../shared/footer.php") ?>

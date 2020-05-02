@@ -19,6 +19,21 @@ class Contract
     private $amountDue;
     private $amountDateDue;
     private $amountPaid;
+    private $remainfreezedays;
+
+
+    public function getRemainfreezedays()
+    {
+        return $this->remainfreezedays;
+    }
+
+
+    public function setRemainfreezedays($remainfreezedays)
+    {
+        $this->remainfreezedays = $remainfreezedays;
+    }
+
+
     function __construct()
     {
         $this->package = new Package("period");

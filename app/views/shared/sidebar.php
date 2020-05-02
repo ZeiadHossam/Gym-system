@@ -73,7 +73,7 @@
                 </li>
                 <?php } if ($pages[5]->get_access()=='1'){ ?>
                 <li class="nav-item">
-                    <a href="contracts.php" class="nav-link">
+                    <a href="/GYM/contract/viewContracts"  class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Contracts

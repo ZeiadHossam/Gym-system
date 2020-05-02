@@ -152,7 +152,9 @@ class Member extends Person
             $contract->setAmountDue($row['amountDue']);
             $contract->setAmountDateDue($row['amountDueBy']);
             $contract->setAmountPaid($row['amountPaid']);
+            $contract->setRemainfreezedays($row['remainingFreezeDays']);
             $package=new Package("period");
+
             $package->setId($row['ptid']);
             $package->setName($row['ptname']);
             $package->setPeriodType($row['type']);
@@ -170,4 +172,5 @@ class Member extends Person
         }
 
     }
+
 }
