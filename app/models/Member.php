@@ -143,14 +143,14 @@ class Member extends Person
             $contract = new Contract();
             $contract->setId($row['cid']);
             $contract->setStartdate($row['startDate']);
-            $contract->setRemaningPackagePeriod($row['remaningPackagePeriod']);
+            $contract->setRemaningPackagePeriod($row['remainingPackagePeriod']);
             $contract->setPaymentFees($row['fees']);
             $contract->setPaymentDiscount($row['discount']);
             $contract->setNote($row['note']);
             $contract->setIssueDate($row['issueDate']);
             $contract->setEnddate($row['endDate']);
             $contract->setAmountDue($row['amountDue']);
-            $contract->setAmountDateDue($row['amountDueBy']);
+            $contract->setAmountDateDue($row['dateDueBy']);
             $contract->setAmountPaid($row['amountPaid']);
             $contract->setRemainfreezedays($row['remainingFreezeDays']);
             $package=new Package("period");

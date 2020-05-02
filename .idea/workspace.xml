@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Gym-system" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/ContractController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/pages/ContractForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/branch_controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/employee_controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/loginauth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/logout.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/member_controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/package_controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/payment_controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/system_controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/usertype_controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Contract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Contract.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/addcontract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/addcontract.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contracts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contracts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/shared/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/shared/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/sidebar.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587953845320</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="addcontract-&gt; Dataaa">
+      <created>1588392406621</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1588392406621</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,7 +298,8 @@
     <MESSAGE value="add owner view" />
     <MESSAGE value="improve register view&#10;backend-&gt; add in person table only" />
     <MESSAGE value="javascript:&#10;addemployee&#10;editemployee" />
-    <option name="LAST_COMMIT_MESSAGE" value="javascript:&#10;addemployee&#10;editemployee" />
+    <MESSAGE value="addcontract-&gt; Dataaa" />
+    <option name="LAST_COMMIT_MESSAGE" value="addcontract-&gt; Dataaa" />
   </component>
   <component name="WindowStateProjectService">
     <state x="476" y="1" key="#PHP" timestamp="1585415264306">
@@ -345,10 +336,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="496" y="99" key="#database.php/0.0.1536.824@0.0.1536.824" timestamp="1585347199632" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1587960533047">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1588392401877">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587960533047" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588392401877" />
     <state x="100" y="100" width="1336" height="624" key="DiffContextDialog" timestamp="1584883864131">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -429,10 +420,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1587747307717" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588392355920">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588392559731">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588392355920" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588392559731" />
     <state x="581" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1588247681466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
