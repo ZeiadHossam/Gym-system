@@ -153,7 +153,8 @@ class Member extends Person
             $contract->setAmountDateDue($row['dateDueBy']);
             $contract->setAmountPaid($row['amountPaid']);
             $contract->setRemainfreezedays($row['remainingFreezeDays']);
-            $package=new Package("period");
+            $contract->setTotalAmount($row['totalAmount']);
+            $package = new Package("period");
 
             $package->setId($row['ptid']);
             $package->setName($row['ptname']);
@@ -163,14 +164,51 @@ class Member extends Person
             $period->setPeriod($row['period']);
             $package->setPeriod($period);
             $contract->setPackage($package);
-            $contract->getSales()->setId($row['sales']);
-            $paymentmethod=new Paymentmethod();
+            $paymentmethod = new Paymentmethod();
             $paymentmethod->setId($row['pmid']);
             $paymentmethod->setName($row['pmname']);
             $contract->setPaymentMethod($paymentmethod);
-            $this->setContracts($contract->getId(),$contract);
+            $salesSql = "SELECT person.firstName,person.lastName  FROM person INNER JOIN employee ON employee.personId=person.id where employee.id=".$row['sales'];
+            $salesData=$db->select($salesSql);
+            $contract->setSales($salesData['firstName']." ".$salesData['lastName']);
+            $this->setContracts($contract->getId(), $contract);
         }
 
+    }
+
+    public function addContract($contract,$sales)
+    {
+        $db = new Database();
+        $contract->setStartdate($db->getMysqli()->real_escape_string($contract->getStartdate()));
+        $contract->setRemaningPackagePeriod($db->getMysqli()->real_escape_string($contract->getRemaningPackagePeriod()));
+        $contract->setPaymentFees($db->getMysqli()->real_escape_string($contract->getPaymentFees()));
+        $contract->setPaymentDiscount($db->getMysqli()->real_escape_string($contract->getPaymentDiscount()));
+        $contract->setNote($db->getMysqli()->real_escape_string($contract->getNote()));
+        $contract->setIssueDate($db->getMysqli()->real_escape_string($contract->getIssueDate()));
+        $contract->setEnddate($db->getMysqli()->real_escape_string($contract->getEnddate()));
+        $contract->setAmountDue($db->getMysqli()->real_escape_string($contract->getAmountDue()));
+        $contract->setAmountDateDue($db->getMysqli()->real_escape_string($contract->getAmountDateDue()));
+        $contract->setAmountPaid($db->getMysqli()->real_escape_string($contract->getAmountPaid()));
+        $contract->setRemainfreezedays($db->getMysqli()->real_escape_string($contract->getRemainfreezedays()));
+        $contract->setTotalAmount($db->getMysqli()->real_escape_string($contract->getTotalAmount()));
+        $createdAt = date("Y/m/d H:i:s");
+
+        $sqlpayment = "INSERT INTO payment (discount,fees,paymentMethodId,amountDue,dateDueBy,amountPaid,totalAmount) VALUES ('" . $contract->getPaymentDiscount() . "','" . $contract->getPaymentFees() . "','" . $contract->getPaymentMethod()->getId() . "','" . $contract->getAmountDue() . "','" . $contract->getAmountDateDue() . "','" . $contract->getAmountPaid() . "','" . $contract->getTotalAmount() . "')";
+        if ($db->insert($sqlpayment)) {
+            $sqlcontract = "INSERT INTO contract (memberId,startDate,endDate,paymentId,sales,note,issueDate,packageId,remainingPackagePeriod,remainingFreezeDays,createdAt)VALUES('" . $this->getId() . "','" . $contract->getStartdate() . "','" . $contract->getEnddate() . "',LAST_INSERT_ID(),'" . $contract->getSales() . "','" . $contract->getNote() . "','" . $contract->getIssueDate() . "','" . $contract->getPackage()->getPeriod()->getId() . "','" . $contract->getRemaningPackagePeriod() . "','" . $contract->getRemainfreezedays() . "','" . $createdAt . "')";
+            if ($db->insert($sqlcontract)) {
+                if ($db->selectId($contract, "employee")) {
+                    $contract->setSales($sales);
+                    $this->setContracts($contract->getId(), $contract);
+
+                    $db->closeconn();
+                    return true;
+                }
+
+            }
+        }
+
+ return false;
     }
 
 }

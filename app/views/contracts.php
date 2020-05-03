@@ -24,10 +24,11 @@
                         <th>Mobile Phone</th>
                         <th>Package</th>
                         <th>Type</th>
-                        <th>Due</th>
-                        <th>Status</th>
+                        <th>End Date</th>
                         <th>Fees</th>
                         <th>Payment Method</th>
+                        <th>Actions</th>
+
                     </tr>
                     </thead>
                     <tbody>

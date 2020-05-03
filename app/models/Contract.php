@@ -19,13 +19,26 @@ class Contract
     private $amountDue;
     private $amountDateDue;
     private $amountPaid;
+    private $totalAmount;
     private $remainfreezedays;
+
+
+    public function getTotalAmount()
+    {
+        return $this->totalAmount;
+    }
+
+    public function setTotalAmount($totalAmount)
+    {
+        $this->totalAmount = $totalAmount;
+    }
 
 
     public function getRemainfreezedays()
     {
         return $this->remainfreezedays;
     }
+
 
 
     public function setRemainfreezedays($remainfreezedays)
@@ -38,8 +51,8 @@ class Contract
     {
         $this->package = new Package("period");
         $this->paymentMethod = new Paymentmethod();
-        $this->sales = new Employee();
     }
+
 
     public function getId()
     {
@@ -149,16 +162,7 @@ class Contract
     }
 
 
-    public function getPayment()
-    {
-        return $this->payment;
-    }
 
-
-    public function setPayment($payment)
-    {
-        $this->payment = $payment;
-    }
 
     public function getSales()
     {
