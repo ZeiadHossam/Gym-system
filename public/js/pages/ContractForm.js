@@ -16,3 +16,10 @@ function getContractTypes(){
 
     });
 }
+function deletingContract(memberid,contractid) {
+    $('#modal-delete').modal('show');
+    $('#delete-btn').on('click',function () {
+        window.location.href='/GYM/controller/deleteContract/'+memberid+"/"+contractid;
+    });
+
+}

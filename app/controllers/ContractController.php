@@ -78,4 +78,21 @@ class ContractController extends Controller
 
 
     }
+    public function deleteContract($memberId,$contractId)
+    {
+        session_start();
+        $gym=$this->getGymData();
+        $contractId = $gym->getBranchs()->getMembers()[$memberId]->getContracts[$contractId]->getid();
+        if ($gym->getBranchs()->getMembers()[$memberId]->deleteEmployee($contractId)) {
+            $contracts = $gym->getBranchs()->getMembers()[$memberId];
+            unset($contracts[$contractId]);
+            $gym->getBranchs()->setMembers($contracts);
+            $_SESSION['Gym'] = serialize($gym);
+            $_SESSION['successMessege'] = "Deleted Successfully";
+            $this->redirect("contract/viewContracts");
+        } else {
+            $_SESSION['errormessege'] = "can't' delete this contract right now";
+            $this->previousPage();
+        }
+    }
 }

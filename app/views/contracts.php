@@ -25,7 +25,7 @@
                         <th>Package</th>
                         <th>Type</th>
                         <th>End Date</th>
-                        <th>Fees</th>
+                            <th>Fees</th>
                         <th>Payment Method</th>
                         <th>Actions</th>
 
@@ -51,7 +51,7 @@
                             <div class="btn-group tablebuttons">
 								<a href="viewcontract.php" class="btn btn-secondary btn-sm" >View</a>
 								<a href="editcontract.php" class="btn btn-info btn-sm">Edit</a>
-								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+								<button type="button" onclick="deletingContract(<?php echo $contract->getId().",".$member->getId();?>)"" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
 									Delete
 								</button>
                             </div>
