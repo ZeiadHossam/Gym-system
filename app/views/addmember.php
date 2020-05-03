@@ -28,7 +28,7 @@
                                                     <input type="email" name="email" class="form-control"
                                                            onkeyup="validate_email_input()"
                                                            onfocusout="validate_email()" id="Email1"
-                                                           placeholder="Enter Email" required>
+                                                           placeholder="Enter Email" >
                                                     <span class="message" id="emailmessage"></span>
 
                                                 </div>
@@ -36,7 +36,7 @@
                                                     <label for="fname">*First Name</label>
                                                     <input type="text" name="fname" onfocusout="validate_firstname()"
                                                            id="fname" class="form-control"
-                                                           placeholder="First Name" required>
+                                                           placeholder="First Name" >
                                                     <span class="message" id="firstName_message"></span>
 
                                                 </div>
@@ -45,7 +45,7 @@
                                                     <input type="text" name="lname" id="lname" class="form-control"
                                                            maxlength="15"
                                                            placeholder="Last Name" onfocusout="validate_lastname()"
-                                                           required>
+                                                           >
                                                     <span class="message" id="lastName_message"></span>
 
                                                 </div>
@@ -53,7 +53,7 @@
 
                                                 <div class="form-group">
                                                     <label>Work Phone</label>
-                                                    <input type="text" name="WorkPhone"
+                                                    <input type="text" name="WorkPhone" onkeypress="return onlyNumberKey(event)"
                                                            onfocusout="validate_workphone()" id="workPhone"
                                                            class="form-control numbers" placeholder="Work Phone">
                                                     <span class="message" id="workPhone_message"></span>
@@ -63,7 +63,7 @@
                                                     <label for="FaxNumber">Fax Number</label>
                                                     <input type="text" name="faxnumber"
                                                            onfocusout="validate_faxnumber()" id="faxnumber"
-                                                           class="form-control numbers"
+                                                           class="form-control numbers" onkeypress="return onlyNumberKey(event)"
                                                            placeholder="Fax Number">
                                                     <span class="message" id="faxnumber_message"></span>
 
@@ -75,7 +75,7 @@
                                                            onkeypress="return onlyNumberKey(event)"
                                                            onfocusout="validate_mobilePhone()" id="mobilePhone" maxlength="11"
                                                            class="form-control numbers" placeholder="Phone Number"
-                                                           required>
+                                                           >
                                                     <span class="message" id="mobilePhone_message"></span>
 
                                                 </div>
@@ -83,7 +83,7 @@
                                                     <label for="fname">*Birthday </label>
                                                     <input type="date" name="birthday"
                                                            onfocusout="validate_date()" id="birthDate"
-                                                           class="form-control" required>
+                                                           class="form-control" >
                                                     <span class="message" id="birthDate_message"></span>
 
 
@@ -91,21 +91,25 @@
 
                                                 <b>*Gender</b>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="gender">
-                                                        <option class="hidden" disabled selected>gender</option>
+                                                    <select class="form-control" id="gender" onfocusout="validate_Gender()" name="gender">
+                                                        <option class="hidden" selected disabled>Select Gender</option>
                                                         <option>male</option>
                                                         <option>female</option>
                                                     </select>
+                                                    <span class="message" id="gender_message"></span>
+
                                                 </div>
                                                 <b>*Married Status</b>
                                                 <div class="form-group">
 
-                                                    <select class="form-control" name="marriedStatus">
-                                                        <option class="hidden" disabled selected>Married Status</option>
-                                                        <option>single</option>
-                                                        <option>married</option>
-                                                        <option>divorsed</option>
+                                                    <select class="form-control" onfocusout="validate_MarriedStatus()" id="marriedStatus" name="marriedStatus">
+                                                        <option class="hidden" disabled selected>Select Married Status</option>
+                                                        <option>Single</option>
+                                                        <option>Married</option>
+                                                        <option>Divorsed</option>
                                                     </select>
+                                                    <span class="message" id="marriedStatus_message"></span>
+
                                                 </div>
 
                                                 <div class="form-group">
@@ -133,12 +137,13 @@
 
                                                     </div>
                                                 </div>
-                                                <b> *Personal Address</b>
+                                                <b> Personal Address</b>
                                                 <br>
                                                 <div class="form-group">
 
 					<textarea rows="6" cols="60" name="personaddress">
 					</textarea>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Company Name </label>
@@ -161,7 +166,7 @@
                                                     <label for="exampleInputEmail1">Emergency Number</label>
                                                     <input type="text" name="emergency"
                                                            onfocusout="validate_emergencynumber()" id="emergencynumber"
-                                                           class="form-control numbers"
+                                                           class="form-control numbers" onkeypress="return onlyNumberKey(event)"
                                                            placeholder="Emergency Number">
 
                                                     <span class="message" id="emergencynumber_message"></span>
@@ -170,11 +175,13 @@
                                                     <div class="form-group">
                                                         <label>*Branch </label>
 
-                                                        <select name="branch" class="form-control">
+                                                        <select name="branch" id="branch" onfocusout="validate_Branch()" class="form-control">
+                                                            <option class="hidden" disabled selected>Select Branch</option>
                                                             <?php foreach ($gym->getBranchs() as $branch) {
                                                                 echo "<option value='" . $branch->getId() . "'>" . $branch->getCity() . "</option>";
                                                             } ?>
                                                         </select>
+                                                        <span class="message" id="branch_message"></span>
 
                                                     </div>
                                                 <?php } ?>

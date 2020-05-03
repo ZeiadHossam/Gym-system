@@ -8,6 +8,28 @@ class ContractController extends Controller
         $this->viewHome("contracts");
     }
 
+    public function viewContract($branchId, $memberId, $contractId)
+    {
+        session_start();
+        $gym = $this->getGymData();
+        $employee = $gym->getBranchs()[$branchId]->getMembers()[$memberId]->getContracts()[$contractId];
+        $this->viewHome("viewcontract", [
+            "branchId" => $branchId,
+            "memberId" => $memberId,
+            "contractId" => $contractId
+        ]);
+    }
+    public function viewEditEmployee($branchId, $memberId, $contractId)
+    {
+        session_start();
+        $gym = $this->getGymData();
+        $employee = $gym->getBranchs()[$branchId]->getMembers()[$memberId]->getContracts()[$contractId];
+        $this->viewHome("editcontract", [
+            "branchId" => $branchId,
+            "memberId" => $memberId,
+            "contractId" => $contractId
+        ]);
+    }
     public function getContractTypes()
     {
         $packageId = isset($_POST['packageId']) ? $_POST['packageId'] : '';
@@ -15,7 +37,7 @@ class ContractController extends Controller
         $gym = $this->getGymData();
         $options = "<option class='hidden'  selected disabled>Select Type</option>";
         foreach ($gym->getPackages()[$packageId]->getPeriod() as $period) {
-            $options .= "<option value='" . $period->getId() . "'>" . $period->getPeriod() . "</option>";
+            $options .= "<option value='" . $period->getId() . "'>" . $period->getPeriod() . " " . $gym->getPackages()[$packageId]->getPeriodType() . "</option>";
         }
         echo $options;
 
@@ -44,8 +66,16 @@ class ContractController extends Controller
         $contract->setAmountPaid(htmlentities($_POST['AmountPaid']));
         $contract->setAmountDateDue(htmlentities($_POST['AmountDueDate']));
         $contract->setNote(htmlentities(isset($_POST['Notes']) ? $_POST['Notes'] : ''));
-        $contract->setAmountDue(htmlentities($_POST['AmountDue']));
-        $contract->setTotalAmount(htmlentities($_POST['totalAmount']));
+        if ($_POST['Discount']==0) {
+
+            $totalAmount =$_POST['ContractFees'];
+        } else {
+
+            $totalAmount =$_POST['ContractFees']-($_POST['ContractFees']*($_POST['Discount']/100));
+        }
+        $contract->setTotalAmount(htmlentities($totalAmount));
+        $amountDue=$totalAmount-$_POST['AmountPaid'];
+        $contract->setAmountDue(htmlentities($amountDue));
         $contract->setPaymentFees(htmlentities($_POST['ContractFees']));
         $paymentmethod = $gym->getPaymentMethods()[$_POST["PaymentMethod"]];
         $newpaymentMethod = $this->model("PaymentMethod");
@@ -61,11 +91,11 @@ class ContractController extends Controller
         $issueDate = strtotime("-7 day", $issueDate);
         $issueDate = date('Y/m/d', $issueDate);
         $contract->setIssueDate($issueDate);
-        $sales= explode("|",$_POST["Sales"]);
+        $sales = explode("|", $_POST["Sales"]);
         $contract->setSales($sales[0]);
 
 
-        if ($gym->getBranchs()[$branchId]->getMembers()[$memberId]->addContract($contract,$sales[1])) {
+        if ($gym->getBranchs()[$branchId]->getMembers()[$memberId]->addContract($contract, $sales[1])) {
 
             $_SESSION['Gym'] = serialize($gym);
             $_SESSION['successMessege'] = "Added Successfully";
@@ -78,15 +108,15 @@ class ContractController extends Controller
 
 
     }
-    public function deleteContract($memberId,$contractId)
+
+    public function deleteContract($branchId, $memberId, $contractId)
     {
         session_start();
-        $gym=$this->getGymData();
-        $contractId = $gym->getBranchs()->getMembers()[$memberId]->getContracts[$contractId]->getid();
-        if ($gym->getBranchs()->getMembers()[$memberId]->deleteEmployee($contractId)) {
-            $contracts = $gym->getBranchs()->getMembers()[$memberId];
+        $gym = $this->getGymData();
+        if ($gym->getBranchs()[$branchId]->getMembers()[$memberId]->deleteContract($contractId)) {
+            $contracts = $gym->getBranchs()[$branchId]->getMembers()[$memberId]->getContracts();
             unset($contracts[$contractId]);
-            $gym->getBranchs()->setMembers($contracts);
+            $gym->getBranchs()[$branchId]->getMembers()[$memberId]->setAllContracts($contracts);
             $_SESSION['Gym'] = serialize($gym);
             $_SESSION['successMessege'] = "Deleted Successfully";
             $this->redirect("contract/viewContracts");
@@ -95,4 +125,5 @@ class ContractController extends Controller
             $this->previousPage();
         }
     }
+
 }

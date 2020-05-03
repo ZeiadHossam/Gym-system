@@ -33,7 +33,11 @@ class Member extends Person
     {
         return $this->contracts;
     }
+    public function setAllContracts($contracts)
+    {
+        $this->contracts = $contracts;
 
+    }
 
     public function setContracts($contractId, $contracts)
     {
@@ -197,7 +201,7 @@ class Member extends Person
         if ($db->insert($sqlpayment)) {
             $sqlcontract = "INSERT INTO contract (memberId,startDate,endDate,paymentId,sales,note,issueDate,packageId,remainingPackagePeriod,remainingFreezeDays,createdAt)VALUES('" . $this->getId() . "','" . $contract->getStartdate() . "','" . $contract->getEnddate() . "',LAST_INSERT_ID(),'" . $contract->getSales() . "','" . $contract->getNote() . "','" . $contract->getIssueDate() . "','" . $contract->getPackage()->getPeriod()->getId() . "','" . $contract->getRemaningPackagePeriod() . "','" . $contract->getRemainfreezedays() . "','" . $createdAt . "')";
             if ($db->insert($sqlcontract)) {
-                if ($db->selectId($contract, "employee")) {
+                if ($db->selectId($contract, "contract")) {
                     $contract->setSales($sales);
                     $this->setContracts($contract->getId(), $contract);
 
@@ -210,5 +214,18 @@ class Member extends Person
 
  return false;
     }
+    public function deleteContract($contractId)
+    {
+        $db = new Database();
+        $updatedate = date("Y/m/d H:i:s");
 
+        $deletecontractsql = "UPDATE contract set isDeleted=1 , updatedAt='$updatedate' where id='$contractId'";
+        if ($db->insert($deletecontractsql)) {
+            $db->closeconn();
+            return true;
+
+
+        }
+        return false;
+    }
 }

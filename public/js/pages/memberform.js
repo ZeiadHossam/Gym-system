@@ -7,13 +7,19 @@ function deletingMember(branchId, memberId) {
 }
 
 function submitingmember() {
-    if (sumbittingempform() && validate_workphone() && validate_faxnumber() && validate_emergencynumber() && validate_companyname()) {
+    if (validate_firstname() && validate_lastname() && validate_mobilePhone() && validate_homePhone() && validate_email() && validate_email_input() &&  validate_date() && validate_Branch() && validate_Gender()&& validate_MarriedStatus() && validate_workphone() && validate_faxnumber() && validate_emergencynumber() && validate_companyname()) {
         return true;
     } else {
         return false;
     }
 }
-
+function sumbittingEditMember() {
+    if (validate_firstname() && validate_lastname() && validate_mobilePhone() && validate_homePhone() && validate_email() && validate_email_input() &&  validate_date()  && validate_workphone() && validate_faxnumber() && validate_emergencynumber() && validate_companyname()) {
+        return true;
+    } else {
+        return false;
+    }
+}
 function validate_workphone() {
     var workPhone = document.getElementById('workPhone').value;
     var message = document.getElementById('workPhone_message');
@@ -80,4 +86,15 @@ function validate_companyname() {
 
     message.innerHTML = "";
     return true;
+}
+function validate_MarriedStatus() {
+    var marriedStatus = document.getElementById('marriedStatus');
+    var message = document.getElementById('marriedStatus_message');
+    if (marriedStatus.selectedIndex == 0) {
+        message.innerHTML = "*Please Select Married Status";
+        return false;
+    } else {
+        message.innerHTML = "";
+        return true;
+    }
 }

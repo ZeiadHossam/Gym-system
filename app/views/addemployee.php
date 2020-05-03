@@ -20,7 +20,7 @@
                                 <div class="card-body">
                                     <form role="form" action="/GYM/employee/addEmployee"
                                           enctype="multipart/form-data" method="get"
-                                          onsubmit="return sumbittingempform()">
+                                          onsubmit="return submitAddEmp()">
 
                                         <div class="row">
                                             <div class="col-md-6">
@@ -69,25 +69,30 @@
 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>*department </label>
+                                                    <label>*Department </label>
 
-                                                    <select name="usertype" class="form-control">
+                                                    <select name="usertype" class="form-control" id="department" onfocusout="validate_Department()">
+                                                        <option class="hidden"  selected disabled>Select Department</option>
                                                         <?php foreach ($gym->getUsertypes() as $dep) {
                                                             if ($dep->getName() != "Owner") {
                                                                 echo "<option value='" . $dep->getId() . "'>" . $dep->getName() . "</option>";
                                                             }
                                                         } ?>
                                                     </select>
+                                                    <span class="message" id="department_message"></span>
+
                                                 </div>
                                                 <?php if ($_SESSION['branch'] == NULL) { ?>
                                                     <div class="form-group">
                                                         <label>*Branch </label>
 
-                                                        <select name="branch" class="form-control">
+                                                        <select name="branch" id="branch" onfocusout="validate_Branch()" class="form-control">
+                                                            <option class="hidden" selected disabled>Select Branch</option>
                                                             <?php foreach ($gym->getBranchs() as $branch) {
                                                                 echo "<option value='" . $branch->getId() . "'>" . $branch->getCity() . "</option>";
                                                             } ?>
                                                         </select>
+                                                        <span class="message" id="branch_message"></span>
 
                                                     </div>
                                                 <?php } ?>
@@ -112,18 +117,20 @@
                                                 <div class="form-group">
                                                     <label>*Gender </label>
 
-                                                    <select name="gender" class="form-control">
-
+                                                    <select name="gender" id="gender" onfocusout="validate_Gender()" class="form-control">
+                                                        <option class="hidden" selected disabled>Select Gender</option>
                                                         <option>Male</option>
                                                         <option>Female</option>
                                                     </select>
+                                                    <span class="message" id="gender_message"></span>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">HOME phone</label>
                                                     <input type="text"
                                                            onfocusout="validate_homePhone()" id="homePhone"
                                                            name="homephone" class="form-control numbers" maxlength="8"
-                                                           placeholder="home phone">
+                                                           placeholder="home phone" onkeypress="return onlyNumberKey(event)">
                                                     <span class="message" id="homePhone_message"></span>
 
                                                 </div>

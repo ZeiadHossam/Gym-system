@@ -13,7 +13,7 @@ $member = $data['member'];
 
                 <form role="form" action="/GYM/member/editMember" enctype="multipart/form-data"
                       method="post"
-                      onsubmit=" return submitingmember()">
+                      onsubmit=" return sumbittingEditMember()">
                     <div class="row view_emp">
                         <div class="col-md-1">
                             <a href="javascript:history.go(-1)" class="btn btn-md btn-default"><span
@@ -61,7 +61,7 @@ $member = $data['member'];
 
                             <div class="form-group">
                                 <label>Work Phone</label>
-                                <input type="text" name="workPhone" class="form-control"
+                                <input type="text" name="workPhone" class="form-control" onkeypress="return onlyNumberKey(event)"
                                        onfocusout="validate_workphone()" id="workPhone"
                                        value=<?php echo $member->getWorkPhone(); ?>>
                                 <span class="message" id="workPhone_message"></span>
@@ -69,7 +69,7 @@ $member = $data['member'];
                             </div>
                             <div class="form-group">
                                 <label for="faxNumber">Fax Number</label>
-                                <input type="text" name="faxNumber" class="form-control"
+                                <input type="text" name="faxNumber" class="form-control" onkeypress="return onlyNumberKey(event)"
                                        onfocusout="validate_faxnumber()" id="faxnumber"
                                        value=<?php echo $member->getFaxNumber(); ?>>
                                 <span class="message" id="faxnumber_message"></span>
@@ -96,7 +96,7 @@ $member = $data['member'];
                             </div>
                             <div class="form-group">
                                 <label for="emergency">Emergency number</label>
-                                <input type="text" name="emergency" class="form-control"
+                                <input type="text" name="emergency" class="form-control" onkeypress="return onlyNumberKey(event)"
                                        onfocusout="validate_emergencynumber()" id="emergencynumber"
                                        value=<?php echo $member->getEmergencyNumber(); ?>>
                                 <span class="message" id="emergencynumber_message"></span>
@@ -167,7 +167,7 @@ $member = $data['member'];
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <b>*Personal Address</b>
+                                        <b>Personal Address</b>
                                         <div class="form-group">
                             <textarea name="personalAddress" rows="5" cols="30"> <?php echo $member->getAddress(); ?>
 					        </textarea>

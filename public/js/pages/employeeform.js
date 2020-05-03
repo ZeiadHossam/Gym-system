@@ -1,22 +1,34 @@
-
-function deletingEmployee(personId,branchId,empId) {
+function deletingEmployee(personId, branchId, empId) {
     $('#modal-delete').modal('show');
-    $('#delete-btn').on('click',function () {
-        window.location.href='/GYM/employee/deleteEmployee/'+branchId+"/"+empId;
+    $('#delete-btn').on('click', function () {
+        window.location.href = '/GYM/employee/deleteEmployee/' + branchId + "/" + empId;
     });
 
 }
 
 function sumbittingempform() {
-if (validate_firstname()&&validate_lastname()&&validate_mobilePhone()&&validate_homePhone()&&validate_email()&&validate_email_input()&&validate_userName()&&validate_password()&&validate_date()&&validate_gender())
-{
-    return true;
+    if (validate_firstname() && validate_lastname() && validate_mobilePhone() && validate_homePhone() && validate_email() && validate_email_input() && validate_userName() && validate_password() && validate_date() && validate_gender()) {
+        return true;
+    } else {
+        return false;
+    }
 }
-else
-{
-    return false;
+
+function submitAddEmp() {
+    if (validate_firstname() && validate_lastname() && validate_mobilePhone() && validate_homePhone() && validate_email() && validate_email_input() && validate_userName() && validate_password() && validate_date() && validate_Branch() && validate_Department() && validate_Gender()) {
+        return true;
+    } else {
+        return false;
+    }
 }
+function sumbittingEditEmp() {
+    if (validate_firstname() && validate_lastname() && validate_mobilePhone() && validate_homePhone() && validate_email() && validate_email_input() && validate_userName() && validate_password() && validate_date()) {
+        return true;
+    } else {
+        return false;
+    }
 }
+
 function validate_firstname() {
     var firstName = document.getElementById('fname').value;
     var message = document.getElementById('firstName_message');
@@ -95,7 +107,7 @@ function onlyNumberKey(evt) {
     return true;
 }
 
-    function validate_email() {
+function validate_email() {
     var email = document.getElementById('Email1').value;
     var message = document.getElementById('emailmessage');
     validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -118,7 +130,7 @@ function validate_email_input() {
     }
 }
 
-    function validate_userName() {
+function validate_userName() {
     var userName = document.getElementById('username').value;
     var message = document.getElementById('userName_message');
     if (userName == "") {
@@ -127,8 +139,7 @@ function validate_email_input() {
     } else if (userName.length < 5) {
         message.innerHTML = "*Username must contain at least 5 characters or numbers";
         return false;
-    }
-    else if (userName== 'system') {
+    } else if (userName == 'system') {
         message.innerHTML = "*Username is not valid";
         return false;
     } else {
@@ -155,7 +166,7 @@ function validate_password() {
 function validate_date() {
     var date = document.getElementById('birthDate').value;
     var message = document.getElementById('birthDate_message');
-    if (date=="") {
+    if (date == "") {
         message.innerHTML = "*BirthDay is required";
         return false;
     } else {
@@ -179,10 +190,10 @@ function maximumDate() {
     today = yyyy + '-' + mm + '-' + dd;
     document.getElementById("birthDate").setAttribute("max", today);
 }
-function validate_gender()
-{
+
+function validate_gender() {
     var radios = document.getElementsByName('gender');
-    var check=false;
+    var check = false;
     for (var i = 0; i < radios.length; i++) {
         if (radios[i].checked) {
             return true;
@@ -192,15 +203,52 @@ function validate_gender()
     document.getElementById('gender_message').innerHTML = '*Gender is required';
     return false;
 }
-function showImage(input,id) {
+
+function showImage(input, id) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#'+id)
+            $('#' + id)
                 .attr('src', e.target.result);
         };
 
         reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function validate_Department() {
+    var department = document.getElementById('department');
+    var message = document.getElementById('department_message');
+    if (department.selectedIndex == 0) {
+        message.innerHTML = "*Please Select Department";
+        return false;
+    } else {
+        message.innerHTML = "";
+        return true;
+    }
+}
+
+function validate_Branch() {
+    var branch = document.getElementById('branch');
+    var message = document.getElementById('branch_message');
+    if (branch.selectedIndex == 0) {
+        message.innerHTML = "*Please Select Branch";
+        return false;
+    } else {
+        message.innerHTML = "";
+        return true;
+    }
+}
+
+function validate_Gender() {
+    var gender = document.getElementById('gender');
+    var message = document.getElementById('gender_message');
+    if (gender.selectedIndex == 0) {
+        message.innerHTML = "*Please Select Gender";
+        return false;
+    } else {
+        message.innerHTML = "";
+        return true;
     }
 }

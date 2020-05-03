@@ -12,7 +12,7 @@ $employee=$data['employee'];
             <!-- general form elements -->
 
 
-            <form role="form" action="/GYM/employee/editEmployee" onsubmit="return sumbittingempform()" enctype="multipart/form-data" method="post">
+            <form role="form" action="/GYM/employee/editEmployee" onsubmit="return sumbittingEditEmp()" enctype="multipart/form-data" method="post">
                 <div class="row view_emp">
                     <div class="col-md-1">
                         <a href="javascript:history.go(-1)" class="btn btn-md btn-default"><span
@@ -79,7 +79,6 @@ $employee=$data['employee'];
                             <label>*Gender </label>
 
                             <select class="form-control" name="gender">
-
                                 <option
                                     <?php if ($employee->getGender() == 'Male' || $employee->getGender() == 'male'){ ?>selected <?php } ?> >
                                     Male
@@ -136,7 +135,7 @@ $employee=$data['employee'];
                         <div class="form-group">
                             <label for="mobilePhone">*Mobile Phone</label>
                             <input type="text" name="mobilePhone" onfocusout="validate_mobilePhone()" id="mobilePhone" MAXLENGTH="11"
-                                   class="form-control"
+                                   class="form-control" onkeypress="return onlyNumberKey(event)"
                                    placeholder="Mobile Phone" value="<?php echo $employee->getMobilePhone(); ?>"
                                    >
                             <span class="message" id="mobilePhone_message"></span>
@@ -152,8 +151,8 @@ $employee=$data['employee'];
                         </div>
                         <div class="form-group">
                             <label for="HomePhone">HOME Phone</label>
-                            <input type="text" onfocusout="validate_homePhone()"
-                                   id="homePhone" MAXLENGTH="8" name="homePhone" class="form-control"
+                            <input type="text" onfocusout="validate_homePhone()" onkeypress="return onlyNumberKey(event)"
+                                   id="homePhone" MAXLENGTH="8" name="homePhone" class="form-control numbers"
                                    placeholder="Home Phone" value="<?php echo $employee->getHomePhone(); ?>">
                             <span class="message" id="homePhone_message"></span>
 
