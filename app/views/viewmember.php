@@ -1,5 +1,6 @@
 <?php
 $member=$data['member'];
+$branch=$gym->getBranchs()[$data['branchId']];
 $branchName=$gym->getBranchs()[$data['branchId']]->getCity();
 ?>
     <div class="container-fluid">
@@ -132,8 +133,9 @@ $branchName=$gym->getBranchs()[$data['branchId']]->getCity();
                                     </div>
                                 </div>
                             </div>
+
                     </form>
-                    <a href="membercontract.php" class="btn btn-sm btn-info viewmemberContractsbutton ">View Member Contracts</a>
+                    <a href="/GYM/member/viewMemberContract/<?php echo $branch->getId()."/".$member->getId(); ?>" class="btn btn-sm btn-info viewmemberContractsbutton ">View Member Contracts</a>
             </div>
         </div>
     </div>

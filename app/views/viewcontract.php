@@ -33,7 +33,7 @@ $contract=$member->getContracts()[$data["contractId"]];
 
                                                     <select class="form-control" disabled>
 
-                                                        <option selected ><?php echo $contract ->getPackage()->getName();?></option>
+                                                            <option selected ><?php echo $contract ->getPackage()->getName();?></option>
 
                                                     </select>
                                                 </div>

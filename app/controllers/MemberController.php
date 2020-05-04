@@ -18,6 +18,16 @@ class MemberController extends Controller
         ]);
 
     }
+    public function viewMemberContract($branchId,$memberId){
+        session_start();
+        $gym=$this->getGymData();
+        $member=$gym->getBranchs()[$branchId]->getMembers()[$memberId];
+        $this->viewHome("membercontract",[
+            "branchId"=>$branchId,
+            "memberId"=>$memberId
+        ]);
+
+}
 
     public function viewEditMember($branchId,$memberId)
     {

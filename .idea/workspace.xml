@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/ContractController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ContractController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/MemberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/MemberController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/addcontract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/addcontract.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contracts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contracts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/editcontract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/editcontract.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/pages/ContractForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/ContractForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/membercontract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/membercontract.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/viewcontract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/viewcontract.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/viewmember.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/viewmember.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588464275527</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="edit Contract">
+      <created>1588550897511</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1588550897511</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +326,8 @@
     <MESSAGE value="addcontract-&gt; Dataaa" />
     <MESSAGE value="without el error" />
     <MESSAGE value="add contract" />
-    <option name="LAST_COMMIT_MESSAGE" value="add contract" />
+    <MESSAGE value="edit Contract" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit Contract" />
   </component>
   <component name="WindowStateProjectService">
     <state x="476" y="1" key="#PHP" timestamp="1585415264306">
@@ -359,10 +364,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="496" y="99" key="#database.php/0.0.1536.824@0.0.1536.824" timestamp="1585347199632" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1588464273287">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1588550895505">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588464273287" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588550895505" />
     <state x="100" y="100" width="1336" height="624" key="DiffContextDialog" timestamp="1584883864131">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -444,19 +449,19 @@
     </state>
     <state width="498" height="398" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1588543872955" />
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1587747307717" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588464282383">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588550903209">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588464282383" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588550903209" />
     <state x="581" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1588469456700">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587766727027" />
     <state x="581" y="298" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588469456700" />
-    <state x="408" y="27" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587955948123">
+    <state x="408" y="27" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588552361838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="408" y="27" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1587955948123" />
+    <state x="408" y="27" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1588552361838" />
     <state x="723" y="414" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587761863833">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
