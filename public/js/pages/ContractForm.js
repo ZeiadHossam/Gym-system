@@ -1,3 +1,4 @@
+
 function getContractTypes(){
     var contractTypes = document.getElementById('contracttypes');
     contractTypes.disabled=false;

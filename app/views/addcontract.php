@@ -31,7 +31,7 @@
                                                 <div class="form-group">
                                                     <label>*Package Type </label>
                                                     <select class="form-control" onchange="getContractTypes()"
-                                                            id="packagetype"
+                                                            id="packagetype" onfocusout="validate_PackageType()"
                                                             name="PackageType">
                                                         <option class="hidden" selected disabled>Select Package Type
                                                         </option>
@@ -39,6 +39,7 @@
                                                             <option value="<?php echo $package->getId(); ?>"><?php echo $package->getName(); ?></option>
                                                         <?php } ?>
                                                     </select>
+                                                    <span class="message" id="packagetype_message"></span>
 
                                                 </div>
 

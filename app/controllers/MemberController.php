@@ -18,6 +18,7 @@ class MemberController extends Controller
         ]);
 
     }
+
     public function viewEditMember($branchId,$memberId)
     {
         session_start();

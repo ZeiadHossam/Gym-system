@@ -50,7 +50,7 @@
                         <td>
                             <div class="btn-group tablebuttons">
 								<a href="/GYM/contract/viewContract/<?php echo $branch->getId()."/".$member->getId()."/".$contract->getId(); ?>" class="btn btn-secondary btn-sm" >View</a>
-								<a href="/GYM/contract/viewEditEmployee/<?php echo $branch->getId()."/".$member->getId()."/".$contract->getId(); ?>" class="btn btn-info btn-sm">Edit</a>
+								<a href="/GYM/contract/viewEditContract/<?php echo $branch->getId()."/".$member->getId()."/".$contract->getId(); ?>" class="btn btn-info btn-sm">Edit</a>
 								<button type="button" onclick="deletingContract(<?php echo $branch->getId().",".$member->getId().",".$contract->getId();?>)"" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
 									Delete
 								</button>

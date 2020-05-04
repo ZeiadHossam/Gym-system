@@ -19,7 +19,7 @@ class ContractController extends Controller
             "contractId" => $contractId
         ]);
     }
-    public function viewEditEmployee($branchId, $memberId, $contractId)
+    public function viewEditContract($branchId, $memberId, $contractId)
     {
         session_start();
         $gym = $this->getGymData();
@@ -124,6 +124,70 @@ class ContractController extends Controller
             $_SESSION['errormessege'] = "can't' delete this contract right now";
             $this->previousPage();
         }
+    }
+    public function editContract($branchId,$memberId,$contractId){
+        session_start();
+        $gym=$this->getGymData();
+        $member=$gym->getBranchs()[$branchId]->getMembers()[$memberId];
+        $contract = $member->getContracts()[$contractId];
+        $package = $gym->getPackages()[$_POST["PackageType"]];
+        $newpackage = $this->modelWithConst("Package", "period");
+        $newpackage->setId($_POST["PackageType"]);
+        $newpackage->setName($package->getName());
+        $newpackage->setPeriodType($package->getPeriodType());
+        $packageperiod = $this->model("PackagePeriod");
+        $packageperiod->setId($_POST['contracttype']);
+        $packageperiod->setPeriod($package->getPeriod()[$_POST['contracttype']]->getPeriod());
+        $newpackage->setPeriod($packageperiod);
+        $contract->setPackage($newpackage);
+        $contract->setRemainfreezedays(htmlentities($_POST['freezedays']));
+        $contract->setStartdate(htmlentities($_POST['MemberShipStart']));
+        $contract->setEnddate(htmlentities($_POST['MemberShipEnd']));
+        $contract->setPaymentFees(htmlentities($_POST['ContractFees']));
+        $contract->setPaymentDiscount($_POST['Discount']);
+        $contract->setAmountPaid(htmlentities($_POST['AmountPaid']));
+        $contract->setNote(htmlentities(isset($_POST['Notes']) ? $_POST['Notes'] : ''));
+        $paymentmethod = $gym->getPaymentMethods()[$_POST["PaymentMethod"]];
+        $newpaymentMethod = $this->model("PaymentMethod");
+        $newpaymentMethod->setId($_POST["PaymentMethod"]);
+        $newpaymentMethod->setName($paymentmethod->getName());
+        $contract->setPaymentMethod($newpaymentMethod);
+        $contract->setAmountDateDue(htmlentities($_POST['AmountDueDate']));
+        $issueDate = $_POST['MemberShipEnd'];
+        $issueDate = strtotime($issueDate);
+        $issueDate = strtotime("-7 day", $issueDate);
+        $issueDate = date('Y/m/d', $issueDate);
+        $contract->setIssueDate($issueDate);
+
+        if ($_POST['Discount']==0) {
+
+            $totalAmount =$_POST['ContractFees'];
+        } else {
+
+            $totalAmount =$_POST['ContractFees']-($_POST['ContractFees']*($_POST['Discount']/100));
+        }
+        $contract->setTotalAmount(htmlentities($totalAmount));
+        $amountDue=$totalAmount-$_POST['AmountPaid'];
+        $contract->setAmountDue(htmlentities($amountDue));
+
+        if ($gym->getBranchs()[$branchId]->getMembers()[$memberId]->EditContract($contractId)) {
+
+            $_SESSION['Gym'] = serialize($gym);
+            $_SESSION['successMessege'] = "Edited Successfully";
+           $this->redirect("contract/viewContracts");
+
+        } else {
+            $_SESSION['errormessege'] = "There was a problem while Editing Contract";
+           $this->previousPage();
+        }
+
+
+
+
+
+
+
+
     }
 
 }

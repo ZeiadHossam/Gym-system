@@ -228,4 +228,35 @@ class Member extends Person
         }
         return false;
     }
+    public function EditContract($contractId){
+        $db = new Database();
+        $this->getContracts()[$contractId]->setStartdate($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getStartdate()));
+        $this->getContracts()[$contractId]->setPaymentFees($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getPaymentFees()));
+        $this->getContracts()[$contractId]->setPaymentDiscount($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getPaymentDiscount()));
+        $this->getContracts()[$contractId]->setNote($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getNote()));
+        $this->getContracts()[$contractId]->setIssueDate($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getIssueDate()));
+        $this->getContracts()[$contractId]->setEnddate($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getEnddate()));
+        $this->getContracts()[$contractId]->setAmountDue($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getAmountDue()));
+        $this->getContracts()[$contractId]->setAmountDateDue($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getAmountDateDue()));
+        $this->getContracts()[$contractId]->setAmountPaid($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getAmountPaid()));
+        $this->getContracts()[$contractId]->setRemainfreezedays($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getRemainfreezedays()));
+        $this->getContracts()[$contractId]->setTotalAmount($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getTotalAmount()));
+        $updatedate = date("Y/m/d H:i:s");
+        $paymentId="SELECT paymentId FROM contract  WHERE id=".$contractId;
+        $editContractPaymentSql="UPDATE payment set discount='".$this->getContracts()[$contractId]->getPaymentDiscount()."' , fees='".$this->getContracts()[$contractId]->getPaymentFees()."',paymentMethodId='".$this->getContracts()[$contractId]->getPaymentMethod()->getId()."',amountDue='".$this->getContracts()[$contractId]->getAmountDue()."',dateDueBy='".$this->getContracts()[$contractId]->getAmountDateDue()."',amountPaid='".$this->getContracts()[$contractId]->getAmountPaid()."',totalAmount='".$this->getContracts()[$contractId]->getTotalAmount()."' where id=($paymentId)  ";
+        if ($db->insert($editContractPaymentSql)) {
+            $editContractSql="UPDATE contract set startDate='".$this->getContracts()[$contractId]->getStartdate()."' ,endDate='".$this->getContracts()[$contractId]->getEnddate()."',note='".$this->getContracts()[$contractId]->getNote()."',issueDate='".$this->getContracts()[$contractId]->getIssueDate()."',packageId='".$this->getContracts()[$contractId]->getPackage()->getPeriod()->getId()."',remainingFreezeDays='".$this->getContracts()[$contractId]->getRemainfreezedays()."',updatedAt='".$updatedate."' where id=".$contractId;
+            if ($db->insert($editContractSql)) {
+                $db->closeconn();
+                return true;
+            } else {
+                $db->closeconn();
+                return false;
+            }
+        }
+        else {
+            $db->closeconn();
+            return false;
+        }
+    }
 }
