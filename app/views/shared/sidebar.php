@@ -37,7 +37,7 @@
                 </li>
                 <?php  if ($pages[1]->get_access()=='1'){ ?>
                 <li class="nav-item">
-                    <a href="reception.php" class="nav-link">
+                    <a href="/GYM/Reception/showReception" class="nav-link">
                         <i class="nav-icon fas fa-box"></i>
                         <p>
                             Reception

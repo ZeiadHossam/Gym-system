@@ -219,12 +219,10 @@ function validate_enddate() {
     if (enddate == "") {
         message.innerHTML = "*Membership end date is required";
         return false;
-    }else if(startdate != "" && startdate>enddate)
-    {
+    } else if (startdate != "" && startdate > enddate) {
         message.innerHTML = "*Membership end date must start after membership starts";
         return false;
-    }
-    else {
+    } else {
         message.innerHTML = "";
         document.getElementById("startdate").setAttribute("max", enddate);
         return true;

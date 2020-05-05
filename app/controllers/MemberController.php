@@ -18,6 +18,16 @@ class MemberController extends Controller
         ]);
 
     }
+    public function viewFreezeDays($branchId,$memberId,$contractId){
+        session_start();
+        $gym=$this->getGymData();
+        $this->viewHome("FreezeDate",[
+            "branchId"=>$branchId,
+            "memberId"=>$memberId,
+            "contractId"=>$contractId
+        ]);
+
+    }
     public function viewMemberContract($branchId,$memberId){
         session_start();
         $gym=$this->getGymData();
