@@ -24,6 +24,18 @@ function deletingContract(branchid,memberid,contractid) {
     });
 
 }
+function freezingContract() {
+    $('#modal-freeze').modal('show');
+
+}
+function extendfreezing() {
+    $('#modal-freeze').modal('show');
+
+}
+function stopFreeze(branchid,memberid,contractid) {
+    window.location.href='/GYM/contract/stopFreeze/'+branchid+'/'+memberid+"/"+contractid;
+
+}
 function submittingaddContract() {
     if (validate_PackageType()&& validate_ContractType() && validate_FreezeDays() && validate_Member() && validate_startdate()&&validate_enddate()&&validate_ContractsFees()&&validate_AmountPaid()&&validate_DueDate()&&validate_paymentMethodContract()&&validate_sales()) {
     return true;

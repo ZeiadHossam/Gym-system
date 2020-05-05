@@ -21,6 +21,29 @@ class Contract
     private $amountPaid;
     private $totalAmount;
     private $remainfreezedays;
+    private $freezeDates;
+    private $status; // 1->Not-Started ,  2->Active  ,  3->freeze , 4->Expired
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+
+    public function getFreezeDates()
+    {
+        return $this->freezeDates;
+    }
+
+    public function setFreezeDates($freezeDates)
+    {
+        $this->freezeDates[$freezeDates->getId()] = $freezeDates;
+    }
 
 
     public function getTotalAmount()
@@ -51,6 +74,7 @@ class Contract
     {
         $this->package = new Package("period");
         $this->paymentMethod = new Paymentmethod();
+        $this->freezeDates=array();
     }
 
 

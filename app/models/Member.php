@@ -5,6 +5,7 @@ include_once 'Contract.php';
 include_once 'Database.php';
 include_once 'Package.php';
 include_once 'PackagePeriod.php';
+include_once 'FreezeDate.php';
 
 class Member extends Person
 {
@@ -33,6 +34,7 @@ class Member extends Person
     {
         return $this->contracts;
     }
+
     public function setAllContracts($contracts)
     {
         $this->contracts = $contracts;
@@ -143,6 +145,8 @@ class Member extends Person
 
         $contractSql = "SELECT *,contract.id as cid,packageperiod.id as ppid,packagetype.id as ptid ,paymentmethod.id as pmid ,paymentmethod.name as pmname,packagetype.name as ptname FROM contract INNER JOIN payment ON contract.paymentId=payment.id INNER JOIN packageperiod ON contract.packageId=packageperiod.id INNER JOIN packagetype ON packageperiod.packageTypeId=packageType.id INNER JOIN paymentmethod ON payment.paymentMethodId=paymentmethod.id WHERE contract.isDeleted=0 AND contract.memberId=" . $this->id . ";";
         $contractData = $db->selectArray($contractSql);
+        $todayDate = date("Y/m/d");
+        $todayDate = strtotime($todayDate);
         while ($row = mysqli_fetch_assoc($contractData)) {
             $contract = new Contract();
             $contract->setId($row['cid']);
@@ -172,15 +176,26 @@ class Member extends Person
             $paymentmethod->setId($row['pmid']);
             $paymentmethod->setName($row['pmname']);
             $contract->setPaymentMethod($paymentmethod);
-            $salesSql = "SELECT person.firstName,person.lastName  FROM person INNER JOIN employee ON employee.personId=person.id where employee.id=".$row['sales'];
-            $salesData=$db->select($salesSql);
-            $contract->setSales($salesData['firstName']." ".$salesData['lastName']);
+            $salesSql = "SELECT person.firstName,person.lastName  FROM person INNER JOIN employee ON employee.personId=person.id where employee.id=" . $row['sales'];
+            $salesData = $db->select($salesSql);
+            $contract->setSales($salesData['firstName'] . " " . $salesData['lastName']);
+            $startDate = strtotime($contract->getStartdate());
+            $endDate = strtotime($contract->getEnddate());
+            if ($todayDate < $startDate) {
+                $contract->setStatus('1');
+            } elseif ($todayDate >= $startDate && $todayDate <= $endDate) {
+                $contract->setStatus('2');
+            } else if ($todayDate > $endDate) {
+                $contract->setStatus('4');
+            }
+            $this->getAllFreezeContractDates($contract);
             $this->setContracts($contract->getId(), $contract);
         }
 
     }
 
-    public function addContract($contract,$sales)
+
+    public function addContract($contract, $sales)
     {
         $db = new Database();
         $contract->setStartdate($db->getMysqli()->real_escape_string($contract->getStartdate()));
@@ -212,8 +227,9 @@ class Member extends Person
             }
         }
 
- return false;
+        return false;
     }
+
     public function deleteContract($contractId)
     {
         $db = new Database();
@@ -228,7 +244,9 @@ class Member extends Person
         }
         return false;
     }
-    public function EditContract($contractId){
+
+    public function EditContract($contractId)
+    {
         $db = new Database();
         $this->getContracts()[$contractId]->setStartdate($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getStartdate()));
         $this->getContracts()[$contractId]->setPaymentFees($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getPaymentFees()));
@@ -242,10 +260,21 @@ class Member extends Person
         $this->getContracts()[$contractId]->setRemainfreezedays($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getRemainfreezedays()));
         $this->getContracts()[$contractId]->setTotalAmount($db->getMysqli()->real_escape_string($this->getContracts()[$contractId]->getTotalAmount()));
         $updatedate = date("Y/m/d H:i:s");
-        $paymentId="SELECT paymentId FROM contract  WHERE id=".$contractId;
-        $editContractPaymentSql="UPDATE payment set discount='".$this->getContracts()[$contractId]->getPaymentDiscount()."' , fees='".$this->getContracts()[$contractId]->getPaymentFees()."',paymentMethodId='".$this->getContracts()[$contractId]->getPaymentMethod()->getId()."',amountDue='".$this->getContracts()[$contractId]->getAmountDue()."',dateDueBy='".$this->getContracts()[$contractId]->getAmountDateDue()."',amountPaid='".$this->getContracts()[$contractId]->getAmountPaid()."',totalAmount='".$this->getContracts()[$contractId]->getTotalAmount()."' where id=($paymentId)  ";
+        $todayDate = date("Y/m/d");
+        $todayDate = strtotime($todayDate);
+        $startDate = strtotime($this->getContracts()[$contractId]->getStartdate());
+        $endDate = strtotime($this->getContracts()[$contractId]->getEnddate());
+        if ($todayDate < $startDate) {
+            $this->getContracts()[$contractId]->setStatus('1');
+        } elseif ($todayDate >= $startDate && $todayDate <= $endDate) {
+            $this->getContracts()[$contractId]->setStatus('2');
+        } else if ($todayDate > $endDate) {
+            $this->getContracts()[$contractId]->setStatus('4');
+        }
+        $paymentId = "SELECT paymentId FROM contract  WHERE id=" . $contractId;
+        $editContractPaymentSql = "UPDATE payment set discount='" . $this->getContracts()[$contractId]->getPaymentDiscount() . "' , fees='" . $this->getContracts()[$contractId]->getPaymentFees() . "',paymentMethodId='" . $this->getContracts()[$contractId]->getPaymentMethod()->getId() . "',amountDue='" . $this->getContracts()[$contractId]->getAmountDue() . "',dateDueBy='" . $this->getContracts()[$contractId]->getAmountDateDue() . "',amountPaid='" . $this->getContracts()[$contractId]->getAmountPaid() . "',totalAmount='" . $this->getContracts()[$contractId]->getTotalAmount() . "' where id=($paymentId)  ";
         if ($db->insert($editContractPaymentSql)) {
-            $editContractSql="UPDATE contract set startDate='".$this->getContracts()[$contractId]->getStartdate()."' ,endDate='".$this->getContracts()[$contractId]->getEnddate()."',note='".$this->getContracts()[$contractId]->getNote()."',issueDate='".$this->getContracts()[$contractId]->getIssueDate()."',packageId='".$this->getContracts()[$contractId]->getPackage()->getPeriod()->getId()."',remainingFreezeDays='".$this->getContracts()[$contractId]->getRemainfreezedays()."',updatedAt='".$updatedate."' where id=".$contractId;
+            $editContractSql = "UPDATE contract set startDate='" . $this->getContracts()[$contractId]->getStartdate() . "' ,endDate='" . $this->getContracts()[$contractId]->getEnddate() . "',note='" . $this->getContracts()[$contractId]->getNote() . "',issueDate='" . $this->getContracts()[$contractId]->getIssueDate() . "',packageId='" . $this->getContracts()[$contractId]->getPackage()->getPeriod()->getId() . "',remainingFreezeDays='" . $this->getContracts()[$contractId]->getRemainfreezedays() . "',updatedAt='" . $updatedate . "' where id=" . $contractId;
             if ($db->insert($editContractSql)) {
                 $db->closeconn();
                 return true;
@@ -253,10 +282,111 @@ class Member extends Person
                 $db->closeconn();
                 return false;
             }
-        }
-        else {
+        } else {
             $db->closeconn();
             return false;
         }
+    }
+
+    public function freezeContract($contractId, $freezeDate)
+    {
+
+        $db = new Database();
+        $freezeDate->setFreezeTo($db->getMysqli()->real_escape_string($freezeDate->getFreezeTo()));
+        $freezeDate->setFreezeFrom($db->getMysqli()->real_escape_string($freezeDate->getFreezeFrom()));
+        $freezeSql = "INSERT INTO freezecontract(contractId,freezeFrom,freezeTo) VALUES ('" . $contractId . "','" . $freezeDate->getFreezeFrom() . "','" . $freezeDate->getFreezeTo() . "');";
+        if ($db->insert($freezeSql) && $db->selectId($freezeDate, "freezecontract")) {
+            $this->getContracts()[$contractId]->setFreezeDates($freezeDate);
+            $todayDate = date("Y-m-d");
+            $datediff = strtotime($freezeDate->getFreezeTo()) - strtotime($freezeDate->getFreezeFrom());
+            $datediff = round($datediff / (60 * 60 * 24));
+            $this->getContracts()[$contractId]->setRemainfreezedays($this->getContracts()[$contractId]->getRemainfreezedays() - $datediff);
+
+            $this->getContracts()[$contractId]->setEnddate(date('Y-m-d', strtotime($this->getContracts()[$contractId]->getEnddate() . ' + ' . $datediff . ' days')));
+            $updatedaysSql = "UPDATE contract SET remainingFreezeDays='" . $this->getContracts()[$contractId]->getRemainfreezedays() . "' , endDate='" . $this->getContracts()[$contractId]->getEnddate() . "' WHERE id=" . $contractId;
+            if ($db->insert($updatedaysSql)) {
+                if ($todayDate >= $freezeDate->getFreezeFrom() && $todayDate <= $freezeDate->getFreezeTo()) {
+
+                    $this->getContracts()[$contractId]->setStatus('3');
+                }
+                $db->closeconn();
+                return true;
+            }
+
+        }
+        $db->closeconn();
+        return false;
+    }
+
+    public function stopFreeze($contractId, $freezeId)
+    {
+        $db = new Database();
+        $freezeDate = $this->getContracts()[$contractId]->getFreezeDates()[$freezeId];
+        $todayDate = date("Y-m-d");
+        $datediff = strtotime($freezeDate->getFreezeTo()) - strtotime($todayDate);
+        $datediff = round($datediff / (60 * 60 * 24));
+        $this->getContracts()[$contractId]->getFreezeDates()[$freezeId]->setFreezeTo(date('Y-m-d', strtotime($this->getContracts()[$contractId]->getFreezeDates()[$freezeId]->getFreezeTo() . ' - ' . $datediff . ' days')));
+        $this->getContracts()[$contractId]->setRemainfreezedays($this->getContracts()[$contractId]->getRemainfreezedays() + $datediff);
+        $this->getContracts()[$contractId]->setEnddate(date('Y-m-d', strtotime($this->getContracts()[$contractId]->getEnddate() . ' - ' . $datediff . ' days')));
+        $updatedaysSql = "UPDATE contract SET remainingFreezeDays='" . $this->getContracts()[$contractId]->getRemainfreezedays() . "' , endDate='" . $this->getContracts()[$contractId]->getEnddate() . "' WHERE id=" . $contractId;
+        if ($db->insert($updatedaysSql)) {
+            $updatefreezeSql = "UPDATE freezecontract SET freezeTo='" . $this->getContracts()[$contractId]->getFreezeDates()[$freezeId]->getFreezeTo() . "' WHERE id=" . $freezeId;
+            if ($db->insert($updatefreezeSql)) {
+
+
+                $this->getContracts()[$contractId]->setStatus('2');
+                $db->closeconn();
+                return true;
+            }
+
+        }
+        $db->closeconn();
+        return false;
+
+    }
+    public function extendFreeze($contractId, $freezeId,$newEndDate)
+    {
+        $db = new Database();
+        $freezeDate = $this->getContracts()[$contractId]->getFreezeDates()[$freezeId];
+        $todayDate = date("Y-m-d");
+        $datediff = strtotime($newEndDate)-strtotime($freezeDate->getFreezeTo());
+        $datediff = round($datediff / (60 * 60 * 24));
+        $freezeDate->setFreezeTo($db->getMysqli()->real_escape_string($newEndDate));
+        $this->getContracts()[$contractId]->setRemainfreezedays($this->getContracts()[$contractId]->getRemainfreezedays() - $datediff);
+        $this->getContracts()[$contractId]->setEnddate(date('Y-m-d', strtotime($this->getContracts()[$contractId]->getEnddate() . ' + ' . $datediff . ' days')));
+        $updatedaysSql = "UPDATE contract SET remainingFreezeDays='" . $this->getContracts()[$contractId]->getRemainfreezedays() . "' , endDate='" . $this->getContracts()[$contractId]->getEnddate() . "' WHERE id=" . $contractId;
+        if ($db->insert($updatedaysSql)) {
+            $updatefreezeSql = "UPDATE freezecontract SET freezeTo='" . $this->getContracts()[$contractId]->getFreezeDates()[$freezeId]->getFreezeTo() . "' WHERE id=" . $freezeId;
+            if ($db->insert($updatefreezeSql)) {
+
+                $db->closeconn();
+                return true;
+            }
+
+        }
+        $db->closeconn();
+        return false;
+
+    }
+
+    public function getAllFreezeContractDates($contract)
+    {
+        $db = new Database();
+        $getfreaazeSql = "SELECT * FROM freezecontract WHERE contractId=" . $contract->getId();
+        $todayDate = date("Y-m-d");
+        $getfreaazeData = $db->selectArray($getfreaazeSql);
+
+        while ($row = mysqli_fetch_assoc($getfreaazeData)) {
+            $freezeDate = new FreezeDate();
+            $freezeDate->setId($row['id']);
+            $freezeDate->setFreezeFrom($row['freezeFrom']);
+            $freezeDate->setFreezeTo($row['freezeTo']);
+
+            if ($todayDate >= $freezeDate->getFreezeFrom() && $todayDate <= $freezeDate->getFreezeTo()) {
+                $contract->setStatus('3');
+            }
+            $contract->setFreezeDates($freezeDate);
+        }
+        $db->closeconn();
     }
 }

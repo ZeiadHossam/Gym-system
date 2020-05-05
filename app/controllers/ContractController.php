@@ -181,13 +181,66 @@ class ContractController extends Controller
            $this->previousPage();
         }
 
-
-
-
-
-
-
-
     }
+    public function freezeContract($branchId,$memberId,$contractId)
+    {
+        session_start();
+        $gym=$this->getGymData();
+        $member=$gym->getBranchs()[$branchId]->getMembers()[$memberId];
+        $contract = $member->getContracts()[$contractId];
+        $freezeDate=$this->model("FreezeDate");
+        $freezeDate->setFreezeFrom(htmlentities($_POST['freezeFromDate']));
+        $freezeDate->setFreezeTo(htmlentities($_POST['freezeToDate']));
+        $todayDate = date("Y/m/d");
+        if ($member->freezeContract($contractId,$freezeDate))
+        {
+            $_SESSION['Gym'] = serialize($gym);
+            $_SESSION['successMessege'] = "Freezed Successfully";
+            $this->redirect("contract/viewEditContract/".$branchId."/".$memberId."/".$contractId);
 
+        } else {
+            $_SESSION['errormessege'] = "There was a problem while Freezing Contract";
+            $this->previousPage();
+        }
+    }
+    public function stopFreeze($branchId,$memberId,$contractId){
+        session_start();
+        $gym=$this->getGymData();
+        $member=$gym->getBranchs()[$branchId]->getMembers()[$memberId];
+        $contract = $member->getContracts()[$contractId];
+        $todayDate = date("Y-m-d");
+
+        foreach ($contract->getFreezeDates() as $freezeDate)
+        {
+            if ($todayDate >= $freezeDate->getFreezeFrom() && $todayDate <= $freezeDate->getFreezeTo()) {
+                $freezeId=$freezeDate->getId();
+            }
+        }
+        if ($member->stopFreeze($contractId,$freezeId))
+        {
+            $_SESSION['Gym'] = serialize($gym);
+            $_SESSION['successMessege'] = "Freeze stopped Successfully";
+            $this->redirect("contract/viewEditContract/".$branchId."/".$memberId."/".$contractId);
+
+        } else {
+            $_SESSION['errormessege'] = "There was a problem while stopping Freezing";
+            $this->previousPage();
+        }
+    }
+    public function extendFreeze($branchId,$memberId,$contractId,$freezeId)
+    {
+        session_start();
+        $gym=$this->getGymData();
+        $member=$gym->getBranchs()[$branchId]->getMembers()[$memberId];
+        if ($member->extendFreeze($contractId,$freezeId,$_POST['freezeToDate']))
+        {
+            $_SESSION['Gym'] = serialize($gym);
+            $_SESSION['successMessege'] = "Freeze Extended Successfully";
+            $this->redirect("contract/viewEditContract/".$branchId."/".$memberId."/".$contractId);
+
+        } else {
+            $_SESSION['errormessege'] = "There was a problem while extending Freezing ";
+            $this->previousPage();
+        }
+    }
 }

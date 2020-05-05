@@ -1,6 +1,15 @@
 <?php
 $member = $gym->getBranchs()[$data['branchId']]->getMembers()[$data["memberId"]];
 $contract = $member->getContracts()[$data["contractId"]];
+if ($contract->getStatus()=='3') {
+    $todayDate = date("Y-m-d");
+    foreach ($contract->getFreezeDates() as $freezeDate) {
+        if ($todayDate >= $freezeDate->getFreezeFrom() && $todayDate <= $freezeDate->getFreezeTo()) {
+            $freezeId = $freezeDate->getId();
+        }
+    }
+}
+include "freeze.php";
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -10,7 +19,9 @@ $contract = $member->getContracts()[$data["contractId"]];
             <!-- general form elements -->
 
 
-            <form role="form" action="/GYM/contract/editContract/<?php echo $data['branchId'].'/'.$data['memberId'].'/'.$data['contractId'] ?>" onsubmit="return submittingaddContract()" enctype="multipart/form-data" method="post">
+            <form role="form"
+                  action="/GYM/contract/editContract/<?php echo $data['branchId'] . '/' . $data['memberId'] . '/' . $data['contractId'] ?>"
+                  onsubmit="return submittingaddContract()" enctype="multipart/form-data" method="post">
                 <div class="row view_emp">
                     <div class="col-md-1">
                         <a href="javascript:history.go(-1)" class="btn btn-md btn-default"><span
@@ -193,7 +204,21 @@ $contract = $member->getContracts()[$data["contractId"]];
 
                     </div>
                 </div>
-
+                <?php if ($contract->getStatus() == '2') { ?>
+                    <button type="button"
+                            onclick="freezingContract()"
+                            class="btn btn-info Addmemberbutton viewmemberContractsbutton">Freeze
+                    </button>
+                <?php } else if ($contract->getStatus() == '3') { ?>
+                    <button type="button"
+                            onclick="stopFreeze(<?php echo $data['branchId'] . "," . $data['memberId'] . "," . $data['contractId']; ?>)"
+                            class="btn btn-secondary Addmemberbutton viewmemberContractsbutton">Stop Freeze
+                    </button>
+                    <button type="button"
+                            onclick="extendfreezing()"
+                            class="btn btn-info Addmemberbutton viewmemberContractsbutton">Extend Freeze
+                    </button>
+                <?php } ?>
                 <button type="submit" name="editContract"
                         class="btn btn-primary Addmemberbutton viewmemberContractsbutton">Submit
                 </button>

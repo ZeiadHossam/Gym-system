@@ -25,7 +25,7 @@
                         <th>Package</th>
                         <th>Type</th>
                         <th>End Date</th>
-                            <th>Fees</th>
+                            <th>Status</th>
                         <th>Payment Method</th>
                         <th>Actions</th>
 
@@ -45,13 +45,13 @@
                         <td><?php echo $contract ->getPackage()->getName();?></td>
                         <td><?php echo $contract ->getPackage()->getPeriod()->getPeriod()."-".$contract->getPackage()->getPeriodType();?></td>
                         <td><?php echo $contract ->getIssueDate();?></td>
-                        <td><?php echo $contract ->getPaymentFees();?></td>
+                        <td><?php echo $contract ->getStatus();?></td>
                         <td><?php echo $contract ->getPaymentMethod()->getName();?></td>
                         <td>
                             <div class="btn-group tablebuttons">
 								<a href="/GYM/contract/viewContract/<?php echo $branch->getId()."/".$member->getId()."/".$contract->getId(); ?>" class="btn btn-secondary btn-sm" >View</a>
 								<a href="/GYM/contract/viewEditContract/<?php echo $branch->getId()."/".$member->getId()."/".$contract->getId(); ?>" class="btn btn-info btn-sm">Edit</a>
-								<button type="button" onclick="deletingContract(<?php echo $branch->getId().",".$member->getId().",".$contract->getId();?>)"" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">
+								<button type="button" onclick="deletingContract(<?php echo $branch->getId().",".$member->getId().",".$contract->getId();?>)" class="btn btn-danger btn-sm" >
 									Delete
 								</button>
                             </div>
