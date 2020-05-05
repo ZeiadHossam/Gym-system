@@ -152,4 +152,48 @@ class System
 
         return $gym;
     }
+    public function getrecentlyAddedContracts()
+    {
+        $db = new database();
+        $todayDate = date("Y-m-d H:i:s");
+        $maxDate=date('Y-m-d H:i:s', strtotime($todayDate . ' -  7 days'));
+        $recentlyaddedSql="SELECT *,contract.id as cid , member.id as memId FROM contract INNER JOIN packageperiod ON contract.packageId=packageperiod.id INNER JOIN packagetype ON packageperiod.packageTypeId=packageType.id INNER JOIN member ON contract.memberId=member.id INNER JOIN person ON member.personId=person.id WHERE contract.isDeleted=0 AND contract.createdAt BETWEEN '" . $maxDate . "' AND '".$todayDate."';";
+        $recentlyaddedData = $db->selectArray($recentlyaddedSql);
+        $recentlyAddedContracts=array();
+        while ($row = mysqli_fetch_assoc($recentlyaddedData)) {
+            $contractData=array();
+            $contractData['branchId']=$row['branchId'];
+            $contractData['memberId']=$row['memId'];
+            $contractData['contractId']=$row['cid'];
+            $contractData['memberName']=$row['firstName']." ".$row['lastName'];
+            $contractData['packageType']=$row['name'];
+            $contractData['packagePeriod']=$row['period']." ".$row['type'];
+            $contractData['due']=$row['endDate'];
+            $contractData['telephone']=$row['mobilePhone'];
+            $recentlyAddedContracts[]=$contractData;
+        }
+        return $recentlyAddedContracts;
+    }
+    public function getrecentlyExpiredContracts()
+    {
+        $db = new database();
+        $todayDate = date("Y-m-d H:i:s");
+        $maxDate=date('Y-m-d H:i:s', strtotime($todayDate . ' -  7 days'));
+        $recentlyExpiredSql="SELECT *,contract.id as cid , member.id as memId FROM contract INNER JOIN packageperiod ON contract.packageId=packageperiod.id INNER JOIN packagetype ON packageperiod.packageTypeId=packageType.id INNER JOIN member ON contract.memberId=member.id INNER JOIN person ON member.personId=person.id WHERE contract.isDeleted=0 AND contract.endDate BETWEEN '" . $maxDate . "' AND '".$todayDate."';";
+        $recentlyExpiredData = $db->selectArray($recentlyExpiredSql);
+        $recentlyExpiredContracts=array();
+        while ($row = mysqli_fetch_assoc($recentlyExpiredData)) {
+            $contractData=array();
+            $contractData['branchId']=$row['branchId'];
+            $contractData['memberId']=$row['memId'];
+            $contractData['contractId']=$row['cid'];
+            $contractData['memberName']=$row['firstName']." ".$row['lastName'];
+            $contractData['packageType']=$row['name'];
+            $contractData['packagePeriod']=$row['period']." ".$row['type'];
+            $contractData['due']=$row['endDate'];
+            $contractData['telephone']=$row['mobilePhone'];
+            $recentlyExpiredContracts[]=$contractData;
+        }
+        return $recentlyExpiredContracts;
+    }
 }

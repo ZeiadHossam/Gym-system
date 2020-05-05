@@ -1,4 +1,6 @@
 <!-- Content Header (Page header) -->
+<?php $recentlyAddedContracts=$data['recentlyAddedContracts']; ?>
+<?php $recentlyExpiredContracts=$data['recentlyExpiredContracts']; ?>
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -18,7 +20,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3><?php echo count($recentlyAddedContracts) ?></h3>
 
                         <p>Recently Added Contracts</p>
                     </div>
@@ -32,7 +34,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>53</h3>
+                        <h3><?php echo count($recentlyExpiredContracts) ?></h3>
 
                         <p>Recently Expired Contracts</p>
                     </div>
@@ -88,35 +90,26 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Package Type</th>
+                                    <th>Contract Type</th>
                                     <th>Due</th>
-                                    <th>Last Signed in</th>
                                     <th>Telephone</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($recentlyAddedContracts as $recentlyContract) {?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Ahmed</td>
-                                    <td>Membership</td>
-                                    <td>20/3/2020</td>
-                                    <td>16/3/2020</td>
-                                    <td>01111111111</td>
+                                    <td><?php echo $recentlyContract['contractId'] ?></td>
+                                    <td><?php echo $recentlyContract['memberName'] ?></td>
+                                    <td><?php echo $recentlyContract['packageType'] ?></td>
+                                    <td><?php echo $recentlyContract['packagePeriod'] ?></td>
+                                    <td><?php echo $recentlyContract['due'] ?></td>
+                                    <td><?php echo $recentlyContract['telephone'] ?></td>
                                     <td>
-											<a href="viewcontract.php" class="btn btn-block btn-secondary btn-sm ">View</a>
+											<a href="/GYM/contract/viewContract/<?php echo $recentlyContract['branchId']."/".$recentlyContract['memberId']."/".$recentlyContract['contractId']?>" class="btn btn-block btn-secondary btn-sm ">View</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Mohamed</td>
-                                    <td>Trainer</td>
-                                    <td>30/3/2020</td>
-                                    <td>17/3/2020</td>
-                                    <td>01222222222</td>
-                                    <td>
-											<a href="viewcontract.php" class="btn btn-block btn-secondary btn-sm ">View</a>
-                                    </td>
-                                </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
 
@@ -129,35 +122,26 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Package Type</th>
+                                    <th>Contract Type</th>
                                     <th>Due</th>
-                                    <th>Last Signed in</th>
                                     <th>Telephone</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Zizo</td>
-                                    <td>Membership</td>
-                                    <td>20/3/2020</td>
-                                    <td>16/3/2020</td>
-                                    <td>01111111111</td>
-                                    <td>
-											<a href="viewcontract.php" class="btn btn-block btn-secondary btn-sm ">View</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Zoz</td>
-                                    <td>SPA</td>
-                                    <td>22/3/2020</td>
-                                    <td>18/3/2020</td>
-                                    <td>01111112222</td>
-                                    <td>
-											<a href="viewcontract.php" class="btn btn-block btn-secondary btn-sm ">View</a>
-                                    </td>
-                                </tr>
+                                <?php foreach ($recentlyExpiredContracts as $recentlyexContract) {?>
+                                    <tr>
+                                        <td><?php echo $recentlyexContract['contractId'] ?></td>
+                                        <td><?php echo $recentlyexContract['memberName'] ?></td>
+                                        <td><?php echo $recentlyexContract['packageType'] ?></td>
+                                        <td><?php echo $recentlyexContract['packagePeriod'] ?></td>
+                                        <td><?php echo $recentlyexContract['due'] ?></td>
+                                        <td><?php echo $recentlyexContract['telephone'] ?></td>
+                                        <td>
+                                            <a href="/GYM/contract/viewContract/<?php echo $recentlyexContract['branchId']."/".$recentlyexContract['memberId']."/".$recentlyexContract['contractId']?>" class="btn btn-block btn-secondary btn-sm ">View</a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
 
