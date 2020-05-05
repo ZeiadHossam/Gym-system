@@ -19,10 +19,24 @@ class Member extends Person
     private $companyAddress;
     private $addedBy;
     private $contracts;
+    private $attendance;
+
+
+    public function getAttendance()
+    {
+        return $this->attendance;
+    }
+
+
+    public function setAttendance($contractId, $attendance)
+    {
+        $this->attendance[$contractId] = $attendance;
+    }
 
     function __construct()
     {
         $this->contracts = array();
+        $this->attendance = array();
     }
 
     public function getId()
@@ -151,7 +165,6 @@ class Member extends Person
             $contract = new Contract();
             $contract->setId($row['cid']);
             $contract->setStartdate($row['startDate']);
-            $contract->setRemaningPackagePeriod($row['remainingPackagePeriod']);
             $contract->setPaymentFees($row['fees']);
             $contract->setPaymentDiscount($row['discount']);
             $contract->setNote($row['note']);
@@ -163,7 +176,28 @@ class Member extends Person
             $contract->setRemainfreezedays($row['remainingFreezeDays']);
             $contract->setTotalAmount($row['totalAmount']);
             $package = new Package("period");
+            if ($row['type']=="Days")
+            {
+                $datediff = strtotime($row['endDate']) - strtotime($todayDate);
+                $datediff = round($datediff / (60 * 60 * 24));
+                $contract->setRemaningPackagePeriod($datediff);
+                $updateDaysSql="UPDATE contract SET remainingPackagePeriod=".$datediff." WHERE id=".$row['cid'];
+                $db->insert($updateDaysSql);
+            }
+            else if ($row['type']=="Months")
+            {
+                $diff = abs(strtotime($row['endDate']) - strtotime($todayDate) );
+                $years = floor($diff / (365*60*60*24));
+                $datediff=floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+                $contract->setRemaningPackagePeriod($datediff);
+                $updateDaysSql="UPDATE contract SET remainingPackagePeriod=".$datediff." WHERE id=".$row['cid'];
+                $db->insert($updateDaysSql);
+            }
+            else
+            {
+                $contract->setRemaningPackagePeriod($row['remainingPackagePeriod']);
 
+            }
             $package->setId($row['ptid']);
             $package->setName($row['ptname']);
             $package->setPeriodType($row['type']);
@@ -188,12 +222,26 @@ class Member extends Person
             } else if ($todayDate > $endDate) {
                 $contract->setStatus('4');
             }
+            $this->getAllAttendance($contract->getId());
             $this->getAllFreezeContractDates($contract);
             $this->setContracts($contract->getId(), $contract);
         }
 
     }
 
+    public function getAllAttendance($contractId)
+    {
+        $db = new Database();
+        $attendanceSql = "SELECT * from memberattendance WHERE contractId=" . $contractId;
+        $attendanceData = $db->selectArray($attendanceSql);
+        $attendanceDate = array();
+        while ($row = mysqli_fetch_assoc($attendanceData)) {
+            $dateTime = $row['attendanceDate'];
+            $attendanceDate[] = $dateTime;
+        }
+        $this->setAttendance($contractId, $attendanceDate);
+
+    }
 
     public function addContract($contract, $sales)
     {
@@ -219,6 +267,8 @@ class Member extends Person
                 if ($db->selectId($contract, "contract")) {
                     $contract->setSales($sales);
                     $this->setContracts($contract->getId(), $contract);
+                    $attendanceDate = array();
+                    $this->setAttendance($contract->getId(), $attendanceDate);
 
                     $db->closeconn();
                     return true;
@@ -344,12 +394,13 @@ class Member extends Person
         return false;
 
     }
-    public function extendFreeze($contractId, $freezeId,$newEndDate)
+
+    public function extendFreeze($contractId, $freezeId, $newEndDate)
     {
         $db = new Database();
         $freezeDate = $this->getContracts()[$contractId]->getFreezeDates()[$freezeId];
         $todayDate = date("Y-m-d");
-        $datediff = strtotime($newEndDate)-strtotime($freezeDate->getFreezeTo());
+        $datediff = strtotime($newEndDate) - strtotime($freezeDate->getFreezeTo());
         $datediff = round($datediff / (60 * 60 * 24));
         $freezeDate->setFreezeTo($db->getMysqli()->real_escape_string($newEndDate));
         $this->getContracts()[$contractId]->setRemainfreezedays($this->getContracts()[$contractId]->getRemainfreezedays() - $datediff);
@@ -389,4 +440,23 @@ class Member extends Person
         }
         $db->closeconn();
     }
+
+    public function signIn($contractId)
+    {
+        $db = new Database();
+        $todaydate = date("Y/m/d H:i:s");
+        $attendanceSql = "INSERT INTO memberattendance(attendanceDate,contractId) VALUES ('" . $todaydate . "','" . $contractId . "')";
+        if ($db->insert($attendanceSql)) {
+            $attendances=$this->getAttendance()[$contractId];
+            $attendances[]=$todaydate;
+            $this->setAttendance($contractId,$attendances);
+            $db->closeconn();
+            return true;
+        }
+
+        $db->closeconn();
+        return false;
+
+    }
+
 }

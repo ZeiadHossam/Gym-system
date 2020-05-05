@@ -18,3 +18,4 @@ $('Table').DataTable({
 			$(this).addClass('active').siblings().removeClass('active')
 		})
 	})
+

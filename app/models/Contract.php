@@ -244,5 +244,10 @@ class Contract
     {
         $this->remaningPackagePeriod = $remaningPackagePeriod;
     }
-
+    public function updateSessions()
+    {
+        $db = new Database();
+        $sql="UPDATE contract SET remainingPackagePeriod=".$this->getRemaningPackagePeriod()." WHERE id=".$this->getId();
+        $db->insert($sql);
+    }
 }

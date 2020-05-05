@@ -55,6 +55,8 @@ include "freeze.php";
                                         value="<?php echo $package->getId(); ?>"><?php echo $package->getName(); ?></option>
                                 <?php } ?>
                             </select>
+                            <span class="message" id="packagetype_message"></span>
+
                         </div>
                         <div class="form-group">
                             <label>Contract Type </label>

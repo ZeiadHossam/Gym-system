@@ -100,7 +100,7 @@ class PackageController extends Controller
                 }
             }
             else {
-                $_SESSION['errormessege'] = "There was a problem while Editing your package";
+                $_SESSION['errormessege'] = "Cannot delete this package beacause there are contracts assigned to this package";
                 $this->previousPage();
             }
         }

@@ -339,7 +339,7 @@ class Gym
         $updatedate = date("Y/m/d H:i:s");
 
         $this->getPackages()[$packageId]->setName($db->getMysqli()->real_escape_string($this->getPackages()[$packageId]->getName()));
-        $sql = "UPDATE packageType SET updatedAt='$updatedate', name='" . $this->getPackages()[$packageId]->getName() . "' WHERE id=" . $this->getPackages()[$packageId]->getId();
+        $sql = "UPDATE packageType SET updatedAt='$updatedate', name='" . $this->getPackages()[$packageId]->getName() . "' , type='" . $this->getPackages()[$packageId]->getPeriodType() . "' WHERE id=" . $this->getPackages()[$packageId]->getId();
         if ($db->insert($sql)) {
             $_SESSION['Gym'] = serialize($this);
             $db->closeconn();

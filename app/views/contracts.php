@@ -45,7 +45,15 @@
                         <td><?php echo $contract ->getPackage()->getName();?></td>
                         <td><?php echo $contract ->getPackage()->getPeriod()->getPeriod()."-".$contract->getPackage()->getPeriodType();?></td>
                         <td><?php echo $contract ->getIssueDate();?></td>
-                        <td><?php echo $contract ->getStatus();?></td>
+                        <td><?php if ($contract->getStatus() == 1) {
+                                echo "Not Started";
+                            } elseif ($contract->getStatus() == 2) {
+                                echo "Active";
+                            } elseif ($contract->getStatus() == 3) {
+                                echo "Freezed";
+                            } elseif  ($contract->getStatus() == 4)  {
+                                echo "Expired";
+                            }?></td>
                         <td><?php echo $contract ->getPaymentMethod()->getName();?></td>
                         <td>
                             <div class="btn-group tablebuttons">

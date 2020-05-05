@@ -1,3 +1,4 @@
+
 <section class="content">
     <div class="container-fluid">
         <br>
@@ -15,7 +16,7 @@
                     <th>Last Name</th>
                     <th>Package</th>
                     <th>Type</th>
-                    <th>End Date</th>
+                    <th>Remaining Period</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -30,28 +31,29 @@
                                 <td><?php echo $member->getFirstName(); ?></td>
                                 <td><?php echo $member->getLastName(); ?></td>
                                 <td><?php echo $contract->getPackage()->getName(); ?></td>
-                                <td><?php echo $contract->getPackage()->getPeriod()->getPeriod() . "-" . $contract->getPackage()->getPeriodType(); ?></td>
-                                <td><?php echo $contract->getEndDate(); ?></td>
+                                <td><?php echo $contract->getPackage()->getPeriod()->getPeriod() . " " . $contract->getPackage()->getPeriodType(); ?></td>
+                                <td><?php echo $contract->getRemaningPackagePeriod()." ".$contract->getPackage()->getPeriodType(); ?></td>
                                 <td><?php if ($contract->getStatus() == 1) {
                                         echo "Not Started";
                                     } elseif ($contract->getStatus() == 2) {
                                         echo "Active";
                                     } elseif ($contract->getStatus() == 3) {
-                                        echo "Freeze";
+                                        echo "Freezed";
                                     } elseif  ($contract->getStatus() == 4)  {
                                         echo "Expired";
                                     }?>
                                 </td>
                                 <td>
-                                    <div>
-                                        <?php   if ($contract ->getStatus()==2){?>
-                                        <button type="button" onclick="showToasting('Signed-In Successfully',0)"
+                                    <div class="btn-group tablebuttons">
+
+                                    <?php   if ($contract ->getStatus()==2 && $contract ->getRemaningPackagePeriod()>0){?>
+                                        <a type="button" href="/GYM/reception/checkSignIn/<?php echo $branch->getId() . "/" . $member->getId() . "/" . $contract->getId(); ?>"
                                                 class="btn btn-success btn-sm ">Sign-in
-                                        </button>
+                                        </a>
                                 <?php } ?>
 
                                         <a href="/GYM/contract/viewContract/<?php echo $branch->getId() . "/" . $member->getId() . "/" . $contract->getId(); ?>"
-                                           class="btn btn-success btn-sm">View</a>
+                                           class="btn btn-secondary btn-sm">View</a>
                                     </div>
                                 </td>
                             </tr>

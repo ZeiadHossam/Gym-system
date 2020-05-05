@@ -118,4 +118,5 @@ class Package implements ICheckAvailability
         $db->closeconn();
         return true;
     }
+
 }
