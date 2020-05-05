@@ -7,4 +7,9 @@ class HomeController extends Controller
     {
             $this->viewHome("index");
     }
+    public function showprofile()
+    {
+        $this->viewHome("myprofile");
+    }
+
 }

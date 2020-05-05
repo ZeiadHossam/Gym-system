@@ -1,4 +1,4 @@
-<?php include("../shared/main.php");
+<?php
 if ($_SESSION['branch']==NULL){
     $loggedInEmployee=$gym->getOwner();
 }
@@ -76,4 +76,3 @@ else
                         </div>
                         </div>
                         </section>
-<?php include("../shared/footer.php") ?>

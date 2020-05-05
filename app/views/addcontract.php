@@ -83,7 +83,7 @@
                                                 <div class="form-group">
                                                     <label for="membershipstarts">*Membership Starts</label>
                                                     <input type="date" class="form-control" id="startdate"
-                                                           onfocusout="validate_startdate(),calculate_enddate();" onchange="calculate_enddate();" name="MemberShipStart"
+                                                           onfocusout="validate_startdate()" name="MemberShipStart"
                                                     >
                                                     <span class="message" id="startdate_message"></span>
 
@@ -91,7 +91,7 @@
                                                 <div class="form-group">
                                                     <label>*Membership Ends</label>
                                                     <input type="date" name="MemberShipEnd" id="enddate"
-                                                           onfocusout="validate_enddate();"  class="form-control"   >
+                                                           onfocusout="validate_enddate();"  class="form-control"  >
                                                     <span class="message" id="enddate_message"></span>
 
                                                 </div>

@@ -19,7 +19,7 @@
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <span class="dropdown-item dropdown-header">Settings</span>
                 <div class="dropdown-divider"></div>
-                <a href="myprofile.php" class="dropdown-item">
+                <a href="/GYM/home/showprofile" class="dropdown-item">
                     My Profile
                 </a>
                 <div class="dropdown-divider"></div>

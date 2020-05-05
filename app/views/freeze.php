@@ -14,13 +14,16 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="freezeFrom"><?php if(isset($freezeId)){?>Freeze was suppossed to end on <?php }else { ?>Freeze From<?php } ?></label>
-                        <input type="date"  class="form-control" name="freezeFromDate" id="freezeFromDate" <?php if(isset($freezeId)){ ?> disabled value="<?php echo $contract->getFreezeDates()[$freezeId]->getFreezeTo();?>"<?php } ?>
+                        <input type="date"  class="form-control" name="freezeFromDate"  onfocusout="validate_freeze_from();" id="freezeFromDate" <?php if(isset($freezeId)){ ?> disabled value="<?php echo $contract->getFreezeDates()[$freezeId]->getFreezeTo();?>"<?php } ?>
                                >
+                        <span class="message" id="FreezeStart_message"></span>
+
                     </div>
                     <div class="form-group">
                         <label for="freezeTo">Freeze To</label>
-                        <input type="date" class="form-control" name="freezeToDate" id="freezeToDate"
-                        >
+                        <input type="date" class="form-control" name="freezeToDate"  id="freezeToDate">
+                            <span class="message" id="Freezeto_message"></span>
+
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">

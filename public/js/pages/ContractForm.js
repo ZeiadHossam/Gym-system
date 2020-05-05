@@ -228,3 +228,36 @@ function validate_enddate() {
         return true;
     }
 }
+     function validate_freeze_from() {
+         var freezeFromDate = document.getElementById('freezeFromDate').value;
+         var freezeToDate = document.getElementById('freezeToDate').value;
+         var contractStart = document.getElementById('startdate').value;
+         var contractEnd = document.getElementById('enddate').value;
+         var message = document.getElementById('FreezeStart_message');
+
+
+         if (freezeFromDate != "" && freezeFromDate < contractStart ) {
+             message.innerHTML = "*freeze must start  after contract start  ";
+             return false;
+
+         }
+      else  if (freezeFromDate != "" && freezeFromDate > contractEnd ) {
+             message.innerHTML = "*freeze must start  before contract End Date  ";
+             return false;
+
+         }
+      else if(freezeFromDate<freezeToDate){
+             message.innerHTML = "*freeze  start  must be less than Freeze End   ";
+             return false;
+         }
+         else {
+             return true;
+         }
+}
+
+
+
+
+
+
+
