@@ -246,11 +246,9 @@ function validate_enddate() {
              return false;
 
          }
-      else if(freezeFromDate<freezeToDate){
-             message.innerHTML = "*freeze  start  must be less than Freeze End   ";
-             return false;
-         }
          else {
+             message.innerHTML = "";
+
              return true;
          }
 }

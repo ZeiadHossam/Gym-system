@@ -19,7 +19,7 @@ $branchName=$gym->getBranchs()[$data['branchId']]->getCity();
                             </div>
                             <div class="col-md-4 offset-3">
 
-                                <legend class="viewHeader"><?php echo $member->getFirstName(); ?> Information</legend>
+                                <legend class="viewHeader"> Information</legend>
                             </div>
                         </div>
                             <div class="row">
@@ -136,6 +136,7 @@ $branchName=$gym->getBranchs()[$data['branchId']]->getCity();
 
                     </form>
                     <a href="/GYM/member/viewMemberContract/<?php echo $branch->getId()."/".$member->getId(); ?>" class="btn btn-sm btn-info viewmemberContractsbutton ">View Member Contracts</a>
+                    <a href="/GYM/member/memberAttendence/<?php echo $branch->getId()."/".$member->getId(); ?>" class="btn btn-sm btn-info viewmemberContractsbutton ">View Member Attendence</a>
             </div>
         </div>
     </div>

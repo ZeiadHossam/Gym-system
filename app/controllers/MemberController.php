@@ -164,4 +164,13 @@ class MemberController extends Controller
 
         }
     }
+    public function memberAttendence($branchId,$memberId){
+        session_start();
+        $gym=$this->getGymData();
+        $member=$gym->getBranchs()[$branchId]->getMembers()[$memberId];
+        $this->viewHome("memberAttendence",[
+            "branchId"=>$branchId,
+            "memberId"=>$memberId
+        ]);
+    }
 }

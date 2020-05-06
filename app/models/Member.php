@@ -176,25 +176,20 @@ class Member extends Person
             $contract->setRemainfreezedays($row['remainingFreezeDays']);
             $contract->setTotalAmount($row['totalAmount']);
             $package = new Package("period");
-            if ($row['type']=="Days")
-            {
+            if ($row['type'] == "Days") {
                 $datediff = strtotime($row['endDate']) - strtotime($todayDate);
                 $datediff = round($datediff / (60 * 60 * 24));
                 $contract->setRemaningPackagePeriod($datediff);
-                $updateDaysSql="UPDATE contract SET remainingPackagePeriod=".$datediff." WHERE id=".$row['cid'];
+                $updateDaysSql = "UPDATE contract SET remainingPackagePeriod=" . $datediff . " WHERE id=" . $row['cid'];
                 $db->insert($updateDaysSql);
-            }
-            else if ($row['type']=="Months")
-            {
-                $diff = abs(strtotime($row['endDate']) - strtotime($todayDate) );
-                $years = floor($diff / (365*60*60*24));
-                $datediff=floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+            } else if ($row['type'] == "Months") {
+                $diff = abs(strtotime($row['endDate']) - strtotime($todayDate));
+                $years = floor($diff / (365 * 60 * 60 * 24));
+                $datediff = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
                 $contract->setRemaningPackagePeriod($datediff);
-                $updateDaysSql="UPDATE contract SET remainingPackagePeriod=".$datediff." WHERE id=".$row['cid'];
+                $updateDaysSql = "UPDATE contract SET remainingPackagePeriod=" . $datediff . " WHERE id=" . $row['cid'];
                 $db->insert($updateDaysSql);
-            }
-            else
-            {
+            } else {
                 $contract->setRemaningPackagePeriod($row['remainingPackagePeriod']);
 
             }
@@ -447,9 +442,9 @@ class Member extends Person
         $todaydate = date("Y/m/d H:i:s");
         $attendanceSql = "INSERT INTO memberattendance(attendanceDate,contractId) VALUES ('" . $todaydate . "','" . $contractId . "')";
         if ($db->insert($attendanceSql)) {
-            $attendances=$this->getAttendance()[$contractId];
-            $attendances[]=$todaydate;
-            $this->setAttendance($contractId,$attendances);
+            $attendances = $this->getAttendance()[$contractId];
+            $attendances[] = $todaydate;
+            $this->setAttendance($contractId, $attendances);
             $db->closeconn();
             return true;
         }
