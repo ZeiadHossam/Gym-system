@@ -146,6 +146,9 @@ $contract = $member->getContracts()[$data["contractId"]];
                 </div>
 
             </form>
+            <a href="/GYM/report/showReciept/<?php echo $data['branchId'] . "/" . $data['memberId'] ."/".$data["contractId"] ;?>"
+               class="btn btn-danger viewmemberContractsbutton">Print Reciept</a>
+
             <a href="/GYM/member/viewFreezeDays/<?php echo $data['branchId'] . "/" . $data['memberId'] ."/".$data["contractId"] ;?>"
                class="btn btn-info viewmemberContractsbutton">View Freeze Days</a>
 

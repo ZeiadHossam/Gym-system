@@ -1,6 +1,4 @@
-<?php include ("../shared/main.php") ?>
 <section class="content">
-
 	<div class="container-fluid">
 		<br>
 		<form  role="form" action="salesreports.php" target="_blank" method="post">
@@ -33,4 +31,3 @@
 		</form>
 	</div>
 </section>
-<?php include ("../shared/footer.php") ?>

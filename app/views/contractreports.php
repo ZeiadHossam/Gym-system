@@ -1,11 +1,10 @@
-<?php include ("../shared/main.php") ?>
 <section class="content">
 
 	<div class="container-fluid">
 		<br>
-		<form  role="form" action="activecontractreports.php" target="_blank" method="post">
+		<form  role="form" action="#" target="_blank" method="post">
 			<fieldset>
-				<legend>Search Active Contracts Report</legend>
+				<legend>Search Contracts Report</legend>
 				<div class="row">
 				<div class="col-md-6">
 				<div class="form-group">
@@ -101,6 +100,7 @@
 
 			</fieldset>
 		</form>
+        <a class="btn btn-info">Generate all active contracts report</a>
+        <a class="btn btn-info">Generate all expired contracts report</a>
 	</div>
 </section>
-<?php include ("../shared/footer.php") ?>

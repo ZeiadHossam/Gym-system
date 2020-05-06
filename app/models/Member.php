@@ -210,9 +210,12 @@ class Member extends Person
             $contract->setSales($salesData['firstName'] . " " . $salesData['lastName']);
             $startDate = strtotime($contract->getStartdate());
             $endDate = strtotime($contract->getEnddate());
-            if ($todayDate < $startDate) {
+            if($contract->getRemaningPackagePeriod()==0){
+                $contract->setStatus('4');
+            }
+           else if ($todayDate < $startDate) {
                 $contract->setStatus('1');
-            } elseif ($todayDate >= $startDate && $todayDate <= $endDate) {
+            } else if ($todayDate >= $startDate && $todayDate <= $endDate) {
                 $contract->setStatus('2');
             } else if ($todayDate > $endDate) {
                 $contract->setStatus('4');

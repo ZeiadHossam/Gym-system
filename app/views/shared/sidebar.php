@@ -127,29 +127,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="activecontracts.php" class="nav-link">
+                            <a href="/GYM/report/contract" class="nav-link">
                                 <i class="far fa-file nav-icon"></i>
-                                <p>Active Contracts</p>
+                                <p> Contracts</p>
                             </a>
                         </li>
+
                         <li class="nav-item">
-							<a href="expiredcontracts.php" class="nav-link">
-                                <i class="far fa-file nav-icon"></i>
-                                <p>Expired Contracts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="sales.php" class="nav-link">
+                            <a href="/GYM/report/Sales" class="nav-link">
                                 <i class="far fa-file nav-icon"></i>
                                 <p>Sales</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="trainers.php" class="nav-link">
-                                <i class="far fa-file nav-icon"></i>
-                                <p>Trainer</p>
-                            </a>
-                        </li>
+
                         <?php } ?>
                     </ul>
                 </li>
