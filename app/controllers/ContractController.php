@@ -187,11 +187,32 @@ class ContractController extends Controller
         session_start();
         $gym=$this->getGymData();
         $member=$gym->getBranchs()[$branchId]->getMembers()[$memberId];
-        $contract = $member->getContracts()[$contractId];
         $freezeDate=$this->model("FreezeDate");
         $freezeDate->setFreezeFrom(htmlentities($_POST['freezeFromDate']));
         $freezeDate->setFreezeTo(htmlentities($_POST['freezeToDate']));
-        $todayDate = date("Y/m/d");
+        foreach ($member->getContracts()[$contractId]->getFreezeDates() as $oldfreezeDate)
+        {
+            if ($freezeDate->getFreezeFrom()<=$oldfreezeDate->getFreezeFrom()&&$freezeDate->getFreezeTo()>=$oldfreezeDate->getFreezeTo())
+            {
+                $_SESSION['messege'] = "There is Already Freeze between ".$oldfreezeDate->getFreezeFrom()." And ".$oldfreezeDate->getFreezeTo();
+                $this->redirect("contract/viewEditContract/".$branchId."/".$memberId."/".$contractId);
+                return;
+            }
+            else if ($freezeDate->getFreezeFrom()>=$oldfreezeDate->getFreezeFrom()&&$freezeDate->getFreezeFrom()<=$oldfreezeDate->getFreezeTo())
+            {
+                $_SESSION['messege'] = "There is Already Freeze between ".$oldfreezeDate->getFreezeFrom()." And ".$oldfreezeDate->getFreezeTo();
+                $this->redirect("contract/viewEditContract/".$branchId."/".$memberId."/".$contractId);
+                return;
+
+            }
+            else if ($freezeDate->getFreezeTo()>=$oldfreezeDate->getFreezeFrom()&&$freezeDate->getFreezeTo()<=$oldfreezeDate->getFreezeTo()){
+                $_SESSION['messege'] = "There is Already Freeze between ".$oldfreezeDate->getFreezeFrom()." And ".$oldfreezeDate->getFreezeTo();
+                $this->redirect("contract/viewEditContract/".$branchId."/".$memberId."/".$contractId);
+                return;
+
+            }
+
+        }
         if ($member->freezeContract($contractId,$freezeDate))
         {
             $_SESSION['Gym'] = serialize($gym);

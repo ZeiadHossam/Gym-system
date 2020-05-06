@@ -62,7 +62,7 @@ include "freeze.php";
                             <label>Contract Type </label>
 
                             <select class="form-control" name="contracttype" id="contracttypes"
-                                    onfocusout="validate_ContractType()"
+                                    onfocusout="validate_ContractType()" onchange="setEndDate()"
                                     onload="enabling_Contract_Types()">
                                 <option class="hidden" disabled>Select Contract Type
                                 </option>
@@ -102,7 +102,7 @@ include "freeze.php";
                         <div class="form-group">
                             <label for="startdate">Membership Start Date</label>
                             <input type="date" class="form-control" value="<?php echo $contract->getStartdate(); ?>"
-                                   id="startdate"
+                                   id="startdate" onchange="setEndDate()"
                                    onfocusout="validate_startdate()" name="MemberShipStart"
                             >
                             <span class="message" id="startdate_message"></span>

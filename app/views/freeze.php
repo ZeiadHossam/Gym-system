@@ -7,9 +7,9 @@
                     <span aria-hidden="true">×</span></button>
             </div>
             <?php if(isset($freezeId)){?>
-            <form action="/GYM/contract/extendFreeze/<?php echo $data['branchId']."/".$data['memberId']."/".$data['contractId']."/".$freezeId;?>" enctype="multipart/form-data" method="post">
+            <form action="/GYM/contract/extendFreeze/<?php echo $data['branchId']."/".$data['memberId']."/".$data['contractId']."/".$freezeId;?>" enctype="multipart/form-data" onsubmit="return submit_Freeze()" method="post">
                 <?php } else { ?>
-            <form action="/GYM/contract/freezeContract/<?php echo $data['branchId']."/".$data['memberId']."/".$data['contractId'];?>" enctype="multipart/form-data" method="post">
+            <form action="/GYM/contract/freezeContract/<?php echo $data['branchId']."/".$data['memberId']."/".$data['contractId'];?>" enctype="multipart/form-data" onsubmit="return submit_Freeze()" method="post">
                 <?php  } ?>
                 <div class="modal-body">
                     <div class="form-group">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label for="freezeTo">Freeze To</label>
-                        <input type="date" class="form-control" name="freezeToDate"  id="freezeToDate">
+                        <input type="date" class="form-control" name="freezeToDate"  id="freezeToDate" onfocusout="remainingFreeze()">
                             <span class="message" id="Freezeto_message"></span>
 
                     </div>

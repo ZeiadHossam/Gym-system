@@ -1,88 +1,131 @@
-
-function getContractTypes(){
+function getContractTypes() {
     var contractTypes = document.getElementById('contracttypes');
-    contractTypes.disabled=false;
-    var packagetype=document.getElementById('packagetype');
-    var packagetypeid=packagetype.options[packagetype.selectedIndex].value;
+    contractTypes.disabled = false;
+    var packagetype = document.getElementById('packagetype');
+    var packagetypeid = packagetype.options[packagetype.selectedIndex].value;
     $.ajax({
         type: "POST",
         url: "/GYM/contract/getContractTypes",
         data: {
-            packageId:packagetypeid,
+            packageId: packagetypeid,
         },
-        datatype : "json",
-        success: function(result) {
+        datatype: "json",
+        success: function (result) {
             $("#contracttypes").html(result);
         },
 
     });
 }
-function deletingContract(branchid,memberid,contractid) {
+
+function setEndDate() {
+    var startdate = document.getElementById('startdate');
+    var enddate = document.getElementById('enddate');
+    var contracttypes = document.getElementById('contracttypes');
+    if (contracttypes.selectedIndex != 0) {
+        var CT = contracttypes.options[contracttypes.selectedIndex].innerText;
+
+        var splitter = CT.split(" ");
+        var packageType = splitter[1];
+        if (packageType != "Sessions") {
+            var sDate = new Date(startdate.value);
+            enddate.disabled = true;
+            var numberOfDaysToAdd = parseInt(splitter[0]);
+            if (packageType == "Days") {
+                sDate.setDate(sDate.getDate() + numberOfDaysToAdd);
+
+            } else {
+                sDate.setDate(sDate.getDate() + numberOfDaysToAdd * 30);
+
+            }
+            var yy = sDate.getFullYear();
+            var mm = sDate.getMonth() + 1;
+            var dd = sDate.getDate();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            var finalEndDate = yy + "-" + mm + "-" + dd;
+            enddate.value = finalEndDate;
+
+        } else {
+            enddate.disabled = false;
+
+        }
+    }
+
+
+}
+
+function deletingContract(branchid, memberid, contractid) {
     $('#modal-delete').modal('show');
-    $('#delete-btn').on('click',function () {
-        window.location.href='/GYM/contract/deleteContract/'+branchid+'/'+memberid+"/"+contractid;
+    $('#delete-btn').on('click', function () {
+        window.location.href = '/GYM/contract/deleteContract/' + branchid + '/' + memberid + "/" + contractid;
     });
 
 }
+
 function freezingContract() {
     $('#modal-freeze').modal('show');
 
 }
+
 function extendfreezing() {
     $('#modal-freeze').modal('show');
 
 }
-function stopFreeze(branchid,memberid,contractid) {
-    window.location.href='/GYM/contract/stopFreeze/'+branchid+'/'+memberid+"/"+contractid;
+
+function stopFreeze(branchid, memberid, contractid) {
+    window.location.href = '/GYM/contract/stopFreeze/' + branchid + '/' + memberid + "/" + contractid;
 
 }
+
 function submittingaddContract() {
-    if (validate_PackageType()&& validate_ContractType() && validate_FreezeDays() && validate_Member() && validate_startdate()&&validate_enddate()&&validate_ContractsFees()&&validate_AmountPaid()&&validate_DueDate()&&validate_paymentMethodContract()&&validate_sales()) {
-    return true;
-    }
-    else {
+    if (validate_PackageType() && validate_ContractType() && validate_FreezeDays() && validate_Member() && validate_startdate() && validate_enddate() && validate_ContractsFees() && validate_AmountPaid() && validate_DueDate() && validate_paymentMethodContract() && validate_sales()) {
+        return true;
+    } else {
         return false;
     }
 }
 
 function enabling_Contract_Types() {
-    var packagetype=document.getElementById('packagetype');
+    var packagetype = document.getElementById('packagetype');
     var contractTypes = document.getElementById('contracttypes');
 
     if (packagetype.selectedIndex != 0) {
-        contractTypes.disabled=false;
+        contractTypes.disabled = false;
 
     }
 
 }
+
 function calcTotalAmount() {
     var fees = document.getElementById('fees').value;
     var discount = document.getElementById('discount').value;
     var totalAmount = document.getElementById('totalAmount');
-    if (fees != "")
-    {
+    if (fees != "") {
 
-        if (discount==0)
-        {
-            totalAmount.value=fees;
+        if (discount == 0) {
+            totalAmount.value = fees;
 
-        }
-        else {
-            var disAmount=fees*(discount/100);
-            totalAmount.value=fees-disAmount;
+        } else {
+            var disAmount = fees * (discount / 100);
+            totalAmount.value = fees - disAmount;
         }
     }
 }
+
 function calcAmountDue() {
     var amountPaid = document.getElementById('amountPaid').value;
     var totalAmount = document.getElementById('totalAmount').value;
     var amountDue = document.getElementById('amountDue');
-    if (amountPaid!="")
-    {
+    if (amountPaid != "") {
 
-        amountDue.value=totalAmount-amountPaid;
+        amountDue.value = totalAmount - amountPaid;
     }
 }
+
 function validate_PackageType() {
     var packagetype = document.getElementById('packagetype');
     var message = document.getElementById('packagetype_message');
@@ -94,6 +137,7 @@ function validate_PackageType() {
         return true;
     }
 }
+
 function validate_ContractType() {
     var contracttypes = document.getElementById('contracttypes');
     var message = document.getElementById('contracttypes_message');
@@ -105,6 +149,7 @@ function validate_ContractType() {
         return true;
     }
 }
+
 function validate_Member() {
     var member = document.getElementById('member');
     var message = document.getElementById('member_message');
@@ -116,6 +161,7 @@ function validate_Member() {
         return true;
     }
 }
+
 function validate_paymentMethodContract() {
     var paymentMethod = document.getElementById('paymentMethod');
     var message = document.getElementById('paymentMethod_message');
@@ -127,6 +173,7 @@ function validate_paymentMethodContract() {
         return true;
     }
 }
+
 function validate_sales() {
     var sales = document.getElementById('sales');
     var message = document.getElementById('sales_message');
@@ -138,10 +185,11 @@ function validate_sales() {
         return true;
     }
 }
+
 function validate_FreezeDays() {
     var freezeDays = document.getElementById('freezeDays').value;
     var message = document.getElementById('freezeDays_message');
-    if (freezeDays== "") {
+    if (freezeDays == "") {
         message.innerHTML = "*Freeze Days is required";
         return false;
     } else {
@@ -149,10 +197,11 @@ function validate_FreezeDays() {
         return true;
     }
 }
+
 function validate_ContractsFees() {
     var fees = document.getElementById('fees').value;
     var message = document.getElementById('fees_message');
-    if (fees== "") {
+    if (fees == "") {
         message.innerHTML = "*Contract Fees is required";
         return false;
     } else {
@@ -160,26 +209,25 @@ function validate_ContractsFees() {
         return true;
     }
 }
+
 function validate_AmountPaid() {
     var amountPaid = document.getElementById('amountPaid').value;
     var totalAmount = document.getElementById('totalAmount').value;
-    var amountPaidnum=parseInt(amountPaid);
-    var totalAmountnum=parseInt(totalAmount);
+    var amountPaidnum = parseInt(amountPaid);
+    var totalAmountnum = parseInt(totalAmount);
     var message = document.getElementById('amountPaid_message');
-    if (amountPaid== "") {
+    if (amountPaid == "") {
         message.innerHTML = "*Amount Paid is required";
         return false;
-    } else if (amountPaidnum>totalAmountnum)
-    {
+    } else if (amountPaidnum > totalAmountnum) {
         message.innerHTML = "*Amount Paid must be less than total amount";
         return false;
-    }
-
-    else {
+    } else {
         message.innerHTML = "";
         return true;
     }
 }
+
 function validate_startdate() {
     var startdate = document.getElementById('startdate').value;
     var enddate = document.getElementById('enddate').value;
@@ -187,31 +235,29 @@ function validate_startdate() {
     if (startdate == "") {
         message.innerHTML = "*Membership start date is required";
         return false;
-    }else if(enddate != "" && startdate>enddate)
-    {
+    } else if (enddate != "" && startdate > enddate) {
         message.innerHTML = "*Membership start date must start before membership ends";
         return false;
-    }
-
-    else {
+    } else {
         message.innerHTML = "";
         document.getElementById("enddate").setAttribute("min", startdate);
         return true;
     }
 }
+
 function validate_DueDate() {
     var amountDueDate = document.getElementById('amountDueDate').value;
     var message = document.getElementById('amountDueDate_message');
     var amountDue = document.getElementById('amountDue').value;
-    if (amountDueDate == ""&& amountDue!=0) {
+    if (amountDueDate == "" && amountDue != 0) {
         message.innerHTML = "*Amount Due Date is required";
         return false;
-    }
-    else {
+    } else {
         message.innerHTML = "";
         return true;
     }
 }
+
 function validate_enddate() {
     var startdate = document.getElementById('startdate').value;
     var enddate = document.getElementById('enddate').value;
@@ -228,32 +274,60 @@ function validate_enddate() {
         return true;
     }
 }
-     function validate_freeze_from() {
-         var freezeFromDate = document.getElementById('freezeFromDate').value;
-         var freezeToDate = document.getElementById('freezeToDate').value;
-         var contractStart = document.getElementById('startdate').value;
-         var contractEnd = document.getElementById('enddate').value;
-         var message = document.getElementById('FreezeStart_message');
+function submit_Freeze()
+{
+    if (validate_freeze_from()&&remainingFreeze())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+function validate_freeze_from() {
+    var freezeFromDate = document.getElementById('freezeFromDate').value;
+    var freezeToDate = document.getElementById('freezeToDate');
+    var contractStart = document.getElementById('startdate').value;
+    var contractEnd = document.getElementById('enddate').value;
+    var message = document.getElementById('FreezeStart_message');
+    freezeToDate.setAttribute("min",freezeFromDate);
 
+    if (freezeFromDate != "" && freezeFromDate < contractStart) {
+        message.innerHTML = "*freeze must start  after contract start  ";
+        return false;
 
-         if (freezeFromDate != "" && freezeFromDate < contractStart ) {
-             message.innerHTML = "*freeze must start  after contract start  ";
-             return false;
+    } else if (freezeFromDate != "" && freezeFromDate > contractEnd) {
+        message.innerHTML = "*freeze must start  before contract End Date  ";
+        return false;
 
-         }
-      else  if (freezeFromDate != "" && freezeFromDate > contractEnd ) {
-             message.innerHTML = "*freeze must start  before contract End Date  ";
-             return false;
+    } else {
+        message.innerHTML = "";
 
-         }
-         else {
-             message.innerHTML = "";
-
-             return true;
-         }
+        return true;
+    }
 }
 
-
+function remainingFreeze()
+{
+    var freezeFromDate = document.getElementById('freezeFromDate').value;
+    var freezeToDate = document.getElementById('freezeToDate').value;
+    var freezedays = document.getElementById('freezeDays').value;
+    var message = document.getElementById('Freezeto_message');
+    var FreezeFrom=new Date(freezeFromDate);
+    var FreezeTo=new Date(freezeToDate);
+    const diffTime = Math.abs(FreezeTo - FreezeFrom);
+    const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+    if (diffDays>freezedays)
+    {
+        message.innerHTML="*Remaining Freeze Days Are Only "+freezedays;
+        return false;
+    }
+    else {
+        message.innerHTML="";
+        return true;
+    }
+}
 
 
 

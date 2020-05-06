@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/memberAttendence.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/MemberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/MemberController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/viewmember.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/viewmember.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/ContractController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ContractController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/addcontract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/addcontract.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/editcontract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/editcontract.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/freeze.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/freeze.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/pages/ContractForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/ContractForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

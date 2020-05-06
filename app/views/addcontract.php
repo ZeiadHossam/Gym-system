@@ -47,7 +47,7 @@
                                                     <label>*Contract Type </label>
                                                     <select class="form-control" name="contracttype" id="contracttypes"
                                                             onfocusout="validate_ContractType()"
-                                                            onload="enabling_Contract_Types()"
+                                                            onload="enabling_Contract_Types()" onchange="setEndDate()"
                                                             disabled>
                                                         <option class="hidden" selected disabled>Select Contract Type
                                                         </option>
@@ -83,7 +83,7 @@
                                                 <div class="form-group">
                                                     <label for="membershipstarts">*Membership Starts</label>
                                                     <input type="date" class="form-control" id="startdate"
-                                                           onfocusout="validate_startdate()" name="MemberShipStart"
+                                                           onfocusout="validate_startdate();  setEndDate();" value="<?php echo date("Y-m-d"); ?>" name="MemberShipStart"
                                                     >
                                                     <span class="message" id="startdate_message"></span>
 
