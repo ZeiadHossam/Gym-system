@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="Reception:">
-      <change afterPath="$PROJECT_DIR$/app/controllers/ReportController.php" afterDir="false" />
+    <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/courier.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/courierb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/courierbi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/courieri.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/helvetica.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/helveticab.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/helveticabi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/helveticai.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/symbol.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/times.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/timesb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/timesbi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/timesi.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/font/zapfdingbats.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/fpdf.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/fpdf.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/cp1250.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/cp1251.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/cp1252.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/cp1253.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/cp1254.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/cp1255.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/cp1257.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/cp1258.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/cp874.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/iso-8859-1.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/iso-8859-11.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/iso-8859-15.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/iso-8859-16.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/iso-8859-2.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/iso-8859-4.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/iso-8859-5.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/iso-8859-7.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/iso-8859-9.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/koi8-r.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/koi8-u.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/makefont.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/FPDF/makefont/ttfparser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/activecontractreports.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/activecontracts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contractreports.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/expiredcontractreports.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/expiredcontracts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/sales.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/sales.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/salesreports.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/shared/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/trainerreports.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/trainers.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/viewcontract.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/viewcontract.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ReportController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +97,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/models/FPDF" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -80,6 +107,9 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xamp\htdocs\GYM\app\models\FPDF" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\GYM\app\views" />
       <recent name="C:\xampp\htdocs\GYM\Gym-system\Controller" />
@@ -274,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588650620949</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="reports">
+      <created>1588790386057</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1588790386057</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +383,8 @@
     <MESSAGE value="edit Contract" />
     <MESSAGE value="Reception &#10;viewFreezeContract" />
     <MESSAGE value="Reception:" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reception:" />
+    <MESSAGE value="reports" />
+    <option name="LAST_COMMIT_MESSAGE" value="reports" />
   </component>
   <component name="WindowStateProjectService">
     <state x="476" y="1" key="#PHP" timestamp="1585415264306">
@@ -384,10 +422,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="496" y="99" key="#database.php/0.0.1536.824@0.0.1536.824" timestamp="1585347199632" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1588789398331">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1588790383946">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588789398331" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588790383946" />
     <state x="100" y="100" width="1405" height="624" key="DiffContextDialog" timestamp="1588656286716">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -469,10 +507,10 @@
     </state>
     <state width="498" height="398" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1588543872955" />
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1587747307717" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588550903209">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588790393661">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588550903209" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588790393661" />
     <state x="581" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1588604779840">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -497,10 +535,10 @@
     </state>
     <state x="478" y="203" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1588736251987" />
     <state x="598" y="256" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587348713536" />
-    <state x="531" y="239" key="run.anything.popup" timestamp="1588630829949">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="425" y="189" key="run.anything.popup" timestamp="1588791256368">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588547584377" />
+    <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588791256368" />
     <state x="531" y="239" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588630829949" />
     <state x="539" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1588715994164">
       <screen x="0" y="0" width="1920" height="1040" />
