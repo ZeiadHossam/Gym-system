@@ -46,7 +46,7 @@
                 </li>
                 <?php } if ($pages[2]->get_access()=='1'){ ?>
                 <li class="nav-item">
-                    <a href="notifications.php" class="nav-link">
+                    <a href="/GYM/notification/showNotification" class="nav-link">
                         <i class="nav-icon fas fa-bell"></i>
                         <p>
                             Notifications

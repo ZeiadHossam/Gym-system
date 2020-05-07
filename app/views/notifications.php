@@ -1,4 +1,3 @@
-<?php include ("../shared/main.php") ?>
 <?php include ("viewnotification.php") ?>
  <section class="content">
 	<div class="container-fluid">
@@ -43,4 +42,3 @@
 		</div>
 	</div>
 </section>
-<?php include ("../shared/footer.php") ?>

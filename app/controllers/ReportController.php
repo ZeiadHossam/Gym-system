@@ -12,6 +12,11 @@ class ReportController extends Controller
         $this->viewHome("salesreports");
     }
     public function salesReport(){
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
+        $gym=$this->getGymData();
         require_once '../app/models/FPDF/fpdf.php';
         $system=$this->model("System");
         $employeeId=isset($_POST['empId']) ? $_POST['empId'] : NULL;
@@ -20,14 +25,28 @@ class ReportController extends Controller
         $pdf=new FPDF();
         $header = array('Employee Id', 'First Name', 'Last Name', 'Mobile Phone','Total Contracts','Total Amount','Total Paid','Total Remaining','Last Contract');
         $data = $system->getSalesReport($employeeId,$firstName,$lastName);
-        $pdf->SetFont('Arial','',7);
+        $pdf->SetFont('Arial','',10);
         $pdf->AddPage();
+        $pdf->Image('../public/img/'.$gym->getGymImage(),165,10,20);
+        $Y=$pdf->GetY();
+        $x=$pdf->GetX();
+        $pdf->SetXY($x+145,$Y+10);
+        $pdf->Cell(40,20,$gym->getGymName(),'','','C');
+
+        $pdf->SetXY($x,$Y+30);
+
+        $pdf->SetFont('Arial','',7);
         $pdf->FancyTable($header,$data);
         $pdf->Output();
 
     }
     public function contractsReport()
     {
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
+        $gym=$this->getGymData();
         require_once '../app/models/FPDF/fpdf.php';
         $system=$this->model("System");
         $contractId=isset($_POST['contractId']) ? $_POST['contractId'] : NULL;
@@ -43,8 +62,15 @@ class ReportController extends Controller
         $pdf=new FPDF();
         $header = array('Member Id', 'First Name', 'Last Name', 'Mobile Phone','Date Of Birth','Contract Id','Package Type','Contract Type','Starts','Expires','Remaining','Status');
         $data = $system->getContractsReport($contractId,$memberId,$firstName,$lastName,$packageType,$contractType,$memExpiresFrom,$memExpiresTo,$AddedFrom,$AddedTo);
-        $pdf->SetFont('Arial','',6);
+        $pdf->SetFont('Arial','',10);
         $pdf->AddPage();
+        $pdf->Image('../public/img/'.$gym->getGymImage(),165,10,20);
+        $Y=$pdf->GetY();
+        $x=$pdf->GetX();
+        $pdf->SetXY($x+145,$Y+10);
+        $pdf->Cell(40,20,$gym->getGymName(),'','','C');
+        $pdf->SetFont('Arial','',6);
+        $pdf->SetXY($x,$Y+30);
         $pdf->FancyTable($header,$data);
         $pdf->Output();
     }

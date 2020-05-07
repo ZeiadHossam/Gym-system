@@ -196,7 +196,10 @@ class System
     public function getSalesReport($employeeId, $firstName, $lastName)
     {
         $db = new database();
-        session_start();
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
         $data = array();
         $gym = unserialize($_SESSION['Gym']);
         $employeesSql = "SELECT employee.id,firstName,lastName,mobilePhone from employee INNER JOIN person ON employee.personId=person.id INNER JOIN branch ON person.branchId=branch.id INNER JOIN gym ON branch.gymID=gym.id WHERE gym.id=" . $gym->getId();
@@ -237,7 +240,10 @@ class System
     public function getContractsReport($contractId, $memberId, $firstName, $lastName, $packageType, $contractType, $memExpiresFrom, $memExpiresTo, $AddedFrom, $AddedTo)
     {
         $db = new database();
-        session_start();
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
         $data = array();
         $gym = unserialize($_SESSION['Gym']);
         $membersSql = "SELECT member.id,firstName,lastName,mobilePhone,birthDay from member INNER JOIN person ON member.personId=person.id INNER JOIN branch ON person.branchId=branch.id INNER JOIN gym ON branch.gymID=gym.id WHERE gym.id=" . $gym->getId();
