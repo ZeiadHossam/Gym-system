@@ -62,7 +62,26 @@ class ContractController extends Controller
         $contract = $this->model("Contract");
         $contract->setPackage($newpackage);
         $contract->setStartdate(htmlentities($_POST['MemberShipStart']));
-        $contract->setEnddate(htmlentities($_POST['MemberShipEnd']));
+        if ($package->getPeriodType()!="Sessions")
+        {
+            if ($package->getPeriodType()=="Days")
+            {
+                $startTime=strtotime($contract->getStartDate());
+                $endDate=strtotime("+".$packageperiod->getPeriod()." day",$startTime);
+                $contract->setEnddate(date("Y-m-d",$endDate));
+            }
+            else
+            {
+                $startTime=strtotime($contract->getStartDate());
+                $endDate=strtotime("+".($packageperiod->getPeriod()*30)." day",$startTime);
+                $contract->setEnddate(date("Y-m-d",$endDate));
+            }
+        }
+        else
+        {
+            $contract->setEnddate(htmlentities($_POST['MemberShipEnd']));
+
+        }
         $contract->setRemainfreezedays(htmlentities($_POST['freezedays']));
         $contract->setPaymentDiscount($_POST['Discount']);
         $contract->setAmountPaid(htmlentities($_POST['AmountPaid']));
@@ -88,7 +107,7 @@ class ContractController extends Controller
         $branchId = $ids[0];
         $memberId = $ids[1];
         $contract->setRemaningPackagePeriod($packageperiod->getPeriod());
-        $issueDate = $_POST['MemberShipEnd'];
+        $issueDate = $contract->getEndDate();
         $issueDate = strtotime($issueDate);
         $issueDate = strtotime("-7 day", $issueDate);
         $issueDate = date('Y/m/d', $issueDate);
@@ -147,7 +166,37 @@ class ContractController extends Controller
         $contract->setPackage($newpackage);
         $contract->setRemainfreezedays(htmlentities($_POST['freezedays']));
         $contract->setStartdate(htmlentities($_POST['MemberShipStart']));
-        $contract->setEnddate(htmlentities($_POST['MemberShipEnd']));
+        if ($package->getPeriodType()!="Sessions")
+        {
+            if ($package->getPeriodType()=="Days")
+            {
+                $startTime=strtotime($contract->getStartDate());
+                $endDate=strtotime("+".$packageperiod->getPeriod()." day",$startTime);
+                $contract->setEnddate(date("Y-m-d",$endDate));
+            }
+            else
+            {
+                $startTime=strtotime($contract->getStartDate());
+                $endDate=strtotime("+".($packageperiod->getPeriod()*30)." day",$startTime);
+                $contract->setEnddate(date("Y-m-d",$endDate));
+            }
+        }
+        else
+        {
+            $contract->setEnddate(htmlentities($_POST['MemberShipEnd']));
+
+        }
+        $todayDate = date("Y-m-d");
+        if ($package->getPeriodType() == "Days") {
+            $datediff = strtotime($contract->getEndDate()) - strtotime($todayDate);
+            $datediff = round($datediff / (60 * 60 * 24));
+            $contract->setRemaningPackagePeriod($datediff);
+        } else if ($package->getPeriodType() == "Months") {
+            $diff = abs(strtotime($contract->getEndDate()) - strtotime($todayDate));
+            $years = floor($diff / (365 * 60 * 60 * 24));
+            $datediff = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+            $contract->setRemaningPackagePeriod($datediff);
+        }
         $contract->setPaymentFees(htmlentities($_POST['ContractFees']));
         $contract->setPaymentDiscount($_POST['Discount']);
         $contract->setAmountPaid(htmlentities($_POST['AmountPaid']));
@@ -158,10 +207,10 @@ class ContractController extends Controller
         $newpaymentMethod->setName($paymentmethod->getName());
         $contract->setPaymentMethod($newpaymentMethod);
         $contract->setAmountDateDue(htmlentities($_POST['AmountDueDate']));
-        $issueDate = $_POST['MemberShipEnd'];
+        $issueDate = $contract->getEndDate();
         $issueDate = strtotime($issueDate);
         $issueDate = strtotime("-7 day", $issueDate);
-        $issueDate = date('Y/m/d', $issueDate);
+        $issueDate = date('Y-m-d', $issueDate);
         $contract->setIssueDate($issueDate);
 
         if ($_POST['Discount'] == 0) {

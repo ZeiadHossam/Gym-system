@@ -2,6 +2,7 @@
 include_once 'Gym.php';
 include_once 'Database.php';
 include_once 'Branch.php';
+include_once 'Notification.php';
 
 class System
 {
@@ -336,5 +337,51 @@ class System
         }
 
         return $data;
+    }
+    public function getAllNotifications()
+    {
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
+        $notifications=array();
+
+        $gym = unserialize($_SESSION['Gym']);
+        $todayDate = date("Y-m-d");
+        $todayDate = strtotime($todayDate);
+        foreach ($gym->getBranchs() as $branch)
+        {
+            foreach ($branch->getMembers() as $member)
+            {
+                if (strtotime($member->getBirthday())==$todayDate)
+                {
+                    $notification=new Notification();
+                    $notification->setTitle("BirthDay");
+                    $notification->setMessege("Today is the birthday of Member : '".$member->getFirstName()." ".$member->getLastName()."'");
+                    $notifications[]=$notification;
+                }
+                foreach ($member->getContracts() as $contract)
+                {
+                    if ($todayDate>=strtotime($contract->getIssueDate())&&$todayDate<strtotime($contract->getEndDate()))
+                    {
+                        $notification=new Notification();
+                        $notification->setTitle("Contract Expiry");
+                        $notification->setMessege("Contract of ID : (".$contract->getId().") of Member : '".$member->getFirstName()." ".$member->getLastName()."' is about to expire");
+                        $notifications[]=$notification;
+                    }
+                }
+            }
+            foreach ($branch->getEmployees() as $employee)
+            {
+                if (strtotime($employee->getBirthday())==$todayDate)
+                {
+                    $notification=new Notification();
+                    $notification->setTitle("BirthDay");
+                    $notification->setMessege("Today is the birthday of Employee : '".$employee->getFirstName()." ".$employee->getLastName()."'");
+                    $notifications[]=$notification;
+                }
+            }
+        }
+        return $notifications;
     }
 }

@@ -1,6 +1,7 @@
 <!-- Content Header (Page header) -->
 <?php $recentlyAddedContracts=$data['recentlyAddedContracts']; ?>
 <?php $recentlyExpiredContracts=$data['recentlyExpiredContracts']; ?>
+<?php $notifications=$data['notifications']; ?>
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -47,7 +48,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3><?php echo count($notifications) ?></h3>
 
                         <p>Notifications</p>
                     </div>
@@ -150,36 +151,18 @@
                              aria-labelledby="custom-tabs-three-messages-tab">
                             <table id="custTable" class="table table-bordered table-striped">
                                 <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Purpose</th>
-                                    <th>Telephone</th>
-                                    <th>Actions</th>
+                                <tr class="notif">
+                                    <th>Title</th>
+                                    <th>Message</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Ziad</td>
-                                    <td>Member</td>
-                                    <td>BirthDay</td>
-                                    <td>01111111111</td>
-                                    <td>
-                                        <button type="button" class="btn btn-block btn-secondary btn-sm">View</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Tarek</td>
-                                    <td>Member</td>
-                                    <td>Contract Exipry</td>
-                                    <td>02222222222</td>
-                                    <td>
-                                        <button type="button" class="btn btn-block btn-secondary btn-sm">View</button>
-                                    </td>
-                                </tr>
+                                <?php foreach ($notifications as $notification){?>
+                                    <tr class="notif">
+                                        <td><?php echo $notification->getTitle(); ?></td>
+                                        <td><?php echo  $notification->getMessege(); ?></td>
+                                    </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
 

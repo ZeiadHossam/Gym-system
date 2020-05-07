@@ -1,4 +1,6 @@
-<?php include ("viewnotification.php") ?>
+<?php include ("viewnotification.php");
+$notifications=$data["notifications"];
+?>
  <section class="content">
 	<div class="container-fluid">
 		<br>
@@ -10,32 +12,18 @@
 		<div class="row">
 			<table id="custTable" class="addmembertable table table-bordered table-striped">
 				<thead>
-					<tr>
+					<tr class="notif">
 						<th>Title</th>
 						<th>Message</th>
-						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Birthday</td>
-						<td>mahmoud's birthDay</td>
-						<td>
-							
-						<button type="button" class="btn btn-block btn-secondary btn-sm" data-backdrop="static" data-toggle="modal" data-target="#viewnotification">
-							View
-						</button>
-						</td>
+                <?php foreach ($notifications as $notification){?>
+					<tr class="notif">
+						<td><?php echo $notification->getTitle(); ?></td>
+						<td><?php echo  $notification->getMessege(); ?></td>
 					</tr>
-					<tr>
-						<td>member expiry</td>
-						<td>mahmoud's Contract is about to expire</td>
-						<td>
-							<button type="button" class="btn btn-block btn-secondary btn-sm" data-backdrop="static" data-toggle="modal" data-target="#viewnotification">
-								View
-							</button>
-						</td>
-					</tr>
+					<?php } ?>
 				</tbody>
 			</table>
 

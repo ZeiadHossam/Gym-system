@@ -44,7 +44,7 @@
                         <td><?php echo $member->getMobilePhone();?></td>
                         <td><?php echo $contract ->getPackage()->getName();?></td>
                         <td><?php echo $contract ->getPackage()->getPeriod()->getPeriod()."-".$contract->getPackage()->getPeriodType();?></td>
-                        <td><?php echo $contract ->getIssueDate();?></td>
+                        <td><?php echo $contract ->getEndDate();?></td>
                         <td><?php if ($contract->getStatus() == 1) {
                                 echo "Not Started";
                             } elseif ($contract->getStatus() == 2) {

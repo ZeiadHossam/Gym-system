@@ -8,9 +8,11 @@ class HomeController extends Controller
         $system=$this->model("System");
         $recentlyAddedContracts=$system->getrecentlyAddedContracts();
         $recentlyExpiredContracts=$system->getrecentlyExpiredContracts();
+        $notifications=$system->getAllNotifications();
             $this->viewHome("index",[
                 "recentlyAddedContracts"=>$recentlyAddedContracts,
-                "recentlyExpiredContracts"=>$recentlyExpiredContracts
+                "recentlyExpiredContracts"=>$recentlyExpiredContracts,
+                "notifications"=>$notifications
             ]);
     }
     public function showprofile()
