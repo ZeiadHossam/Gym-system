@@ -380,8 +380,7 @@ function AddPage($orientation='', $size='', $rotation=0)
 		{
 			foreach ($row as $rowData)
 			{
-
-				$this->Cell($w,6,$rowData,'LR',0,'L',$fill);
+				$this->Cell($w,6,$rowData,'LR',0,'C',$fill);
 			}
 
 			$this->Ln();

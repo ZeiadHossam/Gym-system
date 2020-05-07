@@ -267,7 +267,20 @@ class Member extends Person
                     $this->setContracts($contract->getId(), $contract);
                     $attendanceDate = array();
                     $this->setAttendance($contract->getId(), $attendanceDate);
-
+                    $todayDate = date("Y/m/d");
+                    $todayDate = strtotime($todayDate);
+                    $startDate = strtotime($contract->getStartdate());
+                    $endDate = strtotime($contract->getEnddate());
+                    if($contract->getRemaningPackagePeriod()==0){
+                        $contract->setStatus('4');
+                    }
+                    else if ($todayDate < $startDate) {
+                        $contract->setStatus('1');
+                    } else if ($todayDate >= $startDate && $todayDate <= $endDate) {
+                        $contract->setStatus('2');
+                    } else if ($todayDate > $endDate) {
+                        $contract->setStatus('4');
+                    }
                     $db->closeconn();
                     return true;
                 }

@@ -97,6 +97,7 @@ class ContractController extends Controller
 
         if ($gym->getBranchs()[$branchId]->getMembers()[$memberId]->addContract($contract, $sales[1])) {
 
+
             $_SESSION['Gym'] = serialize($gym);
             $_SESSION['successMessege'] = "Added Successfully";
             $this->redirect("contract/viewContracts");
@@ -263,5 +264,84 @@ class ContractController extends Controller
             $_SESSION['errormessege'] = "There was a problem while extending Freezing ";
             $this->previousPage();
         }
+    }
+    public function showReceipt($branchId,$memberId,$contractId)
+    {
+        session_start();
+        $gym=$this->getGymData();
+        $member=$gym->getBranchs()[$branchId]->getMembers()[$memberId];
+        $this->printReceipt($member,$contractId);
+    }
+    public function printReceipt($member,$contractId)
+    {
+        $contract=$member->getContracts()[$contractId];
+        $packageType=$contract->getPackage()->getName();
+        $contractType=$contract->getPackage()->getPeriod()->getPeriod()." ".$contract->getPackage()->getPeriodType();
+        $FreezeDays=$contract->getRemainfreezedays();
+        $startDate=$contract->getStartDate();
+        $endDate=$contract->getEndDate();
+        $remainingPeriod=$contract->getRemaningPackagePeriod()." ".$contract->getPackage()->getPeriodType();
+        $fees=$contract->getPaymentFees()." LE";
+        $discount=$contract->getPaymentDiscount()."%";
+        $totalAmount=$contract->getTotalAmount()." LE";
+        $amountPaid=$contract->getAmountPaid()." LE";
+        $amountDue=$contract->getAmountDue()." LE";
+        $dueDate=$contract->getAmountDateDue();
+        $paymentMethod=$contract->getPaymentMethod()->getName();
+        require_once '../app/models/FPDF/fpdf.php';
+        $pdf=new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial','B',16);
+        $pdf->Cell(80);
+        $pdf->Cell(40,20,'Contract Receipt ID: '.$contractId,'','','C');
+        $pdf->Ln();
+        $pdf->SetFont('helvetica','I',10);
+        $pdf->Cell(190,7,'Contract Details',1,2,'C');
+        $pdf->SetFont('helvetica','',10);
+        $Y=$pdf->GetY();
+        $pdf->MultiCell(95,8," Package Type : ".$packageType."\n Contract Type : ".$contractType."\n Freeze Days : ".$FreezeDays,"LRB","1");
+        $x=$pdf->GetX();
+        $pdf->SetXY($x+95,$Y);
+        $pdf->SetFillColor(255,255,255);
+        $pdf->MultiCell(95,8,' Start Date: '.$startDate."\n Expiry Date : ".$endDate."\n Remaining Period : ".$remainingPeriod,"LRB","1");
+        $Y=$pdf->GetY();
+        $pdf->SetXY($x,$Y);
+        $pdf->Ln();
+        $pdf->Cell(190,7,'Member Details',1,2,'C');
+        $Y=$pdf->GetY();
+        $pdf->MultiCell(95,8," Member ID : ".$member->getId()."\n First Name : ".$member->getFirstName(),"LRB","1");
+        $x=$pdf->GetX();
+        $pdf->SetXY($x+95,$Y);
+        $pdf->MultiCell(95,8,' Mobile Phone : '.$member->getMobilePhone()."\n Last Name : ".$member->getLastName(),"LRB","1");
+        $pdf->Ln();
+        $pdf->SetFillColor(235,235,235);
+        $pdf->Cell(189,7,'Payment Details',1,2,'C');
+
+        $pdf->Cell(27,10,'Fees',1,0,'C',1);
+        $pdf->Cell(27,10,'Discount',1,0,'C',1);
+        $pdf->Cell(27,10,'Total Amount',1,0,'C',1);
+        $pdf->Cell(27,10,'Amount Paid',1,0,'C',1);
+        $pdf->Cell(27,10,'Amount Due',1,0,'C',1);
+        $pdf->Cell(27,10,'Due Date',1,0,'C',1);
+        $pdf->Cell(27,10,'Method',1,0,'C',1);
+        $Y=$pdf->GetY();
+        $pdf->SetXY($x,$Y+10);
+        $pdf->Cell(27,10,$fees,1,0,'C',0);
+        $pdf->Cell(27,10,$discount,1,0,'C',0);
+        $pdf->Cell(27,10,$totalAmount,1,0,'C',0);
+        $pdf->Cell(27,10,$amountPaid,1,0,'C',0);
+        $pdf->Cell(27,10,$amountDue,1,0,'C',0);
+        $pdf->Cell(27,10,$dueDate,1,0,'C',0);
+        $pdf->Cell(27,10,$paymentMethod,1,0,'C',0);
+        $pdf->Ln();
+        $Y=$pdf->GetY();
+        $pdf->SetXY($x+84,$Y+10);
+        $Y=$pdf->GetY();
+        $pdf->SetFont('helvetica','UB',10);
+        $pdf->Cell(27,10,"Added By",'',0,'C',0);
+        $pdf->SetXY($x+84,$Y+10);
+        $pdf->SetFont('helvetica','',10);
+        $pdf->Cell(27,10,$contract->getSales(),'',0,'C',0);
+        $pdf->Output();
     }
 }
