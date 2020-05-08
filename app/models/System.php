@@ -271,7 +271,7 @@ class System
         $todayDatetime = strtotime($todayDate);
 
         while ($memberrow = mysqli_fetch_assoc($membersData)) {
-            $contractSql = "SELECT contract.id,packagetype.name,packageperiod.period,packagetype.type,contract.startDate,contract.endDate,remainingPackagePeriod from contract INNER JOIN packageperiod ON contract.packageId=packageperiod.id INNER JOIN packagetype ON packageperiod.packageTypeId=packagetype.id  WHERE memberId=" . $memberrow['id'];
+            $contractSql = "SELECT contract.id,packagetype.name,packageperiod.period,packagetype.type,contract.startDate,contract.endDate,remainingPackagePeriod from contract INNER JOIN packageperiod ON contract.packageId=packageperiod.id INNER JOIN packagetype ON packageperiod.packageTypeId=packagetype.id  WHERE contract.isDeleted=0 AND memberId=" . $memberrow['id'];
             if ($contractId != NULL) {
                 $contractSql .= " AND contract.id='" . $contractId . "'";
             }
