@@ -347,13 +347,13 @@ class System
         $notifications=array();
 
         $gym = unserialize($_SESSION['Gym']);
-        $todayDate = date("Y-m-d");
+        $todayDate = date("m-d");
         $todayDate = strtotime($todayDate);
         foreach ($gym->getBranchs() as $branch)
         {
             foreach ($branch->getMembers() as $member)
             {
-                if (strtotime($member->getBirthday())==$todayDate)
+                if (strtotime(date("m-d",strtotime($member->getBirthday())))==$todayDate)
                 {
                     $notification=new Notification();
                     $notification->setTitle("BirthDay");
@@ -373,7 +373,7 @@ class System
             }
             foreach ($branch->getEmployees() as $employee)
             {
-                if (strtotime($employee->getBirthday())==$todayDate)
+                if (strtotime(date("m-d",strtotime($employee->getBirthday())))==$todayDate)
                 {
                     $notification=new Notification();
                     $notification->setTitle("BirthDay");
