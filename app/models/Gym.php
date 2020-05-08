@@ -20,7 +20,7 @@ class Gym
     {
         $this->gymImage = $gymImage;
     }
-
+    private static $UniqueInstance=null;
     private $id;
     private $gymName;
     private $gymImage;
@@ -30,7 +30,7 @@ class Gym
     private $packages;
     private $owner;
 
-    function __construct()
+    private function __construct()
     {
         $this->branches = array();
         $this->userTypes = array();
@@ -38,7 +38,14 @@ class Gym
         $this->paymentMethods = array();
         $this->owner = new Employee();
     }
-
+    public static function getInstance()
+    {
+        if (self::$UniqueInstance==null)
+        {
+            self::$UniqueInstance=new Gym();
+        }
+        return self::$UniqueInstance;
+    }
 
     public function getOwner()
     {

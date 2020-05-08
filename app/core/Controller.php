@@ -49,7 +49,8 @@ class Controller
     }
     public function getGymData()
     {
-        $gym=$this->model("Gym");
+        require_once '../app/models/Gym.php';
+        $gym=Gym::getInstance();
         $gym=unserialize($_SESSION['Gym']);
         return $gym;
     }

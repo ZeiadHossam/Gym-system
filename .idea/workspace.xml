@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Gym.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Gym.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/System.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/System.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -488,16 +490,16 @@
     </state>
     <state x="578" y="328" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1588655666306" />
     <state x="723" y="414" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587761863833" />
-    <state x="473" y="51" width="740" height="721" key="find.popup" timestamp="1588653307584">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="507" y="30" width="737" height="909" key="find.popup" timestamp="1588904365063">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="473" y="51" width="740" height="721" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1588653307584" />
-    <state x="591" y="65" width="737" height="909" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588487736721" />
-    <state x="478" y="203" key="git4idea.merge.GitPullDialog" timestamp="1588736251987">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="507" y="30" width="737" height="909" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588904365063" />
+    <state x="598" y="256" key="git4idea.merge.GitPullDialog" timestamp="1588902495700">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="478" y="203" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1588736251987" />
-    <state x="598" y="256" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587348713536" />
+    <state x="598" y="256" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588902495700" />
     <state x="531" y="239" width="672" height="677" key="run.anything.popup" timestamp="1588886906676">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

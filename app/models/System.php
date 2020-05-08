@@ -29,7 +29,7 @@ class System
         $db = new Database();
         $gymName = $db->getMysqli()->real_escape_string($gymName);
         $gymimage = $db->getMysqli()->real_escape_string($gymimage);
-        $gym = new Gym();
+        $gym = Gym::getInstance();
         $sql = "INSERT INTO gym (name,image) VALUE ('$gymName','$gymimage');";
         if ($db->insert($sql)) {
 
@@ -110,7 +110,7 @@ class System
         $bId = $data['branchId'];
         $empId = $data['id'];
         $db = new database();
-        $gym = new Gym();
+        $gym = Gym::getInstance();
         if ($bId == NULL) {
             $gymdataSql = "SELECT * FROM gym WHERE ownerId=" . $empId;
             $gymdata = $db->select($gymdataSql);
@@ -353,7 +353,7 @@ class System
         {
             foreach ($branch->getMembers() as $member)
             {
-                if (strtotime(date("m-d",strtotime($member->getBirthday())))==$todayDate)
+                if (date('m-d') == substr($member->getBirthday(),5,5))
                 {
                     $notification=new Notification();
                     $notification->setTitle("BirthDay");
@@ -373,7 +373,7 @@ class System
             }
             foreach ($branch->getEmployees() as $employee)
             {
-                if (strtotime(date("m-d",strtotime($employee->getBirthday())))==$todayDate)
+                if (date('m-d') == substr($employee->getBirthday(),5,5))
                 {
                     $notification=new Notification();
                     $notification->setTitle("BirthDay");
