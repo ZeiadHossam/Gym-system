@@ -68,11 +68,20 @@ class System
             $branchDeletionSql = "SELECT isDeleted FROM branch WHERE id=" . $branchId;
             $branchDeletion = $db->select($branchDeletionSql);
             if ($branchDeletion['isDeleted'] == '0') {
-                $gymIdSql = "SELECT gymId FROM branch WHERE id=" . $branchId;
-                $gymId = $db->select($gymIdSql);
-                $Activesql = "SELECT isActive FROM gym WHERE id=" . $gymId['gymId'];
-                $Activity = $db->select($Activesql);
-                $isValid = $Activity['isActive'];
+                $userTypeDeletionSql = "SELECT type.isDeleted FROM type INNER JOIN employee ON employee.typeId=type.id WHERE employee.id=" . $ownerId;
+                $userTypeDeletion = $db->select($userTypeDeletionSql);
+                if ($userTypeDeletion['isDeleted'] == '0') {
+
+                    $gymIdSql = "SELECT gymId FROM branch WHERE id=" . $branchId;
+                    $gymId = $db->select($gymIdSql);
+                    $Activesql = "SELECT isActive FROM gym WHERE id=" . $gymId['gymId'];
+                    $Activity = $db->select($Activesql);
+                    $isValid = $Activity['isActive'];
+                }
+                else
+                {
+                    $isValid='0';
+                }
             } else {
                 $isValid = '0';
             }
