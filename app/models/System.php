@@ -212,7 +212,7 @@ class System
         }
         $data = array();
         $gym = unserialize($_SESSION['Gym']);
-        $employeesSql = "SELECT employee.id,firstName,lastName,mobilePhone from employee INNER JOIN person ON employee.personId=person.id INNER JOIN branch ON person.branchId=branch.id INNER JOIN gym ON branch.gymID=gym.id WHERE gym.id=" . $gym->getId();
+        $employeesSql = "SELECT employee.id,firstName,lastName,mobilePhone from employee INNER JOIN person ON employee.personId=person.id INNER JOIN branch ON person.branchId=branch.id INNER JOIN gym ON branch.gymID=gym.id WHERE person.isDeleted=0 AND gym.id=" . $gym->getId();
         if ($employeeId != NULL) {
             $employeesSql .= " AND employee.id='" . $employeeId . "'";
         }
@@ -224,7 +224,7 @@ class System
         }
         $employeesData = $db->selectArray($employeesSql);
         while ($row = mysqli_fetch_assoc($employeesData)) {
-            $contractSql = "SELECT COUNT(contract.id) as totalContracts,SUM(totalAmount) as totalAm,SUM(amountPaid) as amPaid , SUM(amountDue) as amDue from contract INNER JOIN payment ON contract.paymentId=payment.id WHERE sales=" . $row['id'];
+            $contractSql = "SELECT COUNT(contract.id) as totalContracts,SUM(totalAmount) as totalAm,SUM(amountPaid) as amPaid , SUM(amountDue) as amDue from contract INNER JOIN payment ON contract.paymentId=payment.id WHERE contract.isDeleted=0 AND sales=" . $row['id'];
             $contractData = $db->select($contractSql);
             $arraydata = array();
             $arraydata[] = $row['id'];
@@ -235,9 +235,9 @@ class System
             $arraydata[] = $contractData['totalAm'];
             $arraydata[] = $contractData['amPaid'];
             $arraydata[] = $contractData['amDue'];
-            $lastContractSql = "SELECT createdAt FROM contract WHERE sales=" . $row['id'] . " ORDER BY id DESC LIMIT 1;";
+            $lastContractSql = "SELECT createdAt FROM contract WHERE contract.isDeleted=0 AND sales=" . $row['id'] . " ORDER BY id DESC LIMIT 1;";
             $lastContractData = $db->select($lastContractSql);
-            if (isset($lastContractData['createdAt'])) {
+            if (isset($lastContractData['createdAt'])&&isset($contractData['totalAm'])) {
                 $lastContract = date("Y-m-d", strtotime($lastContractData['createdAt']));
                 $arraydata[] = $lastContract;
                 $data[] = $arraydata;
@@ -256,7 +256,7 @@ class System
         }
         $data = array();
         $gym = unserialize($_SESSION['Gym']);
-        $membersSql = "SELECT member.id,firstName,lastName,mobilePhone,birthDay from member INNER JOIN person ON member.personId=person.id INNER JOIN branch ON person.branchId=branch.id INNER JOIN gym ON branch.gymID=gym.id WHERE gym.id=" . $gym->getId();
+        $membersSql = "SELECT member.id,firstName,lastName,mobilePhone,birthDay from member INNER JOIN person ON member.personId=person.id INNER JOIN branch ON person.branchId=branch.id INNER JOIN gym ON branch.gymID=gym.id WHERE person.isDeleted=0 AND gym.id=" . $gym->getId();
         if ($memberId != NULL) {
             $membersSql .= " AND member.id='" . $memberId . "'";
         }
