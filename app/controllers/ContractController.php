@@ -106,7 +106,20 @@ class ContractController extends Controller
         $ids = explode('|', $_POST['member']);
         $branchId = $ids[0];
         $memberId = $ids[1];
-        $contract->setRemaningPackagePeriod($packageperiod->getPeriod());
+        if ($package->getPeriodType() == "Days") {
+            $datediff = strtotime($contract->getEndDate()) - strtotime($contract->getStartDate());
+            $datediff = round($datediff / (60 * 60 * 24));
+            $contract->setRemaningPackagePeriod($datediff);
+        } else if ($package->getPeriodType() == "Months") {
+            $diff = abs(strtotime($contract->getEndDate()) - strtotime($contract->getStartDate()));
+            $years = floor($diff / (365 * 60 * 60 * 24));
+            $datediff = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+            $contract->setRemaningPackagePeriod($datediff);
+        }
+        else
+        {
+            $contract->setRemaningPackagePeriod($packageperiod->getPeriod());
+        }
         $issueDate = $contract->getEndDate();
         $issueDate = strtotime($issueDate);
         $issueDate = strtotime("-7 day", $issueDate);
@@ -224,7 +237,7 @@ class ContractController extends Controller
         $amountDue = $totalAmount - $_POST['AmountPaid'];
         $contract->setAmountDue(htmlentities($amountDue));
 
-        if ($gym->getBranchs()[$branchId]->getMembers()[$memberId]->EditContract($contractId)) {
+            if ($gym->getBranchs()[$branchId]->getMembers()[$memberId]->EditContract($contractId)) {
 
             $_SESSION['Gym'] = serialize($gym);
             $_SESSION['successMessege'] = "Edited Successfully";

@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="check usertype">
+      <change afterPath="$PROJECT_DIR$/public/img/golds-gym-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/person.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/ContractController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ContractController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Member.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/System.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/System.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -501,11 +507,11 @@
     </state>
     <state x="478" y="203" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1588736251987" />
     <state x="598" y="256" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588967811766" />
-    <state x="531" y="239" width="672" height="677" key="run.anything.popup" timestamp="1588886906676">
+    <state x="531" y="239" width="672" height="677" key="run.anything.popup" timestamp="1589000048814">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588791256368" />
-    <state x="531" y="239" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588886906676" />
+    <state x="531" y="239" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589000048814" />
     <state x="539" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1588883607539">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

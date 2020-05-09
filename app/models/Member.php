@@ -176,14 +176,17 @@ class Member extends Person
             $contract->setRemainfreezedays($row['remainingFreezeDays']);
             $contract->setTotalAmount($row['totalAmount']);
             $package = new Package("period");
+
+
+
             if ($row['type'] == "Days") {
-                $datediff = strtotime($row['endDate']) - strtotime($todayDate);
+                $datediff = strtotime($contract->getEndDate()) - $todayDate;
                 $datediff = round($datediff / (60 * 60 * 24));
                 $contract->setRemaningPackagePeriod($datediff);
                 $updateDaysSql = "UPDATE contract SET remainingPackagePeriod=" . $datediff . " WHERE id=" . $row['cid'];
                 $db->insert($updateDaysSql);
             } else if ($row['type'] == "Months") {
-                $diff = abs(strtotime($row['endDate']) - strtotime($todayDate));
+                $diff = abs(strtotime($contract->getEndDate()) - $todayDate);
                 $years = floor($diff / (365 * 60 * 60 * 24));
                 $datediff = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
                 $contract->setRemaningPackagePeriod($datediff);

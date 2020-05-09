@@ -5,6 +5,14 @@ class HomeController extends Controller
 {
     public function index()
     {
+
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
+        if (isset($_SESSION))
+        {
+
         $system=$this->model("System");
         $recentlyAddedContracts=$system->getrecentlyAddedContracts();
         $recentlyExpiredContracts=$system->getrecentlyExpiredContracts();
@@ -13,7 +21,12 @@ class HomeController extends Controller
                 "recentlyAddedContracts"=>$recentlyAddedContracts,
                 "recentlyExpiredContracts"=>$recentlyExpiredContracts,
                 "notifications"=>$notifications
-            ]);
+            ]);}
+        else
+        {
+            $this->viewHome("index");
+
+        }
     }
     public function showprofile()
     {

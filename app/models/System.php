@@ -371,11 +371,11 @@ class System
                 }
                 foreach ($member->getContracts() as $contract)
                 {
-                    if ($todayDate>=strtotime($contract->getIssueDate())&&$todayDate<strtotime($contract->getEndDate()))
+                    if (strtotime(date("Y-m-d"))>=strtotime($contract->getIssueDate())&&strtotime(date("Y-m-d"))<strtotime($contract->getEndDate()))
                     {
                         $notification=new Notification();
                         $notification->setTitle("Contract Expiry");
-                        $notification->setMessege("Contract of ID : (".$contract->getId().") of Member : '".$member->getFirstName()." ".$member->getLastName()."' is about to expire");
+                        $notification->setMessege("Contract of ID : (".$contract->getId().") of Member : (".$member->getId().") '".$member->getFirstName()." ".$member->getLastName()."' is about to expire");
                         $notifications[]=$notification;
                     }
                 }

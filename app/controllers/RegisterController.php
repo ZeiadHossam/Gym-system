@@ -39,7 +39,7 @@ class RegisterController extends Controller
             $employee->getUsertype()->setAllpages($this->addOwnerType());
             if (file_exists($_FILES['gymimage']['tmp_name']) || is_uploaded_file($_FILES['gymimage']['tmp_name'])) {
                 $gymimg = $_FILES["gymimage"]["name"];
-                move_uploaded_file($_FILES["gymimage"]["tmp_name"], "/GYM/public/img/" . $gymimg);
+                move_uploaded_file($_FILES["gymimage"]["tmp_name"], "../public/img/" . $gymimg);
             }
             else
             {
@@ -47,7 +47,7 @@ class RegisterController extends Controller
             }
             if (file_exists($_FILES['image']['tmp_name']) || is_uploaded_file($_FILES['image']['tmp_name'])) {
                 $img = $_FILES["image"]["name"];
-                move_uploaded_file($_FILES["image"]["tmp_name"], "/GYM/public/img/" . $img);
+                move_uploaded_file($_FILES["image"]["tmp_name"], "../public/img/" . $img);
             }
             else
             {
