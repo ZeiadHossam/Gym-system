@@ -10,7 +10,7 @@ class HomeController extends Controller
         {
             session_start();
         }
-        if (isset($_SESSION))
+        if (isset($_SESSION['id']))
         {
 
         $system=$this->model("System");
