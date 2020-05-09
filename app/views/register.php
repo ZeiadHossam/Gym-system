@@ -18,10 +18,16 @@
     <link rel="stylesheet" href="../public/css/pages/Forms.css">
     <link rel="stylesheet" href="../public/plugins/toastr/toastr.min.css">
     <link rel="stylesheet" href="../public/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="../public/plugins/fontawesome-free/css/all.min.css">
 
 </head>
 <body class="hold-transition register-page">
+
+
+
 <div class="registerForm">
+    <a href="/GYM/security/logout" class="btn btn-md btn-default"><span
+            class="fa fa-angle-left"></span> Back</a>
     <div class="register-logo">
         <b>New</b> GYM
     </div>
