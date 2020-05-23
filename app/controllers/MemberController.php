@@ -69,7 +69,7 @@ class MemberController extends Controller
         $member->setEmergencyNumber(htmlentities(isset($_POST['emergency']) ? $_POST['emergency'] : ''));
         if (file_exists($_FILES['Pimage']['tmp_name']) || is_uploaded_file($_FILES['Pimage']['tmp_name'])) {
             $img = $_FILES["Pimage"]["name"];
-            move_uploaded_file($_FILES["Pimage"]["tmp_name"], "/GYM/public/img/" . $img);
+            move_uploaded_file($_FILES["Pimage"]["tmp_name"], "../public/img/" . $img);
         } else {
             $img = "DefaultPersonImage.png";
         }
@@ -120,7 +120,7 @@ class MemberController extends Controller
         $gym=$this->getGymData();
         if (file_exists($_FILES['img']['tmp_name']) || is_uploaded_file($_FILES['img']['tmp_name'])) {
             $img = $_FILES["img"]["name"];
-            move_uploaded_file($_FILES["img"]["tmp_name"], "/GYM/public/img/" . $img);
+            move_uploaded_file($_FILES["img"]["tmp_name"], "../public/img/" . $img);
         } elseif ($gym->getBranchs()[$_POST['branchId']]->getMembers()[$_POST['memberEditId']]->getImage() == "DefaultPersonimage.png") {
             $img = "DefaultPersonimage.png";
         } else {

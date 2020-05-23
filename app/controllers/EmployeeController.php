@@ -13,38 +13,38 @@ class EmployeeController extends Controller
         session_start();
         $gym=$this->getGymData();
         $employee = $this->model("Employee");
-        $employee->setUserName(htmlentities($_GET['username']));
+        $employee->setUserName(htmlentities($_POST['username']));
         if (!$employee->checkusernameifavailable()) {
             $_SESSION['messege'] = "Username already exist";
             $this->previousPage();
         } else {
 
-            $employee->setFirstName(htmlentities($_GET['fname']));
-            $employee->setLastName(htmlentities($_GET['lname']));
-            $employee->setEmail(htmlentities($_GET['email']));
-            $employee->setGender(htmlentities($_GET['gender']));
-            $employee->setMobilePhone(htmlentities($_GET['phonenumber']));
-            $employee->setHomePhone(htmlentities($_GET['homephone']));
-            $employee->setPassword(htmlentities($_GET['password']));
-            $employee->setBirthday(htmlentities($_GET['birthday']));
-            if (isset($_FILES['Pimage'])) {
+            $employee->setFirstName(htmlentities($_POST['fname']));
+            $employee->setLastName(htmlentities($_POST['lname']));
+            $employee->setEmail(htmlentities($_POST['email']));
+            $employee->setGender(htmlentities($_POST['gender']));
+            $employee->setMobilePhone(htmlentities($_POST['phonenumber']));
+            $employee->setHomePhone(htmlentities($_POST['homephone']));
+            $employee->setPassword(htmlentities($_POST['password']));
+            $employee->setBirthday(htmlentities($_POST['birthday']));
+            if (file_exists($_FILES['Pimage']['tmp_name']) || is_uploaded_file($_FILES['Pimage']['tmp_name'])) {
                 $img = $_FILES["Pimage"]["name"];
-                move_uploaded_file($_FILES["Pimage"]["tmp_name"], "/GYM/public/img/" . $img);
+                move_uploaded_file($_FILES["Pimage"]["tmp_name"], "../public/img/" . $img);
             } else {
                 $img = "DefaultPersonImage.png";
             }
             $employee->setImage($img);
-            $employee->getUsertype()->setId(htmlentities($_GET['usertype']));
-            $employee->getUsertype()->setName($gym->getUserTypes()[$_GET['usertype']]->getName());
-            foreach ($gym->getUserTypes()[$_GET['usertype']]->getPages() as $page) {
+            $employee->getUsertype()->setId(htmlentities($_POST['usertype']));
+            $employee->getUsertype()->setName($gym->getUserTypes()[$_POST['usertype']]->getName());
+            foreach ($gym->getUserTypes()[$_POST['usertype']]->getPages() as $page) {
                 $newpage = $this->model("Page");
                 $newpage->set_id($page->get_id());
                 $newpage->set_name($page->get_name());
                 $newpage->set_access($page->get_access());
                 $employee->getUsertype()->setPages($newpage->get_id(), $newpage);
             }
-            if (isset($_GET['branch'])) {
-                $branch = $_GET['branch'];
+            if (isset($_POST['branch'])) {
+                $branch = $_POST['branch'];
             } else {
                 $branch = $_SESSION['branch'];
             }
@@ -103,7 +103,7 @@ class EmployeeController extends Controller
         $gym=$this->getGymData();
         if (file_exists($_FILES['img']['tmp_name']) || is_uploaded_file($_FILES['img']['tmp_name'])) {
             $img = $_FILES["img"]["name"];
-            move_uploaded_file($_FILES["img"]["tmp_name"], "/GYM/public/img/" . $img);
+            move_uploaded_file($_FILES["img"]["tmp_name"], "../public/img/" . $img);
         } elseif ($gym->getBranchs()[$_POST['branchId']]->getEmployees()[$_POST['employeeEditId']]->getImage() == "DefaultPersonimage.png") {
             $img = "DefaultPersonimage.png";
         } else {

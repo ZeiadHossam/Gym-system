@@ -14,11 +14,23 @@
                         <?php if(isset($data['paymentmethodId'])){?>
                             <input type="text" name="paymentEditId"
                                    value="<?php echo $gym->getPaymentMethods()[$data['paymentmethodId']]->getId()  ?>" hidden>
-                        <input onfocusout="validate_paymentMethod()" id="paymentMethod" type="text" name="payname" value="<?php echo $gym->getPaymentMethods()[$data['paymentmethodId']]->getName()  ?>" class="form-control">
+                            <select name="payname" onfocusout="validate_paymentMethod()" id="paymentMethod" class="form-control">
+                                <option class="hidden" selected disabled>Select Payment Method</option>
+                                <option <?php if (isset($data['paymentmethodId'])&& $gym->getPaymentMethods()[$data['paymentmethodId']]->getName()=="Cash"){ ?> selected <?php }?>>Cash</option>
+                                <option <?php if (isset($data['paymentmethodId'])&& $gym->getPaymentMethods()[$data['paymentmethodId']]->getName()=="Visa"){ ?> selected <?php }?>>Visa</option>
+                                <option <?php if (isset($data['paymentmethodId'])&& $gym->getPaymentMethods()[$data['paymentmethodId']]->getName()=="MasterCard"){ ?> selected <?php }?>>MasterCard</option>
+                                <option <?php if (isset($data['paymentmethodId'])&& $gym->getPaymentMethods()[$data['paymentmethodId']]->getName()=="Fawry"){ ?> selected <?php }?>>Fawry</option>
+                            </select>
                         <?php }
                         else
                             {?>
-                                <input type="text" name="payname" id="paymentMethod" onfocusout="validate_paymentMethod()" class="form-control">
+                                <select name="payname" onfocusout="validate_paymentMethod()" id="paymentMethod" class="form-control">
+                                    <option class="hidden" selected disabled>Select Payment Method</option>
+                                    <option >Cash</option>
+                                    <option >Visa</option>
+                                    <option >MasterCard</option>
+                                    <option >Fawry</option>
+                                </select>
 
                             <?php }?>
                         <span class="message" id="paymentMethod_message"></span>

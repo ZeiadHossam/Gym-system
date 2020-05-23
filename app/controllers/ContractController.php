@@ -99,7 +99,7 @@ class ContractController extends Controller
         $contract->setAmountDue(htmlentities($amountDue));
         $contract->setPaymentFees(htmlentities($_POST['ContractFees']));
         $paymentmethod = $gym->getPaymentMethods()[$_POST["PaymentMethod"]];
-        $newpaymentMethod = $this->model("PaymentMethod");
+        $newpaymentMethod = $this->model("Paymentmethod");
         $newpaymentMethod->setId($_POST["PaymentMethod"]);
         $newpaymentMethod->setName($paymentmethod->getName());
         $contract->setPaymentMethod($newpaymentMethod);
@@ -215,7 +215,7 @@ class ContractController extends Controller
         $contract->setAmountPaid(htmlentities($_POST['AmountPaid']));
         $contract->setNote(htmlentities(isset($_POST['Notes']) ? $_POST['Notes'] : ''));
         $paymentmethod = $gym->getPaymentMethods()[$_POST["PaymentMethod"]];
-        $newpaymentMethod = $this->model("PaymentMethod");
+        $newpaymentMethod = $this->model("Paymentmethod");
         $newpaymentMethod->setId($_POST["PaymentMethod"]);
         $newpaymentMethod->setName($paymentmethod->getName());
         $contract->setPaymentMethod($newpaymentMethod);

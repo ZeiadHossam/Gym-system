@@ -254,7 +254,7 @@ class Gym
         if ($db->insert($sql)) {
             $sql2 = "";
             foreach ($this->getUserTypes()[$depid]->getPages() as $page) {
-                $sql2 .= "UPDATE privilege SET hasAccess=" . $page->get_access() . " WHERE  typeId=" . $depid . " AND pageId=" . $page->get_id() . ";";
+                $sql2 .= "UPDATE privilege SET hasAccess=" . $page->get_access() . " WHERE  typeId=" . $depid . " AND pageId=" . $page->get_id() . "; ";
             }
             if ($db->multiinsert($sql2)) {
                 $_SESSION['Gym'] = serialize($this);
@@ -346,7 +346,7 @@ class Gym
         $updatedate = date("Y/m/d H:i:s");
 
         $this->getPackages()[$packageId]->setName($db->getMysqli()->real_escape_string($this->getPackages()[$packageId]->getName()));
-        $sql = "UPDATE packageType SET updatedAt='$updatedate', name='" . $this->getPackages()[$packageId]->getName() . "' , type='" . $this->getPackages()[$packageId]->getPeriodType() . "' WHERE id=" . $this->getPackages()[$packageId]->getId();
+        $sql = "UPDATE packagetype SET updatedAt='$updatedate', name='" . $this->getPackages()[$packageId]->getName() . "' , type='" . $this->getPackages()[$packageId]->getPeriodType() . "' WHERE id=" . $this->getPackages()[$packageId]->getId();
         if ($db->insert($sql)) {
             $_SESSION['Gym'] = serialize($this);
             $db->closeconn();
