@@ -50,7 +50,7 @@ class SecurityController extends Controller
             } else {
 
                 $_SESSION['messege']="Invalid UserName or Password";
-                $this->previousPage();
+                $this->redirect("security/login");
 
             }
         }
