@@ -129,9 +129,11 @@
                                                     <div class="input-group">
                                                         <div class="custom-file">
                                                             <input name="Pimage" class="form-control-file" type="file"
-                                                                   onchange="showImage(this,'personalImage');"
-                                                                   id="img" accept="image/gif, image/jpeg, image/png"/>
+                                                                   onchange="showImage(this,'personalImage'); processFile(this)"
+                                                                   id="img" accept="image/*"/>
                                                         </div>
+                                                        <span class="message" id="photo_message"></span>
+
                                                         <br>
                                                         <img id="personalImage" src="http://placehold.it/100"/>
 

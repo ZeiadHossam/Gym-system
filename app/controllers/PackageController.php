@@ -22,6 +22,13 @@ class PackageController extends Controller
         $package->setPeriodType($_GET['periodType']);
         $id=0;
         foreach ($_GET['contractTypes'] as $type) {
+            if ($type=='0')
+            {
+                $_SESSION['messege'] = "contract Type cannot have 0 value";
+
+                $this->previousPage();
+                return;
+            }
             $packageperiod=$this->model("PackagePeriod");
             $packageperiod->setPeriod($type);
             $id=$id+1;

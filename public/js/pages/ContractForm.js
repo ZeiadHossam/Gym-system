@@ -338,6 +338,37 @@ function ChangeUsernameorPassword()
 
 
 }
+function validate_expireFromContractReport() {
+    var startdate = document.getElementById('expiresFrom').value;
+    var enddate = document.getElementById('expiresTo').value;
+    var message = document.getElementById('expiresFrom_message');
+    if (enddate != "" && startdate > enddate) {
+        message.innerHTML = "*Membership expires to must start after membership expires from";
+        return false;
+    } else {
+        message.innerHTML = "";
+        return true;
+    }
+}
+function validate_expireToContractReport() {
+    var startdate = document.getElementById('expiresFrom').value;
+    var enddate = document.getElementById('expiresTo').value;
+    var message = document.getElementById('expiresTo_message');
+     if (startdate != "" && startdate > enddate) {
+        message.innerHTML = "*Membership expires to must start after membership expires from";
+        return false;
+    } else {
+        message.innerHTML = "";
+        return true;
+    }
+}
+function validate_ContractReport() {
+if (validate_expireFromContractReport()&&validate_expireToContractReport())
+{
+    return true;
+}
+else {return false;}
+}
 
 
 

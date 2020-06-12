@@ -5,7 +5,21 @@ function deletingMember(branchId, memberId) {
     });
 
 }
+function processFile(imageInput) {
+    if (imageInput.files[0]) {
+        var file = imageInput.files[0];
+        var pattern = /image-*/;
+        var message = document.getElementById('photo_message');
+        if (!file.type.match(pattern)) {
+            message.innerHTML = "Image Type is invalid";
+            return false;
+        }
+        message.innerHTML = "";
 
+        return true;
+
+    }
+}
 function submitingmember() {
     if (validate_firstname() && validate_lastname() && validate_mobilePhone() && validate_homePhone() && validate_email() && validate_email_input() &&  validate_date() && validate_Branch() && validate_Gender()&& validate_MarriedStatus() && validate_workphone() && validate_faxnumber() && validate_emergencynumber() && validate_companyname()) {
         return true;
@@ -64,7 +78,7 @@ function validate_emergencynumber() {
         return true;
 
     } else if (emergency.length != 11) {
-        message.innerHTML = "emergency number must contain 8 numbers";
+        message.innerHTML = "emergency number must contain 11 numbers";
         return false;
     }
     message.innerHTML = "";

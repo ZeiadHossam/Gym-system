@@ -2,7 +2,7 @@
 
 	<div class="container-fluid">
 		<br>
-		<form  role="form" action="/GYM/report/contractsReport" target="_blank" method="post">
+		<form  role="form" action="/GYM/report/contractsReport" target="_blank" method="post" onsubmit="return validate_ContractReport()">
 			<fieldset>
 				<legend>Search Contracts Report</legend>
 				<div class="row">
@@ -70,15 +70,19 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Membership Expires From:</label>
-							<input type="date" name="expiresFrom" class="form-control" >
-						</div>
+							<input type="date" onfocusout="validate_expireFromContractReport()" name="expiresFrom" id="expiresFrom" class="form-control" >
+                            <span class="message" id="expiresFrom_message"></span>
+
+                        </div>
 					</div>
 					<div class="col-md-6">
 
 						<div class="form-group">
 							<label>Membership Expires To:</label>
-							<input type="date" name="expiresTo" class="form-control" >
-						</div>
+							<input type="date" onfocusout="validate_expireToContractReport()" name="expiresTo" id="expiresTo" class="form-control" >
+                            <span class="message" id="expiresTo_message"></span>
+
+                        </div>
 					</div>
 
 				</div>

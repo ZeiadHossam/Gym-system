@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="check usertype" />
+    <list default="true" id="741b1de0-b5bc-4f8c-8ddb-b28ddc078a44" name="Default Changelist" comment="check usertype">
+      <change afterPath="$PROJECT_DIR$/desktop.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gym (1).sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages (1).sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/PackageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/PackageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/addmember.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/addmember.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/contractreports.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contractreports.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/pages/ContractForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/ContractForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/pages/memberform.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pages/memberform.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
