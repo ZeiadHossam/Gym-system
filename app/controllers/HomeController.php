@@ -30,7 +30,15 @@ class HomeController extends Controller
     }
     public function showprofile()
     {
-        $this->viewHome("myprofile");
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
+        $employee=$this->model("Employee");
+        $userAndPass=$employee->getUsernameAndPassword($_SESSION['id']);
+        $this->viewHome("myprofile",[
+            "userAndPass"=>$userAndPass
+        ]);
     }
 
 }

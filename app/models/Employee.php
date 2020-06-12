@@ -97,6 +97,34 @@ class Employee extends Person
 
         }
     }
+    public  function changeUsernameAndPassword($id,$newUserName,$newPassword)
+    {
+        $db = new Database();
+        $newPassword=md5($newPassword);
+        $changeCred = "UPDATE employee SET userName='$newUserName' , password='$newPassword'  WHERE id='$id'";
+        if ($db->insert($changeCred)) {
+            $db->closeconn();
+            return true;
+
+
+        }
+        return false;
+    }
+    public  function getUsernameAndPassword($id)
+    {
+        $query="SELECT userName,password FROM employee WHERE id=$id;";
+        $db = new Database();
+        $row = $db->select($query);
+
+        if ($row != NULL) {
+            $db->closeconn();
+            return $row;
+         } else {
+            $db->closeconn();
+            return NULL;
+
+        }
+    }
 
     public function checkusernameifavailable()
     {

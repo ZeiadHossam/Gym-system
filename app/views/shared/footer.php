@@ -26,6 +26,7 @@
 <script src="/GYM/public/plugins/toastr/toastr.min.js"> </script>
 <script src="/GYM/public/js/pages/toasters.js"></script>
 <script src="/GYM/public/js/pages/branchform.js"></script>
+<script src="/GYM/public/js/pages/changeCred.js"></script>
 <script src="/GYM/public/js/pages/employeeform.js"></script>
 <script src="/GYM/public/js/pages/departmentForm.js"></script>
 <script src="/GYM/public/js/pages/ContractForm.js"></script>

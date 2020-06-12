@@ -1,4 +1,6 @@
 <?php
+$userAndPass=$data['userAndPass'];
+include "changecredentials.php";
 if ($_SESSION['branch']==NULL){
     $loggedInEmployee=$gym->getOwner();
 }
@@ -67,8 +69,12 @@ else
                                     <?php } ?>
 
                                 </ul>
-                                    <a href="#">Change Username or Password</a>
-                                    <a href="#" class="float-right">Edit Profile</a>
+                                <br>
+                                <button type="button" class="btn btn-info"
+                                        onclick="ChangeUsernameorPassword()"
+                                       >Change Username or Password
+                                </button>
+
 
                             </div>
                         </div>

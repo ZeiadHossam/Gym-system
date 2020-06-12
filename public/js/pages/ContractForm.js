@@ -327,6 +327,16 @@ function remainingFreeze()
         message.innerHTML="";
         return true;
     }
+
+}
+
+function ChangeUsernameorPassword()
+{
+    $('#modal-cred').modal('show');
+
+
+
+
 }
 
 
